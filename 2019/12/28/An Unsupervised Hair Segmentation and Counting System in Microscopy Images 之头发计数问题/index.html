@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+  <title itemprop="name">An Unsupervised Hair Segmentation and Counting System in Microscopy Images 之头发计数问题 | LITTLEMEEMOON</title>
+  
+    <link rel="shortcut icon" href="/images/favicon.ico">
+  
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="stylesheet" id="saukra_css-css" href="/css/style.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/lib.min.css" media="all">
+  <link rel="stylesheet" href="/css/font.css" media="all">
+  <link rel="stylesheet" href="/css/insight.css" media="all">
+  <link rel="stylesheet" href="/css/jquery.fancybox.min.css" media="all">
+  <link rel="stylesheet" href="/css/zoom.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+  <link rel="stylesheet" type="text/css" href="/css/matery.css">
+<!--   <link rel="stylesheet" id="saukra_css-css" href="https://2heng.xin/wp-content/cache/autoptimize/css/autoptimize_ad42a61f4c7d4bdd9f91afcff6b5dda5.css
+" type="text/css" media="all"> -->
+  <script>
+  /*Initial Variables*/
+  var mashiro_option = new Object();
+  var mashiro_global = new Object();
+  mashiro_option.NProgressON = true;
+  /* 
+   * 邮箱信息之类的东西可以填在这里，这些js变量基本都作用于sakura-app.js
+   * 这样的设置仅是为了方便在基于PHP开发的主题中设置js变量，既然移植到了Node上，我想或许可以精简这一逻辑吧
+   */
+  mashiro_option.email_domain = "";
+  mashiro_option.email_name = "";
+  mashiro_option.cookie_version_control = "";
+  mashiro_option.qzone_autocomplete = false;
+  mashiro_option.site_name = "さくら荘そのKayleen";
+  mashiro_option.author_name = "Kayleen";
+  mashiro_option.site_url = "https://littlelittlemoon.github.io/";
+  mashiro_option.v_appId = "uVn0CbsTzphCnMDIxJKQ0rbg-gzGzoHsz";
+  mashiro_option.v_appKey = "wc39UmG3dNqQQms9Hg2sKc1X";
+  mashiro_option.mathjax = "";
+  mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
+  mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
+
+  // mashiro_option.jsdelivr_css_src = "https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/css/lib.min.css";
+  // mashiro_option.float_player_on = true;
+
+  /*End of Initial Variables*/
+  </script>
+  <script type="text/javascript">
+  var bg = "".split(",");
+  var bgindex = Math.floor(Math.random()*bg.length);
+  if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+    alert('朋友，IE浏览器未适配哦~');
+  }
+  </script>
+  <style type="text/css">
+  .hljs-ln{border-collapse:collapse}.hljs-ln td{padding:0}.hljs-ln-n:before{content:attr(data-line-number)}
+  </style>
+  <style type="text/css">.site-top .lower nav{display:block !important;}.author-profile i,.post-like a,.post-share .show-share,.sub-text,.we-info a,span.sitename,.post-more i:hover,#pagination a:hover,.post-content a:hover,.float-content i:hover{color:#FE9600}.feature i,.download,.navigator i:hover,.links ul li:before,.ar-time i,span.ar-circle,.object,.comment .comment-reply-link,.siren-checkbox-radio:checked + .siren-checkbox-radioInput:after{background:#FE9600}::-webkit-scrollbar-thumb{background:#FE9600}.download,.navigator i:hover,.link-title,.links ul li:hover,#pagination a:hover,.comment-respond input[type='submit']:hover{border-color:#FE9600}.entry-content a:hover,.site-info a:hover,.comment h4 a,#comments-navi a.prev,#comments-navi a.next,.comment h4 a:hover,.site-top ul li a:hover,.entry-title a:hover,#archives-temp h3,span.page-numbers.current,.sorry li a:hover,.site-title a:hover,i.iconfont.js-toggle-search.iconsearch:hover,.comment-respond input[type='submit']:hover{color:#FE9600}.comments .comments-main{display:block !important;}.comments .comments-hidden{display:none !important;}background-position:center center;background-attachment:inherit;}
+  </style>
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="LITTLEMEEMOON" type="application/atom+xml">
+</head>
+
+<body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+  <div class="scrollbar" id="bar">
+  </div>
+  <a href="#" class="cd-top faa-float animated"></a>
+  <section id="main-container">
+    <div class="headertop ">
+  <div id="banner_wave_1"></div>
+  <div id="banner_wave_2"></div>
+  <figure id="centerbg" class="centerbg">
+    <div class="focusinfo no-select">
+      <div class="header-tou">
+        <a href="https://littlelittlemoon.github.io/">
+          <img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn@v1.2/img/custom/avatar-1.jpg">
+        </a>
+      </div>
+      <div class="header-info">
+        <p>I guess it comes down to a simple choice - get busy living or get busy dying.</p>
+        <div class="top-social_v2">
+          <li id="bg-pre">
+            <img class="flipx" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+          
+            
+              
+                <li>
+                  <a href="http://github.com/littlelittlemoon" target="_blank" class="social-github" title="github">
+                    <img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn@v1.2/img/social/github.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="littlemeemoon@gmail.com" target="_blank" class="social-github" title="email">
+                    <img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn@v1.2/img/social/email.svg">
+                  </a>
+                </li>
+              
+            
+          
+          <li id="bg-next">
+            <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+        </div>
+      </div>
+    </div>
+  </figure>
+  <div id="video-container" style="">
+    <video style="object-fit: fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto">
+    </video>
+    <div id="video-btn" class="loadvideo videolive">
+    </div>
+    <div id="video-add">
+    </div>
+    <div class="video-stu">
+    </div>
+  </div>
+  <div class="headertop-down faa-float animated" onclick="headertop_down()">
+    <span>
+      <i class="fa fa-chevron-down" aria-hidden="true">
+      </i>
+    </span>
+  </div>
+</div>
+    <div id="page" class="site wrapper">
+      <header class="site-header no-select gizle sabit" role="banner">
+  <div class="site-top">
+    <div class="site-branding">
+      <span class="site-title">
+        <span class="logolink moe-mashiro">
+          <a href="/">
+            <span class="sakurasono">さくら荘その</span>
+            <span class="shironeko">Kayleen</span>
+          </a>
+        </span>
+      </span>
+    </div>
+    <div class="searchbox search-form-submit">
+      <i class="iconfont js-toggle-search iconsearch icon-search">
+      </i>
+    </div>
+    <div id="show-nav" class="showNav mobile-fit">
+      <div class="line line1">
+      </div>
+      <div class="line line2">
+      </div>
+      <div class="line line3">
+      </div>
+    </div>
+    <div class="lower-cantiner">
+      <div class="lower">
+        <nav class="mobile-fit-control hide">
+          <ul id="menu-new" class="menu">
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+                    首页
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+                    归档
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/categories/%E6%8A%80%E6%9C%AF/">
+                          <i class="fa fa-code" aria-hidden="true"></i>
+                          技术
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E7%94%9F%E6%B4%BB/">
+                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                          生活
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E8%B5%84%E6%BA%90/">
+                          <i class="fa fa-cloud-download" aria-hidden="true"></i>
+                          资源
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E9%9A%8F%E6%83%B3/">
+                          <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                          随想
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E8%BD%AC%E8%BD%BD/">
+                          <i class="fa fa-book" aria-hidden="true"></i>
+                          转载
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+                    清单
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/tags/%E6%82%A6%E8%AF%BB/">
+                          <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                          书单
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/">
+                          <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                          分类
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/music/">
+                          <i class="fa fa-headphones" aria-hidden="true"></i>
+                          歌单
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/tags/%E5%9B%BE%E9%9B%86/">
+                          <i class="fa fa-photo" aria-hidden="true"></i>
+                          图集
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/comment/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+                    留言板
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/links/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+                    友人帐
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/donate/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+                    赞赏
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+                    关于
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/about/">
+                          <i class="fa fa-meetup" aria-hidden="true"></i>
+                          我？
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/theme-sakura/">
+                          <i class="fa iconfont icon-sakura" aria-hidden="true"></i>
+                          主题
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/lab/">
+                          <i class="fa fa-cogs" aria-hidden="true"></i>
+                          Lab
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/client/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-android faa-vertical" aria-hidden="true"></i>
+                    客户端
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/atom.xml">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+                    RSS
+                  </span>
+                </a>
+                
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://static.2heng.xin/wp-content/uploads//2019/02/wallhaven-672007-1-1024x576.png);" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn@v1.2/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://static.2heng.xin/wp-content/uploads//2019/02/wallhaven-672007-1-1024x576.png">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      An Unsupervised Hair Segmentation and Counting System in Microscopy Images 之头发计数问题</h1>
+      <p class="entry-census">
+        <span>
+          <a href="">
+            <img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn@v1.1/img/custom/avatar.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="">Kayleen</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2019-12-28<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
+  </div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <p><a href="http://oz.nthu.edu.tw/~d917904/papers/2015_IEEE%20sensors%20journal_Hair.pdf" target="_blank" rel="noopener">Paper: An Unsupervised Hair Segmentation and Counting System in Microscopy Images</a></p>
+<blockquote>
+<p><strong>摘要翻译</strong>：本文重点介绍使用<strong>高级图像处理算法</strong>开发用于临床的医学软件。本文讨论了<strong>头发分割</strong>和<strong>计数</strong>的三个关键问题:</p>
+<ul>
+<li>首先，去除由于油脂或水分引起的任何亮点，这些亮点在头发的中部形成圆形图案，并显着影响确定线条的准确性。</li>
+<li>第二，识别出两个接触或重叠的头发，并将其视为单个头发。为了解决这个问题，我们提出了一种<strong>头发捆绑算法(hair-bundling algorithm)来计算任何隐藏的头发</strong>。</li>
+<li>最后，头发可能呈波浪状或卷曲状，这使传统的基于<strong>Hough的线检测算法</strong>不合适，因为它会受到参数选择的影响，例如线段的最小长度以及线段之间的距离。我们提出的毛发计数算法比基于Hough的毛发计数算法要准确得多，并且在各种白平衡下对卷发，油性头皮，噪声腐蚀和重叠的头发都具有适用性。</li>
+<li>关键词：<strong>毛发计数</strong>，<strong>头皮诊断</strong>，护发诊断，<strong>毛囊诊断</strong>，<strong>线段检测</strong>。</li>
+</ul>
+</blockquote>
+<h2 id="system-flowchart"><a class="markdownIt-Anchor" href="#system-flowchart"></a> System flowchart</h2>
+<p><img src="../images/AUHSACSIMI_hair_counting/figure_1_System_flowchart.png" alt="figure 1 System flowchart" /></p>
+<h3 id="预处理阶段-preprocessing-stage"><a class="markdownIt-Anchor" href="#预处理阶段-preprocessing-stage"></a> 预处理阶段 (Preprocessing Stage)</h3>
+<blockquote>
+<ul>
+<li>使用<strong>对比度拉伸方法(the contrast-stretching method)<strong>来</strong>增加头皮和头发像素之间的对比度</strong>;</li>
+<li>为了减少亮点的影响，提出了一种健壮的<strong>颜色形态算法(morphological algorithm)</strong>，以使颜色平滑并保持头发的保真度;</li>
+<li>为每个颜色分量应用了<strong>Karhunen-Loève变换(KLT)</strong>，并保留了具有最高能量的分量，并使用<strong>Otsu阈值</strong>获得了可靠的<strong>二进制图像</strong>。</li>
+</ul>
+</blockquote>
+<h4 id="数据采集规定"><a class="markdownIt-Anchor" href="#数据采集规定"></a> 数据采集规定</h4>
+<p>这项研究的唯一<strong>假设: 头发的颜色比皮肤的颜色深</strong>。<br />
+头发图像是从<strong>数码显微镜相机（DMC</strong>）捕获，内置LED增强，可自动保持亮度稳定。应用<strong>85倍的变焦倍率</strong>捕获图像。通常，使用<strong>分辨率为1024×768</strong>，相当于<strong>头皮面积是0.25×0.19英寸</strong>。此外，基于DMC的白平衡将捕获的<strong>图像分为两组</strong>：</p>
+<ul>
+<li>具有<strong>日光</strong>的图像被分类为数据集＃1，</li>
+<li>具有<strong>荧光</strong>的图像被分类为数据集＃2。</li>
+</ul>
+<h4 id="使用对比度拉伸contrast-stretching进行图像增强"><a class="markdownIt-Anchor" href="#使用对比度拉伸contrast-stretching进行图像增强"></a> 使用对比度拉伸(Contrast Stretching)进行图像增强</h4>
+<h5 id="目的"><a class="markdownIt-Anchor" href="#目的"></a> 目的</h5>
+<ol>
+<li>增加头发和头皮之间的对比度;</li>
+<li>增加头发和头皮像素之间的色差。</li>
+</ol>
+<h5 id="技术"><a class="markdownIt-Anchor" href="#技术"></a> 技术</h5>
+<ol>
+<li>通过<strong>分段线性对比度拉伸(color transformation by means of piecewise linear contrast stretching)<strong>进行颜色变换来</strong>增强图</strong>像，提高对比度；</li>
+<li>stretched the middle-intensity level, and kept the levels of the low-intensity and high-intensity so as to prevent creating false colors.</li>
+</ol>
+<h5 id="结果"><a class="markdownIt-Anchor" href="#结果"></a> 结果</h5>
+<p><img src="../images/AUHSACSIMI_hair_counting/figure_2_image_enhancement_for_the_datasets.png" alt="figure_2_image_enhancement_for_the_datasets" /></p>
+<p>进行对比度拉伸时，不会更改原始头发像素，也不会夸大油亮像素：</p>
+<ul>
+<li>降低了头皮像素的强度;</li>
+<li>增加了头皮和头发之间的色差;</li>
+<li>亮点的像素保持不变。</li>
+</ul>
+<h4 id="bright-spot-removal-bsr"><a class="markdownIt-Anchor" href="#bright-spot-removal-bsr"></a> Bright Spot Removal (BSR)</h4>
+<h5 id="目的-2"><a class="markdownIt-Anchor" href="#目的-2"></a> 目的</h5>
+<p>除噪: 去除油性和湿润的头发在头发的中部产生的亮点:</p>
+<h5 id="技术-2"><a class="markdownIt-Anchor" href="#技术-2"></a> 技术</h5>
+<p><strong>color morphological processing approach</strong></p>
+<ol>
+<li>非线性中值滤波器(nonlinear median filter)消除白点;</li>
+<li>空间平滑滤波器(spatial smooth filter)降低白点的强度, 缺点是测试图像的非毛发区域也将变得模糊;</li>
+<li>color-based mathematical morphology (MM) method, used it as an ordering process. adopted the <strong>MM opening operator</strong> to depress the bright spot in the middle <strong>of the hairs.</strong>
+<ul>
+<li>侵蚀图像</li>
+<li>放大图像</li>
+<li><strong>opening operation of image f</strong> : <strong><code>γM,nB(f) = τM,nB(εM,nB(f))</code></strong>, 其中<code>εM,nB</code>和<code>τM,nB</code>分别表示<strong>结构元素B</strong>对大小为n的图像f的形态侵蚀和放大, 对于像素x:
+<ul>
+<li><code>εM,nB(f)(x) = {f(y) : f(y) = ∧M[f(z)],z ∈ n(Bx)}</code></li>
+<li><code>τM,nB(f)(x) = {f(y) : f(y) = ∨M[f(z)],z ∈ n(Bx)}</code></li>
+<li><code>∧M</code>和<code>∨M</code>分别表示M-ordering的最高和最小峰</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>使用KLT将彩色图像转换为灰度图像；</li>
+<li>图像二值化步骤中，使用了Otsu阈值（指亮度的能量）以获得可靠的二值图像；</li>
+</ol>
+<h5 id="结果-2"><a class="markdownIt-Anchor" href="#结果-2"></a> 结果</h5>
+<ol>
+<li>
+<p>图3示出了去除油性亮点的结果：<br />
+<img src="../images/AUHSACSIMI_hair_counting/figure_3_oily_bright_spot_removal.png" alt="figure_3_oily_bright_spot_removal" /></p>
+</li>
+<li>
+<p>图4比较了使用BSR操作时的线路检测，并显示了对二值化和细化操作的明显影响。带有BSR的二值化图像具有减少的亮点反射，并且在细化图像中，亮点被转换为小圆圈。图4（f）显示，在线检测阶段，使用BSR生成的图像具有较少的不必要的线段：</p>
+</li>
+</ol>
+<p><img src="../images/AUHSACSIMI_hair_counting/figure_4_comparisons_of_the_hair_thining_and_line_detection.png" alt="figure_4_comparisons_of_the_hair_thining_and_line_detection" /></p>
+<h3 id="multi-scale-line-detection-stage-msld"><a class="markdownIt-Anchor" href="#multi-scale-line-detection-stage-msld"></a> Multi-scale Line Detection Stage (MSLD)</h3>
+<blockquote>
+<ul>
+<li>采用<strong>改进的霍夫变换(the Hough transform)算法</strong>来<strong>检测不同的头发长度</strong>，并减少由于噪声引起的任何错误检测;</li>
+<li>将弯曲的头发视为多条直线;</li>
+<li>为了避免在应用稀疏过程时丢失头发，我们<strong>使用边缘信息(edge information)<strong>来发现任何隐藏或</strong>重叠</strong>的头发。</li>
+</ul>
+</blockquote>
+<h4 id="总体结构分析"><a class="markdownIt-Anchor" href="#总体结构分析"></a> 总体结构分析</h4>
+<h5 id="目的-3"><a class="markdownIt-Anchor" href="#目的-3"></a> 目的</h5>
+<ol>
+<li>提出<strong>多尺度框架</strong>来是为了提高头发检测的准确性；</li>
+<li>应用<strong>平行线捆绑（PLB）算法（parallel line bundling algorithm）<strong>来</strong>还原任何隐藏或重叠的头发</strong>。 最后，将<strong>矢量化</strong>的线段<strong>用作毛发标记和计数模块</strong>的输入数据。</li>
+</ol>
+<h5 id="技术-3"><a class="markdownIt-Anchor" href="#技术-3"></a> 技术</h5>
+<ol>
+<li>对<strong>HT</strong>应用了<strong>三个比例的图像</strong>：1024×768（原始比例），512×384和256×192。对<strong>缩放比例图像</strong>应用了两种处理方法：<strong>边缘检测和细化处理</strong>。</li>
+<li><strong>PLB算法应用于边缘图像以发现缺失的线段</strong></li>
+<li><strong>HT被应用于细化图像以提取线段</strong>。通过利用PLB算法，可以恢复隐藏和重叠的头发。</li>
+<li>最后，将矢量化的线段<strong>重新缩放为原始尺寸1024×768</strong>，并由<strong>逻辑或运算符</strong>进行整合。</li>
+</ol>
+<h5 id="结果-3"><a class="markdownIt-Anchor" href="#结果-3"></a> 结果</h5>
+<p>如图5所示，由于头发的长度和卷曲度的变化，使用单尺度HT不能检测所有的头发：</p>
+<p><img src="../images/AUHSACSIMI_hair_counting/figure_5_comparison_of_the_single_scale_and_muti-scale_line_detection.png" alt="figure_5_comparison_of_the_single_scale_and_muti-scale_line_detection" /></p>
+<ul>
+<li>图5（a）显示，当一根头发几乎平行出现，与其他头发重叠时，或者如果头发的曲率超过HT的容限，那么最终会遗漏大量的头发，许多线段标签错误。</li>
+<li>图5（b）示出了使用来自所有缩放图的线段的结果，从而改善了单个刻度的不足。</li>
+</ul>
+<h4 id="parallel-line-bundling-plb"><a class="markdownIt-Anchor" href="#parallel-line-bundling-plb"></a> Parallel Line Bundling (PLB)</h4>
+<h5 id="原理"><a class="markdownIt-Anchor" href="#原理"></a> 原理</h5>
+<ol>
+<li>应用Canny边缘检测器获得边缘图。在图6中，假设检测到两条平行线A和B，用<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mi>x</mi><mo>+</mo><mi>b</mi><mi>y</mi><mo>+</mo><msub><mi>c</mi><mi>a</mi></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">ax + by + c_a = 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">b</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">a</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>和<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mi>x</mi><mo>+</mo><mi>b</mi><mi>y</mi><mo>+</mo><msub><mi>c</mi><mi>b</mi></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">ax + by + c_b = 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">b</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">b</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>表示, <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mo>=</mo><mfrac><mrow><mi mathvariant="normal">∣</mi><msub><mi>c</mi><mi>a</mi></msub><mo>−</mo><msub><mi>c</mi><mi>b</mi></msub><mi mathvariant="normal">∣</mi></mrow><msqrt><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><msup><mi>b</mi><mn>2</mn></msup></mrow></msqrt></mfrac></mrow><annotation encoding="application/x-tex">d=\frac{|c_a - c_b|} {\sqrt{a^2 + b^2}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">d</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.548em;vertical-align:-0.538em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.01em;"><span style="top:-2.5445179999999996em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord sqrt mtight"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9221171428571429em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mtight" style="padding-left:0.833em;"><span class="mord mtight"><span class="mord mathdefault mtight">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7463142857142857em;"><span style="top:-2.786em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mbin mtight">+</span><span class="mord mtight"><span class="mord mathdefault mtight">b</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7463142857142857em;"><span style="top:-2.786em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span><span style="top:-2.882117142857143em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail mtight" style="min-width:0.853em;height:1.08em;"><svg width='400em' height='1.08em' viewBox='0 0 400000 1080' preserveAspectRatio='xMinYMin slice'><path d='M95,702c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,
+-10,-9.5,-14c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54c44.2,-33.3,65.8,
+-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10s173,378,173,378c0.7,0,
+35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429c69,-144,104.5,-217.7,106.5,
+-221c5.3,-9.3,12,-14,20,-14H400000v40H845.2724s-225.272,467,-225.272,467
+s-235,486,-235,486c-2.7,4.7,-9,7,-19,7c-6,0,-10,-1,-12,-3s-194,-422,-194,-422
+s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.11788285714285718em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.485em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">∣</span><span class="mord mtight"><span class="mord mathdefault mtight">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.16454285714285719em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight">a</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span><span class="mbin mtight">−</span><span class="mord mtight"><span class="mord mathdefault mtight">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3487714285714287em;margin-left:0em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight">b</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15122857142857138em;"><span></span></span></span></span></span></span><span class="mord mtight">∣</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.538em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>表示线段A,B之间的距离;</li>
+</ol>
+<p><img src="../images/AUHSACSIMI_hair_counting/figure_6_Thining_line_sandwiched_by_two_parallel_lines_with_the_distances_d.png" alt="figure_6_Thining_line_sandwiched_by_two_parallel_lines_with_the_distances_d" /></p>
+<ol start="2">
+<li>计算出夹有细线的平行线之间的平均距离<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>d</mi><mrow><mi>a</mi><mi>v</mi><mi>g</mi></mrow></msub></mrow><annotation encoding="application/x-tex">d_{avg}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.980548em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139200000000003em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">a</span><span class="mord mathdefault mtight" style="margin-right:0.03588em;">v</span><span class="mord mathdefault mtight" style="margin-right:0.03588em;">g</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span>。 如果<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mo>&gt;</mo><msub><mi>d</mi><mrow><mi>a</mi><mi>v</mi><mi>g</mi></mrow></msub></mrow><annotation encoding="application/x-tex">d &gt; d_{avg}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.73354em;vertical-align:-0.0391em;"></span><span class="mord mathdefault">d</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.980548em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139200000000003em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">a</span><span class="mord mathdefault mtight" style="margin-right:0.03588em;">v</span><span class="mord mathdefault mtight" style="margin-right:0.03588em;">g</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span>，则当<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo stretchy="false">(</mo><mi>d</mi><msub><mi>d</mi><mrow><mi>a</mi><mi>v</mi><mi>g</mi></mrow></msub><mo stretchy="false">)</mo><mo>&gt;</mo><msub><mi>w</mi><mrow><mi>t</mi><mi>h</mi></mrow></msub></mrow><annotation encoding="application/x-tex">(dd_{avg})&gt;w_{th}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.036108em;vertical-align:-0.286108em;"></span><span class="mopen">(</span><span class="mord mathdefault">d</span><span class="mord"><span class="mord mathdefault">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139200000000003em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">a</span><span class="mord mathdefault mtight" style="margin-right:0.03588em;">v</span><span class="mord mathdefault mtight" style="margin-right:0.03588em;">g</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.02691em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span><span class="mord mathdefault mtight">h</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>时，将发现隐藏的头发，其中<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>w</mi><mrow><mi>t</mi><mi>h</mi></mrow></msub></mrow><annotation encoding="application/x-tex">w_{th}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.02691em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span><span class="mord mathdefault mtight">h</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>表示边界因子，将通过头皮图像的分辨率根据经验进行修改。</li>
+</ol>
+<h5 id="结果-4"><a class="markdownIt-Anchor" href="#结果-4"></a> 结果</h5>
+<p>在图7（a）中，圆圈表示隐藏的头发，如图7（b）所示：<br />
+<img src="../images/AUHSACSIMI_hair_counting/figure_7_Result_of_PLB_algorithm.png" alt="figure_7_Result_of_PLB_algorithm" /></p>
+<h3 id="hair-labling-and-counting"><a class="markdownIt-Anchor" href="#hair-labling-and-counting"></a> Hair Labling and Counting</h3>
+<blockquote>
+<p>使用MSLD模块，得出了一组线段。根据头发的曲率和方向，将头发实现为具有不同长度的分段线向量簇。这项研究的目的是<strong>准确计算头皮上的毛发数量</strong>。这可以看作是<strong>聚类和标记问题</strong>。<strong>目标</strong>是<strong>将一组线段组合成语义“头发”并分配唯一的标签</strong>。由于每根头发都由相互关联的线段组成，因此我们<strong>为每个簇分配了唯一的标签</strong>。 我们采用了<strong>松弛标记算法(Relaxation labeling algorithm)来识别每个单独的线段</strong>，以确定与哪个线段相关联。</p>
+</blockquote>
+<p>图8（a）显示了10个单独的线段的示例，这些线段被标记为来自同一根头发，然后绘制到<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">（</mi><mi>ρ</mi><mi mathvariant="normal">，</mi><mi>θ</mi><mi mathvariant="normal">）</mi></mrow><annotation encoding="application/x-tex">（ρ，θ）</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord cjk_fallback">（</span><span class="mord mathdefault">ρ</span><span class="mord cjk_fallback">，</span><span class="mord mathdefault" style="margin-right:0.02778em;">θ</span><span class="mord cjk_fallback">）</span></span></span></span>坐标系上，如图8（b）所示。 交叉点处累积图的结果峰值为10。</p>
+<p><img src="../images/AUHSACSIMI_hair_counting/figure_8_Example_of_line_segment_labeling.png" alt="figure_8_Example_of_line_segment_labeling" /></p>
+<h4 id="relaxation-labeling-rl"><a class="markdownIt-Anchor" href="#relaxation-labeling-rl"></a> Relaxation Labeling (RL)</h4>
+<blockquote>
+<p><strong>松弛标注（RL）是一种相互关联的回归方法</strong>，它使用符号来描述模型的形状。 它旨在<strong>将目标对象（即本文中的线段）与符号或所谓的标记（即头发标签）进行匹配</strong>。RL算法首先分配一组随机标记。然后，通过迭代计算，可以获得更准确，更精确的标记集。在本研究中，RL算法被视为<strong>用于标记每个线段的聚类方法</strong>。</p>
+</blockquote>
+<h5 id="原理-2"><a class="markdownIt-Anchor" href="#原理-2"></a> 原理</h5>
+<p><img src="../images/AUHSACSIMI_hair_counting/figure_9_Conceptual_schematics_of_the_labeling_algorithm.png" alt="figure_9_Conceptual_schematics_of_the_labeling_algorithm" /></p>
+<ol>
+<li>令<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi><mo stretchy="false">(</mo><mi>i</mi><mi mathvariant="normal">，</mi><mi>λ</mi><mi mathvariant="normal">，</mi><mi>j</mi><mi mathvariant="normal">，</mi><msup><mi>λ</mi><mo mathvariant="normal">′</mo></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">C(i，λ，j，λ&#x27;)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.001892em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mord cjk_fallback">，</span><span class="mord mathdefault">λ</span><span class="mord cjk_fallback">，</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mord cjk_fallback">，</span><span class="mord"><span class="mord mathdefault">λ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>表示约束为λ的线段与约束为λ’的线段j的兼容性，其约束为: <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle scriptlevel="0" displaystyle="true"><munder><mo>∑</mo><mi>λ</mi></munder><mi>C</mi><mo stretchy="false">(</mo><mi>i</mi><mi mathvariant="normal">，</mi><mi>λ</mi><mi mathvariant="normal">，</mi><mi>j</mi><mi mathvariant="normal">，</mi><msup><mi>λ</mi><mo mathvariant="normal">′</mo></msup><mo stretchy="false">)</mo><mo>=</mo><mn>1</mn></mstyle></mrow><annotation encoding="application/x-tex">\displaystyle\sum_{λ}C(i，λ，j，λ&#x27;) = 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.3521180000000004em;vertical-align:-1.3021129999999999em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0500050000000005em;"><span style="top:-1.847887em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">λ</span></span></span></span><span style="top:-3.050005em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.3021129999999999em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mord cjk_fallback">，</span><span class="mord mathdefault">λ</span><span class="mord cjk_fallback">，</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mord cjk_fallback">，</span><span class="mord"><span class="mord mathdefault">λ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.801892em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> <code>for ∀i,j,λ,λ'</code>。</li>
+<li>兼容性C表示标记为λ’的线段j和标记为λ的线段i之间的相互依赖性。 如果兼容性仅由到原点的距离决定，则可能会出现错误的解释。 因此将兼容性定义如下：</li>
+</ol>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi><mo stretchy="false">(</mo><mi>i</mi><mi mathvariant="normal">，</mi><mi>λ</mi><mi mathvariant="normal">，</mi><mi>j</mi><mi mathvariant="normal">，</mi><msup><mi>λ</mi><mo mathvariant="normal">′</mo></msup><mo stretchy="false">)</mo><mo>=</mo><mrow><mo fence="true">{</mo><mtable rowspacing="0.3599999999999999em" columnalign="left left" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mo>−</mo><mn>1</mn></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mtext>if </mtext><mi>i</mi><mi mathvariant="normal">∉</mi><msub><mi>S</mi><mi>j</mi></msub></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi>ε</mi><mi mathvariant="normal">∣</mi><mi>cos</mi><mo>⁡</mo><mo stretchy="false">[</mo><msub><mi>θ</mi><mi>i</mi></msub><mo stretchy="false">(</mo><mi>λ</mi><mo stretchy="false">)</mo><mo>−</mo><msub><mi>θ</mi><mi>j</mi></msub><mo stretchy="false">(</mo><msup><mi>λ</mi><mo mathvariant="normal">′</mo></msup><mo stretchy="false">)</mo><mo stretchy="false">]</mo><mi mathvariant="normal">∣</mi><mo>+</mo><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>ε</mi><mo stretchy="false">)</mo><mfrac><mrow><msub><mi>ρ</mi><mi>i</mi></msub><mo stretchy="false">(</mo><mi>λ</mi><mo stretchy="false">)</mo></mrow><mrow><msub><mi>ρ</mi><mi>j</mi></msub><mo stretchy="false">(</mo><msup><mi>λ</mi><mo mathvariant="normal">′</mo></msup><mo stretchy="false">)</mo></mrow></mfrac></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mtext>if </mtext><mi>i</mi><mo>∈</mo><msub><mi>S</mi><mi>j</mi></msub><mo>∩</mo><mi>λ</mi><mo>=</mo><mpadded lspace="-1width" width="0px"><mrow><mi mathvariant="normal">/</mi><mtext> </mtext></mrow></mpadded><msup><mi>λ</mi><mo mathvariant="normal">′</mo></msup></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>0</mn></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mtext>otherwise </mtext></mstyle></mtd></mtr></mtable></mrow></mrow><annotation encoding="application/x-tex">C(i，λ，j，λ&#x27;) = \begin{cases}
+   -1 &amp;\text{if } i \notin S_j \\
+   \varepsilon |\cos[\theta_i(\lambda) - \theta_j(λ&#x27;)]| + (1-\varepsilon) \frac{\rho_i(\lambda)}{\rho_j(λ&#x27;)} &amp;\text{if } i∈S_j∩λ{=}\mathllap{/\,}λ&#x27; \\
+   0 &amp;\text{otherwise }
+\end{cases}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.051892em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mord cjk_fallback">，</span><span class="mord mathdefault">λ</span><span class="mord cjk_fallback">，</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mord cjk_fallback">，</span><span class="mord"><span class="mord mathdefault">λ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.801892em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:4.432320000000001em;vertical-align:-1.9661600000000004em;"></span><span class="minner"><span class="mopen"><span class="delimsizing mult"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.35002em;"><span style="top:-2.19999em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎩</span></span></span><span style="top:-2.19999em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎪</span></span></span><span style="top:-3.1500100000000004em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎨</span></span></span><span style="top:-4.30001em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎪</span></span></span><span style="top:-4.60002em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎧</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.8500199999999998em;"><span></span></span></span></span></span></span><span class="mord"><span class="mtable"><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.4661600000000004em;"><span style="top:-4.468160000000001em;"><span class="pstrut" style="height:3.01em;"></span><span class="mord"><span class="mord">−</span><span class="mord">1</span></span></span><span style="top:-3.02616em;"><span class="pstrut" style="height:3.01em;"></span><span class="mord"><span class="mord mathdefault">ε</span><span class="mord">∣</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">cos</span><span class="mopen">[</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">θ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">λ</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">θ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">λ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mclose">)</span><span class="mclose">]</span><span class="mord">∣</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault">ε</span><span class="mclose">)</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.01em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight">ρ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3280857142857143em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2818857142857143em;"><span></span></span></span></span></span></span><span class="mopen mtight">(</span><span class="mord mtight"><span class="mord mathdefault mtight">λ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6828285714285715em;"><span style="top:-2.786em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mclose mtight">)</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.485em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight">ρ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3280857142857143em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span><span class="mopen mtight">(</span><span class="mord mathdefault mtight">λ</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.5423199999999999em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span><span style="top:-1.4758399999999994em;"><span class="pstrut" style="height:3.01em;"></span><span class="mord"><span class="mord">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.9661600000000004em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:1em;"></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.4661600000000004em;"><span style="top:-4.468160000000001em;"><span class="pstrut" style="height:3.01em;"></span><span class="mord"><span class="mord text"><span class="mord">if </span></span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel"><span class="mord"><span class="mrel">∈</span></span><span class="mord"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.75em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="llap"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="inner"><span class="mord"><span class="mord">/</span><span class="mspace" style="margin-right:0.05555555555555555em;"></span></span></span><span class="fix"></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.25em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.02616em;"><span class="pstrut" style="height:3.01em;"></span><span class="mord"><span class="mord text"><span class="mord">if </span></span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∩</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault">λ</span><span class="mord"><span class="mrel">=</span></span><span class="mord"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.75em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="llap"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="inner"><span class="mord"><span class="mord">/</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span></span></span><span class="fix"></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.25em;"><span></span></span></span></span></span><span class="mord"><span class="mord mathdefault">λ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span><span style="top:-1.4758399999999994em;"><span class="pstrut" style="height:3.01em;"></span><span class="mord"><span class="mord text"><span class="mord">otherwise </span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.9661600000000004em;"><span></span></span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<ul>
+<li>
+<p>上式中：</p>
+<ul>
+<li>ε表示距离和方向置信度之间的加权因子</li>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>S</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">S_j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.969438em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span>表示线段j的相邻假设</li>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>θ</mi><mi>i</mi></msub><mo stretchy="false">(</mo><mi>λ</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">θ_i(λ)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">θ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">λ</span><span class="mclose">)</span></span></span></span>表示从线段i到标记为λ的线段j的方向</li>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>ρ</mi><mi>i</mi></msub><mo stretchy="false">(</mo><mi>λ</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">ρ_i(λ)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault">ρ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">λ</span><span class="mclose">)</span></span></span></span>表示原点到线段i和标记为λ的线段j之间的距离</li>
+<li>如果<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>ρ</mi><mi>j</mi></msub><mo stretchy="false">(</mo><mi>λ</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">ρ_j(λ)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.036108em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault">ρ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">λ</span><span class="mclose">)</span></span></span></span>高, 且<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi><mo stretchy="false">(</mo><mi>i</mi><mi mathvariant="normal">，</mi><mi>λ</mi><mi mathvariant="normal">，</mi><mi>j</mi><mi mathvariant="normal">，</mi><msup><mi>λ</mi><mo mathvariant="normal">′</mo></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">C(i，λ，j，λ&#x27;)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.001892em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mord cjk_fallback">，</span><span class="mord mathdefault">λ</span><span class="mord cjk_fallback">，</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mord cjk_fallback">，</span><span class="mord"><span class="mord mathdefault">λ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>为正，则<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>ρ</mi><mi>i</mi></msub><mo stretchy="false">(</mo><mi>λ</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">ρ_i(λ)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault">ρ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">λ</span><span class="mclose">)</span></span></span></span>增加。</li>
+<li>此标记算法是一个迭代并行过程，类似于概率松弛中使用的标记丢弃规则，操作员根据其他重量和兼容性反复调整标签重量。</li>
+</ul>
+</li>
+</ul>
+<ol start="3">
+<li>对于每个线段和每个标签，新权重<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mi>q</mi><mi>i</mi><mrow><mo stretchy="false">(</mo><mi>r</mi><mo stretchy="false">)</mo></mrow></msubsup><mo stretchy="false">(</mo><mi>λ</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">q_i^{(r)}(\lambda)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.321664em;vertical-align:-0.27686399999999994em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0448em;"><span style="top:-2.4231360000000004em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span><span style="top:-3.2198em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.27686399999999994em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">λ</span><span class="mclose">)</span></span></span></span>的计算如下：</li>
+</ol>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mi>q</mi><mi>i</mi><mrow><mo stretchy="false">(</mo><mi>r</mi><mo stretchy="false">)</mo></mrow></msubsup><mo stretchy="false">(</mo><mi>λ</mi><mo stretchy="false">)</mo><mo>=</mo><munder><mo>∑</mo><mpadded lspace="-0.5width" width="0px"><mrow><mi>j</mi><mo separator="true">,</mo><mi>j</mi><mo>=</mo><mpadded lspace="-1width" width="0px"><mrow><mi mathvariant="normal">/</mi><mtext> </mtext></mrow></mpadded><mi>i</mi></mrow></mpadded></munder><munder><mo>∑</mo><mpadded lspace="-0.5width" width="0px"><msup><mi>λ</mi><mo mathvariant="normal">′</mo></msup></mpadded></munder><mi>C</mi><mo stretchy="false">(</mo><mi>i</mi><mi mathvariant="normal">，</mi><mi>λ</mi><mi mathvariant="normal">，</mi><mi>j</mi><mi mathvariant="normal">，</mi><msup><mi>λ</mi><mo mathvariant="normal">′</mo></msup><mo stretchy="false">)</mo><msubsup><mi>p</mi><mi>j</mi><mrow><mo stretchy="false">(</mo><mi>r</mi><mo stretchy="false">)</mo></mrow></msubsup><mo stretchy="false">(</mo><msup><mi>λ</mi><mo mathvariant="normal">′</mo></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">q_i^{(r)}(\lambda) = \sum_{\mathclap{j,  j{=}\mathllap{/\,}i}} \sum_{\mathclap{λ&#x27;}}C(i，λ，j，λ&#x27;)p_j^{(r)}(λ&#x27;)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.321664em;vertical-align:-0.276864em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0448em;"><span style="top:-2.4231360000000004em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span><span style="top:-3.2198em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.276864em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">λ</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.5660100000000003em;vertical-align:-1.516005em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.050005em;"><span style="top:-1.808995em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.75em;"><span style="top:-2.75em;"><span class="pstrut" style="height:2.75em;"></span><span class="clap mtight"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="inner mtight"><span><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span><span class="mpunct mtight">,</span><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span><span class="mord mtight"><span class="mrel mtight">=</span></span><span class="mord mtight"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.75em;"><span style="top:-2.75em;"><span class="pstrut" style="height:2.75em;"></span><span class="llap mtight"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="inner"><span class="mord mtight"><span class="mord mtight">/</span><span class="mspace mtight" style="margin-right:0.19516666666666668em;"></span></span></span><span class="fix"></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.25em;"><span></span></span></span></span></span><span class="mord mathdefault mtight">i</span></span></span></span><span class="fix"></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.25em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.0500049999999996em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.516005em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0500050000000005em;"><span style="top:-1.847887em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.69444em;"><span style="top:-2.7em;"><span class="pstrut" style="height:2.7em;"></span><span class="clap mtight"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="inner mtight"><span><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight">λ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6828285714285715em;"><span style="top:-2.786em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span><span class="fix"></span></span></span></span></span></span></span></span></span></span><span style="top:-3.050005em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.3021129999999999em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mord cjk_fallback">，</span><span class="mord mathdefault">λ</span><span class="mord cjk_fallback">，</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mord cjk_fallback">，</span><span class="mord"><span class="mord mathdefault">λ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.801892em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mclose">)</span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0448em;"><span style="top:-2.4231360000000004em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span><span style="top:-3.2198em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.412972em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">λ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.801892em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span></p>
+<ul>
+<li>其中:
+<ul>
+<li>r表示第r次迭代</li>
+<li>在等式中，乘积和是被标记为λ的给定线段i的期望</li>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mi>q</mi><mi>i</mi><mrow><mo stretchy="false">(</mo><mi>r</mi><mo stretchy="false">)</mo></mrow></msubsup><mo stretchy="false">(</mo><mi>λ</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">q_i^{(r)}(\lambda)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.321664em;vertical-align:-0.27686399999999994em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0448em;"><span style="top:-2.4231360000000004em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span><span style="top:-3.2198em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.27686399999999994em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">λ</span><span class="mclose">)</span></span></span></span>是当前赋值<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mi>p</mi><mi>j</mi><mrow><mo stretchy="false">(</mo><mi>r</mi><mo stretchy="false">)</mo></mrow></msubsup><mo stretchy="false">(</mo><msup><mi>λ</mi><mo mathvariant="normal">′</mo></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">p_j^{(r)}(λ&#x27;)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.4577719999999998em;vertical-align:-0.4129719999999999em;"></span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0448em;"><span style="top:-2.4231360000000004em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span><span style="top:-3.2198em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4129719999999999em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">λ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>的加权和。</li>
+</ul>
+</li>
+</ul>
+<ol start="4">
+<li>新任务可以用已下公式更新：</li>
+</ol>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mi>p</mi><mi>i</mi><mrow><mo stretchy="false">(</mo><mi>r</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></msubsup><mo stretchy="false">(</mo><mi>λ</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mrow><msubsup><mi>p</mi><mi>i</mi><mrow><mo stretchy="false">(</mo><mi>r</mi><mo stretchy="false">)</mo></mrow></msubsup><mo stretchy="false">(</mo><mi>λ</mi><mo stretchy="false">)</mo><mo stretchy="false">[</mo><mn>1</mn><mo>+</mo><msubsup><mi>q</mi><mi>i</mi><mrow><mo stretchy="false">(</mo><mi>r</mi><mo stretchy="false">)</mo></mrow></msubsup><mo stretchy="false">(</mo><mi>λ</mi><mo stretchy="false">)</mo><mo stretchy="false">]</mo></mrow><mstyle scriptlevel="0" displaystyle="true"><munderover><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>m</mi></munderover><msubsup><mi>p</mi><mi>i</mi><mrow><mo stretchy="false">(</mo><mi>r</mi><mo stretchy="false">)</mo></mrow></msubsup><mo stretchy="false">(</mo><msup><mi>λ</mi><mo mathvariant="normal">′</mo></msup><mo stretchy="false">)</mo><mo stretchy="false">[</mo><mn>1</mn><mo>+</mo><msubsup><mi>q</mi><mi>i</mi><mrow><mo stretchy="false">(</mo><mi>r</mi><mo stretchy="false">)</mo></mrow></msubsup><mo stretchy="false">(</mo><msup><mi>λ</mi><mo mathvariant="normal">′</mo></msup><mo stretchy="false">)</mo><mo stretchy="false">]</mo></mstyle></mfrac></mrow><annotation encoding="application/x-tex">p_i^{(r+1)}(\lambda) = \frac{p_i^{(r)}(λ)[1+q_i^{(r)}(λ)]}{\displaystyle\sum_{j=1}^mp_i^{(r)}(λ&#x27;)[1+q_i^{(r)}(λ&#x27;)]}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.321664em;vertical-align:-0.276864em;"></span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0448em;"><span style="top:-2.4231360000000004em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span><span style="top:-3.2198em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span><span class="mbin mtight">+</span><span class="mord mtight">1</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.276864em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">λ</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:4.676974em;vertical-align:-2.9551740000000004em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.7218em;"><span style="top:-2.1100000000000003em;"><span class="pstrut" style="height:3.6513970000000007em;"></span><span class="mord"><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6513970000000007em;"><span style="top:-1.872331em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.050005em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3000050000000005em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">m</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.4137769999999998em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0448em;"><span style="top:-2.4231360000000004em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span><span style="top:-3.2198em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.276864em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">λ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.801892em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mclose">)</span><span class="mopen">[</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0448em;"><span style="top:-2.4231360000000004em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span><span style="top:-3.2198em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.276864em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">λ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.801892em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mclose">)</span><span class="mclose">]</span></span></span><span style="top:-3.8813970000000007em;"><span class="pstrut" style="height:3.6513970000000007em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-4.328397000000001em;"><span class="pstrut" style="height:3.6513970000000007em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0448em;"><span style="top:-2.4231360000000004em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span><span style="top:-3.2198em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.27686399999999994em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">λ</span><span class="mclose">)</span><span class="mopen">[</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0448em;"><span style="top:-2.4231360000000004em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span><span style="top:-3.2198em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.27686399999999994em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">λ</span><span class="mclose">)</span><span class="mclose">]</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:2.9551740000000004em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<p>在这里，只选择<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mi>p</mi><mi>i</mi><mrow><mo stretchy="false">(</mo><mi>r</mi><mo stretchy="false">)</mo></mrow></msubsup><mo stretchy="false">(</mo><mi>λ</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">p_i^{(r)}(\lambda)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.321664em;vertical-align:-0.27686399999999994em;"></span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0448em;"><span style="top:-2.4231360000000004em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span><span style="top:-3.2198em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.27686399999999994em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">λ</span><span class="mclose">)</span></span></span></span>和<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi><mo stretchy="false">(</mo><mi>i</mi><mi mathvariant="normal">，</mi><mi>λ</mi><mi mathvariant="normal">，</mi><mi>j</mi><mi mathvariant="normal">，</mi><msup><mi>λ</mi><mo mathvariant="normal">′</mo></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">C(i，λ，j，λ&#x27;)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.001892em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mord cjk_fallback">，</span><span class="mord mathdefault">λ</span><span class="mord cjk_fallback">，</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mord cjk_fallback">，</span><span class="mord"><span class="mord mathdefault">λ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>并应用该等式递归更新<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mi>p</mi><mi>i</mi><mrow><mo stretchy="false">(</mo><mi>r</mi><mo stretchy="false">)</mo></mrow></msubsup><mo stretchy="false">(</mo><mi>λ</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">p_i^{(r)}(\lambda)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.321664em;vertical-align:-0.27686399999999994em;"></span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0448em;"><span style="top:-2.4231360000000004em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span><span style="top:-3.2198em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.27686399999999994em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">λ</span><span class="mclose">)</span></span></span></span>，直到它们停止变化或收敛到1。对每个线段进行迭代验证，直到将其分配给正确的语义标签“ hair”为止。</p>
+<h2 id="实验结果"><a class="markdownIt-Anchor" href="#实验结果"></a> 实验结果</h2>
+<blockquote>
+<p>为了评估该系统，我们从<strong>UPMOST（UPG622）DMC</strong>捕获了<strong>40个</strong>分辨率为<strong>1024×768</strong>的比例尺图像作为<strong>测试数据集</strong>。根据DMC的白平衡，我们将测试图像分为两组，分别是数据集1和数据集2。</p>
+</blockquote>
+<h3 id="experiment-1-cross-validation-of-the-line-detection"><a class="markdownIt-Anchor" href="#experiment-1-cross-validation-of-the-line-detection"></a> Experiment 1: Cross-Validation of the Line Detection</h3>
+<p><img src="../images/AUHSACSIMI_hair_counting/figure_10_result_images_for_line_detection.png" alt="figure_10_result_images_for_line_detection" /></p>
+<ol>
+<li>图10（b）-（d）显示了预处理模块的结果，包括亮点去除（BSR），二值化和稀化过程。 为了评估多尺度线检测算法的性能，测试图像我们将HT应用于三种不同尺度，以提取线段。 然后使用头发标签机制确定头发的数量。</li>
+<li>如图10（e）-（f）所示，彩色线代表头发的标签。 换句话说，即使头发交叉或重叠，也可以准确地标记头发。 以下部分演示了有关精确度和召回率的毛发计数的客观测量。 我们比较了使用BSR和MSLD模块组合的四种情况，包括BSR + MSLD，而没有同时使用BSR和MSLD，仅BSR和仅MSLD。</li>
+</ol>
+<p><img src="../images/AUHSACSIMI_hair_counting/table_1_comarison_of_the_system_sensitivity_forthe_module_usages_in_the_line_detection.png" alt="table_1_comarison_of_the_system_sensitivity_forthe_module_usages_in_the_line_detection" /></p>
+<ol>
+<li>表I比较了基于模块使用情况的系统敏感性。基于形态学的BSR和MSLD机制，以提高头发检测的性能，其准确率分别为94.98％和98.05％。与传统的HT线检测方法相比，数据集1和数据集2分别提高了2％和1.5％。从召回率的角度来看，它也高于其他模块组合。</li>
+<li>平均而言，我们的召回率分别为9％和10％。根据我们的观察，应用BSR后，准确率得到了提高。</li>
+<li>但是，将MSLD应用于数据集＃2时，准确率下降，因为它在油性头皮区域中产生了大量的光反射。同样，头发中部的亮点也被大大增强，导致精确度降低。</li>
+</ol>
+<h3 id="experiment-2-system-refinement-using-the-plb-algorithm"><a class="markdownIt-Anchor" href="#experiment-2-system-refinement-using-the-plb-algorithm"></a> Experiment 2: System Refinement Using the PLB Algorithm</h3>
+<p><img src="../images/AUHSACSIMI_hair_counting/table_2_system_performance_for_with_or_without_PLB.png" alt="table_2_system_performance_for_with_or_without_PLB" /></p>
+<ol>
+<li>表II显示了PLB算法的效率。PLB方法使系统能够提取缺失的毛发，精确率提高了0.5％，召回率提高了5％。</li>
+<li>PLB算法可以用作系统微调过程，将系统性能平均提高到96.89％。这是合理的，因为隐藏的头发不经常出现。</li>
+<li>此外，我们可以通过显微镜控制头发图像的分辨率和角度，以避免这种情况。</li>
+</ol>
+<h3 id="experiment-3-complexity-analysis"><a class="markdownIt-Anchor" href="#experiment-3-complexity-analysis"></a> Experiment 3: Complexity Analysis</h3>
+<p><img src="../images/AUHSACSIMI_hair_counting/table_3_time_occupancy_of_each_module_compared_with_total_execution.png" alt="table_3_time_occupancy_of_each_module_compared_with_total_execution" /></p>
+<ol>
+<li>当涉及到系统复杂性分析时，我们知道拟议的头发计数系统会花费更多时间。平均而言，高分辨率测试图像需要不到4秒的时间即可得出毛发计数信息。</li>
+<li>表III列出了每个模块所需的时间与总执行时间的比较。 MSLD使用三个比例尺来获取一组线段，这需要大部分执行时间。 HT将边缘投影到（ρ，θ）空间以提取局部最大值的过程非常耗时。 为了克服这个问题，我们在MSLD中仅使用了两个标度。但是，此尝试导致性能下降。</li>
+<li>此外，细化过程占用了总处理时间的四分之一以上。这是执行时间和系统精度之间的权衡。</li>
+</ol>
+<h2 id="总结"><a class="markdownIt-Anchor" href="#总结"></a> 总结</h2>
+<p>这项研究提出了一种自动的头发分割和计数系统，以减少人工评估者进行详细头皮评估所需的时间。</p>
+<ol>
+<li>首先，油性和湿润的头发会在头发中间产生亮点。在计算头发数之前，我们需要消除头发上的亮点，以避免重复计算一些头发的问题。</li>
+<li>第二，波浪状和卷发容易导致线检测故障。当头发不直时，常规的线检测算法无效。</li>
+<li>第三，当头发相互交叉并互相咬合时，会出现对头发数量的低估，这使得精确定位所有头发非常困难。</li>
+<li>最后，由于头皮相对未曝光，因此头皮的图像通常模糊或难以看见。另外，头皮通常照明不足或曝光过度。</li>
+</ol>
+<h3 id="计数思路"><a class="markdownIt-Anchor" href="#计数思路"></a> 计数思路</h3>
+<p>通过对<strong>不同缩略图</strong>中的头发<strong>做HT线段检</strong>测，然后将所有检测结果进行“<strong>逻辑或”整合</strong>，以<strong>减少缺失头发的计数</strong>，解决<strong>重叠头发的漏计数的问题</strong>。</p>
+<p>本文的框架可以被视为迈向化妆品和头皮治疗应用的智能计算机辅助医学图像处理的第一步。</p>
+<h2 id="技术总结"><a class="markdownIt-Anchor" href="#技术总结"></a> 技术总结</h2>
+<h3 id="预处理阶段"><a class="markdownIt-Anchor" href="#预处理阶段"></a> 预处理阶段</h3>
+<p>对输入数据（头皮图片）进行预处理，为下一阶段对图片中头发进行精准计数等功能性操作做好铺垫。主要用到以下技术：</p>
+<h4 id="contrast-stretching-normalization"><a class="markdownIt-Anchor" href="#contrast-stretching-normalization"></a> <a href="https://homepages.inf.ed.ac.uk/rbf/HIPR2/stretch.htm" target="_blank" rel="noopener">Contrast Stretching (Normalization): </a></h4>
+<ul>
+<li><strong>对比度拉伸（通常称为归一化）<strong>是一种简单的</strong>图像增强技术</strong>,旨在<strong>通过“拉伸”图像所包含的强度值范围</strong>以覆盖所需的值范围来<strong>改善图像的对比度</strong>。</li>
+<li><strong>技术应用：增加头皮与头发之间的对比度</strong>，方便下阶段<strong>对头发进行语义分割</strong>。</li>
+</ul>
+<h4 id="color-morphology"><a class="markdownIt-Anchor" href="#color-morphology"></a> <a href="http://note.youdao.com/noteshare?id=bf17e16d4ce3d3ebdfe3c7e5bf6d31e8" target="_blank" rel="noopener">Color Morphology</a></h4>
+<ul>
+<li><a href="http://note.youdao.com/noteshare?id=12c1b3dc68c53b1db9a44ea1178acdd4" target="_blank" rel="noopener">EXTENDING MATHEMATICAL MORPHOLOGY<br />
+TO COLOR IMAGE PROCESSING</a></li>
+<li><strong>技术应用：</strong> 除噪，去除油性和湿润的头发在头发的中部产生的亮点</li>
+</ul>
+<h4 id="karhunen-loeve-transform-klt"><a class="markdownIt-Anchor" href="#karhunen-loeve-transform-klt"></a> <a href="http://fourier.eng.hmc.edu/e161/lectures/klt/node3.html" target="_blank" rel="noopener">Karhunen-Loeve Transform (KLT)</a></h4>
+<ul>
+<li>Karhunen-Loeve变换（KLT）（也称为Hotelling变换和特征向量变换），它与主成分分析（PCA）密切相关，并广泛用于许多领域的数据分析中, KL变换基于图像的统计属性，并具有一些重要的属性，使其可用于图像处理，特别是<strong>图像压缩</strong>。</li>
+<li><strong>技术应用：</strong> 将彩色图像转换为灰度图像。</li>
+</ul>
+<h4 id="otsu-thresholding"><a class="markdownIt-Anchor" href="#otsu-thresholding"></a> <a href="http://www.labbookpages.co.uk/software/imgProc/otsuThreshold.html" target="_blank" rel="noopener">Otsu thresholding</a></h4>
+<ul>
+<li><strong>Otsu thresholding</strong>：简单说来该方法可将灰度图像还原为二进制图像。在图像处理和分析中，有时需要一种方法来<strong>分离两个相关数据</strong>，例如背景和前景。<strong>Otsu阈值是一种数据驱动</strong>的方法，该方法可以自适应地找到最佳阈值以区分两类数据。</li>
+<li><strong>技术应用：</strong> 图像分割和<strong>图像二值化</strong>。</li>
+</ul>
+<h3 id="多尺度线检测阶段msld"><a class="markdownIt-Anchor" href="#多尺度线检测阶段msld"></a> 多尺度线检测阶段（MSLD）</h3>
+<p>该阶段主要是通过各种技术，克服重叠头发无法计数，以及相邻头发之间的头皮被识别为头发等影响头发计数的相关问题。为下阶段对头发进行精准计数的做好铺垫。主要用到以下技术：</p>
+<h4 id="霍夫变换ht"><a class="markdownIt-Anchor" href="#霍夫变换ht"></a> <a href="http://homepages.inf.ed.ac.uk/rbf/HIPR2/hough.htm" target="_blank" rel="noopener">霍夫变换（HT)</a></h4>
+<ul>
+<li><strong>霍夫变换（HT）</strong> 霍夫变换是一种可用于隔离图像中特定形状的特征的技术。因为它要求以某种参数形式指定所需的特征，所以经典的Hough变换最常用于检测规则曲线（例如直线，圆，椭圆等）。</li>
+<li><strong>技术应用：</strong> HT是最常用的<strong>线检测框架</strong>之一。但是当使用常规的单尺度HT时，可能会丢失大量的头发段。故提出将HT应用于<strong>三个比例的图像，包括1024×768（原始比例），512×384和256×192</strong>，最后通过逻辑或将三个比例图像中的被检测出的头发进行整合，以提高头发计数准确度。</li>
+</ul>
+<h4 id="canny-edge-detection"><a class="markdownIt-Anchor" href="#canny-edge-detection"></a> <a href="https://en.wikipedia.org/wiki/Canny_edge_detector" target="_blank" rel="noopener">Canny Edge Detection</a></h4>
+<ul>
+<li>Canny边缘检测是一种多步骤算法，可以同时检测到噪声被抑制的边缘。在图像二值化步骤中，由于错误地假定了两根单独的头发的连接，位于两根头发之间的头皮像素被标记为头发的一部分。而且，当两根头发太靠近或彼此重叠时，如果直接应用稀疏算法，则会错过一根或两根头发。</li>
+<li><strong>技术应用：</strong> 使用<strong>边缘信息来找出隐藏或重叠的头发</strong>。可以<strong>从隐藏的头发或重叠的多根头发中提取两个平行的边缘</strong>。</li>
+</ul>
+<h4 id="thinning"><a class="markdownIt-Anchor" href="#thinning"></a> <a href="https://homepages.inf.ed.ac.uk/rbf/HIPR2/thin.htm" target="_blank" rel="noopener">Thinning</a></h4>
+<h4 id="parallel-line-bundling-plb-2"><a class="markdownIt-Anchor" href="#parallel-line-bundling-plb-2"></a> <a href="http://note.youdao.com/noteshare?id=158b3e5057413a49b8c95464bef91c95" target="_blank" rel="noopener">Parallel Line Bundling (PLB)</a></h4>
+<h3 id="头发标记和计数阶段hair-labling-and-counting"><a class="markdownIt-Anchor" href="#头发标记和计数阶段hair-labling-and-counting"></a> 头发标记和计数阶段（Hair Labling and Counting）</h3>
+<p>该阶段的目的是准确计算头皮上的毛发数量。这可以看作是聚类和标记问题。目标是将一组线段组合成语义“头发”并分配唯一的标签。<br />
+主要用到以下技术：</p>
+<h4 id="relaxation-labeling"><a class="markdownIt-Anchor" href="#relaxation-labeling"></a> <a href="https://users.cs.cf.ac.uk/Dave.Marshall/Vision_lecture/node43.html" target="_blank" rel="noopener">Relaxation Labeling</a></h4>
+<ul>
+<li>松弛标记是一种图像处理方法。其目标是<strong>将标签与给定图像的像素或给定图的节点相关联</strong>。</li>
+<li><strong>技术应用：</strong> 在本研究中，RL算法被视为<strong>用于标记每个线段的聚类方法</strong>。</li>
+</ul>
+<h1 id="参考文献"><a class="markdownIt-Anchor" href="#参考文献"></a> 参考文献</h1>
+<ol>
+<li><a href="http://oz.nthu.edu.tw/~d917904/papers/2015_IEEE%20sensors%20journal_Hair.pdf" target="_blank" rel="noopener">An Unsupervised Hair Segmentation and Counting System in Microscopy Images</a></li>
+<li><a href="https://homepages.inf.ed.ac.uk/rbf/HIPR2/stretch.htm" target="_blank" rel="noopener">Contrast Stretching (Normalization)</a></li>
+<li><a href="https://ieeexplore.ieee.org/document/8015388" target="_blank" rel="noopener">Color Morphology</a></li>
+<li><a href="http://www.gipsa-lab.grenoble-inp.fr/~jocelyn.chanussot/publis/cgip_00_lambert_color_morpho.pdf" target="_blank" rel="noopener">EXTENDING MATHEMATICAL MORPHOLOGY<br />
+TO COLOR IMAGE PROCESSING</a></li>
+<li><a href="http://fourier.eng.hmc.edu/e161/lectures/klt/node3.html" target="_blank" rel="noopener">Karhunen-Loeve Transform (KLT)</a></li>
+<li><a href="http://www.labbookpages.co.uk/software/imgProc/otsuThreshold.html" target="_blank" rel="noopener">Otsu thresholding</a></li>
+<li><a href="http://homepages.inf.ed.ac.uk/rbf/HIPR2/hough.htm" target="_blank" rel="noopener">Hough Transform（HT)</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Canny_edge_detector" target="_blank" rel="noopener">Canny Edge Detection</a></li>
+<li><a href="https://homepages.inf.ed.ac.uk/rbf/HIPR2/thin.htm" target="_blank" rel="noopener">Thinning</a></li>
+<li><a href="https://arxiv.org/abs/1109.6073" target="_blank" rel="noopener">Evaluation of a Bundling Technique for Parallel Coordinates</a></li>
+<li><a href="https://users.cs.cf.ac.uk/Dave.Marshall/Vision_lecture/node43.html" target="_blank" rel="noopener">Relaxation Labeling</a></li>
+</ol>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn@v1.2/img/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn@v1.2/img/custom/donate/WeChanQR.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2019/12/28/Evalution%20of%20hair%20and%20scalp%20condition%20based%20on%20microscopy%20image%20analysis%20%E4%B9%8B%E5%A4%B4%E5%8F%91%E8%AE%A1%E6%95%B0%E9%97%AE%E9%A2%98/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn@v1.2/img/loader/orange.progress-bar-stripe-loader.svg" data-src="" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                Evalution of hair and scalp condition based on microscopy image analysis 之头发计数问题</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+        
+          
+            <div class="post-nepre half next">
+          
+            <a href="/2019/12/12/Hexo-Theme-Sakura/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn@v1.2/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://static.2heng.xin/wp-content/uploads//2019/02/wallhaven-672007-1-1024x576.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://static.2heng.xin/wp-content/uploads//2019/02/wallhaven-672007-1-1024x576.png">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                Kayleen&#39;s Space</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "uVn0CbsTzphCnMDIxJKQ0rbg-gzGzoHsz",
+        appKey: "wc39UmG3dNqQQms9Hg2sKc1X",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn@v1.1/img/custom/avatar.jpg" itemprop="image" alt="Kayleen" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="" itemprop="url" rel="author">Kayleen</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>一个好奇的人</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
+</div>
+
+
+
+    </div>    
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            // PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+    <!-- <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Kayleen<br>
+      powered_by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer> -->
+<footer id="colophon" class="site-footer" role="contentinfo">
+  <div class="site-info">
+    <div class="footertext">
+      <div class="img-preload">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/wordpress-rotating-ball-o.svg">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/disqus-preloader.svg">
+      </div>
+      <p style="color: #666666;">&copy 2018</p>
+    </div>
+    <div class="footer-device">
+    <p style="font-family: 'Ubuntu', sans-serif;">
+        <span style="color: #b9b9b9;">Theme <a href="https://github.com/honjun/hexo-theme-sakura" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Sakura</a> <i class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i> by <a href="https://2heng.xin/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Mashiro</a>&<a href="https://www.hojun.cn/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Hojun</a>, Powered by Hexo, Hosted by Coding Pages</a>
+        </span>
+      </p>
+    </div>
+  </div><!-- .site-info -->
+</footer>
+
+
+
+<!-- <script src="/js/tocbot.js"></script> -->
+<script type="text/javascript" src="/js/lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/InsightSearch.js"></script>
+<script type="text/javascript" src="/js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="/js/zoom.min.js"></script>
+<script type="text/javascript" src="/js/sakura-app.js"></script>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine@1.3.4/dist/Valine.min.js'></script>
+<script src="/js/botui.js"></script>
+<!-- 不蒜子 网页计数器 -->
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script> -->
+<script type="text/javascript">
+/* <![CDATA[ */
+if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  var Poi = {"pjax":"1","movies":{"url": "https://cdn.jsdelivr.net/gh/littlelittlemoon","name":"Unbroken.mp4","live":"close"},"windowheight":"fixed","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+} else {
+  var Poi = {"pjax":"1","movies":{"url": "https://cdn.jsdelivr.net/gh/littlelittlemoon","name":"Unbroken.mp4","live":"open"},"windowheight":"auto","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+}
+/* ]]> */
+
+</script>
+<script>
+$(document).ready(function() {
+  if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
+    if ($(".pattern-center").length > 0) { //有图的情况
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -400,
+          scrollSmoothOffset: -85
+      });
+    } else {
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -85,
+          scrollSmoothOffset: -85
+      });
+    }
+    var offsetTop = $('.toc').offset().top - 95;
+    window.onscroll = function() {
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      if (scrollTop >= offsetTop) {
+        $('.toc').addClass('toc-fixed');
+      } else {
+        $('.toc').removeClass('toc-fixed');
+      }
+    }
+  }
+});
+</script>
+
+    <div class="openNav no-select" style="height: 50px;">
+      <div class="iconflat no-select" style="width: 50px; height: 50px;">
+        <div class="icon"></div>
+      </div>
+      <div class="site-branding search-form-submit">
+        <i class="iconfont js-toggle-search iconsearch icon-search"></i>
+      </div>
+    </div>
+  </section>
+  <div id="mo-nav" class="">
+  <div class="m-avatar">
+    <img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn@v1.2/img/custom/avatar-1.jpg">
+  </div>
+  <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">さくら荘そのKayleen</p>
+  <p style="text-align: center; word-spacing: 20px;">
+    
+      
+        <a href="http://github.com/littlelittlemoon" class="fa fa-github" target="_blank" style="color: #333; margin-left:20px"></a>
+      
+        <a href="https://wpa.qq.com/msgrd?v=3&uin=1165156282&site=qq&menu=yes" class="fa fa-qq" target="_blank" style="color: #25c6fe; margin-left:20px"></a>
+      
+    
+  </p>
+  <ul id="menu-new-1" class="menu">
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+            首页
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/archives">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+            归档
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/categories/%E6%8A%80%E6%9C%AF/">
+                  <i class="fa fa-code" aria-hidden="true"></i>
+                  技术
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E7%94%9F%E6%B4%BB/">
+                  <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                  生活
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E8%B5%84%E6%BA%90/">
+                  <i class="fa fa-cloud-download" aria-hidden="true"></i>
+                  资源
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E9%9A%8F%E6%83%B3/">
+                  <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                  随想
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E8%BD%AC%E8%BD%BD/">
+                  <i class="fa fa-book" aria-hidden="true"></i>
+                  转载
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="javascript:;">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+            清单
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/tags/%E6%82%A6%E8%AF%BB/">
+                  <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                  书单
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/">
+                  <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                  分类
+                </a>
+              </li>
+            
+              <li>
+                <a href="/music/">
+                  <i class="fa fa-headphones" aria-hidden="true"></i>
+                  歌单
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags/%E5%9B%BE%E9%9B%86/">
+                  <i class="fa fa-photo" aria-hidden="true"></i>
+                  图集
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/comment/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+            留言板
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/links/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+            友人帐
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/donate/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+            赞赏
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+            关于
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/about/">
+                  <i class="fa fa-meetup" aria-hidden="true"></i>
+                  我？
+                </a>
+              </li>
+            
+              <li>
+                <a href="/theme-sakura/">
+                  <i class="fa iconfont icon-sakura" aria-hidden="true"></i>
+                  主题
+                </a>
+              </li>
+            
+              <li>
+                <a href="/lab/">
+                  <i class="fa fa-cogs" aria-hidden="true"></i>
+                  Lab
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/client/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-android faa-vertical" aria-hidden="true"></i>
+            客户端
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/atom.xml">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+            RSS
+          </span>
+        </a>
+        
+      </li>
+    
+  </ul>
+  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2019 hexo-sakura</p>
+</div>
+<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<style>
+  .aplayer .aplayer-lrc {
+    height: 35px;
+  }
+  .aplayer .aplayer-lrc p{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px !important;
+  }
+  .aplayer .aplayer-lrc p.aplayer-lrc-current{
+    color: #FF1493;
+  }
+  .aplayer.aplayer-narrow .aplayer-body{
+    left: -66px !important;
+  }
+  .aplayer.aplayer-fixed .aplayer-lrc {
+    display: none;
+  }
+  .aplayer .aplayer-lrc.aplayer-lrc-hide {
+      display:none !important;
+  }
+  .aplayer.aplayer-fixed .lrc-show {
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>
+<meting-js
+
+</meting-js>
+<script>
+  $(function(){
+    $('body').on('click', '.aplayer', function(){
+      if($('.aplayer-button').hasClass('aplayer-play')) {
+        $('.aplayer-lrc').removeClass('lrc-show');
+      } else {
+        $('.aplayer-lrc').addClass('lrc-show');
+      }
+    })
+  });
+</script>
+</body>
+</html>
