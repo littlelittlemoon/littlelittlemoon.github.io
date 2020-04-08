@@ -26,11 +26,11 @@ function bot_ui_ini() {
     }).then(function () {
         botui.message.add({
             delay: 1100,
-            content: "这里是 Mashiro"
+            content: "This is Kayleen"
         }).then(function () {
             botui.message.add({
                 delay: 1100,
-                content: "一个可爱的蓝孩子~"
+                content: "一个好奇的女孩子~"
             }).then(function () {
                 botui.action.button({
                     delay: 1600,
@@ -64,34 +64,34 @@ function bot_ui_ini() {
         },
         secondpart = function () {
             botui.message.add({
-                delay: 1500,
-                content: "目前就读于上海财经大学"
+                delay: 2500,
+                content: "目前就读于电子科技大学，一枚女研究僧"
             }).then(function () {
                 botui.message.add({
-                    delay: 1500,
-                    content: "向往技术却误入商科，但后来喜欢上了经济学…"
+                    delay: 2500,
+                    content: "一个实打实的工科妹子，高考莫名的缘分让我入坑，然后就一坑到底了…"
                 }).then(function () {
                     botui.message.add({
-                        delay: 1200,
-                        content: "因为数据分析也需要Coder嘛"
+                        delay: 2200,
+                        content: "从一开始的迷茫，胆怯，然后逐渐发现自己在这各领域还能生存下去，就坚持了下来。😃"
                     }).then(function () {
                         botui.message.add({
-                            delay: 1500,
-                            content: "主攻 R 语言和 Python，略懂 STATA，偶尔也折腾 HTML/CSS/JavaScript/PHP"
+                            delay: 2500,
+                            content: "噢，忘了介绍，我所学的专业是计算机类，主攻 MATLAB 和 Python，略懂 R ，偶尔也折腾 Java/C/HTML/CSS/JavaScript"
                         }).then(function () {
                             botui.message.add({
-                                delay: 1500,
-                                content: "研究的方向，是经济/金融方向的数据分析（data science）以及机器学习（machine learning）"
+                                delay: 2500,
+                                content: "研究的方向，是 计算机视觉（Computer Vision）以及 机器学习（Machine Learning）"
                             }).then(function () {
                                 botui.message.add({
-                                    delay: 1800,
-                                    content: "喜欢画画，希望有一天能够被称为画师"
+                                    delay: 2800,
+                                    content: "喜欢唱歌，虽然唱得没有多么惊艳，但也希望有一天能够被称为歌手"
                                 }).then(function () {
                                     botui.action.button({
-                                        delay: 1100,
+                                        delay: 2100,
                                         action: [{
-                                            text: "为什么叫Mashiro呢？ 🤔",
-                                            value: "why-mashiro"
+                                            text: "为什么叫Kayleen呢？ 🤔",
+                                            value: "why-kayleen"
                                         }]
                                     }).then(function (a) {
                                         thirdpart()
@@ -106,13 +106,13 @@ function bot_ui_ini() {
         thirdpart = function () {
             botui.message.add({
                 delay: 1E3,
-                content: "Mashiro以及站名都来自一部动画，因为和主角有一样的爱好~ 如果有兴趣可以找找首页上的视频~"
+                content: "这个问题简单，我的名为凯悦，我觉得Kayleen这个名字和我的名字音似，就拿来当我的代号咯。😸"
             }).then(function () {
                 botui.action.button({
-                    delay: 1500,
+                    delay: 2500,
                     action: [{
-                        text: "为什么是白猫呢？ 🤔",
-                        value: "why-cat"
+                        text: "为什么是Bear Cave呢？ 🤔",
+                        value: "why-bear-cave"
                     }]
                 }).then(function (a) {
                     fourthpart()
@@ -122,17 +122,17 @@ function bot_ui_ini() {
         fourthpart = function () {
             botui.message.add({
                 delay: 1E3,
-                content: "因为对GitHub有种执念… "
+                content: "因为一部动画：We Bare bears，这部动画对我有特殊含义，它陪我度过了人生低谷期..."
             }).then(function () {
                 botui.message.add({
                     delay: 1100,
-                    content: "而且我真的是猫控！"
+                    content: "里面的三只小熊特别可爱和温暖，不管我有多么不开心，看到它们就什么烦心事也没有了~ 😘 也推荐给大家，相信你们也会喜欢的~"
                 }).then(function () {
                     botui.action.button({
                         delay: 1500,
                         action: [{
-                            text: "域名有什么含意吗？(ง •_•)ง",
-                            value: "why-domain"
+                            text: "难怪博客里到处都能看到它们的影子~(ง •_•)ง",
+                            value: "so-they-everywhere"
                         }]
                     }).then(function (a) {
                         fifthpart()
@@ -143,11 +143,11 @@ function bot_ui_ini() {
         fifthpart = function () {
             botui.message.add({
                 delay: 1E3,
-                content: "emmmm，看备案信息你就知道了=.= 本来想要zheng.xin的，但50万真买不起。。"
+                content: "嘿嘿😝"
             }).then(function () {
                 botui.message.add({
                     delay: 1600,
-                    content: "那么，仔细看看我的博客吧？ ^_^"
+                    content: "好啦~ 希望你能在这里找到你想要的东西，有什么话想跟我说的可以再留言板告诉我哦，我一定会回复的~ 再见👋"
                 })
             })
         } 
