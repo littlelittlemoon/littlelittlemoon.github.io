@@ -58,11 +58,11 @@
   </entry>
   
   <entry>
-    <title>Leetcode Note in Apri 2020</title>
+    <title>Leetcode Note in Apri 2020 | part 1 |day 01-07</title>
     <link href="https://littlelittlemoon.github.io/2020/04/01/Leetcode%20Note/"/>
     <id>https://littlelittlemoon.github.io/2020/04/01/Leetcode%20Note/</id>
     <published>2020-04-01T01:51:55.000Z</published>
-    <updated>2020-04-08T14:07:23.188Z</updated>
+    <updated>2020-04-08T14:18:28.640Z</updated>
     
     <summary type="html">
     
@@ -95,11 +95,11 @@
   </entry>
   
   <entry>
-    <title>Evalution of hair and scalp condition based on microscopy image analysis | Hair Thickness</title>
-    <link href="https://littlelittlemoon.github.io/2019/12/29/Evalution%20of%20hair%20and%20scalp%20condition%20based%20on%20microscopy%20image%20analysis%20%E4%B9%8B%E5%A4%B4%E5%8F%91%E5%8E%9A%E5%BA%A6%E8%AE%A1%E7%AE%97%E9%97%AE%E9%A2%98/"/>
-    <id>https://littlelittlemoon.github.io/2019/12/29/Evalution%20of%20hair%20and%20scalp%20condition%20based%20on%20microscopy%20image%20analysis%20%E4%B9%8B%E5%A4%B4%E5%8F%91%E5%8E%9A%E5%BA%A6%E8%AE%A1%E7%AE%97%E9%97%AE%E9%A2%98/</id>
+    <title>Evalution of hair and scalp condition based on microscopy image analysis | Hair Thickness - part 1</title>
+    <link href="https://littlelittlemoon.github.io/2019/12/29/Evalution%20of%20hair%20and%20scalp%20condition%20based%20on%20microscopy%20image%20analysis%20%20|%20Hair%20Thickness%20-%201/"/>
+    <id>https://littlelittlemoon.github.io/2019/12/29/Evalution%20of%20hair%20and%20scalp%20condition%20based%20on%20microscopy%20image%20analysis%20%20|%20Hair%20Thickness%20-%201/</id>
     <published>2019-12-29T13:21:24.000Z</published>
-    <updated>2020-04-08T14:07:44.107Z</updated>
+    <updated>2020-04-08T14:15:54.128Z</updated>
     
     <summary type="html">
     
@@ -113,22 +113,22 @@
       <category term="Paper Smash" scheme="https://littlelittlemoon.github.io/categories/Technology/Paper-Smash/"/>
     
     
+      <category term="Digital Image Processing" scheme="https://littlelittlemoon.github.io/tags/Digital-Image-Processing/"/>
+    
+      <category term="Line Detection" scheme="https://littlelittlemoon.github.io/tags/Line-Detection/"/>
+    
+      <category term="Paper" scheme="https://littlelittlemoon.github.io/tags/Paper/"/>
+    
       <category term="Hair Thickness" scheme="https://littlelittlemoon.github.io/tags/Hair-Thickness/"/>
     
-      <category term="Digital Image Processing" scheme="https://littlelittlemoon.github.io/tags/Digital-Image-Processing/"/>
-    
-      <category term="Line Detection" scheme="https://littlelittlemoon.github.io/tags/Line-Detection/"/>
-    
-      <category term="Paper" scheme="https://littlelittlemoon.github.io/tags/Paper/"/>
-    
   </entry>
   
   <entry>
-    <title>An Unsupervised Hair Segmentation and Counting System in Microscopy Images | Hair Counting</title>
-    <link href="https://littlelittlemoon.github.io/2019/12/28/An%20Unsupervised%20Hair%20Segmentation%20and%20Counting%20System%20in%20Microscopy%20Images%20%E4%B9%8B%E5%A4%B4%E5%8F%91%E8%AE%A1%E6%95%B0%E9%97%AE%E9%A2%98/"/>
-    <id>https://littlelittlemoon.github.io/2019/12/28/An%20Unsupervised%20Hair%20Segmentation%20and%20Counting%20System%20in%20Microscopy%20Images%20%E4%B9%8B%E5%A4%B4%E5%8F%91%E8%AE%A1%E6%95%B0%E9%97%AE%E9%A2%98/</id>
+    <title>An Unsupervised Hair Segmentation and Counting System in Microscopy Images | Hair Counting - part 1</title>
+    <link href="https://littlelittlemoon.github.io/2019/12/28/An%20Unsupervised%20Hair%20Segmentation%20and%20Counting%20System%20in%20Microscopy%20Images%20|%20Hair%20Counting%20-%201%20/"/>
+    <id>https://littlelittlemoon.github.io/2019/12/28/An%20Unsupervised%20Hair%20Segmentation%20and%20Counting%20System%20in%20Microscopy%20Images%20|%20Hair%20Counting%20-%201%20/</id>
     <published>2019-12-28T15:51:27.000Z</published>
-    <updated>2020-04-08T14:07:31.634Z</updated>
+    <updated>2020-04-08T14:15:37.117Z</updated>
     
     <summary type="html">
     
@@ -142,22 +142,22 @@
       <category term="Paper Smash" scheme="https://littlelittlemoon.github.io/categories/Technology/Paper-Smash/"/>
     
     
+      <category term="Hair Counting" scheme="https://littlelittlemoon.github.io/tags/Hair-Counting/"/>
+    
       <category term="Digital Image Processing" scheme="https://littlelittlemoon.github.io/tags/Digital-Image-Processing/"/>
     
       <category term="Line Detection" scheme="https://littlelittlemoon.github.io/tags/Line-Detection/"/>
     
       <category term="Paper" scheme="https://littlelittlemoon.github.io/tags/Paper/"/>
-    
-      <category term="Hair Counting" scheme="https://littlelittlemoon.github.io/tags/Hair-Counting/"/>
     
   </entry>
   
   <entry>
-    <title>Evalution of hair and scalp condition based on microscopy image analysis -- Hair Counting</title>
-    <link href="https://littlelittlemoon.github.io/2019/12/24/Evalution%20of%20hair%20and%20scalp%20condition%20based%20on%20microscopy%20image%20analysis%20%E4%B9%8B%E5%A4%B4%E5%8F%91%E8%AE%A1%E6%95%B0%E9%97%AE%E9%A2%98/"/>
-    <id>https://littlelittlemoon.github.io/2019/12/24/Evalution%20of%20hair%20and%20scalp%20condition%20based%20on%20microscopy%20image%20analysis%20%E4%B9%8B%E5%A4%B4%E5%8F%91%E8%AE%A1%E6%95%B0%E9%97%AE%E9%A2%98/</id>
+    <title>Evalution of hair and scalp condition based on microscopy image analysis | Hair Counting - part 2</title>
+    <link href="https://littlelittlemoon.github.io/2019/12/24/Evalution%20of%20hair%20and%20scalp%20condition%20based%20on%20microscopy%20image%20analysis%20%20|%20Hair%20Counting%20-%202/"/>
+    <id>https://littlelittlemoon.github.io/2019/12/24/Evalution%20of%20hair%20and%20scalp%20condition%20based%20on%20microscopy%20image%20analysis%20%20|%20Hair%20Counting%20-%202/</id>
     <published>2019-12-24T12:35:33.000Z</published>
-    <updated>2020-04-08T14:07:50.820Z</updated>
+    <updated>2020-04-08T14:17:09.408Z</updated>
     
     <summary type="html">
     
@@ -171,13 +171,13 @@
       <category term="Paper Smash" scheme="https://littlelittlemoon.github.io/categories/Technology/Paper-Smash/"/>
     
     
+      <category term="Hair Counting" scheme="https://littlelittlemoon.github.io/tags/Hair-Counting/"/>
+    
       <category term="Digital Image Processing" scheme="https://littlelittlemoon.github.io/tags/Digital-Image-Processing/"/>
     
       <category term="Line Detection" scheme="https://littlelittlemoon.github.io/tags/Line-Detection/"/>
     
       <category term="Paper" scheme="https://littlelittlemoon.github.io/tags/Paper/"/>
-    
-      <category term="Hair Counting" scheme="https://littlelittlemoon.github.io/tags/Hair-Counting/"/>
     
   </entry>
   
