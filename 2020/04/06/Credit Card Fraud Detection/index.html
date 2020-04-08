@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
   <title itemprop="name">Fraud Detection | Imbalanced data modeling | LITTLEMEEMOON</title>
@@ -39,7 +39,7 @@
   mashiro_option.site_url = "https://littlelittlemoon.github.io/";
   mashiro_option.v_appId = "uVn0CbsTzphCnMDIxJKQ0rbg-gzGzoHsz";
   mashiro_option.v_appKey = "wc39UmG3dNqQQms9Hg2sKc1X";
-  mashiro_option.mathjax = "";
+  mashiro_option.mathjax = "[object Object]";
   mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
   mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
 
@@ -60,11 +60,11 @@
   </style>
   <style type="text/css">.site-top .lower nav{display:block !important;}.author-profile i,.post-like a,.post-share .show-share,.sub-text,.we-info a,span.sitename,.post-more i:hover,#pagination a:hover,.post-content a:hover,.float-content i:hover{color:#FE9600}.feature i,.download,.navigator i:hover,.links ul li:before,.ar-time i,span.ar-circle,.object,.comment .comment-reply-link,.siren-checkbox-radio:checked + .siren-checkbox-radioInput:after{background:#FE9600}::-webkit-scrollbar-thumb{background:#FE9600}.download,.navigator i:hover,.link-title,.links ul li:hover,#pagination a:hover,.comment-respond input[type='submit']:hover{border-color:#FE9600}.entry-content a:hover,.site-info a:hover,.comment h4 a,#comments-navi a.prev,#comments-navi a.next,.comment h4 a:hover,.site-top ul li a:hover,.entry-title a:hover,#archives-temp h3,span.page-numbers.current,.sorry li a:hover,.site-title a:hover,i.iconfont.js-toggle-search.iconsearch:hover,.comment-respond input[type='submit']:hover{color:#FE9600}.comments .comments-main{display:block !important;}.comments .comments-hidden{display:none !important;}background-position:center center;background-attachment:inherit;}
   </style>
-<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="LITTLEMEEMOON" type="application/atom+xml">
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="LITTLEMEEMOON" type="application/atom+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
-  <div class="scrollbar" id="bar">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="scrollbar" id="bar">
   </div>
   <a href="#" class="cd-top faa-float animated"></a>
   <section id="main-container">
@@ -334,149 +334,254 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h1 id="lda-qda-and-lr-for-fraud-detection-imbalanced-data-modeling"><a class="markdownIt-Anchor" href="#lda-qda-and-lr-for-fraud-detection-imbalanced-data-modeling"></a> LDA, QDA and LR for fraud detection | Imbalanced data modeling</h1>
+          <h1 id="lda-qda-and-lr-for-fraud-detection-imbalanced-data-modeling">LDA, QDA and LR for fraud detection | Imbalanced data modeling</h1>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python">%matplotlib inline<br><br><span class="hljs-comment"># import warnings filter</span><br><span class="hljs-keyword">from</span> warnings <span class="hljs-keyword">import</span> simplefilter<br><span class="hljs-comment"># ignore all future warnings</span><br>simplefilter(action=<span class="hljs-string">'ignore'</span>, category=FutureWarning)<br></code></pre></td></tr></table></figure>
-<h2 id="prepare-data"><a class="markdownIt-Anchor" href="#prepare-data"></a> prepare data</h2>
+<h2 id="prepare-data">prepare data</h2>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd<br><br><span class="hljs-comment"># load data</span><br>default_data = pd.read_csv(<span class="hljs-string">"data/Default.csv"</span>)<br><br><span class="hljs-comment"># prepare data</span><br>default_data.loc[default_data[<span class="hljs-string">'default'</span>] == <span class="hljs-string">'No'</span>, <span class="hljs-string">"default"</span>] = <span class="hljs-number">0</span><br>default_data.loc[default_data[<span class="hljs-string">'default'</span>] == <span class="hljs-string">'Yes'</span>, <span class="hljs-string">"default"</span>] = <span class="hljs-number">1</span><br>default_data.loc[default_data[<span class="hljs-string">'student'</span>] == <span class="hljs-string">'No'</span>, <span class="hljs-string">"student"</span>] = <span class="hljs-number">0</span><br>default_data.loc[default_data[<span class="hljs-string">'student'</span>] == <span class="hljs-string">'Yes'</span>, <span class="hljs-string">"student"</span>] = <span class="hljs-number">1</span><br>default_data.describe()<br></code></pre></td></tr></table></figure>
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
     }
-<pre><code>.dataframe tbody tr th {
-    vertical-align: top;
-}
 
-.dataframe thead th {
-    text-align: right;
-}
-</code></pre>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
 </style>
 <table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Unnamed: 0</th>
-      <th>default</th>
-      <th>student</th>
-      <th>balance</th>
-      <th>income</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>count</td>
-      <td>10000.00000</td>
-      <td>10000.000000</td>
-      <td>10000.000000</td>
-      <td>10000.000000</td>
-      <td>10000.000000</td>
-    </tr>
-    <tr>
-      <td>mean</td>
-      <td>5000.50000</td>
-      <td>0.033300</td>
-      <td>0.294400</td>
-      <td>835.374886</td>
-      <td>33516.981876</td>
-    </tr>
-    <tr>
-      <td>std</td>
-      <td>2886.89568</td>
-      <td>0.179428</td>
-      <td>0.455795</td>
-      <td>483.714985</td>
-      <td>13336.639563</td>
-    </tr>
-    <tr>
-      <td>min</td>
-      <td>1.00000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>771.967729</td>
-    </tr>
-    <tr>
-      <td>25%</td>
-      <td>2500.75000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>481.731105</td>
-      <td>21340.462903</td>
-    </tr>
-    <tr>
-      <td>50%</td>
-      <td>5000.50000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>823.636973</td>
-      <td>34552.644802</td>
-    </tr>
-    <tr>
-      <td>75%</td>
-      <td>7500.25000</td>
-      <td>0.000000</td>
-      <td>1.000000</td>
-      <td>1166.308386</td>
-      <td>43807.729272</td>
-    </tr>
-    <tr>
-      <td>max</td>
-      <td>10000.00000</td>
-      <td>1.000000</td>
-      <td>1.000000</td>
-      <td>2654.322576</td>
-      <td>73554.233495</td>
-    </tr>
-  </tbody>
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+Unnamed: 0
+</th>
+<th>
+default
+</th>
+<th>
+student
+</th>
+<th>
+balance
+</th>
+<th>
+income
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+count
+</td>
+<td>
+10000.00000
+</td>
+<td>
+10000.000000
+</td>
+<td>
+10000.000000
+</td>
+<td>
+10000.000000
+</td>
+<td>
+10000.000000
+</td>
+</tr>
+<tr>
+<td>
+mean
+</td>
+<td>
+5000.50000
+</td>
+<td>
+0.033300
+</td>
+<td>
+0.294400
+</td>
+<td>
+835.374886
+</td>
+<td>
+33516.981876
+</td>
+</tr>
+<tr>
+<td>
+std
+</td>
+<td>
+2886.89568
+</td>
+<td>
+0.179428
+</td>
+<td>
+0.455795
+</td>
+<td>
+483.714985
+</td>
+<td>
+13336.639563
+</td>
+</tr>
+<tr>
+<td>
+min
+</td>
+<td>
+1.00000
+</td>
+<td>
+0.000000
+</td>
+<td>
+0.000000
+</td>
+<td>
+0.000000
+</td>
+<td>
+771.967729
+</td>
+</tr>
+<tr>
+<td>
+25%
+</td>
+<td>
+2500.75000
+</td>
+<td>
+0.000000
+</td>
+<td>
+0.000000
+</td>
+<td>
+481.731105
+</td>
+<td>
+21340.462903
+</td>
+</tr>
+<tr>
+<td>
+50%
+</td>
+<td>
+5000.50000
+</td>
+<td>
+0.000000
+</td>
+<td>
+0.000000
+</td>
+<td>
+823.636973
+</td>
+<td>
+34552.644802
+</td>
+</tr>
+<tr>
+<td>
+75%
+</td>
+<td>
+7500.25000
+</td>
+<td>
+0.000000
+</td>
+<td>
+1.000000
+</td>
+<td>
+1166.308386
+</td>
+<td>
+43807.729272
+</td>
+</tr>
+<tr>
+<td>
+max
+</td>
+<td>
+10000.00000
+</td>
+<td>
+1.000000
+</td>
+<td>
+1.000000
+</td>
+<td>
+2654.322576
+</td>
+<td>
+73554.233495
+</td>
+</tr>
+</tbody>
 </table>
 </div>
-<h2 id="split-training-and-testing-set"><a class="markdownIt-Anchor" href="#split-training-and-testing-set"></a> split training and testing set</h2>
+<h2 id="split-training-and-testing-set">split training and testing set</h2>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> sklearn.model_selection <span class="hljs-keyword">import</span> train_test_split<br><br><span class="hljs-comment"># create features and target</span><br>features = [<span class="hljs-string">"balance"</span>, <span class="hljs-string">"income"</span>]<br>X = default_data[features]<br>y = default_data.default<br><br><span class="hljs-comment"># slipt data set into training and testing set</span><br>train_X, test_X, train_y, test_y = train_test_split(X, y, train_size=<span class="hljs-number">0.7</span>, random_state=<span class="hljs-number">1</span>)<br></code></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">import</span> matplotlib <span class="hljs-keyword">as</span> mpl<br><span class="hljs-keyword">from</span> scipy <span class="hljs-keyword">import</span> linalg<br><span class="hljs-keyword">from</span> matplotlib <span class="hljs-keyword">import</span> colors<br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">from</span> sklearn.discriminant_analysis <span class="hljs-keyword">import</span> LinearDiscriminantAnalysis, QuadraticDiscriminantAnalysis<br><span class="hljs-keyword">from</span> sklearn.linear_model <span class="hljs-keyword">import</span> LogisticRegression<br></code></pre></td></tr></table></figure>
-<h2 id="plot-function"><a class="markdownIt-Anchor" href="#plot-function"></a> Plot function</h2>
+<h2 id="plot-function">Plot function</h2>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># set colormap</span><br>cmap = colors.LinearSegmentedColormap(<br>    <span class="hljs-string">'red_blue_classes'</span>,<br>    &#123;<span class="hljs-string">'red'</span>: [(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>), (<span class="hljs-number">1</span>, <span class="hljs-number">0.7</span>, <span class="hljs-number">0.7</span>)],<br>     <span class="hljs-string">'green'</span>: [(<span class="hljs-number">0</span>, <span class="hljs-number">0.7</span>, <span class="hljs-number">0.7</span>), (<span class="hljs-number">1</span>, <span class="hljs-number">0.7</span>, <span class="hljs-number">0.7</span>)],<br>     <span class="hljs-string">'blue'</span>: [(<span class="hljs-number">0</span>, <span class="hljs-number">0.7</span>, <span class="hljs-number">0.7</span>), (<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>)]&#125;)<br>plt.cm.register_cmap(cmap=cmap)<br><br><span class="hljs-comment"># Plot function</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">plot_data</span><span class="hljs-params">(model, X, y, y_pred)</span>:</span><br><br>    plt.ylabel(<span class="hljs-string">'income'</span>)<br>    plt.xlabel(<span class="hljs-string">'balance'</span>)<br>    <br>    tp = (y == y_pred)  <span class="hljs-comment"># True Positive</span><br>    tp0, tp1 = tp[y == <span class="hljs-number">0</span>], tp[y == <span class="hljs-number">1</span>]<br>    X0, X1 = X[y == <span class="hljs-number">0</span>], X[y == <span class="hljs-number">1</span>]<br>    X0_tp, X0_fp = X0[tp0], X0[~tp0]<br>    X1_tp, X1_fp = X1[tp1], X1[~tp1]<br><br>    <span class="hljs-comment"># true class 0: dots, false class 0: x</span><br>    plt.scatter(X0_tp[<span class="hljs-string">"balance"</span>], X0_tp[<span class="hljs-string">"income"</span>], marker=<span class="hljs-string">'.'</span>, color=<span class="hljs-string">'red'</span>)<br>    plt.scatter(X0_fp[<span class="hljs-string">"balance"</span>], X0_fp[<span class="hljs-string">"income"</span>], marker=<span class="hljs-string">'x'</span>,<br>                s=<span class="hljs-number">20</span>, color=<span class="hljs-string">'#990000'</span>)  <span class="hljs-comment"># dark red</span><br><br>    <span class="hljs-comment"># true class 1: dots, false class 1: x</span><br>    plt.scatter(X1_tp[<span class="hljs-string">"balance"</span>], X1_tp[<span class="hljs-string">"income"</span>], marker=<span class="hljs-string">'.'</span>, color=<span class="hljs-string">'blue'</span>)<br>    plt.scatter(X1_fp[<span class="hljs-string">"balance"</span>], X1_fp[<span class="hljs-string">"income"</span>], marker=<span class="hljs-string">'x'</span>,<br>                s=<span class="hljs-number">20</span>, color=<span class="hljs-string">'#000099'</span>)  <span class="hljs-comment"># dark blue</span><br><br>    <span class="hljs-comment"># class 0 and 1 : all areas for decision boundary</span><br>    nx, ny = <span class="hljs-number">200</span>, <span class="hljs-number">100</span><br>    x_min, x_max = plt.xlim()<br>    y_min, y_max = plt.ylim()<br>    xx, yy = np.meshgrid(np.linspace(x_min, x_max, nx),<br>                         np.linspace(y_min, y_max, ny))<br>    Z = model.predict_proba(np.c_[xx.ravel(), yy.ravel()])<br>    Z = Z[:, <span class="hljs-number">1</span>].reshape(xx.shape)<br>    plt.pcolormesh(xx, yy, Z, cmap=<span class="hljs-string">'red_blue_classes'</span>,<br>                   norm=colors.Normalize(<span class="hljs-number">0.</span>, <span class="hljs-number">1.</span>), zorder=<span class="hljs-number">0</span>)<br>    <br>    <span class="hljs-comment"># plot decision boundary</span><br>    plt.contour(xx, yy, Z, [<span class="hljs-number">0.5</span>], linewidths=<span class="hljs-number">2.</span>, colors=<span class="hljs-string">'white'</span>)<br><br>    plt.axis(<span class="hljs-string">'tight'</span>)<br>    plt.tight_layout()<br>    plt.subplots_adjust(top=<span class="hljs-number">0.92</span>)<br>    plt.show()<br></code></pre></td></tr></table></figure>
-<h2 id="linear-discriminant-analysis"><a class="markdownIt-Anchor" href="#linear-discriminant-analysis"></a> Linear Discriminant Analysis</h2>
+<h2 id="linear-discriminant-analysis">Linear Discriminant Analysis</h2>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># Linear Discriminant Analysis</span><br>plt.figure(figsize=(<span class="hljs-number">6</span>, <span class="hljs-number">7</span>), facecolor=<span class="hljs-string">'white'</span>)<br>plt.title(<span class="hljs-string">'Linear Discriminant Analysis'</span>, y=<span class="hljs-number">1</span>, fontsize=<span class="hljs-number">15</span>)<br><br>lda = LinearDiscriminantAnalysis(solver=<span class="hljs-string">"svd"</span>, store_covariance=<span class="hljs-literal">True</span>)<br>y_pred = lda.fit(train_X, train_y).predict(test_X)<br>plot_data(lda, test_X, test_y, y_pred)<br></code></pre></td></tr></table></figure>
-<p><img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/images/CreditCardFraudDetection/output_10_0.png" alt="png" /></p>
-<h2 id="quadratic-discriminant-analysis"><a class="markdownIt-Anchor" href="#quadratic-discriminant-analysis"></a> Quadratic Discriminant Analysis</h2>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/images/CreditCardFraudDetection/output_10_0.png" alt="" /><figcaption>png</figcaption>
+</figure>
+<h2 id="quadratic-discriminant-analysis">Quadratic Discriminant Analysis</h2>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># Quadratic Discriminant Analysis</span><br>plt.figure(figsize=(<span class="hljs-number">6</span>, <span class="hljs-number">7</span>), facecolor=<span class="hljs-string">'white'</span>)<br>plt.title(<span class="hljs-string">'Quadratic Discriminant Analysis'</span>, y=<span class="hljs-number">1</span>, fontsize=<span class="hljs-number">15</span>)<br><br>qda = QuadraticDiscriminantAnalysis(store_covariance=<span class="hljs-literal">True</span>)<br>y_pred = qda.fit(train_X, train_y).predict(test_X)<br>plot_data(qda, test_X, test_y, y_pred)<br></code></pre></td></tr></table></figure>
-<p><img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/images/CreditCardFraudDetection/output_12_0.png" alt="png" /></p>
-<h2 id="use-logisticregression-directly-to-model-the-data"><a class="markdownIt-Anchor" href="#use-logisticregression-directly-to-model-the-data"></a> Use LogisticRegression directly to model the data</h2>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/images/CreditCardFraudDetection/output_12_0.png" alt="" /><figcaption>png</figcaption>
+</figure>
+<h2 id="use-logisticregression-directly-to-model-the-data">Use LogisticRegression directly to model the data</h2>
 <p>If I use this data <strong>directly</strong> to feed the <code>LogisticRegression</code> model, the model will prefer to <strong>predict all as 0 for a high accuracy of 0 prediction.</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">print(default_data.default.value_counts(dropna = <span class="hljs-literal">False</span>))<br>print(<span class="hljs-string">"The mean of default: "</span>, default_data.default.mean())<br></code></pre></td></tr></table></figure>
 <pre><code>0    9667
 1     333
 Name: default, dtype: int64
-The mean of default:  0.0333
-</code></pre>
+The mean of default:  0.0333</code></pre>
 <p><strong>NOTE: As it showing above: the provided data with very low proportion of positive signals.</strong></p>
 <p><strong>Conclusion: The provided data is imbalanced !</strong></p>
-<p><strong>Solution: usually for imbalanced data, there are some solutions:</strong></p>
-<ol>
-<li>Collect more data</li>
-<li>Down-Sampling or Over-Sampling to get balanced samples</li>
-<li>Change the Thresholds to adjust the prediction</li>
-<li>Assign class weights for the low rate class</li>
-</ol>
+<p><strong>Solution: usually for imbalanced data, there are some solutions:</strong> 1. Collect more data 2. Down-Sampling or Over-Sampling to get balanced samples 3. Change the Thresholds to adjust the prediction 4. Assign class weights for the low rate class</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> sklearn.metrics <span class="hljs-keyword">import</span> confusion_matrix, auc, roc_curve, roc_auc_score, recall_score, precision_recall_curve<br><span class="hljs-keyword">from</span> sklearn.metrics <span class="hljs-keyword">import</span> make_scorer, precision_score<br><span class="hljs-keyword">from</span> sklearn.model_selection <span class="hljs-keyword">import</span> GridSearchCV<br></code></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># Xtrain, Xtest, ytrain, ytest = train_test_split(X, y, test_size = .33, stratify = y)</span><br><br>logitreg_parameters = &#123;<span class="hljs-string">'C'</span>: np.power(<span class="hljs-number">10.0</span>, np.arange(<span class="hljs-number">-3</span>, <span class="hljs-number">3</span>))&#125;<br>logitreg = LogisticRegression(verbose = <span class="hljs-number">3</span>, warm_start = <span class="hljs-literal">True</span>)<br>logitreg_grid = GridSearchCV(logitreg, param_grid = logitreg_parameters, scoring = <span class="hljs-string">'roc_auc'</span>, n_jobs = <span class="hljs-number">1</span>)<br><br>logitreg_grid.fit(train_X, train_y)<br></code></pre></td></tr></table></figure>
 <pre><code>GridSearchCV(cv=None, error_score=nan,
              estimator=LogisticRegression(C=1.0, class_weight=None, dual=False,
                                           fit_intercept=True,
                                           intercept_scaling=1, l1_ratio=None,
-                                          max_iter=100, multi_class='auto',
-                                          n_jobs=None, penalty='l2',
-                                          random_state=None, solver='lbfgs',
+                                          max_iter=100, multi_class=&#39;auto&#39;,
+                                          n_jobs=None, penalty=&#39;l2&#39;,
+                                          random_state=None, solver=&#39;lbfgs&#39;,
                                           tol=0.0001, verbose=3,
                                           warm_start=True),
-             iid='deprecated', n_jobs=1,
-             param_grid={'C': array([1.e-03, 1.e-02, 1.e-01, 1.e+00, 1.e+01, 1.e+02])},
-             pre_dispatch='2*n_jobs', refit=True, return_train_score=False,
-             scoring='roc_auc', verbose=0)
-</code></pre>
+             iid=&#39;deprecated&#39;, n_jobs=1,
+             param_grid={&#39;C&#39;: array([1.e-03, 1.e-02, 1.e-01, 1.e+00, 1.e+01, 1.e+02])},
+             pre_dispatch=&#39;2*n_jobs&#39;, refit=True, return_train_score=False,
+             scoring=&#39;roc_auc&#39;, verbose=0)</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># draw decision boundary with LogisticRegression directly</span><br>plt.figure(figsize=(<span class="hljs-number">6</span>, <span class="hljs-number">7</span>), facecolor=<span class="hljs-string">'white'</span>)<br>plt.title(<span class="hljs-string">'Logistic Regression directly'</span>, y=<span class="hljs-number">1</span>, fontsize=<span class="hljs-number">15</span>)<br><br>y_pred = logitreg_grid.predict(test_X)<br>splot = plot_data(logitreg_grid, test_X, test_y, y_pred)<br></code></pre></td></tr></table></figure>
-<p><img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/images/CreditCardFraudDetection/output_19_0.png" alt="png" /></p>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/images/CreditCardFraudDetection/output_19_0.png" alt="" /><figcaption>png</figcaption>
+</figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># on OVER-Sampled TRAINing data</span><br>print(<span class="hljs-string">"\n The recall score on Training data is:"</span>, <br>      recall_score(train_y, logitreg_grid.predict(train_X))) <span class="hljs-comment"># 0.32</span><br>print(<span class="hljs-string">"\n The precision score on Training data is:"</span>,<br>      precision_score(train_y, logitreg_grid.predict(train_X))) <span class="hljs-comment"># 0.74</span><br><br><span class="hljs-comment"># on the separated TEST data</span><br>print(<span class="hljs-string">"\n Thre recall score on Test data is:"</span>, <br>      recall_score(test_y, logitreg_grid.predict(test_X))) <span class="hljs-comment"># 0.32</span><br>print(<span class="hljs-string">"\n Thre precision score on Test data is:"</span>, <br>      precision_score(test_y, logitreg_grid.predict(test_X))) <span class="hljs-comment"># 0.75</span><br>print(<span class="hljs-string">"\n Thre Confusion Matrix on Test data is:"</span>, <br>      confusion_matrix(test_y, logitreg_grid.predict(test_X))) <span class="hljs-comment"># [[3178   12][  74   36]]</span><br></code></pre></td></tr></table></figure>
 <pre><code> The recall score on Training data is: 0.32231404958677684
 
@@ -487,18 +592,19 @@ The mean of default:  0.0333
  Thre precision score on Test data is: 0.673469387755102
 
  Thre Confusion Matrix on Test data is: [[2893   16]
- [  58   33]]
-</code></pre>
+ [  58   33]]</code></pre>
 <p><strong>Conclusions:</strong></p>
 <p>From the output above, on the training data, the recall score is 0.32 which means 32 over 100 of the True positive conditions are predicted correctly. And 74 over 100 of the predicted positives are True Positive.</p>
 <p>On the Test data, the model performance metric evalued by recall or precision are close to the Training data. There is a precision score of 0.81 on the Test data, which means 81 out of 100 predicted positives are True positives.</p>
 <p>From Confusion Matrix, 36 of 110 True Positives are predicted as positives. And of all 48 predicted as positive, 36 of them are True positives.</p>
-<h3 id="change-the-thresholds"><a class="markdownIt-Anchor" href="#change-the-thresholds"></a> Change the Thresholds</h3>
-<h4 id="plot-roc-curve"><a class="markdownIt-Anchor" href="#plot-roc-curve"></a> plot roc curve</h4>
+<h3 id="change-the-thresholds">Change the Thresholds</h3>
+<h4 id="plot-roc-curve">plot roc curve</h4>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">plot_roc</span><span class="hljs-params">(new_thresholds, logitreg_grid)</span>:</span><br>    y_train_pred_probas = logitreg_grid.predict_proba(train_X)[:, <span class="hljs-number">1</span>]   <span class="hljs-comment"># prob of predict as 1</span><br>    fpr, tpr, thresholds = roc_curve(train_y, y_train_pred_probas)   <span class="hljs-comment"># precision_recall_curve</span><br>    roc = pd.DataFrame(&#123;<span class="hljs-string">'FPR'</span>:fpr, <span class="hljs-string">'TPR'</span>:tpr, <span class="hljs-string">'Thresholds'</span>:thresholds&#125;)<br>    plt.figure()<br>    plt.title(<span class="hljs-string">'ROC Curve'</span>, y = <span class="hljs-number">1</span>, fontsize = <span class="hljs-number">15</span>)<br>    plt.plot(roc.FPR, roc.TPR)<br>    plt.axvline(new_thresholds, color = <span class="hljs-string">'#00C851'</span>, linestyle = <span class="hljs-string">'--'</span>)<br>    plt.xlabel(<span class="hljs-string">"FPR"</span>)<br>    plt.ylabel(<span class="hljs-string">"TPR"</span>)<br>    plt.show()<br></code></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">new_threshold = <span class="hljs-number">0.1</span>   <span class="hljs-comment"># 0.5 is the default value</span><br>plot_roc(new_threshold, logitreg_grid)<br></code></pre></td></tr></table></figure>
-<p><img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/images/CreditCardFraudDetection/output_24_0.png" alt="png" /></p>
-<p>By default, the threshold is 0.5. Since the recall score is low, I’m trying to <strong>lower the threshold</strong> to get more predicted as Positive. At the same time, more True Negative data will be falsely predicted as Positive. So the Precision score will be lower.</p>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/images/CreditCardFraudDetection/output_24_0.png" alt="" /><figcaption>png</figcaption>
+</figure>
+<p>By default, the threshold is 0.5. Since the recall score is low, I'm trying to <strong>lower the threshold</strong> to get more predicted as Positive. At the same time, more True Negative data will be falsely predicted as Positive. So the Precision score will be lower.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python">y_test_pred_probas = logitreg_grid.predict_proba(test_X)[:, <span class="hljs-number">1</span>]<br>y_test_pred = (y_test_pred_probas &gt;= new_threshold).astype(int)<br><br>print(<span class="hljs-string">"After change threshold to 0.1, the recall socre on Test data is:"</span>)<br>print(recall_score(test_y, y_test_pred))     <span class="hljs-comment"># 0.736</span><br>print(<span class="hljs-string">"After change threshold to 0.1, the precision socre on Test data is:"</span>)<br>print(precision_score(test_y, y_test_pred))  <span class="hljs-comment"># 0.301</span><br>print(<span class="hljs-string">"After change threshold to 0.1, the Confusion Matrix on Test data is:"</span>)<br>print(confusion_matrix(test_y, y_test_pred)) <span class="hljs-comment"># [[3002  188][  29   81]]</span><br></code></pre></td></tr></table></figure>
 <pre><code>After change threshold to 0.1, the recall socre on Test data is:
 0.7142857142857143
@@ -506,9 +612,8 @@ After change threshold to 0.1, the precision socre on Test data is:
 0.25
 After change threshold to 0.1, the Confusion Matrix on Test data is:
 [[2714  195]
- [  26   65]]
-</code></pre>
-<h2 id="create-over-sampling-data-and-fit-the-model"><a class="markdownIt-Anchor" href="#create-over-sampling-data-and-fit-the-model"></a> Create Over-sampling data and Fit the model</h2>
+ [  26   65]]</code></pre>
+<h2 id="create-over-sampling-data-and-fit-the-model">Create Over-sampling data and Fit the model</h2>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs python">oversample_ratio = sum(train_y == <span class="hljs-number">0</span>) / sum(train_y == <span class="hljs-number">1</span>)  <span class="hljs-comment"># size to repeat y == 1</span><br><br><span class="hljs-comment"># repeat the positive data for X and y</span><br>y_train_pos_oversample = pd.concat([train_y[train_y==<span class="hljs-number">1</span>]] * int(oversample_ratio), axis = <span class="hljs-number">0</span>)<br>X_train_pos_oversample = pd.concat([train_X.loc[train_y==<span class="hljs-number">1</span>, :]] * int(oversample_ratio), axis = <span class="hljs-number">0</span>)<br><br><span class="hljs-comment"># concat the repeated data with the original data together</span><br>y_train_oversample = pd.concat([train_y, y_train_pos_oversample], axis = <span class="hljs-number">0</span>).reset_index(drop = <span class="hljs-literal">True</span>)<br>X_train_oversample = pd.concat([train_X, X_train_pos_oversample], axis = <span class="hljs-number">0</span>).reset_index(drop = <span class="hljs-literal">True</span>)<br><br>print(y_train_oversample.value_counts(dropna = <span class="hljs-literal">False</span>, normalize = <span class="hljs-literal">True</span>))<br><br>logitreg_parameters = &#123;<span class="hljs-string">'C'</span>: np.power(<span class="hljs-number">10.0</span>, np.arange(<span class="hljs-number">-3</span>, <span class="hljs-number">3</span>))&#125;<br>logitreg = LogisticRegression(verbose = <span class="hljs-number">3</span>, warm_start = <span class="hljs-literal">True</span>)<br>logitreg_grid = GridSearchCV(logitreg, param_grid = logitreg_parameters, scoring = <span class="hljs-string">'roc_auc'</span>, n_jobs = <span class="hljs-number">1</span>)<br><br>logitreg_grid.fit(X_train_oversample, y_train_oversample)<br></code></pre></td></tr></table></figure>
 <pre><code>1    0.500665
 0    0.499335
@@ -517,18 +622,19 @@ GridSearchCV(cv=None, error_score=nan,
              estimator=LogisticRegression(C=1.0, class_weight=None, dual=False,
                                           fit_intercept=True,
                                           intercept_scaling=1, l1_ratio=None,
-                                          max_iter=100, multi_class='auto',
-                                          n_jobs=None, penalty='l2',
-                                          random_state=None, solver='lbfgs',
+                                          max_iter=100, multi_class=&#39;auto&#39;,
+                                          n_jobs=None, penalty=&#39;l2&#39;,
+                                          random_state=None, solver=&#39;lbfgs&#39;,
                                           tol=0.0001, verbose=3,
                                           warm_start=True),
-             iid='deprecated', n_jobs=1,
-             param_grid={'C': array([1.e-03, 1.e-02, 1.e-01, 1.e+00, 1.e+01, 1.e+02])},
-             pre_dispatch='2*n_jobs', refit=True, return_train_score=False,
-             scoring='roc_auc', verbose=0)
-</code></pre>
+             iid=&#39;deprecated&#39;, n_jobs=1,
+             param_grid={&#39;C&#39;: array([1.e-03, 1.e-02, 1.e-01, 1.e+00, 1.e+01, 1.e+02])},
+             pre_dispatch=&#39;2*n_jobs&#39;, refit=True, return_train_score=False,
+             scoring=&#39;roc_auc&#39;, verbose=0)</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># Logistic Regression with Over-sampling</span><br>plt.figure(figsize=(<span class="hljs-number">6</span>, <span class="hljs-number">7</span>), facecolor=<span class="hljs-string">'white'</span>)<br>plt.title(<span class="hljs-string">'Logistic Regression with Over-sampling'</span>, y=<span class="hljs-number">1</span>, fontsize=<span class="hljs-number">15</span>)<br><br>y_pred = logitreg_grid.predict(test_X)<br>plot_data(logitreg_grid, test_X, test_y, y_pred)<br></code></pre></td></tr></table></figure>
-<p><img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/images/CreditCardFraudDetection/output_29_0.png" alt="png" /></p>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/images/CreditCardFraudDetection/output_29_0.png" alt="" /><figcaption>png</figcaption>
+</figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># on OVER-Sampled TRAINing data</span><br>print(<span class="hljs-string">"After Over-Sampling, the recall score on Training data is"</span>)<br>print(recall_score(y_train_oversample, logitreg_grid.predict(X_train_oversample)))    <span class="hljs-comment"># 0.865</span><br>print(<span class="hljs-string">"After Over-Sampling, the precision score on Training data is"</span>)<br>print(precision_score(y_train_oversample, logitreg_grid.predict(X_train_oversample)))   <span class="hljs-comment"># 0.727</span><br><br><span class="hljs-comment"># on the TESTing data</span><br>print(<span class="hljs-string">"After Over-Sampling, the recall score on Test data is"</span>)<br>print(recall_score(test_y, logitreg_grid.predict(test_X)))   <span class="hljs-comment">#  0.854</span><br>print(<span class="hljs-string">"After Over-Sampling, the precision score on Test data is"</span>)<br>print(precision_score(test_y, logitreg_grid.predict(test_X)))   <span class="hljs-comment"># 0.080</span><br>print(<span class="hljs-string">"After Over-Sampling, the Confusion Matrix on Test data is"</span>)<br>print(confusion_matrix(test_y, logitreg_grid.predict(test_X))) <span class="hljs-comment"># [[2113 1077][  16   94]]</span><br></code></pre></td></tr></table></figure>
 <pre><code>After Over-Sampling, the recall score on Training data is
 0.8884297520661157
@@ -540,15 +646,16 @@ After Over-Sampling, the precision score on Test data is
 0.17094017094017094
 After Over-Sampling, the Confusion Matrix on Test data is
 [[2521  388]
- [  11   80]]
-</code></pre>
+ [  11   80]]</code></pre>
 <p><strong>Conclusion:</strong> From the output above, on the training data, the recall score is 0.865 which means 86.5 over 100 of the True conditions are predicted correctly. And 85.4 over 100 of the predicted positives are really positive.</p>
 <p>However, there is only a precision score of 0.080 on the Test data, which means only 8 out of 100 predicted positives are real positives.</p>
 <p>From Confusion Matrix, 94 of 110 True Positives are predicted as positives. However, the model predicted 1077 Negative data as Positive.</p>
 <p>That is, this model has pretty strong <strong>over-fitting</strong>.</p>
-<h3 id="change-the-thresholds-2"><a class="markdownIt-Anchor" href="#change-the-thresholds-2"></a> Change the Thresholds</h3>
+<h3 id="change-the-thresholds-1">Change the Thresholds</h3>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">new_threshold = <span class="hljs-number">0.2</span><br>plot_roc(new_threshold, logitreg_grid)<br></code></pre></td></tr></table></figure>
-<p><img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/images/CreditCardFraudDetection/output_33_0.png" alt="png" /></p>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/images/CreditCardFraudDetection/output_33_0.png" alt="" /><figcaption>png</figcaption>
+</figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python">y_test_pred_probas = logitreg_grid.predict_proba(test_X)[:, <span class="hljs-number">1</span>]<br>y_test_pred = (y_test_pred_probas &gt;= new_threshold).astype(int)<br><br>print(<span class="hljs-string">"After change threshold to 0.2, the recall socre on Test data is:"</span>)<br>print(recall_score(test_y, y_test_pred)) <span class="hljs-comment"># 0.990</span><br>print(<span class="hljs-string">"After change threshold to 0.2, the precision socre on Test data is:"</span>)<br>print(precision_score(test_y, y_test_pred)) <span class="hljs-comment"># 0.047</span><br>print(<span class="hljs-string">"After change threshold to 0.2, the Confusion Matrix on Test data is:"</span>)<br>print(confusion_matrix(test_y, y_test_pred)) <span class="hljs-comment"># [[ 1013 2177][   1  109]]</span><br></code></pre></td></tr></table></figure>
 <pre><code>After change threshold to 0.2, the recall socre on Test data is:
 0.9340659340659341
@@ -556,10 +663,9 @@ After change threshold to 0.2, the precision socre on Test data is:
 0.10023584905660378
 After change threshold to 0.2, the Confusion Matrix on Test data is:
 [[2146  763]
- [   6   85]]
-</code></pre>
+ [   6   85]]</code></pre>
 <p><strong>Conclusion:</strong> After <strong>over-sampling</strong>, the model will have <strong>higher recall rate</strong>. That is, the model will work better on detect the Frauds from True Frauds. The price is the <strong>lower precision rate</strong>.</p>
-<h2 id="logistic-regression-with-class_weight"><a class="markdownIt-Anchor" href="#logistic-regression-with-class_weight"></a> Logistic Regression with class_weight</h2>
+<h2 id="logistic-regression-with-class_weight">Logistic Regression with class_weight</h2>
 <p>Rather than over-sampling, we can <strong>assign more weights to the lower rate class.</strong></p>
 <p>we can write out the Likelihood function for Logistic Regression, the Over-Sampling and the assigning more Weights will be equivalent.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python">positive_weight = sum(train_y == <span class="hljs-number">0</span>) / sum(train_y == <span class="hljs-number">1</span>)  <span class="hljs-comment"># size to repeat y == 1</span><br><br>logitreg_parameters = &#123;<span class="hljs-string">'C'</span>: np.power(<span class="hljs-number">10.0</span>, np.arange(<span class="hljs-number">-3</span>, <span class="hljs-number">3</span>))&#125;<br>logitreg = LogisticRegression(class_weight = &#123;<span class="hljs-number">0</span> : <span class="hljs-number">1</span>, <span class="hljs-number">1</span> : positive_weight&#125;, verbose = <span class="hljs-number">3</span>, warm_start = <span class="hljs-literal">True</span>)<br>logitreg_grid = GridSearchCV(logitreg, param_grid = logitreg_parameters, scoring = <span class="hljs-string">'roc_auc'</span>, n_jobs = <span class="hljs-number">1</span>)<br><br>logitreg_grid.fit(train_X, train_y)<br></code></pre></td></tr></table></figure>
@@ -569,18 +675,19 @@ After change threshold to 0.2, the Confusion Matrix on Test data is:
                                                         1: 27.925619834710744},
                                           dual=False, fit_intercept=True,
                                           intercept_scaling=1, l1_ratio=None,
-                                          max_iter=100, multi_class='auto',
-                                          n_jobs=None, penalty='l2',
-                                          random_state=None, solver='lbfgs',
+                                          max_iter=100, multi_class=&#39;auto&#39;,
+                                          n_jobs=None, penalty=&#39;l2&#39;,
+                                          random_state=None, solver=&#39;lbfgs&#39;,
                                           tol=0.0001, verbose=3,
                                           warm_start=True),
-             iid='deprecated', n_jobs=1,
-             param_grid={'C': array([1.e-03, 1.e-02, 1.e-01, 1.e+00, 1.e+01, 1.e+02])},
-             pre_dispatch='2*n_jobs', refit=True, return_train_score=False,
-             scoring='roc_auc', verbose=0)
-</code></pre>
+             iid=&#39;deprecated&#39;, n_jobs=1,
+             param_grid={&#39;C&#39;: array([1.e-03, 1.e-02, 1.e-01, 1.e+00, 1.e+01, 1.e+02])},
+             pre_dispatch=&#39;2*n_jobs&#39;, refit=True, return_train_score=False,
+             scoring=&#39;roc_auc&#39;, verbose=0)</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># Logistic Regression with class_weight</span><br>plt.figure(figsize=(<span class="hljs-number">6</span>, <span class="hljs-number">7</span>), facecolor=<span class="hljs-string">'white'</span>)<br>plt.title(<span class="hljs-string">'Logistic Regression'</span>, y=<span class="hljs-number">1</span>, fontsize=<span class="hljs-number">15</span>)<br><br>y_pred = logitreg_grid.predict(test_X)<br>plot_data(logitreg_grid, test_X, test_y, y_pred)<br></code></pre></td></tr></table></figure>
-<p><img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/images/CreditCardFraudDetection/output_38_0.png" alt="png" /></p>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/images/CreditCardFraudDetection/output_38_0.png" alt="" /><figcaption>png</figcaption>
+</figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python">print(<span class="hljs-string">"After assign class_weight, the recall score on Training data is"</span>)<br>print(recall_score(y_train_oversample, logitreg_grid.predict(X_train_oversample)))    <span class="hljs-comment"># 0.856</span><br>print(<span class="hljs-string">"After assign class_weight, the precision score on Training data is"</span>)<br>print(precision_score(y_train_oversample, logitreg_grid.predict(X_train_oversample)))   <span class="hljs-comment"># 0.729</span><br><br><span class="hljs-comment"># on the separated TEST data</span><br>print(<span class="hljs-string">"After assign class_weight, the recall score on Test data is"</span>)<br>print(recall_score(test_y, logitreg_grid.predict(test_X)))   <span class="hljs-comment"># 0.845</span><br>print(<span class="hljs-string">"After assign class_weight, the precision score on Test data is"</span>)<br>print(precision_score(test_y, logitreg_grid.predict(test_X)))   <span class="hljs-comment"># 0.081</span><br>print(<span class="hljs-string">"After assign class_weight, the Confusion Matrix on Test data is"</span>)<br>print(confusion_matrix(test_y, logitreg_grid.predict(test_X))) <span class="hljs-comment"># [[2135 1055] [  17   93]]</span><br>print(<span class="hljs-string">"After assign class_weight, the ROC AUC Score on Test data is"</span>)<br>print(roc_auc_score(test_y, logitreg_grid.predict(test_X))) <span class="hljs-comment"># 0.757</span><br></code></pre></td></tr></table></figure>
 <pre><code>After assign class_weight, the recall score on Training data is
 0.859504132231405
@@ -594,18 +701,17 @@ After assign class_weight, the Confusion Matrix on Test data is
 [[1923  986]
  [  11   80]]
 After assign class_weight, the ROC AUC Score on Test data is
-0.7700863934965
-</code></pre>
+0.7700863934965</code></pre>
 <p><strong>Conclusion:</strong> If I set up the class weight for the positive as the ratio of non-Fault / Fault, I will get the result close to the over-sampling.</p>
 <p>So, in summary: This specific data is about <strong>fraud detection</strong>. So the model should <strong>focus on to find the frauds to avoid potential loss for the bank</strong>. That is, we focus on <strong>recall rate</strong>.</p>
-<h1 id="conclusion"><a class="markdownIt-Anchor" href="#conclusion"></a> Conclusion</h1>
-<ol>
+<h1 id="conclusion">Conclusion</h1>
+<ol type="1">
 <li>If we use the imbalanced data directly, we will get low performance model since the model prefer to predict to the class with dominated frequency class. The recall rate is 0.31. That is, only 31% of the frauds can be detected by this model.</li>
 <li>To fix that, one way is to do over-sampling or down-sampling. If we use over-sampling, the model performance will be improved a lot. For this specific case, the recall rate on the independent test set will be improved from 0.31 to 0.87</li>
 <li>Another way to improve the model performance is to assign more weights to the low frequency class. Generally speaking, for Logistic Regression, assigning weights is similar to over-sampling, from the likelihood function perspective. The final output results are close too as demonstrated above.</li>
 </ol>
-<h1 id="reference"><a class="markdownIt-Anchor" href="#reference"></a> Reference</h1>
-<ol>
+<h1 id="reference">Reference</h1>
+<ol type="1">
 <li><a href="!https://songhuiming.github.io/pages/2018/05/05/credit-card-fraud-detection-imbalanced-data-modeling-part-i-logistic-regression/">Credit Card Fraud Detection / Imbalanced data modeling - Part I: Logistic Regression</a></li>
 <li><a href="!https://www.kaggle.com/janiobachmann/credit-fraud-dealing-with-imbalanced-datasets">Credit Fraud || Dealing with Imbalanced Datasets</a></li>
 </ol>
@@ -688,6 +794,11 @@ After assign class_weight, the ROC AUC Score on Test data is
   </div><!-- #primary -->
 </div>
 
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML"></script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  </script>
 
 
     </div>    
@@ -1039,6 +1150,23 @@ $(document).ready(function() {
       }
     })
   });
+</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
 </script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 </body>
 </html>
