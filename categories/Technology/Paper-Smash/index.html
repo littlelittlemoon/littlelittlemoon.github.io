@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">Tag: 图像处理 | LITTLEMEEMOON</title>
+  <title itemprop="name">Category: Paper Smash | LITTLEMEEMOON</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -161,7 +161,7 @@
                 <a href="/">
                   <span class="faa-parent animated-hover">
                     <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
-                    Home
+                    首页
                   </span>
                 </a>
                 
@@ -171,7 +171,7 @@
                 <a href="/archives">
                   <span class="faa-parent animated-hover">
                     <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
-                    Archive
+                    归档
                   </span>
                 </a>
                 
@@ -180,28 +180,28 @@
                       <li>
                         <a href="/categories/Technology/">
                           <i class="fa fa-code" aria-hidden="true"></i>
-                          Tech
+                          技术
                         </a>
                       </li>
                     
                       <li>
                         <a href="/categories/Life/">
                           <i class="fa fa-file-text-o" aria-hidden="true"></i>
-                          Life
+                          生活
                         </a>
                       </li>
                     
                       <li>
                         <a href="/categories/Thoughts/">
                           <i class="fa fa-commenting-o" aria-hidden="true"></i>
-                          Thoughts
+                          随想
                         </a>
                       </li>
                     
                       <li>
                         <a href="/categories/Repost/">
                           <i class="fa fa-book" aria-hidden="true"></i>
-                          Repost
+                          转载
                         </a>
                       </li>
                     
@@ -213,7 +213,7 @@
                 <a href="javascript:;">
                   <span class="faa-parent animated-hover">
                     <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
-                    List
+                    清单
                   </span>
                 </a>
                 
@@ -222,21 +222,28 @@
                       <li>
                         <a href="/tags/Reading/">
                           <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
-                          Reading
+                          悦读
                         </a>
                       </li>
                     
                       <li>
                         <a href="/music/">
                           <i class="fa fa-headphones" aria-hidden="true"></i>
-                          Music
+                          音悦
                         </a>
                       </li>
                     
                       <li>
                         <a href="/tags/Pictures/">
                           <i class="fa fa-photo" aria-hidden="true"></i>
-                          Pictures
+                          图集
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/tags/Cave/">
+                          <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                          Cave
                         </a>
                       </li>
                     
@@ -248,7 +255,7 @@
                 <a href="/comment/">
                   <span class="faa-parent animated-hover">
                     <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
-                    comments
+                    留言板
                   </span>
                 </a>
                 
@@ -258,7 +265,7 @@
                 <a href="/links/">
                   <span class="faa-parent animated-hover">
                     <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
-                    Friends
+                    友人帐
                   </span>
                 </a>
                 
@@ -268,7 +275,7 @@
                 <a href="/donate/">
                   <span class="faa-parent animated-hover">
                     <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
-                    Donate
+                    赞赏
                   </span>
                 </a>
                 
@@ -278,7 +285,7 @@
                 <a href="/about/">
                   <span class="faa-parent animated-hover">
                     <i class="fa  fa-meetup" aria-hidden="true"></i>
-                    About me
+                    关于我
                   </span>
                 </a>
                 
@@ -292,18 +299,79 @@
 </header>
 
       
+
 <div class="pattern-center-blank"></div>
 <div class="pattern-center ">
   <div class="pattern-attachment-img">
-    <img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="图像处理.img" class="lazyload" onerror="imgError(this,3)" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;">
+    <img data-src="Paper Smash.img" class="lazyload" onerror="imgError(this,3)" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;">
   </div>
   <header class="pattern-header ">
-    <h1 class="cat-title">图像处理</h1>
+    <h1 class="cat-title">Paper Smash.zh</h1>
+    <span class="cat-des">
+      <p>Paper Smash.en</p>
+    </span>
   </header>
 </div>
 <div id="content" class="site-content">
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
+      <div id="contentss">
+        <style type="text/css">
+    #category-radar {
+        width: 100%;
+        height: 360px;
+    }
+</style>
+
+<div class="container" data-aos="fade-up">
+    <div class="card">
+        <div id="category-radar" class="card-content"></div>
+    </div>
+</div>
+<script type="text/javascript" src="/js/echarts.min.js"></script>
+<script type="text/javascript">
+    let radarChart = echarts.init(document.getElementById('category-radar'));
+
+    
+
+    let option = {
+        title: {
+            left: 'center',
+            text: '文章分类雷达图',
+            textStyle: {
+                fontWeight: 500,
+                fontSize: 22
+            }
+        },
+        tooltip: {},
+        radar: {
+            name: {
+                textStyle: {
+                    color: '#3C4858'
+                }
+            },
+            indicator: [{"name":"Technology","max":6},{"name":"Paper Smash","max":6},{"name":"Machine Learning","max":6},{"name":"技术","max":6},{"name":"Coding","max":6},{"name":"Imbalanced Data Modeling","max":6},{"name":"Leetcode","max":6}],
+            nameGap: 5,
+            center: ['50%','55%'],
+            radius: '66%'
+        },
+        series: [{
+            type: 'radar',
+            color: ['#3ecf8e'],
+            itemStyle: {normal: {areaStyle: {type: 'default'}}},
+            data : [
+                {
+                    value : [5,3,1,1,1,1,1],
+                    name : 'categoryNumber'
+                }
+            ]
+        }]
+    };
+
+    radarChart.setOption(option);
+</script>
+
+      </div>
       
   <!-- 首页默认取最最新文章集 -->
   
@@ -315,55 +383,22 @@
           <i class="iconfont icon-text">
           </i>
         </div>
-        <img width="150" height="150" src="" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
+        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/hair/hair_thickness_01.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
       </a>
     </div>
     <h1 class="entry-title">
     <a href="/2019/12/29/Evalution%20of%20hair%20and%20scalp%20condition%20based%20on%20microscopy%20image%20analysis%20%E4%B9%8B%E5%A4%B4%E5%8F%91%E5%8E%9A%E5%BA%A6%E8%AE%A1%E7%AE%97%E9%97%AE%E9%A2%98/">
-    Evalution of hair and scalp condition based on microscopy image analysis 之头发厚度计算问题</a>
+    Evalution of hair and scalp condition based on microscopy image analysis | Hair Thickness</a>
     </h1>
     <div class="p-time">
       <i class="iconfont icon-time">
       </i>
     2019-12-29</div>
     <p>
-    </p>
+    Hair Thickness</p>
     <footer class="entry-footer">
       <div class="post-more">
         <a href="/2019/12/29/Evalution%20of%20hair%20and%20scalp%20condition%20based%20on%20microscopy%20image%20analysis%20%E4%B9%8B%E5%A4%B4%E5%8F%91%E5%8E%9A%E5%BA%A6%E8%AE%A1%E7%AE%97%E9%97%AE%E9%A2%98/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2019/12/28/Evalution%20of%20hair%20and%20scalp%20condition%20based%20on%20microscopy%20image%20analysis%20%E4%B9%8B%E5%A4%B4%E5%8F%91%E8%AE%A1%E6%95%B0%E9%97%AE%E9%A2%98/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2019/12/28/Evalution%20of%20hair%20and%20scalp%20condition%20based%20on%20microscopy%20image%20analysis%20%E4%B9%8B%E5%A4%B4%E5%8F%91%E8%AE%A1%E6%95%B0%E9%97%AE%E9%A2%98/">
-    Evalution of hair and scalp condition based on microscopy image analysis 之头发计数问题</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2019-12-28</div>
-    <p>
-    </p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2019/12/28/Evalution%20of%20hair%20and%20scalp%20condition%20based%20on%20microscopy%20image%20analysis%20%E4%B9%8B%E5%A4%B4%E5%8F%91%E8%AE%A1%E6%95%B0%E9%97%AE%E9%A2%98/">
           <i class="iconfont icon-caidan">
           </i>
         </a>
@@ -381,22 +416,55 @@
           <i class="iconfont icon-text">
           </i>
         </div>
-        <img width="150" height="150" src="https://static.2heng.xin/wp-content/uploads//2019/02/wallhaven-672007-1-1024x576.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
+        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/hair/hair_counting_01.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
       </a>
     </div>
     <h1 class="entry-title">
     <a href="/2019/12/28/An%20Unsupervised%20Hair%20Segmentation%20and%20Counting%20System%20in%20Microscopy%20Images%20%E4%B9%8B%E5%A4%B4%E5%8F%91%E8%AE%A1%E6%95%B0%E9%97%AE%E9%A2%98/">
-    An Unsupervised Hair Segmentation and Counting System in Microscopy Images 之头发计数问题</a>
+    An Unsupervised Hair Segmentation and Counting System in Microscopy Images | Hair Counting</a>
     </h1>
     <div class="p-time">
       <i class="iconfont icon-time">
       </i>
     2019-12-28</div>
     <p>
-    头发计数问题</p>
+    Hair Counting</p>
     <footer class="entry-footer">
       <div class="post-more">
         <a href="/2019/12/28/An%20Unsupervised%20Hair%20Segmentation%20and%20Counting%20System%20in%20Microscopy%20Images%20%E4%B9%8B%E5%A4%B4%E5%8F%91%E8%AE%A1%E6%95%B0%E9%97%AE%E9%A2%98/">
+          <i class="iconfont icon-caidan">
+          </i>
+        </a>
+      </div>
+    </footer>
+  </div>
+  <hr>
+</article>
+  
+    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
+  <div class="post-entry">
+    <div class="feature">
+      <a href="/2019/12/24/Evalution%20of%20hair%20and%20scalp%20condition%20based%20on%20microscopy%20image%20analysis%20%E4%B9%8B%E5%A4%B4%E5%8F%91%E8%AE%A1%E6%95%B0%E9%97%AE%E9%A2%98/">
+        <div class="overlay">
+          <i class="iconfont icon-text">
+          </i>
+        </div>
+        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/hair/hair_counting_02.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
+      </a>
+    </div>
+    <h1 class="entry-title">
+    <a href="/2019/12/24/Evalution%20of%20hair%20and%20scalp%20condition%20based%20on%20microscopy%20image%20analysis%20%E4%B9%8B%E5%A4%B4%E5%8F%91%E8%AE%A1%E6%95%B0%E9%97%AE%E9%A2%98/">
+    Evalution of hair and scalp condition based on microscopy image analysis -- Hair Counting</a>
+    </h1>
+    <div class="p-time">
+      <i class="iconfont icon-time">
+      </i>
+    2019-12-24</div>
+    <p>
+    Hair Counting</p>
+    <footer class="entry-footer">
+      <div class="post-more">
+        <a href="/2019/12/24/Evalution%20of%20hair%20and%20scalp%20condition%20based%20on%20microscopy%20image%20analysis%20%E4%B9%8B%E5%A4%B4%E5%8F%91%E8%AE%A1%E6%95%B0%E9%97%AE%E9%A2%98/">
           <i class="iconfont icon-caidan">
           </i>
         </a>
@@ -415,6 +483,110 @@
     
   </div>
 </div>
+
+<!-- 
+  
+    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
+  <div class="post-entry">
+    <div class="feature">
+      <a href="/2019/12/29/Evalution%20of%20hair%20and%20scalp%20condition%20based%20on%20microscopy%20image%20analysis%20%E4%B9%8B%E5%A4%B4%E5%8F%91%E5%8E%9A%E5%BA%A6%E8%AE%A1%E7%AE%97%E9%97%AE%E9%A2%98/">
+        <div class="overlay">
+          <i class="iconfont icon-text">
+          </i>
+        </div>
+        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/hair/hair_thickness_01.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
+      </a>
+    </div>
+    <h1 class="entry-title">
+    <a href="/2019/12/29/Evalution%20of%20hair%20and%20scalp%20condition%20based%20on%20microscopy%20image%20analysis%20%E4%B9%8B%E5%A4%B4%E5%8F%91%E5%8E%9A%E5%BA%A6%E8%AE%A1%E7%AE%97%E9%97%AE%E9%A2%98/">
+    Evalution of hair and scalp condition based on microscopy image analysis | Hair Thickness</a>
+    </h1>
+    <div class="p-time">
+      <i class="iconfont icon-time">
+      </i>
+    2019-12-29</div>
+    <p>
+    Hair Thickness</p>
+    <footer class="entry-footer">
+      <div class="post-more">
+        <a href="/2019/12/29/Evalution%20of%20hair%20and%20scalp%20condition%20based%20on%20microscopy%20image%20analysis%20%E4%B9%8B%E5%A4%B4%E5%8F%91%E5%8E%9A%E5%BA%A6%E8%AE%A1%E7%AE%97%E9%97%AE%E9%A2%98/">
+          <i class="iconfont icon-caidan">
+          </i>
+        </a>
+      </div>
+    </footer>
+  </div>
+  <hr>
+</article>
+  
+    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
+  <div class="post-entry">
+    <div class="feature">
+      <a href="/2019/12/28/An%20Unsupervised%20Hair%20Segmentation%20and%20Counting%20System%20in%20Microscopy%20Images%20%E4%B9%8B%E5%A4%B4%E5%8F%91%E8%AE%A1%E6%95%B0%E9%97%AE%E9%A2%98/">
+        <div class="overlay">
+          <i class="iconfont icon-text">
+          </i>
+        </div>
+        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/hair/hair_counting_01.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
+      </a>
+    </div>
+    <h1 class="entry-title">
+    <a href="/2019/12/28/An%20Unsupervised%20Hair%20Segmentation%20and%20Counting%20System%20in%20Microscopy%20Images%20%E4%B9%8B%E5%A4%B4%E5%8F%91%E8%AE%A1%E6%95%B0%E9%97%AE%E9%A2%98/">
+    An Unsupervised Hair Segmentation and Counting System in Microscopy Images | Hair Counting</a>
+    </h1>
+    <div class="p-time">
+      <i class="iconfont icon-time">
+      </i>
+    2019-12-28</div>
+    <p>
+    Hair Counting</p>
+    <footer class="entry-footer">
+      <div class="post-more">
+        <a href="/2019/12/28/An%20Unsupervised%20Hair%20Segmentation%20and%20Counting%20System%20in%20Microscopy%20Images%20%E4%B9%8B%E5%A4%B4%E5%8F%91%E8%AE%A1%E6%95%B0%E9%97%AE%E9%A2%98/">
+          <i class="iconfont icon-caidan">
+          </i>
+        </a>
+      </div>
+    </footer>
+  </div>
+  <hr>
+</article>
+  
+    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
+  <div class="post-entry">
+    <div class="feature">
+      <a href="/2019/12/24/Evalution%20of%20hair%20and%20scalp%20condition%20based%20on%20microscopy%20image%20analysis%20%E4%B9%8B%E5%A4%B4%E5%8F%91%E8%AE%A1%E6%95%B0%E9%97%AE%E9%A2%98/">
+        <div class="overlay">
+          <i class="iconfont icon-text">
+          </i>
+        </div>
+        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/hair/hair_counting_02.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
+      </a>
+    </div>
+    <h1 class="entry-title">
+    <a href="/2019/12/24/Evalution%20of%20hair%20and%20scalp%20condition%20based%20on%20microscopy%20image%20analysis%20%E4%B9%8B%E5%A4%B4%E5%8F%91%E8%AE%A1%E6%95%B0%E9%97%AE%E9%A2%98/">
+    Evalution of hair and scalp condition based on microscopy image analysis -- Hair Counting</a>
+    </h1>
+    <div class="p-time">
+      <i class="iconfont icon-time">
+      </i>
+    2019-12-24</div>
+    <p>
+    Hair Counting</p>
+    <footer class="entry-footer">
+      <div class="post-more">
+        <a href="/2019/12/24/Evalution%20of%20hair%20and%20scalp%20condition%20based%20on%20microscopy%20image%20analysis%20%E4%B9%8B%E5%A4%B4%E5%8F%91%E8%AE%A1%E6%95%B0%E9%97%AE%E9%A2%98/">
+          <i class="iconfont icon-caidan">
+          </i>
+        </a>
+      </div>
+    </footer>
+  </div>
+  <hr>
+</article>
+  
+
+ -->
     </div>    
     <div class="ins-search">
     <div class="ins-search-mask"></div>
@@ -565,7 +737,7 @@ $(document).ready(function() {
         <a href="/">
           <span class="faa-parent animated-hover">
             <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
-            Home
+            首页
           </span>
         </a>
         
@@ -575,7 +747,7 @@ $(document).ready(function() {
         <a href="/archives">
           <span class="faa-parent animated-hover">
             <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
-            Archive
+            归档
           </span>
         </a>
         
@@ -584,28 +756,28 @@ $(document).ready(function() {
               <li>
                 <a href="/categories/Technology/">
                   <i class="fa fa-code" aria-hidden="true"></i>
-                  Tech
+                  技术
                 </a>
               </li>
             
               <li>
                 <a href="/categories/Life/">
                   <i class="fa fa-file-text-o" aria-hidden="true"></i>
-                  Life
+                  生活
                 </a>
               </li>
             
               <li>
                 <a href="/categories/Thoughts/">
                   <i class="fa fa-commenting-o" aria-hidden="true"></i>
-                  Thoughts
+                  随想
                 </a>
               </li>
             
               <li>
                 <a href="/categories/Repost/">
                   <i class="fa fa-book" aria-hidden="true"></i>
-                  Repost
+                  转载
                 </a>
               </li>
             
@@ -617,7 +789,7 @@ $(document).ready(function() {
         <a href="javascript:;">
           <span class="faa-parent animated-hover">
             <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
-            List
+            清单
           </span>
         </a>
         
@@ -626,21 +798,28 @@ $(document).ready(function() {
               <li>
                 <a href="/tags/Reading/">
                   <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
-                  Reading
+                  悦读
                 </a>
               </li>
             
               <li>
                 <a href="/music/">
                   <i class="fa fa-headphones" aria-hidden="true"></i>
-                  Music
+                  音悦
                 </a>
               </li>
             
               <li>
                 <a href="/tags/Pictures/">
                   <i class="fa fa-photo" aria-hidden="true"></i>
-                  Pictures
+                  图集
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags/Cave/">
+                  <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                  Cave
                 </a>
               </li>
             
@@ -652,7 +831,7 @@ $(document).ready(function() {
         <a href="/comment/">
           <span class="faa-parent animated-hover">
             <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
-            comments
+            留言板
           </span>
         </a>
         
@@ -662,7 +841,7 @@ $(document).ready(function() {
         <a href="/links/">
           <span class="faa-parent animated-hover">
             <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
-            Friends
+            友人帐
           </span>
         </a>
         
@@ -672,7 +851,7 @@ $(document).ready(function() {
         <a href="/donate/">
           <span class="faa-parent animated-hover">
             <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
-            Donate
+            赞赏
           </span>
         </a>
         
@@ -682,7 +861,7 @@ $(document).ready(function() {
         <a href="/about/">
           <span class="faa-parent animated-hover">
             <i class="fa  fa-meetup" aria-hidden="true"></i>
-            About me
+            关于我
           </span>
         </a>
         

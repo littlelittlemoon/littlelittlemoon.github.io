@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://littlelittlemoon.github.io/"/>
-  <updated>2020-04-06T16:27:28.272Z</updated>
+  <updated>2020-04-08T13:43:12.887Z</updated>
   <id>https://littlelittlemoon.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://littlelittlemoon.github.io/2020/04/06/Credit%20Card%20Fraud%20Detection/"/>
     <id>https://littlelittlemoon.github.io/2020/04/06/Credit%20Card%20Fraud%20Detection/</id>
     <published>2020-04-06T13:53:06.000Z</published>
-    <updated>2020-04-06T16:27:28.272Z</updated>
+    <updated>2020-04-08T13:43:12.887Z</updated>
     
     <summary type="html">
     
@@ -36,9 +36,11 @@
     </summary>
     
     
-      <category term="Machine Learning Game" scheme="https://littlelittlemoon.github.io/categories/Machine-Learning-Game/"/>
+      <category term="Technology" scheme="https://littlelittlemoon.github.io/categories/Technology/"/>
     
-      <category term="Imbalanced Data Modeling" scheme="https://littlelittlemoon.github.io/categories/Machine-Learning-Game/Imbalanced-Data-Modeling/"/>
+      <category term="Machine Learning" scheme="https://littlelittlemoon.github.io/categories/Technology/Machine-Learning/"/>
+    
+      <category term="Imbalanced Data Modeling" scheme="https://littlelittlemoon.github.io/categories/Technology/Machine-Learning/Imbalanced-Data-Modeling/"/>
     
     
       <category term="LDA" scheme="https://littlelittlemoon.github.io/tags/LDA/"/>
@@ -47,9 +49,9 @@
     
       <category term="LR" scheme="https://littlelittlemoon.github.io/tags/LR/"/>
     
-      <category term="Imbalanced Data modeling" scheme="https://littlelittlemoon.github.io/tags/Imbalanced-Data-modeling/"/>
+      <category term="Imbalanced Data Modeling" scheme="https://littlelittlemoon.github.io/tags/Imbalanced-Data-Modeling/"/>
     
-      <category term="Machine learning" scheme="https://littlelittlemoon.github.io/tags/Machine-learning/"/>
+      <category term="Machine Learning" scheme="https://littlelittlemoon.github.io/tags/Machine-Learning/"/>
     
       <category term="Classify" scheme="https://littlelittlemoon.github.io/tags/Classify/"/>
     
@@ -60,7 +62,7 @@
     <link href="https://littlelittlemoon.github.io/2020/04/01/Leetcode%20Note/"/>
     <id>https://littlelittlemoon.github.io/2020/04/01/Leetcode%20Note/</id>
     <published>2020-04-01T01:51:55.000Z</published>
-    <updated>2020-04-06T16:27:28.273Z</updated>
+    <updated>2020-04-08T13:49:57.609Z</updated>
     
     <summary type="html">
     
@@ -76,9 +78,11 @@
     </summary>
     
     
-      <category term="Coding Game" scheme="https://littlelittlemoon.github.io/categories/Coding-Game/"/>
+      <category term="Technology" scheme="https://littlelittlemoon.github.io/categories/Technology/"/>
     
-      <category term="Leetcode" scheme="https://littlelittlemoon.github.io/categories/Coding-Game/Leetcode/"/>
+      <category term="Coding" scheme="https://littlelittlemoon.github.io/categories/Technology/Coding/"/>
+    
+      <category term="Leetcode" scheme="https://littlelittlemoon.github.io/categories/Technology/Coding/Leetcode/"/>
     
     
       <category term="Leetcode" scheme="https://littlelittlemoon.github.io/tags/Leetcode/"/>
@@ -90,104 +94,98 @@
   </entry>
   
   <entry>
-    <title>Evalution of hair and scalp condition based on microscopy image analysis 之头发厚度计算问题</title>
+    <title>Evalution of hair and scalp condition based on microscopy image analysis | Hair Thickness</title>
     <link href="https://littlelittlemoon.github.io/2019/12/29/Evalution%20of%20hair%20and%20scalp%20condition%20based%20on%20microscopy%20image%20analysis%20%E4%B9%8B%E5%A4%B4%E5%8F%91%E5%8E%9A%E5%BA%A6%E8%AE%A1%E7%AE%97%E9%97%AE%E9%A2%98/"/>
     <id>https://littlelittlemoon.github.io/2019/12/29/Evalution%20of%20hair%20and%20scalp%20condition%20based%20on%20microscopy%20image%20analysis%20%E4%B9%8B%E5%A4%B4%E5%8F%91%E5%8E%9A%E5%BA%A6%E8%AE%A1%E7%AE%97%E9%97%AE%E9%A2%98/</id>
-    <published>2019-12-29T15:51:27.000Z</published>
-    <updated>2020-04-06T16:27:28.273Z</updated>
+    <published>2019-12-29T13:21:24.000Z</published>
+    <updated>2020-04-08T13:47:33.961Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;&lt;a href=&quot;https://ieeexplore.ieee.org/document/7883708&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Paper: Evalution of hair and scalp condition based
-        
-      
+      Hair Thickness
     
     </summary>
     
     
-      <category term="Paper Game" scheme="https://littlelittlemoon.github.io/categories/Paper-Game/"/>
+      <category term="Technology" scheme="https://littlelittlemoon.github.io/categories/Technology/"/>
     
-      <category term="Smash" scheme="https://littlelittlemoon.github.io/categories/Paper-Game/Smash/"/>
-    
-    
-      <category term="图像处理" scheme="https://littlelittlemoon.github.io/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
-    
-      <category term="线检测" scheme="https://littlelittlemoon.github.io/tags/%E7%BA%BF%E6%A3%80%E6%B5%8B/"/>
-    
-      <category term="头发厚度计算问题" scheme="https://littlelittlemoon.github.io/tags/%E5%A4%B4%E5%8F%91%E5%8E%9A%E5%BA%A6%E8%AE%A1%E7%AE%97%E9%97%AE%E9%A2%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Evalution of hair and scalp condition based on microscopy image analysis 之头发计数问题</title>
-    <link href="https://littlelittlemoon.github.io/2019/12/28/Evalution%20of%20hair%20and%20scalp%20condition%20based%20on%20microscopy%20image%20analysis%20%E4%B9%8B%E5%A4%B4%E5%8F%91%E8%AE%A1%E6%95%B0%E9%97%AE%E9%A2%98/"/>
-    <id>https://littlelittlemoon.github.io/2019/12/28/Evalution%20of%20hair%20and%20scalp%20condition%20based%20on%20microscopy%20image%20analysis%20%E4%B9%8B%E5%A4%B4%E5%8F%91%E8%AE%A1%E6%95%B0%E9%97%AE%E9%A2%98/</id>
-    <published>2019-12-28T15:58:27.000Z</published>
-    <updated>2020-04-06T16:27:28.273Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&lt;a href=&quot;https://ieeexplore.ieee.org/document/7883708&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Paper: Evalution of hair and scalp condition based
-        
-      
-    
-    </summary>
+      <category term="Paper Smash" scheme="https://littlelittlemoon.github.io/categories/Technology/Paper-Smash/"/>
     
     
-      <category term="Paper Game" scheme="https://littlelittlemoon.github.io/categories/Paper-Game/"/>
+      <category term="Digital Image Processing" scheme="https://littlelittlemoon.github.io/tags/Digital-Image-Processing/"/>
     
-      <category term="Smash" scheme="https://littlelittlemoon.github.io/categories/Paper-Game/Smash/"/>
+      <category term="Line Detection" scheme="https://littlelittlemoon.github.io/tags/Line-Detection/"/>
     
+      <category term="Paper" scheme="https://littlelittlemoon.github.io/tags/Paper/"/>
     
-      <category term="头发计数问题" scheme="https://littlelittlemoon.github.io/tags/%E5%A4%B4%E5%8F%91%E8%AE%A1%E6%95%B0%E9%97%AE%E9%A2%98/"/>
-    
-      <category term="图像处理" scheme="https://littlelittlemoon.github.io/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
-    
-      <category term="线检测" scheme="https://littlelittlemoon.github.io/tags/%E7%BA%BF%E6%A3%80%E6%B5%8B/"/>
+      <category term="Hair Thickness" scheme="https://littlelittlemoon.github.io/tags/Hair-Thickness/"/>
     
   </entry>
   
   <entry>
-    <title>An Unsupervised Hair Segmentation and Counting System in Microscopy Images 之头发计数问题</title>
+    <title>An Unsupervised Hair Segmentation and Counting System in Microscopy Images | Hair Counting</title>
     <link href="https://littlelittlemoon.github.io/2019/12/28/An%20Unsupervised%20Hair%20Segmentation%20and%20Counting%20System%20in%20Microscopy%20Images%20%E4%B9%8B%E5%A4%B4%E5%8F%91%E8%AE%A1%E6%95%B0%E9%97%AE%E9%A2%98/"/>
     <id>https://littlelittlemoon.github.io/2019/12/28/An%20Unsupervised%20Hair%20Segmentation%20and%20Counting%20System%20in%20Microscopy%20Images%20%E4%B9%8B%E5%A4%B4%E5%8F%91%E8%AE%A1%E6%95%B0%E9%97%AE%E9%A2%98/</id>
     <published>2019-12-28T15:51:27.000Z</published>
-    <updated>2020-04-07T03:09:32.148Z</updated>
+    <updated>2020-04-08T13:47:26.250Z</updated>
     
     <summary type="html">
     
-      头发计数问题
+      Hair Counting
     
     </summary>
     
     
-      <category term="Paper Game" scheme="https://littlelittlemoon.github.io/categories/Paper-Game/"/>
+      <category term="Technology" scheme="https://littlelittlemoon.github.io/categories/Technology/"/>
     
-      <category term="Smash" scheme="https://littlelittlemoon.github.io/categories/Paper-Game/Smash/"/>
+      <category term="Paper Smash" scheme="https://littlelittlemoon.github.io/categories/Technology/Paper-Smash/"/>
     
     
-      <category term="头发计数问题" scheme="https://littlelittlemoon.github.io/tags/%E5%A4%B4%E5%8F%91%E8%AE%A1%E6%95%B0%E9%97%AE%E9%A2%98/"/>
+      <category term="Hair Counting" scheme="https://littlelittlemoon.github.io/tags/Hair-Counting/"/>
     
-      <category term="图像处理" scheme="https://littlelittlemoon.github.io/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="Digital Image Processing" scheme="https://littlelittlemoon.github.io/tags/Digital-Image-Processing/"/>
     
-      <category term="线检测" scheme="https://littlelittlemoon.github.io/tags/%E7%BA%BF%E6%A3%80%E6%B5%8B/"/>
+      <category term="Line Detection" scheme="https://littlelittlemoon.github.io/tags/Line-Detection/"/>
+    
+      <category term="Paper" scheme="https://littlelittlemoon.github.io/tags/Paper/"/>
     
   </entry>
   
   <entry>
-    <title>Kayleen&#39;s Space</title>
-    <link href="https://littlelittlemoon.github.io/2019/12/12/Hexo-Theme-Sakura/"/>
-    <id>https://littlelittlemoon.github.io/2019/12/12/Hexo-Theme-Sakura/</id>
-    <published>2019-12-12T14:16:01.000Z</published>
-    <updated>2020-04-07T12:45:14.026Z</updated>
+    <title>Evalution of hair and scalp condition based on microscopy image analysis -- Hair Counting</title>
+    <link href="https://littlelittlemoon.github.io/2019/12/24/Evalution%20of%20hair%20and%20scalp%20condition%20based%20on%20microscopy%20image%20analysis%20%E4%B9%8B%E5%A4%B4%E5%8F%91%E8%AE%A1%E6%95%B0%E9%97%AE%E9%A2%98/"/>
+    <id>https://littlelittlemoon.github.io/2019/12/24/Evalution%20of%20hair%20and%20scalp%20condition%20based%20on%20microscopy%20image%20analysis%20%E4%B9%8B%E5%A4%B4%E5%8F%91%E8%AE%A1%E6%95%B0%E9%97%AE%E9%A2%98/</id>
+    <published>2019-12-24T12:35:33.000Z</published>
+    <updated>2020-04-08T13:47:18.313Z</updated>
+    
+    <summary type="html">
+    
+      Hair Counting
+    
+    </summary>
+    
+    
+      <category term="Technology" scheme="https://littlelittlemoon.github.io/categories/Technology/"/>
+    
+      <category term="Paper Smash" scheme="https://littlelittlemoon.github.io/categories/Technology/Paper-Smash/"/>
+    
+    
+      <category term="Hair Counting" scheme="https://littlelittlemoon.github.io/tags/Hair-Counting/"/>
+    
+      <category term="Digital Image Processing" scheme="https://littlelittlemoon.github.io/tags/Digital-Image-Processing/"/>
+    
+      <category term="Line Detection" scheme="https://littlelittlemoon.github.io/tags/Line-Detection/"/>
+    
+      <category term="Paper" scheme="https://littlelittlemoon.github.io/tags/Paper/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo-Theme-Sakura</title>
+    <link href="https://littlelittlemoon.github.io/2018/12/12/Hexo-Theme-Sakura/"/>
+    <id>https://littlelittlemoon.github.io/2018/12/12/Hexo-Theme-Sakura/</id>
+    <published>2018-12-12T14:16:01.000Z</published>
+    <updated>2020-04-08T13:10:17.809Z</updated>
     
     <summary type="html">
     
