@@ -335,30 +335,27 @@
         
         <div class="entry-content">
           <p><a href="https://ieeexplore.ieee.org/document/7883708" target="_blank" rel="noopener">Paper: Evalution of hair and scalp condition based on microscopy image analysis</a></p>
-<h2 id="计数方法"><a class="markdownIt-Anchor" href="#计数方法"></a> 计数方法</h2>
+<h2 id="计数方法">计数方法</h2>
 <blockquote>
-<p>典型的便携式显微镜相机通常覆盖5mm x 5mm的矩形。因此，如果一根头发长于5毫米，则它必须超出矩形。基于此观察，我们对毛发计数有两个假设：</p>
-<ol>
-<li>每根头发由一个起点和一个终点表示;</li>
-<li>起点位于矩形内部，终点位于图像的边界上。</li>
-</ol>
+<p>典型的便携式显微镜相机通常覆盖5mm x 5mm的矩形。因此，如果一根头发长于5毫米，则它必须超出矩形。基于此观察，我们对毛发计数有两个假设： 1. 每根头发由一个起点和一个终点表示; 2. 起点位于矩形内部，终点位于图像的边界上。</p>
 </blockquote>
 <p><strong>头发计数</strong>：使用预处理阶段获得的<strong>骨架图像</strong>，基于上述两点假设，如果头发的骨架线的<strong>一个点在矩形内而另一点在边界上</strong>，则我们<strong>对头发进行计数</strong>。</p>
-<p><img src="../images/EOHASCBOMIA_hair_thickness_and_counting/fig_3_Example_of_hair_counting.png" alt="fig_3_Example_of_hair_counting" /></p>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/images/EOHASCBOMIA_hair_thickness_and_counting/fig_3_Example_of_hair_counting.png" alt="" /><figcaption>fig_3_Example_of_hair_counting</figcaption>
+</figure>
 <p>图3示出了头发计数的示例。在图中，计数的像素用红色点标记，并且这些点叠加在原始图像上。然后，可以<strong>通过将计数的像素数除以图像尺寸来计算头发密度</strong>。</p>
-<h2 id="实验结果"><a class="markdownIt-Anchor" href="#实验结果"></a> 实验结果</h2>
-<p>为了评估头发计数算法，我们对200个头皮图像的数据集进行了实验。 表2列出了根据我们的算法计算出的实际毛发数与估计毛发数之间的精确度/召回率。 <strong>平均准确度和召回率分别为91.35％和92.01％</strong>。即使性能相当好，精度/调用率也可以进一步提高。<strong>错误的一个关键原因是预处理和原始图像的质量</strong>。在我们的实验中，一旦图像中出现模糊点，就不可能在预处理步骤中消除所有噪音。因此，考虑到相机噪声，精度非常好。 同样，我们测试了毛孔计数算法，结果显示平均准确率约为90％。<br />
-<img src="../images/EOHASCBOMIA_hair_thickness_and_counting/table_2_PRECISION_AND_RECALL_OF_HAIR_RECOGNITION.png" alt="table_2_PRECISION_AND_RECALL_OF_HAIR_RECOGNITION" /></p>
-<h2 id="总结"><a class="markdownIt-Anchor" href="#总结"></a> 总结</h2>
-<h3 id="计数思路"><a class="markdownIt-Anchor" href="#计数思路"></a> 计数思路</h3>
-<ol>
+<h2 id="实验结果">实验结果</h2>
+<p>为了评估头发计数算法，我们对200个头皮图像的数据集进行了实验。 表2列出了根据我们的算法计算出的实际毛发数与估计毛发数之间的精确度/召回率。 <strong>平均准确度和召回率分别为91.35％和92.01％</strong>。即使性能相当好，精度/调用率也可以进一步提高。<strong>错误的一个关键原因是预处理和原始图像的质量</strong>。在我们的实验中，一旦图像中出现模糊点，就不可能在预处理步骤中消除所有噪音。因此，考虑到相机噪声，精度非常好。 同样，我们测试了毛孔计数算法，结果显示平均准确率约为90％。 <img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/images/EOHASCBOMIA_hair_thickness_and_counting/table_2_PRECISION_AND_RECALL_OF_HAIR_RECOGNITION.png" alt="table_2_PRECISION_AND_RECALL_OF_HAIR_RECOGNITION" /></p>
+<h2 id="总结">总结</h2>
+<h3 id="计数思路">计数思路</h3>
+<ol type="1">
 <li>将图片边缘看作一矩形；</li>
 <li>对满足“<strong>头发由一个起点和一个终点表示，且起点位于矩形内部，终点位于图像的边界上</strong>”条件的头发进行计数；</li>
 <li>使用通过细化操作获得的<strong>头发骨架图像</strong>对满足条件的头发进行计数；</li>
 <li>通过将<strong>计数的像素数</strong>除以<strong>图像尺寸</strong>来计算<strong>头发密度</strong>。</li>
 </ol>
-<h1 id="参考文献"><a class="markdownIt-Anchor" href="#参考文献"></a> 参考文献</h1>
-<ol>
+<h1 id="参考文献">参考文献</h1>
+<ol type="1">
 <li><a href="https://ieeexplore.ieee.org/document/7883708" target="_blank" rel="noopener">Evalution of hair and scalp condition based on microscopy image analysis</a></li>
 </ol>
 
