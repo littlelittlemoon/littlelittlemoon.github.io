@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://littlelittlemoon.github.io/"/>
-  <updated>2020-04-08T14:07:36.813Z</updated>
+  <updated>2020-04-08T14:18:28.640Z</updated>
   <id>https://littlelittlemoon.github.io/</id>
   
   <author>
@@ -15,47 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>Fraud Detection | Imbalanced data modeling</title>
-    <link href="https://littlelittlemoon.github.io/2020/04/06/Credit%20Card%20Fraud%20Detection/"/>
-    <id>https://littlelittlemoon.github.io/2020/04/06/Credit%20Card%20Fraud%20Detection/</id>
-    <published>2020-04-06T13:53:06.000Z</published>
-    <updated>2020-04-08T14:07:36.813Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;lda-qda-and-lr-for-fraud-detection-imbalanced-data-modeling&quot;&gt;LDA, QDA and LR for fraud detection | Imbalanced data
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Technology" scheme="https://littlelittlemoon.github.io/categories/Technology/"/>
-    
-      <category term="Machine Learning" scheme="https://littlelittlemoon.github.io/categories/Technology/Machine-Learning/"/>
-    
-      <category term="Imbalanced Data Modeling" scheme="https://littlelittlemoon.github.io/categories/Technology/Machine-Learning/Imbalanced-Data-Modeling/"/>
-    
-    
-      <category term="LDA" scheme="https://littlelittlemoon.github.io/tags/LDA/"/>
-    
-      <category term="QDA" scheme="https://littlelittlemoon.github.io/tags/QDA/"/>
-    
-      <category term="LR" scheme="https://littlelittlemoon.github.io/tags/LR/"/>
-    
-      <category term="Imbalanced Data Modeling" scheme="https://littlelittlemoon.github.io/tags/Imbalanced-Data-Modeling/"/>
-    
-      <category term="Machine Learning" scheme="https://littlelittlemoon.github.io/tags/Machine-Learning/"/>
-    
-      <category term="Classify" scheme="https://littlelittlemoon.github.io/tags/Classify/"/>
-    
-  </entry>
   
   <entry>
     <title>Leetcode Note in Apri 2020 | part 1 |day 01-07</title>
@@ -95,11 +54,52 @@
   </entry>
   
   <entry>
+    <title>Fraud Detection | Imbalanced data modeling</title>
+    <link href="https://littlelittlemoon.github.io/2020/03/21/Credit%20Card%20Fraud%20Detection/"/>
+    <id>https://littlelittlemoon.github.io/2020/03/21/Credit%20Card%20Fraud%20Detection/</id>
+    <published>2020-03-21T13:53:06.000Z</published>
+    <updated>2020-04-09T07:01:31.447Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;lda-qda-and-lr-for-fraud-detection-imbalanced-data-modeling&quot;&gt;LDA, QDA and LR for fraud detection | Imbalanced data
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Technology" scheme="https://littlelittlemoon.github.io/categories/Technology/"/>
+    
+      <category term="Machine Learning" scheme="https://littlelittlemoon.github.io/categories/Technology/Machine-Learning/"/>
+    
+      <category term="Imbalanced Data Modeling" scheme="https://littlelittlemoon.github.io/categories/Technology/Machine-Learning/Imbalanced-Data-Modeling/"/>
+    
+    
+      <category term="LDA" scheme="https://littlelittlemoon.github.io/tags/LDA/"/>
+    
+      <category term="QDA" scheme="https://littlelittlemoon.github.io/tags/QDA/"/>
+    
+      <category term="LR" scheme="https://littlelittlemoon.github.io/tags/LR/"/>
+    
+      <category term="Imbalanced Data Modeling" scheme="https://littlelittlemoon.github.io/tags/Imbalanced-Data-Modeling/"/>
+    
+      <category term="Machine Learning" scheme="https://littlelittlemoon.github.io/tags/Machine-Learning/"/>
+    
+      <category term="Classify" scheme="https://littlelittlemoon.github.io/tags/Classify/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Evalution of hair and scalp condition based on microscopy image analysis | Hair Thickness - part 1</title>
     <link href="https://littlelittlemoon.github.io/2019/12/29/Evalution%20of%20hair%20and%20scalp%20condition%20based%20on%20microscopy%20image%20analysis%20%20|%20Hair%20Thickness%20-%201/"/>
     <id>https://littlelittlemoon.github.io/2019/12/29/Evalution%20of%20hair%20and%20scalp%20condition%20based%20on%20microscopy%20image%20analysis%20%20|%20Hair%20Thickness%20-%201/</id>
     <published>2019-12-29T13:21:24.000Z</published>
-    <updated>2020-04-08T14:15:54.128Z</updated>
+    <updated>2020-04-09T07:00:25.144Z</updated>
     
     <summary type="html">
     
@@ -124,11 +124,11 @@
   </entry>
   
   <entry>
-    <title>An Unsupervised Hair Segmentation and Counting System in Microscopy Images | Hair Counting - part 1</title>
-    <link href="https://littlelittlemoon.github.io/2019/12/28/An%20Unsupervised%20Hair%20Segmentation%20and%20Counting%20System%20in%20Microscopy%20Images%20|%20Hair%20Counting%20-%201%20/"/>
-    <id>https://littlelittlemoon.github.io/2019/12/28/An%20Unsupervised%20Hair%20Segmentation%20and%20Counting%20System%20in%20Microscopy%20Images%20|%20Hair%20Counting%20-%201%20/</id>
+    <title>An Unsupervised Hair Segmentation and Counting System in Microscopy Images | Hair Counting - part 2</title>
+    <link href="https://littlelittlemoon.github.io/2019/12/28/An%20Unsupervised%20Hair%20Segmentation%20and%20Counting%20System%20in%20Microscopy%20Images%20|%20Hair%20Counting%20-%202/"/>
+    <id>https://littlelittlemoon.github.io/2019/12/28/An%20Unsupervised%20Hair%20Segmentation%20and%20Counting%20System%20in%20Microscopy%20Images%20|%20Hair%20Counting%20-%202/</id>
     <published>2019-12-28T15:51:27.000Z</published>
-    <updated>2020-04-08T14:15:37.117Z</updated>
+    <updated>2020-04-09T07:00:27.098Z</updated>
     
     <summary type="html">
     
@@ -153,11 +153,11 @@
   </entry>
   
   <entry>
-    <title>Evalution of hair and scalp condition based on microscopy image analysis | Hair Counting - part 2</title>
-    <link href="https://littlelittlemoon.github.io/2019/12/24/Evalution%20of%20hair%20and%20scalp%20condition%20based%20on%20microscopy%20image%20analysis%20%20|%20Hair%20Counting%20-%202/"/>
-    <id>https://littlelittlemoon.github.io/2019/12/24/Evalution%20of%20hair%20and%20scalp%20condition%20based%20on%20microscopy%20image%20analysis%20%20|%20Hair%20Counting%20-%202/</id>
+    <title>Evalution of hair and scalp condition based on microscopy image analysis | Hair Counting - part 1</title>
+    <link href="https://littlelittlemoon.github.io/2019/12/24/Evalution%20of%20hair%20and%20scalp%20condition%20based%20on%20microscopy%20image%20analysis%20%20|%20Hair%20Counting%20-%201/"/>
+    <id>https://littlelittlemoon.github.io/2019/12/24/Evalution%20of%20hair%20and%20scalp%20condition%20based%20on%20microscopy%20image%20analysis%20%20|%20Hair%20Counting%20-%201/</id>
     <published>2019-12-24T12:35:33.000Z</published>
-    <updated>2020-04-09T05:13:32.364Z</updated>
+    <updated>2020-04-09T07:00:21.540Z</updated>
     
     <summary type="html">
     
