@@ -334,30 +334,24 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h1 id="python"><a class="markdownIt-Anchor" href="#python"></a> python</h1>
-<h2 id="xor异或"><a class="markdownIt-Anchor" href="#xor异或"></a> XOR（异或）</h2>
-<h3 id="finding-sigle-number-in-a-integer-list"><a class="markdownIt-Anchor" href="#finding-sigle-number-in-a-integer-list"></a> Finding sigle number in a integer list</h3>
+          <h1 id="python">python</h1>
+<h2 id="xor异或">XOR（异或）</h2>
+<h3 id="finding-sigle-number-in-a-integer-list">Finding sigle number in a integer list</h3>
 <blockquote>
-<p>Given a non-empty array of integers, every element appears twice except for one. Find that single one.<br />
-<strong>Note</strong>:<br />
-Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?</p>
-<blockquote>
-<p><strong>Example:</strong><br />
-<strong>Input:</strong> [4,1,2,1,2]<br />
+<p>Given a non-empty array of integers, every element appears twice except for one. Find that single one. <strong>Note</strong>:<br />
+Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory? &gt; <strong>Example:</strong><br />
+&gt; <strong>Input:</strong> [4,1,2,1,2]<br />
 <strong>Output:</strong> 4</p>
 </blockquote>
-</blockquote>
-<h4 id="my-solutions-tuple-list"><a class="markdownIt-Anchor" href="#my-solutions-tuple-list"></a> my solutions: tuple + list</h4>
+<h4 id="my-solutions-tuple-list">my solutions: tuple + list</h4>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">singleNumber</span><span class="hljs-params">(self, nums: List[int])</span> -&gt; int:</span><br>        <span class="hljs-comment"># store the count of positive number</span><br>        p_count = [<span class="hljs-number">0</span>] * (max(tuple(nums)) + <span class="hljs-number">1</span>)<br>        <br>        <span class="hljs-comment"># store the positive number</span><br>        p_nums = ()<br>        <br>        <span class="hljs-comment"># store the count of negative number</span><br>        n_count = [<span class="hljs-number">0</span>] * (abs(min(tuple(nums))) + <span class="hljs-number">1</span>)<br>        <br>        <span class="hljs-comment"># store the negative number</span><br>        n_nums = ()<br>        <br>        <span class="hljs-comment"># counting</span><br>        <span class="hljs-keyword">for</span> num <span class="hljs-keyword">in</span> nums:<br>            <span class="hljs-keyword">if</span> num &gt;= <span class="hljs-number">0</span>:<br>                p_nums = p_nums + (num, )<br>                p_count[num] = p_count[num] + <span class="hljs-number">1</span><br>            <span class="hljs-keyword">else</span>:<br>                n_nums = n_nums + (num, )<br>                n_count[abs(num)] = n_count[abs(num)] + <span class="hljs-number">1</span><br>        <br>        <span class="hljs-comment"># find the sigle number</span><br>        <span class="hljs-keyword">for</span> num <span class="hljs-keyword">in</span> p_nums:<br>            <span class="hljs-keyword">if</span> p_count[num] == <span class="hljs-number">1</span>:<br>                <span class="hljs-keyword">return</span> num<br>        <span class="hljs-keyword">for</span> num <span class="hljs-keyword">in</span> n_nums:<br>            <span class="hljs-keyword">if</span> n_count[abs(num)] == <span class="hljs-number">1</span>:<br>                <span class="hljs-keyword">return</span> num<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">None</span><br></code></pre></td></tr></table></figure>
 <ul>
 <li><strong>Space complexity： O(n)</strong></li>
 <li><strong>time complexity： O(n)</strong></li>
 </ul>
-<h4 id="optimization-using-xor"><a class="markdownIt-Anchor" href="#optimization-using-xor"></a> optimization using XOR</h4>
+<h4 id="optimization-using-xor">optimization using XOR</h4>
 <blockquote>
-<p>The most crucial trick here is to recognize that <strong>if you XOR any same number together, you cancel it out (=0).</strong></p>
-<blockquote>
-<p><strong>Explanation</strong>:<br />
+<p>The most crucial trick here is to recognize that <strong>if you XOR any same number together, you cancel it out (=0).</strong> &gt; <strong>Explanation</strong>:<br />
 nums = [2, 4, 5, 4, 3, 5, 2]<br />
 XORing everything together<br />
 = 2 ^ 4 ^ 5 ^ 4 ^ 3 ^ 5 ^ 2<br />
@@ -365,78 +359,69 @@ XORing everything together<br />
 = 0 ^ 0 ^0 ^ 3<br />
 = 3</p>
 </blockquote>
-</blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">singleNumber</span><span class="hljs-params">(self, nums: List[int])</span> -&gt; int:</span><br>        <span class="hljs-keyword">return</span> reduce(<span class="hljs-keyword">lambda</span> x, y: x^y, nums, <span class="hljs-number">0</span>)<br></code></pre></td></tr></table></figure>
 <ul>
 <li><strong>Space complexity： O(1)</strong></li>
 <li><strong>time complexity： O(n)</strong></li>
 </ul>
-<h2 id="reduce"><a class="markdownIt-Anchor" href="#reduce"></a> Reduce</h2>
+<h2 id="reduce">Reduce</h2>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">list(map(str, [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>]))<br><span class="hljs-comment"># output: ['1', '2', '3', '4', '5', '6', '7', '8', '9']</span><br></code></pre></td></tr></table></figure>
-<h2 id="map"><a class="markdownIt-Anchor" href="#map"></a> Map</h2>
+<h2 id="map">Map</h2>
 <blockquote>
 <p>reduce(f, [x1, x2, x3, x4]) = f(f(f(x1, x2), x3), x4)</p>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># convert string to integer</span><br><span class="hljs-keyword">from</span> functools <span class="hljs-keyword">import</span> reduce<br><br>DIGITS = &#123;<span class="hljs-string">'0'</span>: <span class="hljs-number">0</span>, <span class="hljs-string">'1'</span>: <span class="hljs-number">1</span>, <span class="hljs-string">'2'</span>: <span class="hljs-number">2</span>, <span class="hljs-string">'3'</span>: <span class="hljs-number">3</span>, <span class="hljs-string">'4'</span>: <span class="hljs-number">4</span>, <span class="hljs-string">'5'</span>: <span class="hljs-number">5</span>, <span class="hljs-string">'6'</span>: <span class="hljs-number">6</span>, <span class="hljs-string">'7'</span>: <span class="hljs-number">7</span>, <span class="hljs-string">'8'</span>: <span class="hljs-number">8</span>, <span class="hljs-string">'9'</span>: <span class="hljs-number">9</span>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">char2num</span><span class="hljs-params">(s)</span>:</span><br>    <span class="hljs-keyword">return</span> DIGITS[s]<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">str2int</span><span class="hljs-params">(s)</span>:</span><br>    <span class="hljs-keyword">return</span> reduce(<span class="hljs-keyword">lambda</span> x, y: x * <span class="hljs-number">10</span> + y, map(char2num, s))<br></code></pre></td></tr></table></figure>
-<h2 id="dictionary-tuple"><a class="markdownIt-Anchor" href="#dictionary-tuple"></a> Dictionary &amp; Tuple</h2>
-<h3 id="group-anagrams"><a class="markdownIt-Anchor" href="#group-anagrams"></a> Group Anagrams</h3>
+<h2 id="dictionary-tuple">Dictionary &amp; Tuple</h2>
+<h3 id="group-anagrams">Group Anagrams</h3>
 <blockquote>
 <p>Given an array of strings, group anagrams together.<br />
-<strong>Example:</strong></p>
-<blockquote>
-<p><strong>Input:</strong> [“eat”, “tea”, “tan”, “ate”, “nat”, “bat”],<br />
-<strong>Output:</strong><br />
-[<br />
-[“ate”,“eat”,“tea”],<br />
-[“nat”,“tan”],<br />
-[“bat”]<br />
+<strong>Example:</strong> &gt; <strong>Input:</strong> ["eat", "tea", "tan", "ate", "nat", "bat"],<br />
+<strong>Output:</strong> [<br />
+["ate","eat","tea"],<br />
+["nat","tan"],<br />
+["bat"]<br />
 ]</p>
 </blockquote>
-</blockquote>
-<h4 id="my-bad-answer"><a class="markdownIt-Anchor" href="#my-bad-answer"></a> My bad answer</h4>
+<h4 id="my-bad-answer">My bad answer</h4>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">groupAnagrams</span><span class="hljs-params">(self, strs: List[str])</span> -&gt; List[List[str]]:</span><br>        group_list = []<br>        group_list.append([strs[<span class="hljs-number">0</span>]])<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>, len(strs)):<br>            sorted_str = sorted(strs[i])<br>            <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> range(<span class="hljs-number">0</span>, len(group_list)):<br>                sorted_comp_str = sorted(group_list[j][<span class="hljs-number">0</span>])<br>                <span class="hljs-keyword">if</span> sorted_str == sorted_comp_str:<br>                    group_list[j].append(strs[i])<br>                    <span class="hljs-keyword">break</span><br>                <span class="hljs-keyword">if</span> j == len(group_list) - <span class="hljs-number">1</span>:<br>                    group_list.append([strs[i]])<br>                    <span class="hljs-keyword">break</span><br>            <br>        <span class="hljs-keyword">return</span> group_list<br></code></pre></td></tr></table></figure>
 <p><strong>Result:</strong> Time Limit Exceeded</p>
-<h4 id="nice-answer-with-dictionary-and-tuple"><a class="markdownIt-Anchor" href="#nice-answer-with-dictionary-and-tuple"></a> Nice answer with dictionary and tuple</h4>
+<h4 id="nice-answer-with-dictionary-and-tuple">Nice answer with dictionary and tuple</h4>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">groupAnagrams</span><span class="hljs-params">(self, strs: List[str])</span> -&gt; List[List[str]]:</span><br>        <span class="hljs-comment"># create a null dictionary</span><br>        group_list = &#123;&#125;<br>        <br>        <span class="hljs-keyword">for</span> s <span class="hljs-keyword">in</span> strs:<br>            <span class="hljs-comment"># sort the string's letters and save as a tuple</span><br>            key = tuple(sorted(s))<br>            <br>            <span class="hljs-comment"># search dictionary with the str's tuple and save the new value</span><br>            group_list[key] = group_list.get(key, []) + [s]<br>        <span class="hljs-keyword">return</span> group_list.values()<br></code></pre></td></tr></table></figure>
-<h5 id="summary"><a class="markdownIt-Anchor" href="#summary"></a> Summary</h5>
-<ol>
-<li>Tuple can be used for the dictionary’s key. wow~</li>
+<h5 id="summary">Summary</h5>
+<ol type="1">
+<li>Tuple can be used for the dictionary's key. wow~</li>
 <li>use dictionary can speed up the search.</li>
 </ol>
-<h1 id="algorithm"><a class="markdownIt-Anchor" href="#algorithm"></a> Algorithm</h1>
-<h2 id="floyds-cycle-detection"><a class="markdownIt-Anchor" href="#floyds-cycle-detection"></a> Floyd’s cycle detection</h2>
-<p>What we need to do in case we need the starting point of the loop ?</p>
-<ul>
-<li>Once we know for sure that a loop is present.</li>
-<li>Move the slowPointer to start of the list,(i.e headNode) and let fastPointer remain there at the meeting point</li>
-<li>Now move both the pointers one node at a time</li>
-<li><strong>The point where both pointers will meet, is our required start of the loop.</strong></li>
-</ul>
-<p><img src="https://web.archive.org/web/20160401024212im_/http://learningarsenal.info/wp-content/uploads/2015/08/loop-explanation-300x199.png" alt="image" /></p>
+<h1 id="algorithm">Algorithm</h1>
+<h2 id="floyds-cycle-detection">Floyd's cycle detection</h2>
+<p>What we need to do in case we need the starting point of the loop ? - Once we know for sure that a loop is present. - Move the slowPointer to start of the list,(i.e headNode) and let fastPointer remain there at the meeting point - Now move both the pointers one node at a time - <strong>The point where both pointers will meet, is our required start of the loop.</strong></p>
+<figure>
+<img src="https://web.archive.org/web/20160401024212im_/http://learningarsenal.info/wp-content/uploads/2015/08/loop-explanation-300x199.png" alt="" /><figcaption>image</figcaption>
+</figure>
 <p><strong>The algorithm uses O(λ + μ) operations of these types, and O(1) storage space.</strong></p>
-<h3 id="application"><a class="markdownIt-Anchor" href="#application"></a> Application</h3>
-<h4 id="happy-number-detection"><a class="markdownIt-Anchor" href="#happy-number-detection"></a> Happy number detection</h4>
+<h3 id="application">Application</h3>
+<h4 id="happy-number-detection">Happy number detection</h4>
 <blockquote>
 <p>A happy number is a number defined by the following process: Starting with any positive integer, replace the number by the sum of the squares of its digits, and repeat the process until the number equals 1 (where it will stay), or it loops endlessly in a cycle which does not include 1. <strong>Those numbers for which this process ends in 1 are happy numbers.</strong></p>
 </blockquote>
-<ol>
+<ol type="1">
 <li>Short Version utilizing walrus operator :=</li>
 </ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">isHappy</span><span class="hljs-params">(self, n: int)</span> -&gt; bool:</span><br>        <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">next_num</span><span class="hljs-params">(num)</span>:</span><br>            <span class="hljs-keyword">return</span> sum(map(<span class="hljs-keyword">lambda</span> x:int(x)**<span class="hljs-number">2</span>, str(num)))<br>        slow, fast = n, next_num(n)<br>        <span class="hljs-keyword">while</span> (slow:=next_num(slow)) != (fast:=next_num(next_num(fast))) <span class="hljs-keyword">and</span> fast != <span class="hljs-number">1</span>:<br>            <span class="hljs-keyword">continue</span><br>        <span class="hljs-keyword">return</span> fast == <span class="hljs-number">1</span> <span class="hljs-keyword">or</span> <span class="hljs-keyword">not</span> slow == fast<br></code></pre></td></tr></table></figure>
-<ol start="2">
+<ol start="2" type="1">
 <li>Easier to understand version</li>
 </ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">isHappy</span><span class="hljs-params">(self, n: int)</span> -&gt; bool:</span><br>        <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">next_num</span><span class="hljs-params">(num)</span>:</span><br>            <span class="hljs-keyword">return</span> sum(map(<span class="hljs-keyword">lambda</span> x:int(x)**<span class="hljs-number">2</span>, str(num)))<br>        slow, fast = n, next_num(n)<br>        <span class="hljs-keyword">while</span> slow != fast <span class="hljs-keyword">and</span> fast != <span class="hljs-number">1</span>:<br>            slow = next_num(slow)<br>            fast = next_num(next_num(fast))<br>        <span class="hljs-keyword">return</span> fast == <span class="hljs-number">1</span> <span class="hljs-keyword">or</span> <span class="hljs-keyword">not</span> slow == fast<br></code></pre></td></tr></table></figure>
-<ol start="3">
+<ol start="3" type="1">
 <li>Another solution</li>
 </ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">isHappy</span><span class="hljs-params">(self, n: int)</span> -&gt; bool:</span><br>        <span class="hljs-comment">#######################################################################</span><br>    	<span class="hljs-comment"># let's try different n:</span><br>    	<span class="hljs-comment"># true  (1) -&gt; 1</span><br>    	<span class="hljs-comment"># false (2) -&gt; 4 -&gt; 16 -&gt; 37 -&gt; 58 -&gt; 89 -&gt; 145 -&gt; 42 -&gt; 20 -&gt; 4</span><br>    	<span class="hljs-comment"># false (3) -&gt; 9 -&gt; 81 -&gt; 65 -&gt; 61 -&gt; 37 (look at 2)</span><br>    	<span class="hljs-comment"># false (4) -&gt; (look at 2)</span><br>    	<span class="hljs-comment"># false (5) -&gt; 25 -&gt; 29 -&gt; 85 -&gt; 89 (look at 2)</span><br>    	<span class="hljs-comment"># false (6) -&gt; 36 -&gt; 45 -&gt; 41 -&gt; 17 -&gt; 50 -&gt; 25  (look at 5)</span><br>    	<span class="hljs-comment"># true  (7) -&gt; 49 -&gt; 97 -&gt; 10</span><br>    	<span class="hljs-comment"># false (8) -&gt; 64 -&gt; 52 -&gt; 29 (look at 5)</span><br>    	<span class="hljs-comment"># false (9) -&gt; 9 -&gt; 81 -&gt; 65 (look at 3)</span><br>    	<span class="hljs-comment"># </span><br>    	<span class="hljs-comment"># All other n &gt;= 10, while computing will become [1-9], </span><br>    	<span class="hljs-comment"># So there are two cases 1 and 7 which are true.</span><br>    	<span class="hljs-comment"># </span><br>    	<span class="hljs-comment"># Notice, that all falses has the same path as 2 (loop).</span><br>        <span class="hljs-comment">#######################################################################</span><br>        <br>        counting = <span class="hljs-number">0</span><br>        num = n<br>        <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>            counting = <span class="hljs-number">0</span><br>            <span class="hljs-keyword">for</span> str_num <span class="hljs-keyword">in</span> str(num):<br>                counting = counting + pow(int(str_num), <span class="hljs-number">2</span>)<br>            <span class="hljs-keyword">if</span> counting &gt;= <span class="hljs-number">1</span> <span class="hljs-keyword">and</span> counting &lt;=<span class="hljs-number">9</span>:<br>                <span class="hljs-keyword">if</span> counting == <span class="hljs-number">1</span> <span class="hljs-keyword">or</span> counting == <span class="hljs-number">7</span>:<br>                    <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span><br>                <span class="hljs-keyword">else</span>:<br>                    <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span><br>            <span class="hljs-keyword">else</span>:<br>                num = counting<br></code></pre></td></tr></table></figure>
-<h3 id="reference"><a class="markdownIt-Anchor" href="#reference"></a> Reference</h3>
-<ol>
+<h3 id="reference">Reference</h3>
+<ol type="1">
 <li><a href="https://web.archive.org/web/20160401024212/http://learningarsenal.info:80/index.php/2015/08/24/detecting-start-of-a-loop-in-singly-linked-list/" target="_blank" rel="noopener">Detecting start of a loop in singly Linked List</a></li>
-<li><a href="https://cs.stackexchange.com/questions/10360/floyds-cycle-detection-algorithm-determining-the-starting-point-of-cycle" target="_blank" rel="noopener">Floyd’s Cycle detection algorithm | Determining the starting point of cycle</a></li>
+<li><a href="https://cs.stackexchange.com/questions/10360/floyds-cycle-detection-algorithm-determining-the-starting-point-of-cycle" target="_blank" rel="noopener">Floyd's Cycle detection algorithm | Determining the starting point of cycle</a></li>
 </ol>
-<h1 id="updating"><a class="markdownIt-Anchor" href="#updating"></a> Updating . . .</h1>
+<h1 id="updating-.-.-.">Updating . . .</h1>
 
         </div>
         <!-- .entry-content -->

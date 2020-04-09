@@ -29,8 +29,9 @@
       
         
         
-          &lt;h1 id=&quot;python&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#python&quot;&gt;&lt;/a&gt; python&lt;/h1&gt;
-&lt;h2 id=&quot;xor异或&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#xor异或&quot;&gt;&lt;/a&gt;
+          &lt;h1 id=&quot;python&quot;&gt;python&lt;/h1&gt;
+&lt;h2 id=&quot;xor异或&quot;&gt;XOR（异或）&lt;/h2&gt;
+&lt;h3 id=&quot;finding-sigle-number-in-a-integer-list&quot;&gt;Finding sigle number in a integer
         
       
     
@@ -65,7 +66,7 @@
       
         
         
-          &lt;h1 id=&quot;lda-qda-and-lr-for-fraud-detection-imbalanced-data-modeling&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot;
+          &lt;h1 id=&quot;lda-qda-and-lr-for-fraud-detection-imbalanced-data-modeling&quot;&gt;LDA, QDA and LR for fraud detection | Imbalanced data
         
       
     
@@ -112,13 +113,13 @@
       <category term="Paper Smash" scheme="https://littlelittlemoon.github.io/categories/Technology/Paper-Smash/"/>
     
     
-      <category term="Hair Thickness" scheme="https://littlelittlemoon.github.io/tags/Hair-Thickness/"/>
-    
       <category term="Digital Image Processing" scheme="https://littlelittlemoon.github.io/tags/Digital-Image-Processing/"/>
     
       <category term="Line Detection" scheme="https://littlelittlemoon.github.io/tags/Line-Detection/"/>
     
       <category term="Paper" scheme="https://littlelittlemoon.github.io/tags/Paper/"/>
+    
+      <category term="Hair Thickness" scheme="https://littlelittlemoon.github.io/tags/Hair-Thickness/"/>
     
   </entry>
   
@@ -141,13 +142,13 @@
       <category term="Paper Smash" scheme="https://littlelittlemoon.github.io/categories/Technology/Paper-Smash/"/>
     
     
+      <category term="Hair Counting" scheme="https://littlelittlemoon.github.io/tags/Hair-Counting/"/>
+    
       <category term="Digital Image Processing" scheme="https://littlelittlemoon.github.io/tags/Digital-Image-Processing/"/>
     
       <category term="Line Detection" scheme="https://littlelittlemoon.github.io/tags/Line-Detection/"/>
     
       <category term="Paper" scheme="https://littlelittlemoon.github.io/tags/Paper/"/>
-    
-      <category term="Hair Counting" scheme="https://littlelittlemoon.github.io/tags/Hair-Counting/"/>
     
   </entry>
   
@@ -170,13 +171,13 @@
       <category term="Paper Smash" scheme="https://littlelittlemoon.github.io/categories/Technology/Paper-Smash/"/>
     
     
+      <category term="Hair Counting" scheme="https://littlelittlemoon.github.io/tags/Hair-Counting/"/>
+    
       <category term="Digital Image Processing" scheme="https://littlelittlemoon.github.io/tags/Digital-Image-Processing/"/>
     
       <category term="Line Detection" scheme="https://littlelittlemoon.github.io/tags/Line-Detection/"/>
     
       <category term="Paper" scheme="https://littlelittlemoon.github.io/tags/Paper/"/>
-    
-      <category term="Hair Counting" scheme="https://littlelittlemoon.github.io/tags/Hair-Counting/"/>
     
   </entry>
   

@@ -64,28 +64,28 @@ function bot_ui_ini() {
         },
         secondpart = function () {
             botui.message.add({
-                delay: 2500,
+                delay: 1500,
                 content: "目前就读于电子科技大学，一枚女研究僧"
             }).then(function () {
                 botui.message.add({
-                    delay: 2500,
+                    delay: 1500,
                     content: "一个实打实的工科妹子，高考莫名的缘分让我入坑，然后就一坑到底了…"
                 }).then(function () {
                     botui.message.add({
-                        delay: 2200,
+                        delay: 1200,
                         content: "从一开始的迷茫，胆怯，然后逐渐发现自己在这各领域还能生存下去，就坚持了下来。😃"
                     }).then(function () {
                         botui.message.add({
-                            delay: 2500,
+                            delay: 1500,
                             content: "噢，忘了介绍，我所学的专业是计算机类，主攻 MATLAB 和 Python，略懂 R ，偶尔也折腾 Java/C/HTML/CSS/JavaScript"
                         }).then(function () {
                             botui.message.add({
-                                delay: 2500,
+                                delay: 1500,
                                 content: "研究的方向，是 计算机视觉（Computer Vision）以及 机器学习（Machine Learning）"
                             }).then(function () {
                                 botui.message.add({
-                                    delay: 2800,
-                                    content: "喜欢唱歌，虽然唱得没有多么惊艳，但也希望有一天能够被称为歌手"
+                                    delay: 1800,
+                                    content: "喜欢唱歌，虽然唱得没有多么惊艳，但听到别人说我唱歌好听，我会很开心 O(∩_∩)O哈哈~"
                                 }).then(function () {
                                     botui.action.button({
                                         delay: 2100,
@@ -109,7 +109,7 @@ function bot_ui_ini() {
                 content: "这个问题简单，我的名为凯悦，我觉得Kayleen这个名字和我的名字音似，就拿来当我的代号咯。😸"
             }).then(function () {
                 botui.action.button({
-                    delay: 2500,
+                    delay: 1500,
                     action: [{
                         text: "为什么是Bear Cave呢？ 🤔",
                         value: "why-bear-cave"
