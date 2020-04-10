@@ -367,15 +367,15 @@ Thinckness_{actual}(um) = \frac{Thinckness_{avg}(px) ×UL(um/px)}{mf}
 <li><span class="math inline">\(mf\)</span>: 是相机的放大倍率</li>
 <li><span class="math inline">\(UL\)</span>: 是单位长度，表示一个像素的微米长度</li>
 </ul>
-<h2 id="实验结果">实验结果</h2>
+<h3 id="实验结果">实验结果</h3>
 <p>为了评估我们的头发厚度评估方法的准确性，我们使用电子显微镜测量了实际的头发厚度。头发厚度测量的准确性如表1所示。</p>
 <figure>
 <img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/images/EOHASCBOMIA_hair_thickness_and_counting/table_1_AVERAGE_HAIR_THICKNESS_AND_ERROR_RATE.png" alt="" /><figcaption>table_1_AVERAGE_HAIR_THICKNESS_AND_ERROR_RATE</figcaption>
 </figure>
 <p>据报道，韩国人的平均头发厚度为84.9μm。与此相比，我们的90.29μm的结果相当不错。实际值（通过电子显微镜计算）与估计值之间的差异很小。 可能的原因之一是<strong>阴影效果</strong>。另一个可能的原因是<strong>相机镜头变形</strong>。 <strong>图像尺寸为640x480</strong>。但是，相机所覆盖区域的真实形状几乎是<strong>椭圆形</strong>。因此，<strong>相机放大率在行和列之间具有差异</strong>。根据拍摄角度，放大倍率可能会有所不同。</p>
-<h1 id="总结">总结</h1>
+<h2 id="总结">总结</h2>
 <p>针对<strong>头发粗细（厚度）计算问题</strong>，上述论文提出了基于头发轮廓和骨骼图，通过计算每个像素点的方向和垂线，进一步使用欧式距离公式来计算头发的垂直直径，但对相关技术的应用细节描述不多。</p>
-<h1 id="参考文献">参考文献</h1>
+<h2 id="参考文献">参考文献</h2>
 <ol type="1">
 <li><a href="https://ieeexplore.ieee.org/document/7883708" target="_blank" rel="noopener">Evalution of hair and scalp condition based on microscopy image analysis</a></li>
 <li><a href="http://oz.nthu.edu.tw/~d917904/papers/2015_IEEE%20sensors%20journal_Hair.pdf" target="_blank" rel="noopener">An Unsupervised Hair Segmentation and Counting System in Microscopy Images</a></li>
