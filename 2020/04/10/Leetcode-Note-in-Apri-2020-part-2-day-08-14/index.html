@@ -334,32 +334,40 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h1 id="写在前面的话">写在前面的话</h1>
+          <h1 id="写在前面的话"><a class="markdownIt-Anchor" href="#写在前面的话"></a> 写在前面的话</h1>
 <p>第二次更新，继续前进~</p>
-<h1 id="backspace-string-compare">Backspace String Compare</h1>
+<h1 id="backspace-string-compare"><a class="markdownIt-Anchor" href="#backspace-string-compare"></a> Backspace String Compare</h1>
 <blockquote>
 <p>Given two strings S and T, return if they are equal when both are typed into empty text editors. # means a backspace character.<br />
-<strong>Examples:</strong><br />
-&gt; <strong>Input:</strong> S = "ab#c", T = "ad#c"<br />
+<strong>Examples:</strong></p>
+<blockquote>
+<p><strong>Input:</strong> S = “ab#c”, T = “ad#c”<br />
 <strong>Output:</strong> true<br />
-<strong>Explanation: Both S and T become "ac".<br />
-&gt; </strong>Input:** S = "ab##", T = "c#d#"<br />
-<strong>Output:</strong> true<br />
-<strong>Explanation:</strong> Both S and T become "".<br />
-&gt; <strong>Input:</strong> S = "a##c", T = "#a#c"<br />
-<strong>Output:</strong> true<br />
-<strong>Explanation:</strong> Both S and T become "c".<br />
-&gt; <strong>Input:</strong> S = "a#c", T = "b"<br />
-<strong>Output:</strong> false<br />
-<strong>Explanation:</strong> S becomes "c" while T becomes "b".</p>
+<strong>Explanation:</strong> Both S and T become “ac”.</p>
 </blockquote>
-<h2 id="solution">Solution</h2>
+<blockquote>
+<p><strong>Input:</strong> S = “ab##”, T = “c#d#”<br />
+<strong>Output:</strong> true<br />
+<strong>Explanation:</strong> Both S and T become “”.</p>
+</blockquote>
+<blockquote>
+<p><strong>Input:</strong> S = “a##c”, T = “#a#c”<br />
+<strong>Output:</strong> true<br />
+<strong>Explanation:</strong> Both S and T become “c”.</p>
+</blockquote>
+<blockquote>
+<p><strong>Input:</strong> S = “a#c”, T = “b”<br />
+<strong>Output:</strong> false<br />
+<strong>Explanation:</strong> S becomes “c” while T becomes “b”.</p>
+</blockquote>
+</blockquote>
+<h2 id="solution"><a class="markdownIt-Anchor" href="#solution"></a> Solution</h2>
 <p>这个题对于我来说有点难度，昨天(9号)晚上做了两个小时吧，重点是通不过所有测试用例，总是有一些细节没有考虑到，而且代码越写越复杂，加上昨天中午没睡午觉，到最后自己把自己都搞懵了，气😠。后面睡觉的时候发现自己脑子真的是一根筋，换个思路这题会简单很多。</p>
-<h3 id="mine">Mine</h3>
+<h3 id="mine"><a class="markdownIt-Anchor" href="#mine"></a> Mine</h3>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">backspaceCompare</span><span class="hljs-params">(self, S: str, T: str)</span> -&gt; bool:</span><br>        s_i = len(S) - <span class="hljs-number">1</span><br>        t_i = len(T) - <span class="hljs-number">1</span><br>        s_back = t_back = <span class="hljs-number">0</span><br>        <br>        <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>            <span class="hljs-comment"># Loop will be stoped when any of the following situations occur:</span><br>            <span class="hljs-comment"># 1. s_i completed the last character access</span><br>            <span class="hljs-comment"># 2. S[s_i] is a letter (S[s_i] != '#') and don't need to go back currently (s_back = 0)</span><br>            <span class="hljs-comment"># Same as T, t_i and t_back</span><br>            <span class="hljs-keyword">while</span> s_i &gt;= <span class="hljs-number">0</span>:<br>                <span class="hljs-keyword">if</span> S[s_i] == <span class="hljs-string">'#'</span>:<br>                    s_i, s_back = s_i - <span class="hljs-number">1</span>, s_back + <span class="hljs-number">1</span><br>                <span class="hljs-keyword">elif</span> S[s_i] != <span class="hljs-string">'#'</span> <span class="hljs-keyword">and</span> s_back &gt; <span class="hljs-number">0</span>:<br>                    s_i, s_back = s_i - <span class="hljs-number">1</span>, s_back - <span class="hljs-number">1</span> <br>                <span class="hljs-keyword">else</span>:<br>                    <span class="hljs-keyword">break</span><br>            <span class="hljs-keyword">while</span> t_i &gt;= <span class="hljs-number">0</span>:<br>                <span class="hljs-keyword">if</span> T[t_i] == <span class="hljs-string">'#'</span>:<br>                    t_i, t_back = t_i - <span class="hljs-number">1</span>, t_back + <span class="hljs-number">1</span><br>                <span class="hljs-keyword">elif</span> T[t_i] != <span class="hljs-string">'#'</span> <span class="hljs-keyword">and</span> t_back &gt; <span class="hljs-number">0</span>:<br>                    t_i, t_back = t_i - <span class="hljs-number">1</span>, t_back - <span class="hljs-number">1</span><br>                <span class="hljs-keyword">else</span>:<br>                    <span class="hljs-keyword">break</span><br>            <br>            <span class="hljs-comment"># There are only two situations will return True:</span><br>            <span class="hljs-comment"># 1. both s_i and t_i are not out of index and  S[s_i] = T[t_i]</span><br>            <span class="hljs-comment"># 2. both s_i and t_i are out of index, it means no letter needs</span><br>            <span class="hljs-comment">#    to be compared and previous corresponding letters are equal.</span><br>            <span class="hljs-comment">#    otherwise, it will return false in situation 1</span><br>            <span class="hljs-keyword">if</span> s_i &gt;= <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> t_i &gt;= <span class="hljs-number">0</span>:<br>                <span class="hljs-keyword">if</span> S[s_i] != T[t_i]:<br>                    <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span><br>                s_i, t_i = s_i - <span class="hljs-number">1</span>, t_i - <span class="hljs-number">1</span><br>            <span class="hljs-keyword">else</span>:<br>                <span class="hljs-keyword">return</span> s_i &lt; <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> t_i &lt; <span class="hljs-number">0</span><br></code></pre></td></tr></table></figure>
 <p>其实还是蛮复杂的，可能有更好的解决方法，希望小伙伴们给出你们的思路和建议。我刚开始的思路是从前往后去找可能留下的字母，但是这个变化太大了，而且判断条件特别多，总是有很多情况考虑不到，整了一晚上也没整出来。后面睡觉的时候突然想起我为啥不从后往前找呢？🤣具体解法都在注释里，emmmm，可能还有语法错误，勿介😊。</p>
-<h1 id="updating...">Updating...</h1>
-<p>未完待续...</p>
+<h1 id="updating"><a class="markdownIt-Anchor" href="#updating"></a> Updating…</h1>
+<p>未完待续…</p>
 
         </div>
         <!-- .entry-content -->
