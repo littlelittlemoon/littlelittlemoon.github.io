@@ -304,7 +304,7 @@
 
   <div class="pattern-center single-center">
     <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/default.jpg);" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/default.jpg">
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/bears/25.jpg);" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/bears/25.jpg">
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
@@ -334,7 +334,113 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          
+          <h1 id="写到前面的话">写到前面的话</h1>
+<p>在上一篇文章中，我对<strong>僵尸企业分类问题的数据预处理</strong>做了介绍，这篇文章主要介绍模型训练部分，采用的算法框架是<a href="https://lightgbm.readthedocs.io/en/latest/" target="_blank" rel="noopener">LightGBM(Light Gradient Boosting Machine)</a>，是一个实现 <code>GBDT</code> 算法的框架。而<strong>GBDT(Gradient Boosting Decision Tree)</strong>的主要思想是<strong>利用弱分类器（决策树）迭代训练以得到最优模型，该模型具有训练效果好、不易过拟合等优点</strong>。</p>
+<p>LightGBM有各种很好的特性，类比很多boosting tools优化速度和内存的使用上采用基于预排序的算法进行决策树学习，<strong>LightGBM使用基于直方图的算法</strong>，支持高效率的并行训练，并且具有以下优点：<br />
+1. 更快的训练速度<br />
+2. 更低的内存消耗<br />
+3. 更好的准确率<br />
+4. 分布式支持，可以快速处理海量数据</p>
+<p>具体算法原理我也没搞太明白，哈哈。我准备后面好好学习一番，然后再写一篇关于LightGBM的文章，主要是记录自己的学习过程，写一些自己的理解。这里大家如果感兴趣可以去看看<a href="https://lightgbm.readthedocs.io/en/latest/index.html" target="_blank" rel="noopener">官方文档</a>.</p>
+<h1 id="模型训练">模型训练</h1>
+<h2 id="定义模型训练函数">定义模型训练函数</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> lightgbm <span class="im">as</span> lgb</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="im">from</span> sklearn <span class="im">import</span> metrics</span>
+<span id="cb1-3"><a href="#cb1-3"></a></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="kw">def</span> train_model(X_train, y_train, X_valid, y_valid, test<span class="op">=</span><span class="va">None</span>, feature_cols<span class="op">=</span><span class="va">None</span>, is_base<span class="op">=</span><span class="va">True</span>):</span>
+<span id="cb1-5"><a href="#cb1-5"></a>    <span class="cf">if</span> feature_cols <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb1-6"><a href="#cb1-6"></a>        feature_cols <span class="op">=</span> X_train.columns.drop([<span class="st">&quot;行业&quot;</span>, <span class="st">&quot;区域&quot;</span>, <span class="st">&quot;企业类型&quot;</span>, <span class="st">&quot;控制人类型&quot;</span>])</span>
+<span id="cb1-7"><a href="#cb1-7"></a>        </span>
+<span id="cb1-8"><a href="#cb1-8"></a>    dtrain <span class="op">=</span> lgb.Dataset(X_train[feature_cols], label<span class="op">=</span>y_train)</span>
+<span id="cb1-9"><a href="#cb1-9"></a>    dvalid <span class="op">=</span> lgb.Dataset(X_valid[feature_cols], label<span class="op">=</span>y_valid)</span>
+<span id="cb1-10"><a href="#cb1-10"></a>    </span>
+<span id="cb1-11"><a href="#cb1-11"></a>    param <span class="op">=</span> {<span class="st">&#39;num_leaves&#39;</span>: <span class="dv">64</span>, <span class="st">&#39;objective&#39;</span>: <span class="st">&#39;binary&#39;</span>, </span>
+<span id="cb1-12"><a href="#cb1-12"></a>             <span class="st">&#39;metric&#39;</span>: <span class="st">&#39;auc&#39;</span>, <span class="st">&#39;seed&#39;</span>: <span class="dv">7</span>}</span>
+<span id="cb1-13"><a href="#cb1-13"></a>    num_round <span class="op">=</span> <span class="dv">1000</span></span>
+<span id="cb1-14"><a href="#cb1-14"></a>    </span>
+<span id="cb1-15"><a href="#cb1-15"></a>    <span class="bu">print</span>(<span class="st">&quot;Training model!&quot;</span>)</span>
+<span id="cb1-16"><a href="#cb1-16"></a>    bst <span class="op">=</span> lgb.train(param, dtrain, num_round, valid_sets<span class="op">=</span>[dvalid], </span>
+<span id="cb1-17"><a href="#cb1-17"></a>                    early_stopping_rounds<span class="op">=</span><span class="dv">20</span>, verbose_eval<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb1-18"><a href="#cb1-18"></a>    </span>
+<span id="cb1-19"><a href="#cb1-19"></a>    <span class="co"># 预测结果是概率值，将其转换为binary value</span></span>
+<span id="cb1-20"><a href="#cb1-20"></a>    valid_pred <span class="op">=</span> bst.predict(X_valid[feature_cols])</span>
+<span id="cb1-21"><a href="#cb1-21"></a>    valid_pred <span class="op">=</span> valid_pred <span class="op">&gt;</span> <span class="fl">0.5</span>  </span>
+<span id="cb1-22"><a href="#cb1-22"></a>    valid_pred <span class="op">=</span> valid_pred.astype(<span class="bu">int</span>)</span>
+<span id="cb1-23"><a href="#cb1-23"></a>    valid_score <span class="op">=</span> metrics.roc_auc_score(y_valid, valid_pred)</span>
+<span id="cb1-24"><a href="#cb1-24"></a></span>
+<span id="cb1-25"><a href="#cb1-25"></a>    <span class="bu">print</span>(<span class="st">&quot;precision recall fscore support:&quot;</span>)</span>
+<span id="cb1-26"><a href="#cb1-26"></a>    <span class="bu">print</span>(metrics.precision_recall_fscore_support(y_valid, valid_pred, average<span class="op">=</span><span class="st">&#39;micro&#39;</span>))</span>
+<span id="cb1-27"><a href="#cb1-27"></a>    <span class="bu">print</span>(<span class="ss">f&quot;Validation AUC score: </span><span class="sc">{</span>valid_score<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb1-28"><a href="#cb1-28"></a></span>
+<span id="cb1-29"><a href="#cb1-29"></a>    <span class="cf">if</span> test <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>: </span>
+<span id="cb1-30"><a href="#cb1-30"></a>        test_pred <span class="op">=</span> bst.predict(test[feature_cols])</span>
+<span id="cb1-31"><a href="#cb1-31"></a>        test_pred <span class="op">=</span> test_pred <span class="op">&gt;</span> <span class="fl">0.5</span>  </span>
+<span id="cb1-32"><a href="#cb1-32"></a>        test_pred <span class="op">=</span> test_pred.astype(<span class="bu">int</span>)</span>
+<span id="cb1-33"><a href="#cb1-33"></a>        </span>
+<span id="cb1-34"><a href="#cb1-34"></a>        test_pred <span class="op">=</span> test[[<span class="st">&#39;ID&#39;</span>]].join(pd.DataFrame({<span class="st">&#39;flag&#39;</span>: test_pred}))</span>
+<span id="cb1-35"><a href="#cb1-35"></a>        </span>
+<span id="cb1-36"><a href="#cb1-36"></a>        <span class="cf">if</span> is_base:</span>
+<span id="cb1-37"><a href="#cb1-37"></a>            test_pred.to_csv(<span class="st">&#39;test_base.txt&#39;</span>, sep<span class="op">=</span><span class="st">&#39;,&#39;</span>, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb1-38"><a href="#cb1-38"></a>        <span class="cf">else</span>:</span>
+<span id="cb1-39"><a href="#cb1-39"></a>            test_pred.to_csv(<span class="st">&#39;test_.txt&#39;</span>, sep<span class="op">=</span><span class="st">&#39;,&#39;</span>, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb1-40"><a href="#cb1-40"></a>        <span class="cf">return</span> bst, valid_score</span>
+<span id="cb1-41"><a href="#cb1-41"></a>    <span class="cf">else</span>:</span>
+<span id="cb1-42"><a href="#cb1-42"></a>        <span class="cf">return</span> bst, valid_score</span></code></pre></div>
+<h2 id="加载处理好的数据集">加载处理好的数据集</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb2-2"><a href="#cb2-2"></a></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="co"># load training data</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a>all_data <span class="op">=</span> pd.read_csv(<span class="st">&quot;data/train/train.csv&quot;</span>)</span>
+<span id="cb2-5"><a href="#cb2-5"></a></span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="co"># load testing data</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a>test <span class="op">=</span> pd.read_csv(<span class="st">&quot;data/test/test.csv&quot;</span>)</span>
+<span id="cb2-8"><a href="#cb2-8"></a>test_base <span class="op">=</span> pd.read_csv(<span class="st">&quot;data/test/base-test.csv&quot;</span>)</span></code></pre></div>
+<h2 id="将训练数据集拆分为训练集与验证集">将训练数据集拆分为训练集与验证集</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> OneHotEncoder, LabelEncoder</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="im">import</span> category_encoders <span class="im">as</span> ce</span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="im">from</span> sklearn.utils <span class="im">import</span> shuffle</span>
+<span id="cb3-5"><a href="#cb3-5"></a></span>
+<span id="cb3-6"><a href="#cb3-6"></a>all_data_X <span class="op">=</span> all_data[all_data.columns.drop([<span class="st">&quot;flag&quot;</span>])]</span>
+<span id="cb3-7"><a href="#cb3-7"></a>all_data_y <span class="op">=</span> all_data[<span class="st">&quot;flag&quot;</span>]</span>
+<span id="cb3-8"><a href="#cb3-8"></a></span>
+<span id="cb3-9"><a href="#cb3-9"></a><span class="co"># shuffle data（optional）</span></span>
+<span id="cb3-10"><a href="#cb3-10"></a>all_data_X, all_data_y <span class="op">=</span> shuffle(all_data_X, all_data_y)</span>
+<span id="cb3-11"><a href="#cb3-11"></a><span class="co"># test = shuffle(test)</span></span>
+<span id="cb3-12"><a href="#cb3-12"></a></span>
+<span id="cb3-13"><a href="#cb3-13"></a>train_X, valid_X, train_y, valid_y <span class="op">=</span> train_test_split(all_data_X, all_data_y, random_state<span class="op">=</span><span class="dv">66</span>)</span></code></pre></div>
+<h2 id="类型变量处理">类型变量处理</h2>
+<p>通常，本质上是分类的任何数据属性都是离散值，这些离散值属于类别或类的特定有限集合。在属性或由模型预测的变量的上下文中，通常也称为类或标签。 这些离散值本质上可以是文本或数字。这次<code>base data</code>里面的<code>行业</code>，<code>区域</code>，<code>企业类型</code>，<code>控制人类型</code>等就是属于这一类属性，我刚开始的想法是把这类属性值做一个encoding，具体什么类型的encoding可以根据属性对模型的影响程度和模型训练效果来确定。这里只给出了<code>count encoding</code>的例子，如果后面有时间我会专门写一篇处理这类属性的常用方法，做一个详细的总结，这里就不展开了。</p>
+<h3 id="count-encoding-for-categorical-variables">Count Encoding for categorical variables</h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>cat_features <span class="op">=</span> [<span class="st">&quot;行业&quot;</span>, <span class="st">&quot;区域&quot;</span>, <span class="st">&quot;企业类型&quot;</span>, <span class="st">&quot;控制人类型&quot;</span>]</span>
+<span id="cb4-2"><a href="#cb4-2"></a>count_enc <span class="op">=</span> ce.CountEncoder(cols<span class="op">=</span>cat_features)</span>
+<span id="cb4-3"><a href="#cb4-3"></a></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="co"># Learn encoding from the training set</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a>count_enc.fit(train_X[cat_features])</span>
+<span id="cb4-6"><a href="#cb4-6"></a></span>
+<span id="cb4-7"><a href="#cb4-7"></a>train_encoded_X <span class="op">=</span> train_X.join(count_enc.transform(train_X[cat_features]).add_suffix(<span class="st">&quot;_count&quot;</span>))</span>
+<span id="cb4-8"><a href="#cb4-8"></a>valid_encoded_X <span class="op">=</span> valid_X.join(count_enc.transform(valid_X[cat_features]).add_suffix(<span class="st">&quot;_count&quot;</span>))</span>
+<span id="cb4-9"><a href="#cb4-9"></a>test_encoded <span class="op">=</span> test.join(count_enc.transform(test[cat_features]).add_suffix(<span class="st">&quot;_count&quot;</span>))</span></code></pre></div>
+<h2 id="模型训练-1">模型训练</h2>
+<h3 id="原始数据">原始数据</h3>
+<p>为了看分类数据处理对模型性能的影响，下面的训练没有用编码后的类别数据，训练的时候会把类别属性列删掉。</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="bu">print</span>(<span class="st">&quot;Baseline model&quot;</span>)</span>
+<span id="cb5-2"><a href="#cb5-2"></a>_ <span class="op">=</span> train_model(train_X, train_y, valid_X, valid_y, test, is_base<span class="op">=</span><span class="va">True</span>) </span></code></pre></div>
+<pre><code>Baseline model
+Training model!
+precision recall fscore support:
+(1.0, 1.0, 1.0, None)
+Validation AUC score: 1.0</code></pre>
+<p>结果超出意料，就是最粗糙的数据，没有做任何特征选择和优化，就可以得到这么搞得精度，说实话我当时是怀疑自己的，反复确认了好几遍代码，发现没啥问题。🤣再次证明数据预处理的重要性，数据处理好了，最简单的模型也可以达到很好的效果。</p>
+<h3 id="count-encoding类别属性后的数据">Count Encoding类别属性后的数据</h3>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="bu">print</span>(<span class="st">&quot;Count Encoding model&quot;</span>)</span>
+<span id="cb7-2"><a href="#cb7-2"></a>_ <span class="op">=</span> train_model(train_encoded_X, train_y, valid_encoded_X, valid_y, test_encoded, is_base<span class="op">=</span><span class="va">False</span>)</span></code></pre></div>
+<pre><code>Count Encoding model
+Training model!
+precision recall fscore support:
+(1.0, 1.0, 1.0, None)
+Validation AUC score: 1.0</code></pre>
+<p>两次的训练结果没有任何差别，也失去了特征优化的动力😃</p>
 
         </div>
         <!-- .entry-content -->
