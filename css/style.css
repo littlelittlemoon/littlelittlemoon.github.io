@@ -7269,7 +7269,7 @@ to {
     -o-transform:translateX(0);
     transform:translateX(0)
 }
-/* .highlight-wrap:before {
+.highlight-wrap:before {
     content:" ";
     position:absolute;
     -webkit-border-radius:50%;
@@ -7354,7 +7354,7 @@ to {
     border-bottom-right-radius:0;
     border-bottom-left-radius:0;
     pointer-events:none
-} */
+}
 .hljs {
     display:block;
     overflow-x:auto;
