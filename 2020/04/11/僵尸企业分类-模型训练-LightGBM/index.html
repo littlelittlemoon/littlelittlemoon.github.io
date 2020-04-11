@@ -418,9 +418,12 @@
 <span id="cb4-4"><a href="#cb4-4"></a><span class="co"># Learn encoding from the training set</span></span>
 <span id="cb4-5"><a href="#cb4-5"></a>count_enc.fit(train_X[cat_features])</span>
 <span id="cb4-6"><a href="#cb4-6"></a></span>
-<span id="cb4-7"><a href="#cb4-7"></a>train_encoded_X <span class="op">=</span> train_X.join(count_enc.transform(train_X[cat_features]).add_suffix(<span class="st">&quot;_count&quot;</span>))</span>
-<span id="cb4-8"><a href="#cb4-8"></a>valid_encoded_X <span class="op">=</span> valid_X.join(count_enc.transform(valid_X[cat_features]).add_suffix(<span class="st">&quot;_count&quot;</span>))</span>
-<span id="cb4-9"><a href="#cb4-9"></a>test_encoded <span class="op">=</span> test.join(count_enc.transform(test[cat_features]).add_suffix(<span class="st">&quot;_count&quot;</span>))</span></code></pre></div>
+<span id="cb4-7"><a href="#cb4-7"></a>train_encoded_X <span class="op">=</span> train_X.join(count_enc.transform(train_X[cat_features])</span>
+<span id="cb4-8"><a href="#cb4-8"></a>                         .add_suffix(<span class="st">&quot;_count&quot;</span>))</span>
+<span id="cb4-9"><a href="#cb4-9"></a>valid_encoded_X <span class="op">=</span> valid_X.join(count_enc.transform(valid_X[cat_features])</span>
+<span id="cb4-10"><a href="#cb4-10"></a>                         .add_suffix(<span class="st">&quot;_count&quot;</span>))</span>
+<span id="cb4-11"><a href="#cb4-11"></a>test_encoded <span class="op">=</span> test.join(count_enc.transform(test[cat_features])</span>
+<span id="cb4-12"><a href="#cb4-12"></a>                         .add_suffix(<span class="st">&quot;_count&quot;</span>))</span></code></pre></div>
 <h2 id="模型训练-1">模型训练</h2>
 <h3 id="原始数据">原始数据</h3>
 <p>为了看分类数据处理对模型性能的影响，下面的训练没有用编码后的类别数据，训练的时候会把类别属性列删掉。</p>
