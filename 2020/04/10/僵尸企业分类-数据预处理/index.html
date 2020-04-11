@@ -350,28 +350,88 @@
 <h4 id="函数说明">函数说明</h4>
 <p>该函数用于根据<code>ID</code>合并<code>base data</code>和<code>knowledge data</code>数据集。</p>
 <h4 id="函数实现">函数实现</h4>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">combined_base_knowledge_data</span><span class="hljs-params">(base_data, knowledge_data)</span>:</span><br>    combined_base_knowledge_data = base_data<br>                                  .set_index(<span class="hljs-string">'ID'</span>)<br>                                  .join(knowledge_data<br>                                  .set_index(<span class="hljs-string">'ID'</span>))<br>    combined_base_knowledge_data = combined_base_knowledge_data<br>                                  .fillna(combined_base_knowledge_data<br>                                  .median())<br>    <span class="hljs-keyword">return</span> combined_base_knowledge_data<br></code></pre></td></tr></table></figure>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">def</span> combined_base_knowledge_data(base_data, knowledge_data):</span>
+<span id="cb1-2"><a href="#cb1-2"></a>    combined_base_knowledge_data <span class="op">=</span> base_data</span>
+<span id="cb1-3"><a href="#cb1-3"></a>                                  .set_index(<span class="st">&#39;ID&#39;</span>)</span>
+<span id="cb1-4"><a href="#cb1-4"></a>                                  .join(knowledge_data</span>
+<span id="cb1-5"><a href="#cb1-5"></a>                                  .set_index(<span class="st">&#39;ID&#39;</span>))</span>
+<span id="cb1-6"><a href="#cb1-6"></a>    combined_base_knowledge_data <span class="op">=</span> combined_base_knowledge_data</span>
+<span id="cb1-7"><a href="#cb1-7"></a>                                  .fillna(combined_base_knowledge_data</span>
+<span id="cb1-8"><a href="#cb1-8"></a>                                  .median())</span>
+<span id="cb1-9"><a href="#cb1-9"></a>    <span class="cf">return</span> combined_base_knowledge_data</span></code></pre></div>
 <h3 id="fill_na">fill_na</h3>
 <h4 id="函数说明-1">函数说明</h4>
 <p>该函数用于填充数据集中缺失的数据： 1. 年份数据：根据ID和年份查找出对应ID缺失的年份，然后补全缺失的年份； 2. 其他缺失数据统一用中位数补齐。</p>
 <h4 id="函数实现-1">函数实现</h4>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># fill null year </span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">fill</span><span class="hljs-params">(oragin_data, years = [<span class="hljs-number">2015</span>, <span class="hljs-number">2016</span>, <span class="hljs-number">2017</span>])</span>:</span><br>    <span class="hljs-comment"># pick null year data</span><br>    null_years = oragin_data.loc[oragin_data.year.isna()]<br>    <br>    <span class="hljs-comment"># fill year </span><br>    <span class="hljs-keyword">for</span> year <span class="hljs-keyword">in</span> years:<br>        IDs = oragin_data[[<span class="hljs-string">"ID"</span>]].loc[oragin_data.year == year]<br>        <span class="hljs-keyword">for</span> null_year_id <span class="hljs-keyword">in</span> null_years[<span class="hljs-string">"ID"</span>].unique():<br>            tmp = IDs.loc[IDs.ID == null_year_id]<br>            <span class="hljs-keyword">if</span> tmp.empty:<br>                index = oragin_data.loc[(<br>                          oragin_data.ID == null_year_id) <br>                          &amp; (oragin_data.year.isna()<br>                        )].index.tolist()<br>                <span class="hljs-keyword">if</span> len(index) != <span class="hljs-number">0</span>:<br>                    oragin_data.loc[index[<span class="hljs-number">0</span>]:index[<span class="hljs-number">0</span>], <span class="hljs-string">"year"</span>] = year <br><br>    <span class="hljs-comment"># fill other missing value with median value      </span><br>    new_data = oragin_data.fillna(oragin_data.median())<br>    <span class="hljs-keyword">return</span> new_data;<br></code></pre></td></tr></table></figure>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># fill null year </span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="kw">def</span> fill(oragin_data, years <span class="op">=</span> [<span class="dv">2015</span>, <span class="dv">2016</span>, <span class="dv">2017</span>]):</span>
+<span id="cb2-3"><a href="#cb2-3"></a>    <span class="co"># pick null year data</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a>    null_years <span class="op">=</span> oragin_data.loc[oragin_data.year.isna()]</span>
+<span id="cb2-5"><a href="#cb2-5"></a>    </span>
+<span id="cb2-6"><a href="#cb2-6"></a>    <span class="co"># fill year </span></span>
+<span id="cb2-7"><a href="#cb2-7"></a>    <span class="cf">for</span> year <span class="kw">in</span> years:</span>
+<span id="cb2-8"><a href="#cb2-8"></a>        IDs <span class="op">=</span> oragin_data[[<span class="st">&quot;ID&quot;</span>]].loc[oragin_data.year <span class="op">==</span> year]</span>
+<span id="cb2-9"><a href="#cb2-9"></a>        <span class="cf">for</span> null_year_id <span class="kw">in</span> null_years[<span class="st">&quot;ID&quot;</span>].unique():</span>
+<span id="cb2-10"><a href="#cb2-10"></a>            tmp <span class="op">=</span> IDs.loc[IDs.ID <span class="op">==</span> null_year_id]</span>
+<span id="cb2-11"><a href="#cb2-11"></a>            <span class="cf">if</span> tmp.empty:</span>
+<span id="cb2-12"><a href="#cb2-12"></a>                index <span class="op">=</span> oragin_data.loc[(</span>
+<span id="cb2-13"><a href="#cb2-13"></a>                          oragin_data.ID <span class="op">==</span> null_year_id) </span>
+<span id="cb2-14"><a href="#cb2-14"></a>                          <span class="op">&amp;</span> (oragin_data.year.isna()</span>
+<span id="cb2-15"><a href="#cb2-15"></a>                        )].index.tolist()</span>
+<span id="cb2-16"><a href="#cb2-16"></a>                <span class="cf">if</span> <span class="bu">len</span>(index) <span class="op">!=</span> <span class="dv">0</span>:</span>
+<span id="cb2-17"><a href="#cb2-17"></a>                    oragin_data.loc[index[<span class="dv">0</span>]:index[<span class="dv">0</span>], <span class="st">&quot;year&quot;</span>] <span class="op">=</span> year </span>
+<span id="cb2-18"><a href="#cb2-18"></a></span>
+<span id="cb2-19"><a href="#cb2-19"></a>    <span class="co"># fill other missing value with median value      </span></span>
+<span id="cb2-20"><a href="#cb2-20"></a>    new_data <span class="op">=</span> oragin_data.fillna(oragin_data.median())</span>
+<span id="cb2-21"><a href="#cb2-21"></a>    <span class="cf">return</span> new_data<span class="op">;</span></span></code></pre></div>
 <h3 id="combined_new_year_money_data">combined_new_year_money_data</h3>
 <h4 id="函数说明-2">函数说明</h4>
 <p>该方法用于根据<code>ID</code>和<code>year</code>合并<code>year data</code>和<code>money data</code>。</p>
 <h4 id="函数实现-2">函数实现</h4>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">combined_new_year_money_data</span><span class="hljs-params">(new_year_data, new_money_data)</span>:</span><br>    <span class="hljs-keyword">return</span> pd.merge(new_year_data, new_money_data, on=[<span class="hljs-string">'ID'</span>, <span class="hljs-string">'year'</span>])<br></code></pre></td></tr></table></figure>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">def</span> combined_new_year_money_data(new_year_data, new_money_data):</span>
+<span id="cb3-2"><a href="#cb3-2"></a>    <span class="cf">return</span> pd.merge(new_year_data, new_money_data, on<span class="op">=</span>[<span class="st">&#39;ID&#39;</span>, <span class="st">&#39;year&#39;</span>])</span></code></pre></div>
 <h3 id="split_data">split_data</h3>
 <h4 id="函数说明-3">函数说明</h4>
 <p>该函数用于根据<code>ID</code>和<code>year</code>拆分新特征，将原数据集三年的数据按年份拆分成新的特征，<strong>使拆分后的数据集可与base data数据集用ID一一对应</strong>。主要用于<code>year data</code>数据集和<code>money data</code>数据集的拆分。</p>
 <h4 id="函数实现-3">函数实现</h4>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">split_data</span><span class="hljs-params">(combined_new_year_money_data)</span>:</span><br>    <span class="hljs-comment"># split data with year</span><br>    combined_new_year_data_2015 = combined_new_year_money_data.loc[<br>                          combined_new_year_money_data.year == <span class="hljs-number">2015</span>]<br>                          .set_index(<span class="hljs-string">'ID'</span>)<br>                          .add_suffix(<span class="hljs-string">"_2015"</span>).drop(columns=[<span class="hljs-string">'year_2015'</span>])<br>    combined_new_year_data_2016 = combined_new_year_money_data.loc[<br>                          combined_new_year_money_data.year == <span class="hljs-number">2016</span>]<br>                          .set_index(<span class="hljs-string">'ID'</span>)<br>                          .add_suffix(<span class="hljs-string">"_2016"</span>).drop(columns=[<span class="hljs-string">'year_2016'</span>])<br>    combined_new_year_data_2017 = combined_new_year_money_data.loc[<br>                          combined_new_year_money_data.year == <span class="hljs-number">2017</span>]<br>                          .set_index(<span class="hljs-string">'ID'</span>)<br>                          .add_suffix(<span class="hljs-string">"_2017"</span>).drop(columns=[<span class="hljs-string">'year_2017'</span>])<br>    <br>    <span class="hljs-comment"># marge data with ID</span><br>    combined_new_splited_year_money_data = pd.merge(<br>                                      combined_new_year_data_2015, <br>                                      combined_new_year_data_2016, <br>                                      on=[<span class="hljs-string">'ID'</span>])<br>    combined_new_splited_year_money_data = pd.merge(<br>                                      combined_new_splited_year_money_data, <br>                                      combined_new_year_data_2017, <br>                                      on=[<span class="hljs-string">'ID'</span>])<br><br>    <span class="hljs-keyword">return</span> combined_new_splited_year_money_data<br></code></pre></td></tr></table></figure>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">def</span> split_data(combined_new_year_money_data):</span>
+<span id="cb4-2"><a href="#cb4-2"></a>    <span class="co"># split data with year</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a>    combined_new_year_data_2015 <span class="op">=</span> combined_new_year_money_data.loc[</span>
+<span id="cb4-4"><a href="#cb4-4"></a>                          combined_new_year_money_data.year <span class="op">==</span> <span class="dv">2015</span>]</span>
+<span id="cb4-5"><a href="#cb4-5"></a>                          .set_index(<span class="st">&#39;ID&#39;</span>)</span>
+<span id="cb4-6"><a href="#cb4-6"></a>                          .add_suffix(<span class="st">&quot;_2015&quot;</span>).drop(columns<span class="op">=</span>[<span class="st">&#39;year_2015&#39;</span>])</span>
+<span id="cb4-7"><a href="#cb4-7"></a>    combined_new_year_data_2016 <span class="op">=</span> combined_new_year_money_data.loc[</span>
+<span id="cb4-8"><a href="#cb4-8"></a>                          combined_new_year_money_data.year <span class="op">==</span> <span class="dv">2016</span>]</span>
+<span id="cb4-9"><a href="#cb4-9"></a>                          .set_index(<span class="st">&#39;ID&#39;</span>)</span>
+<span id="cb4-10"><a href="#cb4-10"></a>                          .add_suffix(<span class="st">&quot;_2016&quot;</span>).drop(columns<span class="op">=</span>[<span class="st">&#39;year_2016&#39;</span>])</span>
+<span id="cb4-11"><a href="#cb4-11"></a>    combined_new_year_data_2017 <span class="op">=</span> combined_new_year_money_data.loc[</span>
+<span id="cb4-12"><a href="#cb4-12"></a>                          combined_new_year_money_data.year <span class="op">==</span> <span class="dv">2017</span>]</span>
+<span id="cb4-13"><a href="#cb4-13"></a>                          .set_index(<span class="st">&#39;ID&#39;</span>)</span>
+<span id="cb4-14"><a href="#cb4-14"></a>                          .add_suffix(<span class="st">&quot;_2017&quot;</span>).drop(columns<span class="op">=</span>[<span class="st">&#39;year_2017&#39;</span>])</span>
+<span id="cb4-15"><a href="#cb4-15"></a>    </span>
+<span id="cb4-16"><a href="#cb4-16"></a>    <span class="co"># marge data with ID</span></span>
+<span id="cb4-17"><a href="#cb4-17"></a>    combined_new_splited_year_money_data <span class="op">=</span> pd.merge(</span>
+<span id="cb4-18"><a href="#cb4-18"></a>                                      combined_new_year_data_2015, </span>
+<span id="cb4-19"><a href="#cb4-19"></a>                                      combined_new_year_data_2016, </span>
+<span id="cb4-20"><a href="#cb4-20"></a>                                      on<span class="op">=</span>[<span class="st">&#39;ID&#39;</span>])</span>
+<span id="cb4-21"><a href="#cb4-21"></a>    combined_new_splited_year_money_data <span class="op">=</span> pd.merge(</span>
+<span id="cb4-22"><a href="#cb4-22"></a>                                      combined_new_splited_year_money_data, </span>
+<span id="cb4-23"><a href="#cb4-23"></a>                                      combined_new_year_data_2017, </span>
+<span id="cb4-24"><a href="#cb4-24"></a>                                      on<span class="op">=</span>[<span class="st">&#39;ID&#39;</span>])</span>
+<span id="cb4-25"><a href="#cb4-25"></a></span>
+<span id="cb4-26"><a href="#cb4-26"></a>    <span class="cf">return</span> combined_new_splited_year_money_data</span></code></pre></div>
 <h2 id="训练数据集处理">训练数据集处理</h2>
 <h3 id="加载原始数据">加载原始数据</h3>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd<br><br><span class="hljs-comment"># load training data</span><br>base_train_data = pd.read_csv(<span class="hljs-string">"data/train/base-train.csv"</span>)<br>year_train_data = pd.read_csv(<span class="hljs-string">"data/train/year-train.csv"</span>)<br>knowledge_train_data = pd.read_csv(<span class="hljs-string">"data/train/knowledge-train.csv"</span>)<br>money_train_data = pd.read_csv(<span class="hljs-string">"data/train/money-train.csv"</span>)<br></code></pre></td></tr></table></figure>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb5-2"><a href="#cb5-2"></a></span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="co"># load training data</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a>base_train_data <span class="op">=</span> pd.read_csv(<span class="st">&quot;data/train/base-train.csv&quot;</span>)</span>
+<span id="cb5-5"><a href="#cb5-5"></a>year_train_data <span class="op">=</span> pd.read_csv(<span class="st">&quot;data/train/year-train.csv&quot;</span>)</span>
+<span id="cb5-6"><a href="#cb5-6"></a>knowledge_train_data <span class="op">=</span> pd.read_csv(<span class="st">&quot;data/train/knowledge-train.csv&quot;</span>)</span>
+<span id="cb5-7"><a href="#cb5-7"></a>money_train_data <span class="op">=</span> pd.read_csv(<span class="st">&quot;data/train/money-train.csv&quot;</span>)</span></code></pre></div>
 <h4 id="查看原始数据集信息base-data-and-knowledge-data">查看原始数据集信息：base data and knowledge data</h4>
 <h5 id="base_train_data">base_train_data</h5>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">base_train_data.head()<br></code></pre></td></tr></table></figure>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>base_train_data.head()</span></code></pre></div>
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -584,7 +644,7 @@ NaN
 </tbody>
 </table>
 </div>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">base_train_data.describe()<br></code></pre></td></tr></table></figure>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>base_train_data.describe()</span></code></pre></div>
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -786,7 +846,7 @@ max
 </table>
 </div>
 <h5 id="knowledge_train_data">knowledge_train_data</h5>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">knowledge_train_data.head()<br></code></pre></td></tr></table></figure>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>knowledge_train_data.head()</span></code></pre></div>
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -909,7 +969,7 @@ ID
 </tbody>
 </table>
 </div>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">knowledge_train_data.describe()<br></code></pre></td></tr></table></figure>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>knowledge_train_data.describe()</span></code></pre></div>
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -1084,7 +1144,11 @@ max
 </table>
 </div>
 <h4 id="合并-base-data-和-knowledge-data">合并 base data 和 knowledge data</h4>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python">combined_base_knowledge_train_data = combined_base_knowledge_data(<br>                                              base_train_data,<br>                                              knowledge_train_data<br>                                          )<br>combined_base_knowledge_train_data.head()<br></code></pre></td></tr></table></figure>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>combined_base_knowledge_train_data <span class="op">=</span> combined_base_knowledge_data(</span>
+<span id="cb10-2"><a href="#cb10-2"></a>                                              base_train_data,</span>
+<span id="cb10-3"><a href="#cb10-3"></a>                                              knowledge_train_data</span>
+<span id="cb10-4"><a href="#cb10-4"></a>                                          )</span>
+<span id="cb10-5"><a href="#cb10-5"></a>combined_base_knowledge_train_data.head()</span></code></pre></div>
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -1362,7 +1426,7 @@ NaN
 </div>
 <h4 id="查看-year-data-和-money-data数据集信息">查看 <code>year data</code> 和 <code>money data</code>数据集信息</h4>
 <h5 id="year_train_data">year_train_data</h5>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">year_train_data.head(<span class="hljs-number">10</span>)<br></code></pre></td></tr></table></figure>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>year_train_data.head(<span class="dv">10</span>)</span></code></pre></div>
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -1768,7 +1832,7 @@ year
 </tbody>
 </table>
 </div>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">year_train_data.describe()<br></code></pre></td></tr></table></figure>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>year_train_data.describe()</span></code></pre></div>
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -2024,7 +2088,7 @@ max
 </table>
 </div>
 <h5 id="year_train_data-1">year_train_data</h5>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">money_train_data.head()<br></code></pre></td></tr></table></figure>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>money_train_data.head()</span></code></pre></div>
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -2255,7 +2319,7 @@ NaN
 </tbody>
 </table>
 </div>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">money_train_data.describe()<br></code></pre></td></tr></table></figure>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>money_train_data.describe()</span></code></pre></div>
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -2512,7 +2576,11 @@ max
 </div>
 <h4 id="填充缺失数据">填充缺失数据</h4>
 <h5 id="year_train_data-2">year_train_data</h5>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># fill null</span><br>new_year_train_data = fill_na(year_train_data)<br>new_year_train_data.set_index([<span class="hljs-string">'ID'</span>, <span class="hljs-string">'year'</span>])<br><br>new_year_train_data.head()<br></code></pre></td></tr></table></figure>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># fill null</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a>new_year_train_data <span class="op">=</span> fill_na(year_train_data)</span>
+<span id="cb15-3"><a href="#cb15-3"></a>new_year_train_data.set_index([<span class="st">&#39;ID&#39;</span>, <span class="st">&#39;year&#39;</span>])</span>
+<span id="cb15-4"><a href="#cb15-4"></a></span>
+<span id="cb15-5"><a href="#cb15-5"></a>new_year_train_data.head()</span></code></pre></div>
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -2744,7 +2812,12 @@ year
 </table>
 </div>
 <h5 id="money_train_data">money_train_data</h5>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># fill null</span><br>new_money_train_data = fill_na(money_train_data)<br>new_money_train_data.set_index([<span class="hljs-string">'ID'</span>, <span class="hljs-string">'year'</span>])<br><br><span class="hljs-comment"># new_money_train_data.head(8)</span><br>new_money_train_data.head()<br></code></pre></td></tr></table></figure>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># fill null</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a>new_money_train_data <span class="op">=</span> fill_na(money_train_data)</span>
+<span id="cb16-3"><a href="#cb16-3"></a>new_money_train_data.set_index([<span class="st">&#39;ID&#39;</span>, <span class="st">&#39;year&#39;</span>])</span>
+<span id="cb16-4"><a href="#cb16-4"></a></span>
+<span id="cb16-5"><a href="#cb16-5"></a><span class="co"># new_money_train_data.head(8)</span></span>
+<span id="cb16-6"><a href="#cb16-6"></a>new_money_train_data.head()</span></code></pre></div>
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -2976,7 +3049,12 @@ year
 </table>
 </div>
 <h4 id="合并year-data和money-data数据集">合并<code>year data</code>和<code>money data</code>数据集</h4>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># Merge new year and money data</span><br>combined_new_year_money_train_data = combined_new_year_money_data(<br>                                            new_year_train_data, <br>                                            new_money_train_data<br>                                          )<br>combined_new_year_money_train_data.head()<br></code></pre></td></tr></table></figure>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="co"># Merge new year and money data</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a>combined_new_year_money_train_data <span class="op">=</span> combined_new_year_money_data(</span>
+<span id="cb17-3"><a href="#cb17-3"></a>                                            new_year_train_data, </span>
+<span id="cb17-4"><a href="#cb17-4"></a>                                            new_money_train_data</span>
+<span id="cb17-5"><a href="#cb17-5"></a>                                          )</span>
+<span id="cb17-6"><a href="#cb17-6"></a>combined_new_year_money_train_data.head()</span></code></pre></div>
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -3191,7 +3269,8 @@ year
 </div>
 <h4 id="拆分新特征">拆分新特征</h4>
 <p>将合并后的数据集中每一年的数据拆分成新的特征，使之与<code>base data</code>通过<code>ID</code>一一对应。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">splited_year_money_train_data = split_data(combined_new_year_money_train_data)<br>splited_year_money_train_data.head()<br></code></pre></td></tr></table></figure>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>splited_year_money_train_data <span class="op">=</span> split_data(combined_new_year_money_train_data)</span>
+<span id="cb18-2"><a href="#cb18-2"></a>splited_year_money_train_data.head()</span></code></pre></div>
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -3411,7 +3490,11 @@ ID
 </p>
 </div>
 <h2 id="合并处理好的数据集">合并处理好的数据集</h2>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python">train = pd.merge(combined_base_knowledge_train_data, <br>                 splited_year_money_train_data, <br>                 on=[<span class="hljs-string">'ID'</span>])<br><br>train.head()<br></code></pre></td></tr></table></figure>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a>train <span class="op">=</span> pd.merge(combined_base_knowledge_train_data, </span>
+<span id="cb19-2"><a href="#cb19-2"></a>                 splited_year_money_train_data, </span>
+<span id="cb19-3"><a href="#cb19-3"></a>                 on<span class="op">=</span>[<span class="st">&#39;ID&#39;</span>])</span>
+<span id="cb19-4"><a href="#cb19-4"></a></span>
+<span id="cb19-5"><a href="#cb19-5"></a>train.head()</span></code></pre></div>
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -3631,8 +3714,8 @@ ID
 </p>
 </div>
 <h3 id="保存处理好的训练数据集">保存处理好的训练数据集</h3>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">train.to_csv(<span class="hljs-string">"data/train/train.csv"</span>)<br></code></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">train.describe()<br></code></pre></td></tr></table></figure>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>train.to_csv(<span class="st">&quot;data/train/train.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>train.describe()</span></code></pre></div>
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -3919,9 +4002,17 @@ max
 </div>
 <h2 id="训练数据集处理-1">训练数据集处理</h2>
 <p>按照刚刚处理训练集的流程处理测试数据集。 ### 加载原始数据集</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># load testing data</span><br>base_test_data = pd.read_csv(<span class="hljs-string">"data/test/base-test.csv"</span>)<br>year_test_data = pd.read_csv(<span class="hljs-string">"data/test/year-test.csv"</span>)<br>knowledge_test_data = pd.read_csv(<span class="hljs-string">"data/test/knowledge-test.csv"</span>)<br>money_test_data = pd.read_csv(<span class="hljs-string">"data/test/money-test.csv"</span>)<br></code></pre></td></tr></table></figure>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a><span class="co"># load testing data</span></span>
+<span id="cb22-2"><a href="#cb22-2"></a>base_test_data <span class="op">=</span> pd.read_csv(<span class="st">&quot;data/test/base-test.csv&quot;</span>)</span>
+<span id="cb22-3"><a href="#cb22-3"></a>year_test_data <span class="op">=</span> pd.read_csv(<span class="st">&quot;data/test/year-test.csv&quot;</span>)</span>
+<span id="cb22-4"><a href="#cb22-4"></a>knowledge_test_data <span class="op">=</span> pd.read_csv(<span class="st">&quot;data/test/knowledge-test.csv&quot;</span>)</span>
+<span id="cb22-5"><a href="#cb22-5"></a>money_test_data <span class="op">=</span> pd.read_csv(<span class="st">&quot;data/test/money-test.csv&quot;</span>)</span></code></pre></div>
 <h4 id="合并-base-data-和-knowledge-data-1">合并 <code>base data</code> 和 <code>knowledge data</code></h4>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python">combined_base_knowledge_test_data = combined_base_knowledge_data(<br>                                                  base_test_data,<br>                                                  knowledge_test_data<br>                                                )<br>combined_base_knowledge_test_data.describe()<br></code></pre></td></tr></table></figure>
+<div class="sourceCode" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>combined_base_knowledge_test_data <span class="op">=</span> combined_base_knowledge_data(</span>
+<span id="cb23-2"><a href="#cb23-2"></a>                                                  base_test_data,</span>
+<span id="cb23-3"><a href="#cb23-3"></a>                                                  knowledge_test_data</span>
+<span id="cb23-4"><a href="#cb23-4"></a>                                                )</span>
+<span id="cb23-5"><a href="#cb23-5"></a>combined_base_knowledge_test_data.describe()</span></code></pre></div>
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -4152,13 +4243,34 @@ max
 <h3 id="year-data-and-money-data">year data and money data</h3>
 <h4 id="填充缺失值并验证填充结果">填充缺失值并验证填充结果</h4>
 <h5 id="year_test_data">year_test_data</h5>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># fill null</span><br>new_year_test_data = fill_na(year_test_data)<br>new_year_test_data.set_index([<span class="hljs-string">'ID'</span>, <span class="hljs-string">'year'</span>])<br><br>new_year_test_data.describe()<br><br>print(<span class="hljs-string">"unique ID count in base data:"</span>, base_test_data[<span class="hljs-string">"ID"</span>]<br>                                            .nunique())<br>print(<span class="hljs-string">"2015 unique ID count in year data:"</span>, new_year_test_data[<span class="hljs-string">"ID"</span>]<br>                                            .loc[new_year_test_data.year==<span class="hljs-number">2015</span>]<br>                                            .nunique())<br>print(<span class="hljs-string">"2016 unique ID count in year data:"</span>, new_year_test_data[<span class="hljs-string">"ID"</span>]<br>                                            .loc[new_year_test_data.year==<span class="hljs-number">2016</span>]<br>                                            .nunique())<br>print(<span class="hljs-string">"2017 unique ID count in year data:"</span>, new_year_test_data[<span class="hljs-string">"ID"</span>]<br>                                            .loc[new_year_test_data.year==<span class="hljs-number">2017</span>]<br>                                            .nunique())<br></code></pre></td></tr></table></figure>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a><span class="co"># fill null</span></span>
+<span id="cb24-2"><a href="#cb24-2"></a>new_year_test_data <span class="op">=</span> fill_na(year_test_data)</span>
+<span id="cb24-3"><a href="#cb24-3"></a>new_year_test_data.set_index([<span class="st">&#39;ID&#39;</span>, <span class="st">&#39;year&#39;</span>])</span>
+<span id="cb24-4"><a href="#cb24-4"></a></span>
+<span id="cb24-5"><a href="#cb24-5"></a>new_year_test_data.describe()</span>
+<span id="cb24-6"><a href="#cb24-6"></a></span>
+<span id="cb24-7"><a href="#cb24-7"></a><span class="bu">print</span>(<span class="st">&quot;unique ID count in base data:&quot;</span>, base_test_data[<span class="st">&quot;ID&quot;</span>]</span>
+<span id="cb24-8"><a href="#cb24-8"></a>                                            .nunique())</span>
+<span id="cb24-9"><a href="#cb24-9"></a><span class="bu">print</span>(<span class="st">&quot;2015 unique ID count in year data:&quot;</span>, new_year_test_data[<span class="st">&quot;ID&quot;</span>]</span>
+<span id="cb24-10"><a href="#cb24-10"></a>                                            .loc[new_year_test_data.year<span class="op">==</span><span class="dv">2015</span>]</span>
+<span id="cb24-11"><a href="#cb24-11"></a>                                            .nunique())</span>
+<span id="cb24-12"><a href="#cb24-12"></a><span class="bu">print</span>(<span class="st">&quot;2016 unique ID count in year data:&quot;</span>, new_year_test_data[<span class="st">&quot;ID&quot;</span>]</span>
+<span id="cb24-13"><a href="#cb24-13"></a>                                            .loc[new_year_test_data.year<span class="op">==</span><span class="dv">2016</span>]</span>
+<span id="cb24-14"><a href="#cb24-14"></a>                                            .nunique())</span>
+<span id="cb24-15"><a href="#cb24-15"></a><span class="bu">print</span>(<span class="st">&quot;2017 unique ID count in year data:&quot;</span>, new_year_test_data[<span class="st">&quot;ID&quot;</span>]</span>
+<span id="cb24-16"><a href="#cb24-16"></a>                                            .loc[new_year_test_data.year<span class="op">==</span><span class="dv">2017</span>]</span>
+<span id="cb24-17"><a href="#cb24-17"></a>                                            .nunique())</span></code></pre></div>
 <pre><code>unique ID count in base data: 7132
 2015 unique ID count in year data: 7132
 2016 unique ID count in year data: 7132
 2017 unique ID count in year data: 7132</code></pre>
 <h5 id="money_test_data">money_test_data</h5>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># fill null</span><br>new_money_test_data = fill_na(money_test_data)<br>new_money_test_data.set_index([<span class="hljs-string">'ID'</span>, <span class="hljs-string">'year'</span>])<br><br><span class="hljs-comment"># new_money_train_data.head(8)</span><br>new_money_test_data.describe()<br></code></pre></td></tr></table></figure>
+<div class="sourceCode" id="cb26"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a><span class="co"># fill null</span></span>
+<span id="cb26-2"><a href="#cb26-2"></a>new_money_test_data <span class="op">=</span> fill_na(money_test_data)</span>
+<span id="cb26-3"><a href="#cb26-3"></a>new_money_test_data.set_index([<span class="st">&#39;ID&#39;</span>, <span class="st">&#39;year&#39;</span>])</span>
+<span id="cb26-4"><a href="#cb26-4"></a></span>
+<span id="cb26-5"><a href="#cb26-5"></a><span class="co"># new_money_train_data.head(8)</span></span>
+<span id="cb26-6"><a href="#cb26-6"></a>new_money_test_data.describe()</span></code></pre></div>
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -4437,13 +4549,26 @@ max
 </tbody>
 </table>
 </div>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python">print(<span class="hljs-string">"unique ID count in base data:"</span>, base_test_data[<span class="hljs-string">"ID"</span>].nunique())<br>print(<span class="hljs-string">"2015 unique ID count in money data:"</span>, new_money_test_data[<span class="hljs-string">"ID"</span>]<br>                                            .loc[new_money_test_data.year==<span class="hljs-number">2015</span>]<br>                                            .nunique())<br>print(<span class="hljs-string">"2016 unique ID count in money data:"</span>, new_money_test_data[<span class="hljs-string">"ID"</span>]<br>                                            .loc[new_money_test_data.year==<span class="hljs-number">2016</span>]<br>                                            .nunique())<br>print(<span class="hljs-string">"2017 unique ID count in money data:"</span>, new_money_test_data[<span class="hljs-string">"ID"</span>]<br>                                            .loc[new_money_test_data.year==<span class="hljs-number">2017</span>]<br>                                            .nunique())<br></code></pre></td></tr></table></figure>
+<div class="sourceCode" id="cb27"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a><span class="bu">print</span>(<span class="st">&quot;unique ID count in base data:&quot;</span>, base_test_data[<span class="st">&quot;ID&quot;</span>].nunique())</span>
+<span id="cb27-2"><a href="#cb27-2"></a><span class="bu">print</span>(<span class="st">&quot;2015 unique ID count in money data:&quot;</span>, new_money_test_data[<span class="st">&quot;ID&quot;</span>]</span>
+<span id="cb27-3"><a href="#cb27-3"></a>                                            .loc[new_money_test_data.year<span class="op">==</span><span class="dv">2015</span>]</span>
+<span id="cb27-4"><a href="#cb27-4"></a>                                            .nunique())</span>
+<span id="cb27-5"><a href="#cb27-5"></a><span class="bu">print</span>(<span class="st">&quot;2016 unique ID count in money data:&quot;</span>, new_money_test_data[<span class="st">&quot;ID&quot;</span>]</span>
+<span id="cb27-6"><a href="#cb27-6"></a>                                            .loc[new_money_test_data.year<span class="op">==</span><span class="dv">2016</span>]</span>
+<span id="cb27-7"><a href="#cb27-7"></a>                                            .nunique())</span>
+<span id="cb27-8"><a href="#cb27-8"></a><span class="bu">print</span>(<span class="st">&quot;2017 unique ID count in money data:&quot;</span>, new_money_test_data[<span class="st">&quot;ID&quot;</span>]</span>
+<span id="cb27-9"><a href="#cb27-9"></a>                                            .loc[new_money_test_data.year<span class="op">==</span><span class="dv">2017</span>]</span>
+<span id="cb27-10"><a href="#cb27-10"></a>                                            .nunique())</span></code></pre></div>
 <pre><code>unique ID count in base data: 7132
 2015 unique ID count in money data: 7132
 2016 unique ID count in money data: 7132
 2017 unique ID count in money data: 7132</code></pre>
 <h4 id="合并-year-data-和-money-data">合并 <code>year data</code> 和 <code>money data</code></h4>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python">combined_new_year_money_test_data = combined_new_year_money_data(<br>                                              new_year_test_data, <br>                                              new_money_test_data<br>                                            )<br>combined_new_year_money_test_data.head()<br></code></pre></td></tr></table></figure>
+<div class="sourceCode" id="cb29"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a>combined_new_year_money_test_data <span class="op">=</span> combined_new_year_money_data(</span>
+<span id="cb29-2"><a href="#cb29-2"></a>                                              new_year_test_data, </span>
+<span id="cb29-3"><a href="#cb29-3"></a>                                              new_money_test_data</span>
+<span id="cb29-4"><a href="#cb29-4"></a>                                            )</span>
+<span id="cb29-5"><a href="#cb29-5"></a>combined_new_year_money_test_data.head()</span></code></pre></div>
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -4638,10 +4763,11 @@ year
 </tbody>
 </table>
 </div>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">print(<span class="hljs-string">"unique ID count in combined data:"</span>, combined_new_year_money_test_data[<span class="hljs-string">"ID"</span>].nunique())<br></code></pre></td></tr></table></figure>
+<div class="sourceCode" id="cb30"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a><span class="bu">print</span>(<span class="st">&quot;unique ID count in combined data:&quot;</span>, combined_new_year_money_test_data[<span class="st">&quot;ID&quot;</span>].nunique())</span></code></pre></div>
 <pre><code>unique ID count in combined data: 7132</code></pre>
 <h3 id="拆分新特征-1">拆分新特征</h3>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">splited_year_money_test_data = split_data(combined_new_year_money_test_data)<br>splited_year_money_test_data.head()<br></code></pre></td></tr></table></figure>
+<div class="sourceCode" id="cb32"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a>splited_year_money_test_data <span class="op">=</span> split_data(combined_new_year_money_test_data)</span>
+<span id="cb32-2"><a href="#cb32-2"></a>splited_year_money_test_data.head()</span></code></pre></div>
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -4862,8 +4988,10 @@ ID
 </div>
 <h4 id="合并处理好的数据集-1">合并处理好的数据集</h4>
 <p>根据<code>ID</code>合并处理好的数据集。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">test = pd.merge(combined_base_knowledge_test_data, <br>                 splited_year_money_test_data, <br>                 on=[<span class="hljs-string">'ID'</span>])<br></code></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">test.head()<br></code></pre></td></tr></table></figure>
+<div class="sourceCode" id="cb33"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a>test <span class="op">=</span> pd.merge(combined_base_knowledge_test_data, </span>
+<span id="cb33-2"><a href="#cb33-2"></a>                 splited_year_money_test_data, </span>
+<span id="cb33-3"><a href="#cb33-3"></a>                 on<span class="op">=</span>[<span class="st">&#39;ID&#39;</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a>test.head()</span></code></pre></div>
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -5083,7 +5211,7 @@ ID
 </p>
 </div>
 <h4 id="保存处理好的测试数据集">保存处理好的测试数据集</h4>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">test.to_csv(<span class="hljs-string">"data/test/test.csv"</span>)<br></code></pre></td></tr></table></figure>
+<div class="sourceCode" id="cb35"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a>test.to_csv(<span class="st">&quot;data/test/test.csv&quot;</span>)</span></code></pre></div>
 <h1 id="总结">总结</h1>
 <p>这次数据处理比较简单，主要注意以下几个点：<br />
 1. 对于年份数据缺失值的处理，可以根据ID和年份判断缺失的年份应该是哪一年，然后填充相应的年份值即可，如果是同一<code>ID</code>缺失两年数据，这个就随缘了😆，我是按照从上到下的顺序填充的（可能有更好的方法，大家可以提出自己的想法），例如<code>ID</code>为<code>123</code>的企业缺失<code>2015</code>和<code>2017</code>的年份，那么依次将<code>year</code>属性值填充为2015和2017；<br />
