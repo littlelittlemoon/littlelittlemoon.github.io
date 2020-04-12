@@ -567,7 +567,7 @@ we combine 1 and 1 to get 0 so the array converts to [1] then that's the value o
 <span id="cb5-23"><a href="#cb5-23"></a>        <span class="cf">return</span> <span class="op">-</span>stones[<span class="dv">0</span>]</span></code></pre></div>
 <p><strong>时间复杂度：O(Nlog(N))</strong></p>
 <h3 id="解法二">解法二</h3>
-<p>这个解法是最容易想到的解法，思想也比较简单，时间复杂度<code>O($N^2$)</code>。</p>
+<p>这个解法是最容易想到的解法，思想也比较简单，时间复杂度O(<span class="math inline">\(N^2\)</span>)。</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">class</span> Solution:</span>
 <span id="cb6-2"><a href="#cb6-2"></a>    <span class="kw">def</span> lastStoneWeight(<span class="va">self</span>, stones: List[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
 <span id="cb6-3"><a href="#cb6-3"></a>        stones <span class="op">=</span> <span class="bu">sorted</span>(stones)</span>
@@ -577,7 +577,7 @@ we combine 1 and 1 to get 0 so the array converts to [1] then that's the value o
 <span id="cb6-7"><a href="#cb6-7"></a>            <span class="cf">if</span> y<span class="op">-</span>x <span class="op">!=</span> <span class="dv">0</span>:</span>
 <span id="cb6-8"><a href="#cb6-8"></a>                stones.append(y<span class="op">-</span>x)</span>
 <span id="cb6-9"><a href="#cb6-9"></a>            stones <span class="op">=</span> <span class="bu">sorted</span>(stones)</span>
-<span id="cb6-10"><a href="#cb6-10"></a>            </span>
+<span id="cb6-10"><a href="#cb6-10"></a></span>
 <span id="cb6-11"><a href="#cb6-11"></a>        <span class="cf">if</span> <span class="kw">not</span>(stones):</span>
 <span id="cb6-12"><a href="#cb6-12"></a>            <span class="cf">return</span> <span class="dv">0</span></span>
 <span id="cb6-13"><a href="#cb6-13"></a>        <span class="cf">return</span> stones[<span class="dv">0</span>]</span></code></pre></div>
