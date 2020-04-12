@@ -7704,6 +7704,51 @@ img[src*="#in-center"] {
     padding-left:10px;
     padding-right:10px
 }
+.initial-wrap {
+    position:relative;
+    width:730px;
+    max-width:80%;
+    border:2px solid #797979;
+    border-top:0;
+    text-align:center;
+    margin:80px auto
+}
+.initial-wrap h1 {
+    position:relative;
+    margin-top:-20px;
+    display:inline-block;
+    letter-spacing:4px;
+    color:#797979
+}
+
+.initial-wrap p {
+    width:70%;
+    margin:auto;
+    line-height:30px;
+    color:#797979
+}
+
+.initial-wrap p#poem {
+    font-size:25px
+}
+.initial-wrap p#info {
+    font-size:15px;
+    margin:15px auto
+}
+.initial-border {
+    position:absolute;
+    height:2px;
+    width:27%;
+    background-color:#797979
+}
+.initial-right {
+    right:0
+}
+.initial-left {
+    left:0
+}
+
+
 .poem-wrap {
     position:relative;
     width:730px;
@@ -7726,7 +7771,7 @@ img[src*="#in-center"] {
     line-height:30px;
     color:#797979
 }
-.poem-wrap p#poem {
+.poem-wrap p#notice {
     font-size:25px
 }
 .poem-wrap p#info {
