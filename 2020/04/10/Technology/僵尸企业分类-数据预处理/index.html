@@ -1,0 +1,5691 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+  <title itemprop="name">僵尸企业分类|数据预处理 | LITTLEMEEMOON</title>
+  
+    <link rel="shortcut icon" href="/images/favicon.ico">
+  
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="stylesheet" id="saukra_css-css" href="/css/style.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/lib.min.css" media="all">
+  <link rel="stylesheet" href="/css/font.css" media="all">
+  <link rel="stylesheet" href="/css/insight.css" media="all">
+  <link rel="stylesheet" href="/css/jquery.fancybox.min.css" media="all">
+  <link rel="stylesheet" href="/css/zoom.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+  <link rel="stylesheet" type="text/css" href="/css/matery.css">
+<!--   <link rel="stylesheet" id="saukra_css-css" href="https://2heng.xin/wp-content/cache/autoptimize/css/autoptimize_ad42a61f4c7d4bdd9f91afcff6b5dda5.css
+" type="text/css" media="all"> -->
+  <script>
+  /*Initial Variables*/
+  var mashiro_option = new Object();
+  var mashiro_global = new Object();
+  mashiro_option.NProgressON = true;
+  /* 
+   * 邮箱信息之类的东西可以填在这里，这些js变量基本都作用于sakura-app.js
+   * 这样的设置仅是为了方便在基于PHP开发的主题中设置js变量，既然移植到了Node上，我想或许可以精简这一逻辑吧
+   */
+  mashiro_option.email_domain = "";
+  mashiro_option.email_name = "";
+  mashiro_option.cookie_version_control = "";
+  mashiro_option.qzone_autocomplete = false;
+  mashiro_option.site_name = "Bear CaveKayleen";
+  mashiro_option.author_name = "Kayleen";
+  mashiro_option.site_url = "https://littlelittlemoon.github.io/";
+  mashiro_option.v_appId = "uVn0CbsTzphCnMDIxJKQ0rbg-gzGzoHsz";
+  mashiro_option.v_appKey = "wc39UmG3dNqQQms9Hg2sKc1X";
+  mashiro_option.mathjax = "[object Object]";
+  mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
+  mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
+
+  // mashiro_option.jsdelivr_css_src = "https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/css/lib.min.css";
+  // mashiro_option.float_player_on = true;
+
+  /*End of Initial Variables*/
+  </script>
+  <script type="text/javascript">
+  var bg = "https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/cover/2/(0).webp,https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/cover/2/(1).webp,https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/cover/2/(2).webp,https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/cover/2/(3).webp,https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/cover/2/(4).webp,https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/cover/2/(5).webp,https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/cover/2/(6).webp,https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/cover/2/(7).webp,https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/cover/2/(8).webp".split(",");
+  var bgindex = Math.floor(Math.random()*bg.length);
+  if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+    alert('朋友，IE浏览器未适配哦~');
+  }
+  </script>
+  <style type="text/css">
+  .hljs-ln{border-collapse:collapse}.hljs-ln td{padding:0}.hljs-ln-n:before{content:attr(data-line-number)}
+  </style>
+  <style type="text/css">.site-top .lower nav{display:block !important;}.author-profile i,.post-like a,.post-share .show-share,.sub-text,.we-info a,span.sitename,.post-more i:hover,#pagination a:hover,.post-content a:hover,.float-content i:hover{color:#FE9600}.feature i,.download,.navigator i:hover,.links ul li:before,.ar-time i,span.ar-circle,.object,.comment .comment-reply-link,.siren-checkbox-radio:checked + .siren-checkbox-radioInput:after{background:#FE9600}::-webkit-scrollbar-thumb{background:#FE9600}.download,.navigator i:hover,.link-title,.links ul li:hover,#pagination a:hover,.comment-respond input[type='submit']:hover{border-color:#FE9600}.entry-content a:hover,.site-info a:hover,.comment h4 a,#comments-navi a.prev,#comments-navi a.next,.comment h4 a:hover,.site-top ul li a:hover,.entry-title a:hover,#archives-temp h3,span.page-numbers.current,.sorry li a:hover,.site-title a:hover,i.iconfont.js-toggle-search.iconsearch:hover,.comment-respond input[type='submit']:hover{color:#FE9600}.comments .comments-main{display:block !important;}.comments .comments-hidden{display:none !important;}background-position:center center;background-attachment:inherit;}
+  </style>
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="LITTLEMEEMOON" type="application/atom+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="scrollbar" id="bar">
+  </div>
+  <a href="#" class="cd-top faa-float animated"></a>
+  <section id="main-container">
+    <div class="headertop ">
+  <div id="banner_wave_1"></div>
+  <div id="banner_wave_2"></div>
+  <figure id="centerbg" class="centerbg">
+    <div class="focusinfo no-select">
+      <div class="header-tou">
+        <a href="https://littlelittlemoon.github.io/">
+          <img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/custom/avatar-3.jpg">
+        </a>
+      </div>
+      <div class="header-info">
+        <p>Do not pray for easy lives, pray to be stronger men.</p>
+        <div class="top-social_v2">
+          <li id="bg-pre">
+            <img class="flipx" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+          
+            
+              
+                <li>
+                  <a href="http://github.com/littlelittlemoon" target="_blank" class="social-github" title="github">
+                    <img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/social/github.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="littlemeemoon@gmail.com" target="_blank" class="social-github" title="email">
+                    <img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/social/email.svg">
+                  </a>
+                </li>
+              
+            
+          
+          <li id="bg-next">
+            <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+        </div>
+      </div>
+    </div>
+  </figure>
+  <div id="video-container" style="">
+    <video style="object-fit: fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto">
+    </video>
+    <div id="video-btn" class="loadvideo videolive">
+    </div>
+    <div id="video-add">
+    </div>
+    <div class="video-stu">
+    </div>
+  </div>
+  <div class="headertop-down faa-float animated" onclick="headertop_down()">
+    <span>
+      <i class="fa fa-chevron-down" aria-hidden="true">
+      </i>
+    </span>
+  </div>
+</div>
+    <div id="page" class="site wrapper">
+      <header class="site-header no-select gizle sabit" role="banner">
+  <div class="site-top">
+    <div class="site-branding">
+      <span class="site-title">
+        <span class="logolink moe-mashiro">
+          <a href="/">
+            <span class="sakurasono">Bear Cave</span>
+            <span class="shironeko">Kayleen</span>
+          </a>
+        </span>
+      </span>
+    </div>
+    <div class="searchbox search-form-submit">
+      <i class="iconfont js-toggle-search iconsearch icon-search">
+      </i>
+    </div>
+    <div id="show-nav" class="showNav mobile-fit">
+      <div class="line line1">
+      </div>
+      <div class="line line2">
+      </div>
+      <div class="line line3">
+      </div>
+    </div>
+    <div class="lower-cantiner">
+      <div class="lower">
+        <nav class="mobile-fit-control hide">
+          <ul id="menu-new" class="menu">
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+                    首页
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+                    归档
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/categories/Technology/">
+                          <i class="fa fa-code" aria-hidden="true"></i>
+                          技术
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/Life/">
+                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                          生活
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/Thoughts/">
+                          <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                          随想
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/Repost/">
+                          <i class="fa fa-book" aria-hidden="true"></i>
+                          转载
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+                    清单
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/tags/Reading/">
+                          <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                          悦读
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/music/">
+                          <i class="fa fa-headphones" aria-hidden="true"></i>
+                          音悦
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/tags/Pictures/">
+                          <i class="fa fa-photo" aria-hidden="true"></i>
+                          图集
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/tags/Cave/">
+                          <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                          Cave
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/comment/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+                    留言板
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/links/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+                    友人帐
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/donate/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+                    赞赏
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/about/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-meetup" aria-hidden="true"></i>
+                    关于我
+                  </span>
+                </a>
+                
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/bears/9.jpg);" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/bears/9.jpg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      僵尸企业分类|数据预处理</h1>
+      <p class="entry-census">
+        <span>
+          <a href="https://littlelittlemoon.github.io/">
+            <img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/custom/avatar-3.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="https://littlelittlemoon.github.io/">Kayleen</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2020-4-10<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
+  </div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h1 id="问题描述">问题描述</h1>
+<blockquote>
+<p>僵尸企业是指<strong>缺乏盈利能力却能够以低于市场最优利率成本获得信贷资源，依靠外界输血而缺乏自生能力的企业</strong>。僵尸企业的存在破坏了市场机制，加剧了信贷资源的错配，带来了严重的产能过剩问题，还对其他非僵尸企业产生了投资挤出效应。 因此需要对正常企业和僵尸企业进行分类，现给出一批有标签的企业数据作为训练集，标签为0表示正常企业，标签为1表示僵尸企业；同时给出无标签数据作为测试集，请对无标签数据进行分类。</p>
+</blockquote>
+<h1 id="数据集说明">数据集说明</h1>
+<p>数据集包括训练集和测试集两部分，每个部分又包括:<br />
+1. 企业基本数据: 包含企业的一些基本属性以及企业的标签（即<strong>flag--0：正常企业，1：僵尸企业</strong>）;<br />
+2. 企业知识产权数据: 包含企业的知识产权相关信息，<strong>根据id可与基本数据一一对应</strong>;<br />
+3. 企业金融数据: 包含企业2015~2017三年的金融相关信息，<strong>根据id可与基本数据相对应</strong>;<br />
+4. 企业年报数据: 包含企业2015~2017三年的年报数据，<strong>根据id可与基本数据相对应</strong>。</p>
+<h1 id="数据预处理">数据预处理</h1>
+<h2 id="工具函数定义">工具函数定义</h2>
+<h3 id="combined_base_knowledge_data">combined_base_knowledge_data</h3>
+<h4 id="函数说明">函数说明</h4>
+<p>该函数用于根据<code>ID</code>合并<code>base data</code>和<code>knowledge data</code>数据集。</p>
+<h4 id="函数实现">函数实现</h4>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">def</span> combined_base_knowledge_data(base_data, knowledge_data):</span>
+<span id="cb1-2"><a href="#cb1-2"></a>    combined_base_knowledge_data <span class="op">=</span> base_data</span>
+<span id="cb1-3"><a href="#cb1-3"></a>                                  .set_index(<span class="st">&#39;ID&#39;</span>)</span>
+<span id="cb1-4"><a href="#cb1-4"></a>                                  .join(knowledge_data</span>
+<span id="cb1-5"><a href="#cb1-5"></a>                                  .set_index(<span class="st">&#39;ID&#39;</span>))</span>
+<span id="cb1-6"><a href="#cb1-6"></a>    combined_base_knowledge_data <span class="op">=</span> combined_base_knowledge_data</span>
+<span id="cb1-7"><a href="#cb1-7"></a>                                  .fillna(combined_base_knowledge_data</span>
+<span id="cb1-8"><a href="#cb1-8"></a>                                  .median())</span>
+<span id="cb1-9"><a href="#cb1-9"></a>    <span class="cf">return</span> combined_base_knowledge_data</span></code></pre></div>
+<h3 id="fill_na">fill_na</h3>
+<h4 id="函数说明-1">函数说明</h4>
+<p>该函数用于填充数据集中缺失的数据： 1. 年份数据：根据ID和年份查找出对应ID缺失的年份，然后补全缺失的年份； 2. 其他缺失数据统一用中位数补齐。</p>
+<h4 id="函数实现-1">函数实现</h4>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># fill null year </span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="kw">def</span> fill(oragin_data, years <span class="op">=</span> [<span class="dv">2015</span>, <span class="dv">2016</span>, <span class="dv">2017</span>]):</span>
+<span id="cb2-3"><a href="#cb2-3"></a>    <span class="co"># pick null year data</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a>    null_years <span class="op">=</span> oragin_data.loc[oragin_data.year.isna()]</span>
+<span id="cb2-5"><a href="#cb2-5"></a>    </span>
+<span id="cb2-6"><a href="#cb2-6"></a>    <span class="co"># fill year </span></span>
+<span id="cb2-7"><a href="#cb2-7"></a>    <span class="cf">for</span> year <span class="kw">in</span> years:</span>
+<span id="cb2-8"><a href="#cb2-8"></a>        IDs <span class="op">=</span> oragin_data[[<span class="st">&quot;ID&quot;</span>]].loc[oragin_data.year <span class="op">==</span> year]</span>
+<span id="cb2-9"><a href="#cb2-9"></a>        <span class="cf">for</span> null_year_id <span class="kw">in</span> null_years[<span class="st">&quot;ID&quot;</span>].unique():</span>
+<span id="cb2-10"><a href="#cb2-10"></a>            tmp <span class="op">=</span> IDs.loc[IDs.ID <span class="op">==</span> null_year_id]</span>
+<span id="cb2-11"><a href="#cb2-11"></a>            <span class="cf">if</span> tmp.empty:</span>
+<span id="cb2-12"><a href="#cb2-12"></a>                index <span class="op">=</span> oragin_data.loc[(</span>
+<span id="cb2-13"><a href="#cb2-13"></a>                          oragin_data.ID <span class="op">==</span> null_year_id) </span>
+<span id="cb2-14"><a href="#cb2-14"></a>                          <span class="op">&amp;</span> (oragin_data.year.isna()</span>
+<span id="cb2-15"><a href="#cb2-15"></a>                        )].index.tolist()</span>
+<span id="cb2-16"><a href="#cb2-16"></a>                <span class="cf">if</span> <span class="bu">len</span>(index) <span class="op">!=</span> <span class="dv">0</span>:</span>
+<span id="cb2-17"><a href="#cb2-17"></a>                    oragin_data.loc[index[<span class="dv">0</span>]:index[<span class="dv">0</span>], <span class="st">&quot;year&quot;</span>] <span class="op">=</span> year </span>
+<span id="cb2-18"><a href="#cb2-18"></a></span>
+<span id="cb2-19"><a href="#cb2-19"></a>    <span class="co"># fill other missing value with median value      </span></span>
+<span id="cb2-20"><a href="#cb2-20"></a>    new_data <span class="op">=</span> oragin_data.fillna(oragin_data.median())</span>
+<span id="cb2-21"><a href="#cb2-21"></a>    <span class="cf">return</span> new_data<span class="op">;</span></span></code></pre></div>
+<h3 id="combined_new_year_money_data">combined_new_year_money_data</h3>
+<h4 id="函数说明-2">函数说明</h4>
+<p>该方法用于根据<code>ID</code>和<code>year</code>合并<code>year data</code>和<code>money data</code>。</p>
+<h4 id="函数实现-2">函数实现</h4>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">def</span> combined_new_year_money_data(new_year_data, new_money_data):</span>
+<span id="cb3-2"><a href="#cb3-2"></a>    <span class="cf">return</span> pd.merge(new_year_data, new_money_data, on<span class="op">=</span>[<span class="st">&#39;ID&#39;</span>, <span class="st">&#39;year&#39;</span>])</span></code></pre></div>
+<h3 id="split_data">split_data</h3>
+<h4 id="函数说明-3">函数说明</h4>
+<p>该函数用于根据<code>ID</code>和<code>year</code>拆分新特征，将原数据集三年的数据按年份拆分成新的特征，<strong>使拆分后的数据集可与base data数据集用ID一一对应</strong>。主要用于<code>year data</code>数据集和<code>money data</code>数据集的拆分。</p>
+<h4 id="函数实现-3">函数实现</h4>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">def</span> split_data(combined_new_year_money_data):</span>
+<span id="cb4-2"><a href="#cb4-2"></a>    <span class="co"># split data with year</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a>    combined_new_year_data_2015 <span class="op">=</span> combined_new_year_money_data.loc[</span>
+<span id="cb4-4"><a href="#cb4-4"></a>                          combined_new_year_money_data.year <span class="op">==</span> <span class="dv">2015</span>]</span>
+<span id="cb4-5"><a href="#cb4-5"></a>                          .set_index(<span class="st">&#39;ID&#39;</span>)</span>
+<span id="cb4-6"><a href="#cb4-6"></a>                          .add_suffix(<span class="st">&quot;_2015&quot;</span>).drop(columns<span class="op">=</span>[<span class="st">&#39;year_2015&#39;</span>])</span>
+<span id="cb4-7"><a href="#cb4-7"></a>    combined_new_year_data_2016 <span class="op">=</span> combined_new_year_money_data.loc[</span>
+<span id="cb4-8"><a href="#cb4-8"></a>                          combined_new_year_money_data.year <span class="op">==</span> <span class="dv">2016</span>]</span>
+<span id="cb4-9"><a href="#cb4-9"></a>                          .set_index(<span class="st">&#39;ID&#39;</span>)</span>
+<span id="cb4-10"><a href="#cb4-10"></a>                          .add_suffix(<span class="st">&quot;_2016&quot;</span>).drop(columns<span class="op">=</span>[<span class="st">&#39;year_2016&#39;</span>])</span>
+<span id="cb4-11"><a href="#cb4-11"></a>    combined_new_year_data_2017 <span class="op">=</span> combined_new_year_money_data.loc[</span>
+<span id="cb4-12"><a href="#cb4-12"></a>                          combined_new_year_money_data.year <span class="op">==</span> <span class="dv">2017</span>]</span>
+<span id="cb4-13"><a href="#cb4-13"></a>                          .set_index(<span class="st">&#39;ID&#39;</span>)</span>
+<span id="cb4-14"><a href="#cb4-14"></a>                          .add_suffix(<span class="st">&quot;_2017&quot;</span>).drop(columns<span class="op">=</span>[<span class="st">&#39;year_2017&#39;</span>])</span>
+<span id="cb4-15"><a href="#cb4-15"></a>    </span>
+<span id="cb4-16"><a href="#cb4-16"></a>    <span class="co"># marge data with ID</span></span>
+<span id="cb4-17"><a href="#cb4-17"></a>    combined_new_splited_year_money_data <span class="op">=</span> pd.merge(</span>
+<span id="cb4-18"><a href="#cb4-18"></a>                                      combined_new_year_data_2015, </span>
+<span id="cb4-19"><a href="#cb4-19"></a>                                      combined_new_year_data_2016, </span>
+<span id="cb4-20"><a href="#cb4-20"></a>                                      on<span class="op">=</span>[<span class="st">&#39;ID&#39;</span>])</span>
+<span id="cb4-21"><a href="#cb4-21"></a>    combined_new_splited_year_money_data <span class="op">=</span> pd.merge(</span>
+<span id="cb4-22"><a href="#cb4-22"></a>                                      combined_new_splited_year_money_data, </span>
+<span id="cb4-23"><a href="#cb4-23"></a>                                      combined_new_year_data_2017, </span>
+<span id="cb4-24"><a href="#cb4-24"></a>                                      on<span class="op">=</span>[<span class="st">&#39;ID&#39;</span>])</span>
+<span id="cb4-25"><a href="#cb4-25"></a></span>
+<span id="cb4-26"><a href="#cb4-26"></a>    <span class="cf">return</span> combined_new_splited_year_money_data</span></code></pre></div>
+<h2 id="训练数据集处理">训练数据集处理</h2>
+<h3 id="加载原始数据">加载原始数据</h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb5-2"><a href="#cb5-2"></a></span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="co"># load training data</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a>base_train_data <span class="op">=</span> pd.read_csv(<span class="st">&quot;data/train/base-train.csv&quot;</span>)</span>
+<span id="cb5-5"><a href="#cb5-5"></a>year_train_data <span class="op">=</span> pd.read_csv(<span class="st">&quot;data/train/year-train.csv&quot;</span>)</span>
+<span id="cb5-6"><a href="#cb5-6"></a>knowledge_train_data <span class="op">=</span> pd.read_csv(<span class="st">&quot;data/train/knowledge-train.csv&quot;</span>)</span>
+<span id="cb5-7"><a href="#cb5-7"></a>money_train_data <span class="op">=</span> pd.read_csv(<span class="st">&quot;data/train/money-train.csv&quot;</span>)</span></code></pre></div>
+<h4 id="查看原始数据集信息base-data-and-knowledge-data">查看原始数据集信息：base data and knowledge data</h4>
+<h5 id="base_train_data">base_train_data</h5>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>base_train_data.head()</span></code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: left;">
+<th>
+</th>
+<th>
+ID
+</th>
+<th>
+注册时间
+</th>
+<th>
+注册资本
+</th>
+<th>
+行业
+</th>
+<th>
+区域
+</th>
+<th>
+企业类型
+</th>
+<th>
+控制人类型
+</th>
+<th>
+控制人持股比例
+</th>
+<th>
+flag
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+0
+</td>
+<td>
+5986361
+</td>
+<td>
+2014.0
+</td>
+<td>
+7090.0
+</td>
+<td>
+服务业
+</td>
+<td>
+湖北
+</td>
+<td>
+有限责任公司
+</td>
+<td>
+自然人
+</td>
+<td>
+0.93
+</td>
+<td>
+0
+</td>
+</tr>
+<tr>
+<td>
+1
+</td>
+<td>
+5991749
+</td>
+<td>
+2007.0
+</td>
+<td>
+5940.0
+</td>
+<td>
+零售业
+</td>
+<td>
+湖南
+</td>
+<td>
+合伙企业
+</td>
+<td>
+企业法人
+</td>
+<td>
+0.57
+</td>
+<td>
+0
+</td>
+</tr>
+<tr>
+<td>
+2
+</td>
+<td>
+5998154
+</td>
+<td>
+2002.0
+</td>
+<td>
+9720.0
+</td>
+<td>
+工业
+</td>
+<td>
+福建
+</td>
+<td>
+合伙企业
+</td>
+<td>
+自然人
+</td>
+<td>
+0.74
+</td>
+<td>
+0
+</td>
+</tr>
+<tr>
+<td>
+3
+</td>
+<td>
+5984390
+</td>
+<td>
+2000.0
+</td>
+<td>
+4800.0
+</td>
+<td>
+商业服务业
+</td>
+<td>
+山东
+</td>
+<td>
+股份有限公司
+</td>
+<td>
+NaN
+</td>
+<td>
+0.90
+</td>
+<td>
+0
+</td>
+</tr>
+<tr>
+<td>
+4
+</td>
+<td>
+5980535
+</td>
+<td>
+2004.0
+</td>
+<td>
+4530.0
+</td>
+<td>
+零售业
+</td>
+<td>
+广东
+</td>
+<td>
+农民专业合作社
+</td>
+<td>
+自然人
+</td>
+<td>
+0.95
+</td>
+<td>
+0
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>base_train_data.describe()</span></code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+ID
+</th>
+<th>
+注册时间
+</th>
+<th>
+注册资本
+</th>
+<th>
+控制人持股比例
+</th>
+<th>
+flag
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+count
+</td>
+<td>
+2.851900e+04
+</td>
+<td>
+28230.000000
+</td>
+<td>
+28220.000000
+</td>
+<td>
+28223.000000
+</td>
+<td>
+28519.000000
+</td>
+</tr>
+<tr>
+<td>
+mean
+</td>
+<td>
+4.332423e+06
+</td>
+<td>
+2007.010627
+</td>
+<td>
+5024.659816
+</td>
+<td>
+0.754786
+</td>
+<td>
+0.392721
+</td>
+</tr>
+<tr>
+<td>
+std
+</td>
+<td>
+2.161092e+06
+</td>
+<td>
+4.326800
+</td>
+<td>
+2860.157458
+</td>
+<td>
+0.145008
+</td>
+<td>
+0.488364
+</td>
+</tr>
+<tr>
+<td>
+min
+</td>
+<td>
+2.800000e+01
+</td>
+<td>
+2000.000000
+</td>
+<td>
+100.000000
+</td>
+<td>
+0.510000
+</td>
+<td>
+0.000000
+</td>
+</tr>
+<tr>
+<td>
+25%
+</td>
+<td>
+2.324856e+06
+</td>
+<td>
+2003.000000
+</td>
+<td>
+2530.000000
+</td>
+<td>
+0.630000
+</td>
+<td>
+0.000000
+</td>
+</tr>
+<tr>
+<td>
+50%
+</td>
+<td>
+5.981915e+06
+</td>
+<td>
+2007.000000
+</td>
+<td>
+5010.000000
+</td>
+<td>
+0.750000
+</td>
+<td>
+0.000000
+</td>
+</tr>
+<tr>
+<td>
+75%
+</td>
+<td>
+5.990992e+06
+</td>
+<td>
+2011.000000
+</td>
+<td>
+7490.000000
+</td>
+<td>
+0.880000
+</td>
+<td>
+1.000000
+</td>
+</tr>
+<tr>
+<td>
+max
+</td>
+<td>
+6.000000e+06
+</td>
+<td>
+2014.000000
+</td>
+<td>
+10000.000000
+</td>
+<td>
+1.000000
+</td>
+<td>
+1.000000
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h5 id="knowledge_train_data">knowledge_train_data</h5>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>knowledge_train_data.head()</span></code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+ID
+</th>
+<th>
+专利
+</th>
+<th>
+商标
+</th>
+<th>
+著作权
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+0
+</td>
+<td>
+28
+</td>
+<td>
+0.0
+</td>
+<td>
+1.0
+</td>
+<td>
+1.0
+</td>
+</tr>
+<tr>
+<td>
+1
+</td>
+<td>
+230
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+</tr>
+<tr>
+<td>
+2
+</td>
+<td>
+693
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+</tr>
+<tr>
+<td>
+3
+</td>
+<td>
+990
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+</tr>
+<tr>
+<td>
+4
+</td>
+<td>
+1274
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>knowledge_train_data.describe()</span></code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+ID
+</th>
+<th>
+专利
+</th>
+<th>
+商标
+</th>
+<th>
+著作权
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+count
+</td>
+<td>
+2.851900e+04
+</td>
+<td>
+28233.000000
+</td>
+<td>
+28216.00000
+</td>
+<td>
+28237.000000
+</td>
+</tr>
+<tr>
+<td>
+mean
+</td>
+<td>
+4.332423e+06
+</td>
+<td>
+0.342507
+</td>
+<td>
+0.36334
+</td>
+<td>
+0.371428
+</td>
+</tr>
+<tr>
+<td>
+std
+</td>
+<td>
+2.161092e+06
+</td>
+<td>
+0.474557
+</td>
+<td>
+0.48097
+</td>
+<td>
+0.483195
+</td>
+</tr>
+<tr>
+<td>
+min
+</td>
+<td>
+2.800000e+01
+</td>
+<td>
+0.000000
+</td>
+<td>
+0.00000
+</td>
+<td>
+0.000000
+</td>
+</tr>
+<tr>
+<td>
+25%
+</td>
+<td>
+2.324856e+06
+</td>
+<td>
+0.000000
+</td>
+<td>
+0.00000
+</td>
+<td>
+0.000000
+</td>
+</tr>
+<tr>
+<td>
+50%
+</td>
+<td>
+5.981915e+06
+</td>
+<td>
+0.000000
+</td>
+<td>
+0.00000
+</td>
+<td>
+0.000000
+</td>
+</tr>
+<tr>
+<td>
+75%
+</td>
+<td>
+5.990992e+06
+</td>
+<td>
+1.000000
+</td>
+<td>
+1.00000
+</td>
+<td>
+1.000000
+</td>
+</tr>
+<tr>
+<td>
+max
+</td>
+<td>
+6.000000e+06
+</td>
+<td>
+1.000000
+</td>
+<td>
+1.00000
+</td>
+<td>
+1.000000
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="合并-base-data-和-knowledge-data">合并 base data 和 knowledge data</h4>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>combined_base_knowledge_train_data <span class="op">=</span> combined_base_knowledge_data(</span>
+<span id="cb10-2"><a href="#cb10-2"></a>                                              base_train_data,</span>
+<span id="cb10-3"><a href="#cb10-3"></a>                                              knowledge_train_data</span>
+<span id="cb10-4"><a href="#cb10-4"></a>                                          )</span>
+<span id="cb10-5"><a href="#cb10-5"></a>combined_base_knowledge_train_data.head()</span></code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+注册时间
+</th>
+<th>
+注册资本
+</th>
+<th>
+行业
+</th>
+<th>
+区域
+</th>
+<th>
+企业类型
+</th>
+<th>
+控制人类型
+</th>
+<th>
+控制人持股比例
+</th>
+<th>
+flag
+</th>
+<th>
+专利
+</th>
+<th>
+商标
+</th>
+<th>
+著作权
+</th>
+</tr>
+<tr>
+<th>
+ID
+</th>
+<th>
+</th>
+<th>
+</th>
+<th>
+</th>
+<th>
+</th>
+<th>
+</th>
+<th>
+</th>
+<th>
+</th>
+<th>
+</th>
+<th>
+</th>
+<th>
+</th>
+<th>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+5986361
+</td>
+<td>
+2014.0
+</td>
+<td>
+7090.0
+</td>
+<td>
+服务业
+</td>
+<td>
+湖北
+</td>
+<td>
+有限责任公司
+</td>
+<td>
+自然人
+</td>
+<td>
+0.93
+</td>
+<td>
+0
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+</tr>
+<tr>
+<td>
+5991749
+</td>
+<td>
+2007.0
+</td>
+<td>
+5940.0
+</td>
+<td>
+零售业
+</td>
+<td>
+湖南
+</td>
+<td>
+合伙企业
+</td>
+<td>
+企业法人
+</td>
+<td>
+0.57
+</td>
+<td>
+0
+</td>
+<td>
+1.0
+</td>
+<td>
+1.0
+</td>
+<td>
+0.0
+</td>
+</tr>
+<tr>
+<td>
+5998154
+</td>
+<td>
+2002.0
+</td>
+<td>
+9720.0
+</td>
+<td>
+工业
+</td>
+<td>
+福建
+</td>
+<td>
+合伙企业
+</td>
+<td>
+自然人
+</td>
+<td>
+0.74
+</td>
+<td>
+0
+</td>
+<td>
+1.0
+</td>
+<td>
+1.0
+</td>
+<td>
+0.0
+</td>
+</tr>
+<tr>
+<td>
+5984390
+</td>
+<td>
+2000.0
+</td>
+<td>
+4800.0
+</td>
+<td>
+商业服务业
+</td>
+<td>
+山东
+</td>
+<td>
+股份有限公司
+</td>
+<td>
+NaN
+</td>
+<td>
+0.90
+</td>
+<td>
+0
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+</tr>
+<tr>
+<td>
+5980535
+</td>
+<td>
+2004.0
+</td>
+<td>
+4530.0
+</td>
+<td>
+零售业
+</td>
+<td>
+广东
+</td>
+<td>
+农民专业合作社
+</td>
+<td>
+自然人
+</td>
+<td>
+0.95
+</td>
+<td>
+0
+</td>
+<td>
+0.0
+</td>
+<td>
+1.0
+</td>
+<td>
+1.0
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="查看-year-data-和-money-data数据集信息">查看 <code>year data</code> 和 <code>money data</code>数据集信息</h4>
+<h5 id="year_train_data">year_train_data</h5>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>year_train_data.head(<span class="dv">10</span>)</span></code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+ID
+</th>
+<th>
+year
+</th>
+<th>
+从业人数
+</th>
+<th>
+资产总额
+</th>
+<th>
+负债总额
+</th>
+<th>
+营业总收入
+</th>
+<th>
+主营业务收入
+</th>
+<th>
+利润总额
+</th>
+<th>
+纳税总额
+</th>
+<th>
+所有者权益合计
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+0
+</td>
+<td>
+28
+</td>
+<td>
+2015.0
+</td>
+<td>
+794.0
+</td>
+<td>
+16400.0
+</td>
+<td>
+28700.0
+</td>
+<td>
+72160.0
+</td>
+<td>
+28864.0
+</td>
+<td>
+7216.0
+</td>
+<td>
+0.0
+</td>
+<td>
+-12300.0
+</td>
+</tr>
+<tr>
+<td>
+1
+</td>
+<td>
+230
+</td>
+<td>
+2015.0
+</td>
+<td>
+485.0
+</td>
+<td>
+23520.0
+</td>
+<td>
+10080.0
+</td>
+<td>
+115248.0
+</td>
+<td>
+57624.0
+</td>
+<td>
+57624.0
+</td>
+<td>
+0.0
+</td>
+<td>
+13440.0
+</td>
+</tr>
+<tr>
+<td>
+2
+</td>
+<td>
+693
+</td>
+<td>
+2015.0
+</td>
+<td>
+534.0
+</td>
+<td>
+133760.0
+</td>
+<td>
+125400.0
+</td>
+<td>
+655424.0
+</td>
+<td>
+262169.6
+</td>
+<td>
+196627.2
+</td>
+<td>
+0.0
+</td>
+<td>
+8360.0
+</td>
+</tr>
+<tr>
+<td>
+3
+</td>
+<td>
+990
+</td>
+<td>
+2015.0
+</td>
+<td>
+863.0
+</td>
+<td>
+33760.0
+</td>
+<td>
+25320.0
+</td>
+<td>
+145168.0
+</td>
+<td>
+58067.2
+</td>
+<td>
+14516.8
+</td>
+<td>
+0.0
+</td>
+<td>
+8440.0
+</td>
+</tr>
+<tr>
+<td>
+4
+</td>
+<td>
+1274
+</td>
+<td>
+2015.0
+</td>
+<td>
+254.0
+</td>
+<td>
+74900.0
+</td>
+<td>
+104325.0
+</td>
+<td>
+277130.0
+</td>
+<td>
+110852.0
+</td>
+<td>
+55426.0
+</td>
+<td>
+0.0
+</td>
+<td>
+-29425.0
+</td>
+</tr>
+<tr>
+<td>
+5
+</td>
+<td>
+1560
+</td>
+<td>
+2015.0
+</td>
+<td>
+491.0
+</td>
+<td>
+105000.0
+</td>
+<td>
+98000.0
+</td>
+<td>
+147000.0
+</td>
+<td>
+73500.0
+</td>
+<td>
+29400.0
+</td>
+<td>
+0.0
+</td>
+<td>
+7000.0
+</td>
+</tr>
+<tr>
+<td>
+6
+</td>
+<td>
+3261
+</td>
+<td>
+2015.0
+</td>
+<td>
+799.0
+</td>
+<td>
+417000.0
+</td>
+<td>
+822880.0
+</td>
+<td>
+1751400.0
+</td>
+<td>
+1401120.0
+</td>
+<td>
+350280.0
+</td>
+<td>
+0.0
+</td>
+<td>
+-405880.0
+</td>
+</tr>
+<tr>
+<td>
+7
+</td>
+<td>
+3313
+</td>
+<td>
+2015.0
+</td>
+<td>
+784.0
+</td>
+<td>
+501600.0
+</td>
+<td>
+986480.0
+</td>
+<td>
+2156880.0
+</td>
+<td>
+1294128.0
+</td>
+<td>
+431376.0
+</td>
+<td>
+0.0
+</td>
+<td>
+-484880.0
+</td>
+</tr>
+<tr>
+<td>
+8
+</td>
+<td>
+3537
+</td>
+<td>
+2015.0
+</td>
+<td>
+647.0
+</td>
+<td>
+17800.0
+</td>
+<td>
+13350.0
+</td>
+<td>
+8900.0
+</td>
+<td>
+4450.0
+</td>
+<td>
+2670.0
+</td>
+<td>
+0.0
+</td>
+<td>
+4450.0
+</td>
+</tr>
+<tr>
+<td>
+9
+</td>
+<td>
+3719
+</td>
+<td>
+2015.0
+</td>
+<td>
+369.0
+</td>
+<td>
+317000.0
+</td>
+<td>
+465990.0
+</td>
+<td>
+380400.0
+</td>
+<td>
+228240.0
+</td>
+<td>
+152160.0
+</td>
+<td>
+0.0
+</td>
+<td>
+-148990.0
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>year_train_data.describe()</span></code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+ID
+</th>
+<th>
+year
+</th>
+<th>
+从业人数
+</th>
+<th>
+...
+</th>
+<th>
+利润总额
+</th>
+<th>
+纳税总额
+</th>
+<th>
+所有者权益合计
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+count
+</td>
+<td>
+8.554800e+04
+</td>
+<td>
+84692.000000
+</td>
+<td>
+84743.000000
+</td>
+<td>
+...
+</td>
+<td>
+8.469900e+04
+</td>
+<td>
+8.473100e+04
+</td>
+<td>
+84673.000000
+</td>
+</tr>
+<tr>
+<td>
+mean
+</td>
+<td>
+4.332626e+06
+</td>
+<td>
+2015.999870
+</td>
+<td>
+510.808421
+</td>
+<td>
+...
+</td>
+<td>
+1.027939e+05
+</td>
+<td>
+7.079659e+04
+</td>
+<td>
+-27390.880033
+</td>
+</tr>
+<tr>
+<td>
+std
+</td>
+<td>
+2.160933e+06
+</td>
+<td>
+0.816398
+</td>
+<td>
+283.129690
+</td>
+<td>
+...
+</td>
+<td>
+1.536672e+05
+</td>
+<td>
+1.588261e+05
+</td>
+<td>
+108355.730296
+</td>
+</tr>
+<tr>
+<td>
+min
+</td>
+<td>
+2.800000e+01
+</td>
+<td>
+2015.000000
+</td>
+<td>
+20.000000
+</td>
+<td>
+...
+</td>
+<td>
+7.800000e+00
+</td>
+<td>
+0.000000e+00
+</td>
+<td>
+-828340.000000
+</td>
+</tr>
+<tr>
+<td>
+25%
+</td>
+<td>
+2.325192e+06
+</td>
+<td>
+2015.000000
+</td>
+<td>
+266.000000
+</td>
+<td>
+...
+</td>
+<td>
+1.396755e+04
+</td>
+<td>
+0.000000e+00
+</td>
+<td>
+-53130.000000
+</td>
+</tr>
+<tr>
+<td>
+50%
+</td>
+<td>
+5.981916e+06
+</td>
+<td>
+2016.000000
+</td>
+<td>
+512.000000
+</td>
+<td>
+...
+</td>
+<td>
+4.514400e+04
+</td>
+<td>
+1.240200e+03
+</td>
+<td>
+250.000000
+</td>
+</tr>
+<tr>
+<td>
+75%
+</td>
+<td>
+5.990992e+06
+</td>
+<td>
+2017.000000
+</td>
+<td>
+756.000000
+</td>
+<td>
+...
+</td>
+<td>
+1.238400e+05
+</td>
+<td>
+6.668040e+04
+</td>
+<td>
+8900.000000
+</td>
+</tr>
+<tr>
+<td>
+max
+</td>
+<td>
+5.999999e+06
+</td>
+<td>
+2017.000000
+</td>
+<td>
+1000.000000
+</td>
+<td>
+...
+</td>
+<td>
+1.807398e+06
+</td>
+<td>
+2.089620e+06
+</td>
+<td>
+429570.000000
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h5 id="year_train_data-1">year_train_data</h5>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>money_train_data.head()</span></code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+ID
+</th>
+<th>
+year
+</th>
+<th>
+债权融资额度
+</th>
+<th>
+债权融资成本
+</th>
+<th>
+股权融资额度
+</th>
+<th>
+股权融资成本
+</th>
+<th>
+内部融资和贸易融资额度
+</th>
+<th>
+内部融资和贸易融资成本
+</th>
+<th>
+项目融资和政策融资额度
+</th>
+<th>
+项目融资和政策融资成本
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+0
+</td>
+<td>
+28
+</td>
+<td>
+2015.0
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+<td>
+0.000
+</td>
+<td>
+21648.0
+</td>
+<td>
+1298.88
+</td>
+<td>
+0.0
+</td>
+<td>
+0.000
+</td>
+</tr>
+<tr>
+<td>
+1
+</td>
+<td>
+230
+</td>
+<td>
+2015.0
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+<td>
+0.000
+</td>
+<td>
+0.0
+</td>
+<td>
+0.00
+</td>
+<td>
+470.4
+</td>
+<td>
+28.224
+</td>
+</tr>
+<tr>
+<td>
+2
+</td>
+<td>
+693
+</td>
+<td>
+2015.0
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+<td>
+0.000
+</td>
+<td>
+0.0
+</td>
+<td>
+0.00
+</td>
+<td>
+5350.4
+</td>
+<td>
+321.024
+</td>
+</tr>
+<tr>
+<td>
+3
+</td>
+<td>
+990
+</td>
+<td>
+NaN
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+<td>
+0.000
+</td>
+<td>
+0.0
+</td>
+<td>
+0.00
+</td>
+<td>
+675.2
+</td>
+<td>
+40.512
+</td>
+</tr>
+<tr>
+<td>
+4
+</td>
+<td>
+1274
+</td>
+<td>
+2015.0
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+<td>
+11085.2
+</td>
+<td>
+443.408
+</td>
+<td>
+0.0
+</td>
+<td>
+0.00
+</td>
+<td>
+NaN
+</td>
+<td>
+0.000
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>money_train_data.describe()</span></code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+ID
+</th>
+<th>
+year
+</th>
+<th>
+债权融资额度
+</th>
+<th>
+...
+</th>
+<th>
+内部融资和贸易融资成本
+</th>
+<th>
+项目融资和政策融资额度
+</th>
+<th>
+项目融资和政策融资成本
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+count
+</td>
+<td>
+8.554800e+04
+</td>
+<td>
+84703.000000
+</td>
+<td>
+84739.000000
+</td>
+<td>
+...
+</td>
+<td>
+84720.000000
+</td>
+<td>
+84686.000000
+</td>
+<td>
+84695.000000
+</td>
+</tr>
+<tr>
+<td>
+mean
+</td>
+<td>
+4.332626e+06
+</td>
+<td>
+2016.000378
+</td>
+<td>
+3353.349261
+</td>
+<td>
+...
+</td>
+<td>
+1555.894230
+</td>
+<td>
+1020.851124
+</td>
+<td>
+61.231978
+</td>
+</tr>
+<tr>
+<td>
+std
+</td>
+<td>
+2.160933e+06
+</td>
+<td>
+0.816496
+</td>
+<td>
+8883.814614
+</td>
+<td>
+...
+</td>
+<td>
+4811.138407
+</td>
+<td>
+3000.062130
+</td>
+<td>
+179.871750
+</td>
+</tr>
+<tr>
+<td>
+min
+</td>
+<td>
+2.800000e+01
+</td>
+<td>
+2015.000000
+</td>
+<td>
+0.000000
+</td>
+<td>
+...
+</td>
+<td>
+0.000000
+</td>
+<td>
+0.000000
+</td>
+<td>
+0.000000
+</td>
+</tr>
+<tr>
+<td>
+25%
+</td>
+<td>
+2.325192e+06
+</td>
+<td>
+2015.000000
+</td>
+<td>
+0.000000
+</td>
+<td>
+...
+</td>
+<td>
+0.000000
+</td>
+<td>
+0.000000
+</td>
+<td>
+0.000000
+</td>
+</tr>
+<tr>
+<td>
+50%
+</td>
+<td>
+5.981916e+06
+</td>
+<td>
+2016.000000
+</td>
+<td>
+0.000000
+</td>
+<td>
+...
+</td>
+<td>
+0.000000
+</td>
+<td>
+0.000000
+</td>
+<td>
+0.000000
+</td>
+</tr>
+<tr>
+<td>
+75%
+</td>
+<td>
+5.990992e+06
+</td>
+<td>
+2017.000000
+</td>
+<td>
+0.000000
+</td>
+<td>
+...
+</td>
+<td>
+10.719000
+</td>
+<td>
+41.000000
+</td>
+<td>
+2.520000
+</td>
+</tr>
+<tr>
+<td>
+max
+</td>
+<td>
+5.999999e+06
+</td>
+<td>
+2017.000000
+</td>
+<td>
+84830.000000
+</td>
+<td>
+...
+</td>
+<td>
+72925.920000
+</td>
+<td>
+39720.000000
+</td>
+<td>
+2383.200000
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="填充缺失数据">填充缺失数据</h4>
+<h5 id="year_train_data-2">year_train_data</h5>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># fill null</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a>new_year_train_data <span class="op">=</span> fill_na(year_train_data)</span>
+<span id="cb15-3"><a href="#cb15-3"></a>new_year_train_data.set_index([<span class="st">&#39;ID&#39;</span>, <span class="st">&#39;year&#39;</span>])</span>
+<span id="cb15-4"><a href="#cb15-4"></a></span>
+<span id="cb15-5"><a href="#cb15-5"></a>new_year_train_data.head()</span></code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+ID
+</th>
+<th>
+year
+</th>
+<th>
+从业人数
+</th>
+<th>
+资产总额
+</th>
+<th>
+负债总额
+</th>
+<th>
+营业总收入
+</th>
+<th>
+主营业务收入
+</th>
+<th>
+利润总额
+</th>
+<th>
+纳税总额
+</th>
+<th>
+所有者权益合计
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+0
+</td>
+<td>
+28
+</td>
+<td>
+2015.0
+</td>
+<td>
+794.0
+</td>
+<td>
+16400.0
+</td>
+<td>
+28700.0
+</td>
+<td>
+72160.0
+</td>
+<td>
+28864.0
+</td>
+<td>
+7216.0
+</td>
+<td>
+0.0
+</td>
+<td>
+-12300.0
+</td>
+</tr>
+<tr>
+<td>
+1
+</td>
+<td>
+230
+</td>
+<td>
+2015.0
+</td>
+<td>
+485.0
+</td>
+<td>
+23520.0
+</td>
+<td>
+10080.0
+</td>
+<td>
+115248.0
+</td>
+<td>
+57624.0
+</td>
+<td>
+57624.0
+</td>
+<td>
+0.0
+</td>
+<td>
+13440.0
+</td>
+</tr>
+<tr>
+<td>
+2
+</td>
+<td>
+693
+</td>
+<td>
+2015.0
+</td>
+<td>
+534.0
+</td>
+<td>
+133760.0
+</td>
+<td>
+125400.0
+</td>
+<td>
+655424.0
+</td>
+<td>
+262169.6
+</td>
+<td>
+196627.2
+</td>
+<td>
+0.0
+</td>
+<td>
+8360.0
+</td>
+</tr>
+<tr>
+<td>
+3
+</td>
+<td>
+990
+</td>
+<td>
+2015.0
+</td>
+<td>
+863.0
+</td>
+<td>
+33760.0
+</td>
+<td>
+25320.0
+</td>
+<td>
+145168.0
+</td>
+<td>
+58067.2
+</td>
+<td>
+14516.8
+</td>
+<td>
+0.0
+</td>
+<td>
+8440.0
+</td>
+</tr>
+<tr>
+<td>
+4
+</td>
+<td>
+1274
+</td>
+<td>
+2015.0
+</td>
+<td>
+254.0
+</td>
+<td>
+74900.0
+</td>
+<td>
+104325.0
+</td>
+<td>
+277130.0
+</td>
+<td>
+110852.0
+</td>
+<td>
+55426.0
+</td>
+<td>
+0.0
+</td>
+<td>
+-29425.0
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h5 id="money_train_data">money_train_data</h5>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># fill null</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a>new_money_train_data <span class="op">=</span> fill_na(money_train_data)</span>
+<span id="cb16-3"><a href="#cb16-3"></a>new_money_train_data.set_index([<span class="st">&#39;ID&#39;</span>, <span class="st">&#39;year&#39;</span>])</span>
+<span id="cb16-4"><a href="#cb16-4"></a></span>
+<span id="cb16-5"><a href="#cb16-5"></a><span class="co"># new_money_train_data.head(8)</span></span>
+<span id="cb16-6"><a href="#cb16-6"></a>new_money_train_data.head()</span></code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+ID
+</th>
+<th>
+year
+</th>
+<th>
+债权融资额度
+</th>
+<th>
+债权融资成本
+</th>
+<th>
+股权融资额度
+</th>
+<th>
+股权融资成本
+</th>
+<th>
+内部融资和贸易融资额度
+</th>
+<th>
+内部融资和贸易融资成本
+</th>
+<th>
+项目融资和政策融资额度
+</th>
+<th>
+项目融资和政策融资成本
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+0
+</td>
+<td>
+28
+</td>
+<td>
+2015.0
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+<td>
+0.000
+</td>
+<td>
+21648.0
+</td>
+<td>
+1298.88
+</td>
+<td>
+0.0
+</td>
+<td>
+0.000
+</td>
+</tr>
+<tr>
+<td>
+1
+</td>
+<td>
+230
+</td>
+<td>
+2015.0
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+<td>
+0.000
+</td>
+<td>
+0.0
+</td>
+<td>
+0.00
+</td>
+<td>
+470.4
+</td>
+<td>
+28.224
+</td>
+</tr>
+<tr>
+<td>
+2
+</td>
+<td>
+693
+</td>
+<td>
+2015.0
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+<td>
+0.000
+</td>
+<td>
+0.0
+</td>
+<td>
+0.00
+</td>
+<td>
+5350.4
+</td>
+<td>
+321.024
+</td>
+</tr>
+<tr>
+<td>
+3
+</td>
+<td>
+990
+</td>
+<td>
+2015.0
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+<td>
+0.000
+</td>
+<td>
+0.0
+</td>
+<td>
+0.00
+</td>
+<td>
+675.2
+</td>
+<td>
+40.512
+</td>
+</tr>
+<tr>
+<td>
+4
+</td>
+<td>
+1274
+</td>
+<td>
+2015.0
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+<td>
+11085.2
+</td>
+<td>
+443.408
+</td>
+<td>
+0.0
+</td>
+<td>
+0.00
+</td>
+<td>
+0.0
+</td>
+<td>
+0.000
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="合并year-data和money-data数据集">合并<code>year data</code>和<code>money data</code>数据集</h4>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="co"># Merge new year and money data</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a>combined_new_year_money_train_data <span class="op">=</span> combined_new_year_money_data(</span>
+<span id="cb17-3"><a href="#cb17-3"></a>                                            new_year_train_data, </span>
+<span id="cb17-4"><a href="#cb17-4"></a>                                            new_money_train_data</span>
+<span id="cb17-5"><a href="#cb17-5"></a>                                          )</span>
+<span id="cb17-6"><a href="#cb17-6"></a>combined_new_year_money_train_data.head()</span></code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+ID
+</th>
+<th>
+year
+</th>
+<th>
+从业人数
+</th>
+<th>
+资产总额
+</th>
+<th>
+...
+</th>
+<th>
+内部融资和贸易融资额度
+</th>
+<th>
+内部融资和贸易融资成本
+</th>
+<th>
+项目融资和政策融资额度
+</th>
+<th>
+项目融资和政策融资成本
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+0
+</td>
+<td>
+28
+</td>
+<td>
+2015.0
+</td>
+<td>
+794.0
+</td>
+<td>
+16400.0
+</td>
+<td>
+...
+</td>
+<td>
+21648.0
+</td>
+<td>
+1298.88
+</td>
+<td>
+0.0
+</td>
+<td>
+0.000
+</td>
+</tr>
+<tr>
+<td>
+1
+</td>
+<td>
+230
+</td>
+<td>
+2015.0
+</td>
+<td>
+485.0
+</td>
+<td>
+23520.0
+</td>
+<td>
+...
+</td>
+<td>
+0.0
+</td>
+<td>
+0.00
+</td>
+<td>
+470.4
+</td>
+<td>
+28.224
+</td>
+</tr>
+<tr>
+<td>
+2
+</td>
+<td>
+693
+</td>
+<td>
+2015.0
+</td>
+<td>
+534.0
+</td>
+<td>
+133760.0
+</td>
+<td>
+...
+</td>
+<td>
+0.0
+</td>
+<td>
+0.00
+</td>
+<td>
+5350.4
+</td>
+<td>
+321.024
+</td>
+</tr>
+<tr>
+<td>
+3
+</td>
+<td>
+990
+</td>
+<td>
+2015.0
+</td>
+<td>
+863.0
+</td>
+<td>
+33760.0
+</td>
+<td>
+...
+</td>
+<td>
+0.0
+</td>
+<td>
+0.00
+</td>
+<td>
+675.2
+</td>
+<td>
+40.512
+</td>
+</tr>
+<tr>
+<td>
+4
+</td>
+<td>
+1274
+</td>
+<td>
+2015.0
+</td>
+<td>
+254.0
+</td>
+<td>
+74900.0
+</td>
+<td>
+...
+</td>
+<td>
+0.0
+</td>
+<td>
+0.00
+</td>
+<td>
+0.0
+</td>
+<td>
+0.000
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="拆分新特征">拆分新特征</h4>
+<p>将合并后的数据集中每一年的数据拆分成新的特征，使之与<code>base data</code>通过<code>ID</code>一一对应。</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>splited_year_money_train_data <span class="op">=</span> split_data(combined_new_year_money_train_data)</span>
+<span id="cb18-2"><a href="#cb18-2"></a>splited_year_money_train_data.head()</span></code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+从业人数_2015
+</th>
+<th>
+资产总额_2015
+</th>
+<th>
+负债总额_2015
+</th>
+<th>
+...
+</th>
+<th>
+内部融资和贸易融资额度_2017
+</th>
+<th>
+内部融资和贸易融资成本_2017
+</th>
+<th>
+项目融资和政策融资额度_2017
+</th>
+<th>
+项目融资和政策融资成本_2017
+</th>
+</tr>
+<tr>
+<th>
+ID
+</th>
+<th>
+</th>
+<th>
+</th>
+<th>
+</th>
+<th>
+</th>
+<th>
+</th>
+<th>
+</th>
+<th>
+</th>
+<th>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+28
+</td>
+<td>
+794.0
+</td>
+<td>
+16400.0
+</td>
+<td>
+28700.0
+</td>
+<td>
+...
+</td>
+<td>
+0.0
+</td>
+<td>
+0.000
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+</tr>
+<tr>
+<td>
+230
+</td>
+<td>
+485.0
+</td>
+<td>
+23520.0
+</td>
+<td>
+10080.0
+</td>
+<td>
+...
+</td>
+<td>
+0.0
+</td>
+<td>
+0.000
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+</tr>
+<tr>
+<td>
+693
+</td>
+<td>
+534.0
+</td>
+<td>
+133760.0
+</td>
+<td>
+125400.0
+</td>
+<td>
+...
+</td>
+<td>
+0.0
+</td>
+<td>
+0.000
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+</tr>
+<tr>
+<td>
+990
+</td>
+<td>
+863.0
+</td>
+<td>
+33760.0
+</td>
+<td>
+25320.0
+</td>
+<td>
+...
+</td>
+<td>
+111661.2
+</td>
+<td>
+6699.672
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+</tr>
+<tr>
+<td>
+1274
+</td>
+<td>
+254.0
+</td>
+<td>
+74900.0
+</td>
+<td>
+104325.0
+</td>
+<td>
+...
+</td>
+<td>
+0.0
+</td>
+<td>
+0.000
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+</tr>
+</tbody>
+</table>
+<p>
+5 rows × 48 columns
+</p>
+</div>
+<h2 id="合并处理好的数据集">合并处理好的数据集</h2>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a>train <span class="op">=</span> pd.merge(combined_base_knowledge_train_data, </span>
+<span id="cb19-2"><a href="#cb19-2"></a>                 splited_year_money_train_data, </span>
+<span id="cb19-3"><a href="#cb19-3"></a>                 on<span class="op">=</span>[<span class="st">&#39;ID&#39;</span>])</span>
+<span id="cb19-4"><a href="#cb19-4"></a></span>
+<span id="cb19-5"><a href="#cb19-5"></a>train.head()</span></code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+注册时间
+</th>
+<th>
+注册资本
+</th>
+<th>
+行业
+</th>
+<th>
+...
+</th>
+<th>
+内部融资和贸易融资额度_2017
+</th>
+<th>
+内部融资和贸易融资成本_2017
+</th>
+<th>
+项目融资和政策融资额度_2017
+</th>
+<th>
+项目融资和政策融资成本_2017
+</th>
+</tr>
+<tr>
+<th>
+ID
+</th>
+<th>
+</th>
+<th>
+</th>
+<th>
+</th>
+<th>
+</th>
+<th>
+</th>
+<th>
+</th>
+<th>
+</th>
+<th>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+5986361
+</td>
+<td>
+2014.0
+</td>
+<td>
+7090.0
+</td>
+<td>
+服务业
+</td>
+<td>
+...
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+</tr>
+<tr>
+<td>
+5991749
+</td>
+<td>
+2007.0
+</td>
+<td>
+5940.0
+</td>
+<td>
+零售业
+</td>
+<td>
+...
+</td>
+<td>
+80190.0
+</td>
+<td>
+4811.4
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+</tr>
+<tr>
+<td>
+5998154
+</td>
+<td>
+2002.0
+</td>
+<td>
+9720.0
+</td>
+<td>
+工业
+</td>
+<td>
+...
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+</tr>
+<tr>
+<td>
+5984390
+</td>
+<td>
+2000.0
+</td>
+<td>
+4800.0
+</td>
+<td>
+商业服务业
+</td>
+<td>
+...
+</td>
+<td>
+48960.0
+</td>
+<td>
+2937.6
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+</tr>
+<tr>
+<td>
+5980535
+</td>
+<td>
+2004.0
+</td>
+<td>
+4530.0
+</td>
+<td>
+零售业
+</td>
+<td>
+...
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+</tr>
+</tbody>
+</table>
+<p>
+5 rows × 59 columns
+</p>
+</div>
+<h3 id="保存处理好的训练数据集">保存处理好的训练数据集</h3>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>train.to_csv(<span class="st">&quot;data/train/train.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>train.describe()</span></code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+注册时间
+</th>
+<th>
+注册资本
+</th>
+<th>
+控制人持股比例
+</th>
+<th>
+...
+</th>
+<th>
+内部融资和贸易融资额度_2017
+</th>
+<th>
+内部融资和贸易融资成本_2017
+</th>
+<th>
+项目融资和政策融资额度_2017
+</th>
+<th>
+项目融资和政策融资成本_2017
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+count
+</td>
+<td>
+28516.000000
+</td>
+<td>
+28516.000000
+</td>
+<td>
+28516.000000
+</td>
+<td>
+...
+</td>
+<td>
+2.851600e+04
+</td>
+<td>
+28516.000000
+</td>
+<td>
+28516.000000
+</td>
+<td>
+28516.000000
+</td>
+</tr>
+<tr>
+<td>
+mean
+</td>
+<td>
+2007.010836
+</td>
+<td>
+5024.064385
+</td>
+<td>
+0.754743
+</td>
+<td>
+...
+</td>
+<td>
+2.850957e+04
+</td>
+<td>
+1712.928322
+</td>
+<td>
+1115.153493
+</td>
+<td>
+67.013075
+</td>
+</tr>
+<tr>
+<td>
+std
+</td>
+<td>
+4.304831
+</td>
+<td>
+2844.938780
+</td>
+<td>
+0.144249
+</td>
+<td>
+...
+</td>
+<td>
+8.651585e+04
+</td>
+<td>
+5202.890113
+</td>
+<td>
+3229.079861
+</td>
+<td>
+193.992216
+</td>
+</tr>
+<tr>
+<td>
+min
+</td>
+<td>
+2000.000000
+</td>
+<td>
+100.000000
+</td>
+<td>
+0.510000
+</td>
+<td>
+...
+</td>
+<td>
+0.000000e+00
+</td>
+<td>
+0.000000
+</td>
+<td>
+0.000000
+</td>
+<td>
+0.000000
+</td>
+</tr>
+<tr>
+<td>
+25%
+</td>
+<td>
+2003.000000
+</td>
+<td>
+2560.000000
+</td>
+<td>
+0.630000
+</td>
+<td>
+...
+</td>
+<td>
+0.000000e+00
+</td>
+<td>
+0.000000
+</td>
+<td>
+0.000000
+</td>
+<td>
+0.000000
+</td>
+</tr>
+<tr>
+<td>
+50%
+</td>
+<td>
+2007.000000
+</td>
+<td>
+5010.000000
+</td>
+<td>
+0.750000
+</td>
+<td>
+...
+</td>
+<td>
+0.000000e+00
+</td>
+<td>
+0.000000
+</td>
+<td>
+0.000000
+</td>
+<td>
+0.000000
+</td>
+</tr>
+<tr>
+<td>
+75%
+</td>
+<td>
+2011.000000
+</td>
+<td>
+7470.000000
+</td>
+<td>
+0.880000
+</td>
+<td>
+...
+</td>
+<td>
+0.000000e+00
+</td>
+<td>
+0.000000
+</td>
+<td>
+0.000000
+</td>
+<td>
+0.000000
+</td>
+</tr>
+<tr>
+<td>
+max
+</td>
+<td>
+2014.000000
+</td>
+<td>
+10000.000000
+</td>
+<td>
+1.000000
+</td>
+<td>
+...
+</td>
+<td>
+1.215432e+06
+</td>
+<td>
+72925.920000
+</td>
+<td>
+38930.000000
+</td>
+<td>
+2335.800000
+</td>
+</tr>
+</tbody>
+</table>
+<p>
+8 rows × 55 columns
+</p>
+</div>
+<h2 id="训练数据集处理-1">训练数据集处理</h2>
+<p>按照刚刚处理训练集的流程处理测试数据集。 ### 加载原始数据集</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a><span class="co"># load testing data</span></span>
+<span id="cb22-2"><a href="#cb22-2"></a>base_test_data <span class="op">=</span> pd.read_csv(<span class="st">&quot;data/test/base-test.csv&quot;</span>)</span>
+<span id="cb22-3"><a href="#cb22-3"></a>year_test_data <span class="op">=</span> pd.read_csv(<span class="st">&quot;data/test/year-test.csv&quot;</span>)</span>
+<span id="cb22-4"><a href="#cb22-4"></a>knowledge_test_data <span class="op">=</span> pd.read_csv(<span class="st">&quot;data/test/knowledge-test.csv&quot;</span>)</span>
+<span id="cb22-5"><a href="#cb22-5"></a>money_test_data <span class="op">=</span> pd.read_csv(<span class="st">&quot;data/test/money-test.csv&quot;</span>)</span></code></pre></div>
+<h4 id="合并-base-data-和-knowledge-data-1">合并 <code>base data</code> 和 <code>knowledge data</code></h4>
+<div class="sourceCode" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>combined_base_knowledge_test_data <span class="op">=</span> combined_base_knowledge_data(</span>
+<span id="cb23-2"><a href="#cb23-2"></a>                                                  base_test_data,</span>
+<span id="cb23-3"><a href="#cb23-3"></a>                                                  knowledge_test_data</span>
+<span id="cb23-4"><a href="#cb23-4"></a>                                                )</span>
+<span id="cb23-5"><a href="#cb23-5"></a>combined_base_knowledge_test_data.describe()</span></code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+注册时间
+</th>
+<th>
+注册资本
+</th>
+<th>
+控制人持股比例
+</th>
+<th>
+专利
+</th>
+<th>
+商标
+</th>
+<th>
+著作权
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+count
+</td>
+<td>
+7132.000000
+</td>
+<td>
+7132.000000
+</td>
+<td>
+7132.000000
+</td>
+<td>
+7132.000000
+</td>
+<td>
+7132.000000
+</td>
+<td>
+7132.000000
+</td>
+</tr>
+<tr>
+<td>
+mean
+</td>
+<td>
+2007.077257
+</td>
+<td>
+5039.914470
+</td>
+<td>
+0.754799
+</td>
+<td>
+0.342821
+</td>
+<td>
+0.358385
+</td>
+<td>
+0.373528
+</td>
+</tr>
+<tr>
+<td>
+std
+</td>
+<td>
+4.321929
+</td>
+<td>
+2839.476208
+</td>
+<td>
+0.143953
+</td>
+<td>
+0.474686
+</td>
+<td>
+0.479560
+</td>
+<td>
+0.483774
+</td>
+</tr>
+<tr>
+<td>
+min
+</td>
+<td>
+2000.000000
+</td>
+<td>
+100.000000
+</td>
+<td>
+0.510000
+</td>
+<td>
+0.000000
+</td>
+<td>
+0.000000
+</td>
+<td>
+0.000000
+</td>
+</tr>
+<tr>
+<td>
+25%
+</td>
+<td>
+2003.000000
+</td>
+<td>
+2640.000000
+</td>
+<td>
+0.630000
+</td>
+<td>
+0.000000
+</td>
+<td>
+0.000000
+</td>
+<td>
+0.000000
+</td>
+</tr>
+<tr>
+<td>
+50%
+</td>
+<td>
+2007.000000
+</td>
+<td>
+5040.000000
+</td>
+<td>
+0.750000
+</td>
+<td>
+0.000000
+</td>
+<td>
+0.000000
+</td>
+<td>
+0.000000
+</td>
+</tr>
+<tr>
+<td>
+75%
+</td>
+<td>
+2011.000000
+</td>
+<td>
+7450.000000
+</td>
+<td>
+0.880000
+</td>
+<td>
+1.000000
+</td>
+<td>
+1.000000
+</td>
+<td>
+1.000000
+</td>
+</tr>
+<tr>
+<td>
+max
+</td>
+<td>
+2014.000000
+</td>
+<td>
+10000.000000
+</td>
+<td>
+1.000000
+</td>
+<td>
+1.000000
+</td>
+<td>
+1.000000
+</td>
+<td>
+1.000000
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="year-data-and-money-data">year data and money data</h3>
+<h4 id="填充缺失值并验证填充结果">填充缺失值并验证填充结果</h4>
+<h5 id="year_test_data">year_test_data</h5>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a><span class="co"># fill null</span></span>
+<span id="cb24-2"><a href="#cb24-2"></a>new_year_test_data <span class="op">=</span> fill_na(year_test_data)</span>
+<span id="cb24-3"><a href="#cb24-3"></a>new_year_test_data.set_index([<span class="st">&#39;ID&#39;</span>, <span class="st">&#39;year&#39;</span>])</span>
+<span id="cb24-4"><a href="#cb24-4"></a></span>
+<span id="cb24-5"><a href="#cb24-5"></a>new_year_test_data.describe()</span>
+<span id="cb24-6"><a href="#cb24-6"></a></span>
+<span id="cb24-7"><a href="#cb24-7"></a><span class="bu">print</span>(<span class="st">&quot;unique ID count in base data:&quot;</span>, base_test_data[<span class="st">&quot;ID&quot;</span>]</span>
+<span id="cb24-8"><a href="#cb24-8"></a>                                            .nunique())</span>
+<span id="cb24-9"><a href="#cb24-9"></a><span class="bu">print</span>(<span class="st">&quot;2015 unique ID count in year data:&quot;</span>, new_year_test_data[<span class="st">&quot;ID&quot;</span>]</span>
+<span id="cb24-10"><a href="#cb24-10"></a>                                            .loc[new_year_test_data.year<span class="op">==</span><span class="dv">2015</span>]</span>
+<span id="cb24-11"><a href="#cb24-11"></a>                                            .nunique())</span>
+<span id="cb24-12"><a href="#cb24-12"></a><span class="bu">print</span>(<span class="st">&quot;2016 unique ID count in year data:&quot;</span>, new_year_test_data[<span class="st">&quot;ID&quot;</span>]</span>
+<span id="cb24-13"><a href="#cb24-13"></a>                                            .loc[new_year_test_data.year<span class="op">==</span><span class="dv">2016</span>]</span>
+<span id="cb24-14"><a href="#cb24-14"></a>                                            .nunique())</span>
+<span id="cb24-15"><a href="#cb24-15"></a><span class="bu">print</span>(<span class="st">&quot;2017 unique ID count in year data:&quot;</span>, new_year_test_data[<span class="st">&quot;ID&quot;</span>]</span>
+<span id="cb24-16"><a href="#cb24-16"></a>                                            .loc[new_year_test_data.year<span class="op">==</span><span class="dv">2017</span>]</span>
+<span id="cb24-17"><a href="#cb24-17"></a>                                            .nunique())</span></code></pre></div>
+<pre><code>unique ID count in base data: 7132
+2015 unique ID count in year data: 7132
+2016 unique ID count in year data: 7132
+2017 unique ID count in year data: 7132</code></pre>
+<h5 id="money_test_data">money_test_data</h5>
+<div class="sourceCode" id="cb26"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a><span class="co"># fill null</span></span>
+<span id="cb26-2"><a href="#cb26-2"></a>new_money_test_data <span class="op">=</span> fill_na(money_test_data)</span>
+<span id="cb26-3"><a href="#cb26-3"></a>new_money_test_data.set_index([<span class="st">&#39;ID&#39;</span>, <span class="st">&#39;year&#39;</span>])</span>
+<span id="cb26-4"><a href="#cb26-4"></a></span>
+<span id="cb26-5"><a href="#cb26-5"></a><span class="co"># new_money_train_data.head(8)</span></span>
+<span id="cb26-6"><a href="#cb26-6"></a>new_money_test_data.describe()</span></code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+ID
+</th>
+<th>
+year
+</th>
+<th>
+债权融资额度
+</th>
+<th>
+...
+</th>
+<th>
+内部融资和贸易融资额度
+</th>
+<th>
+内部融资和贸易融资成本
+</th>
+<th>
+项目融资和政策融资额度
+</th>
+<th>
+项目融资和政策融资成本
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+count
+</td>
+<td>
+2.139600e+04
+</td>
+<td>
+21396.000000
+</td>
+<td>
+21396.000000
+</td>
+<td>
+...
+</td>
+<td>
+2.139600e+04
+</td>
+<td>
+21396.000000
+</td>
+<td>
+21396.000000
+</td>
+<td>
+21396.000000
+</td>
+</tr>
+<tr>
+<td>
+mean
+</td>
+<td>
+4.332655e+06
+</td>
+<td>
+2016.000000
+</td>
+<td>
+3209.631146
+</td>
+<td>
+...
+</td>
+<td>
+2.677436e+04
+</td>
+<td>
+1598.629057
+</td>
+<td>
+1025.091606
+</td>
+<td>
+61.698997
+</td>
+</tr>
+<tr>
+<td>
+std
+</td>
+<td>
+2.163020e+06
+</td>
+<td>
+0.816516
+</td>
+<td>
+8711.231069
+</td>
+<td>
+...
+</td>
+<td>
+8.272665e+04
+</td>
+<td>
+4950.288392
+</td>
+<td>
+3050.157292
+</td>
+<td>
+183.387577
+</td>
+</tr>
+<tr>
+<td>
+min
+</td>
+<td>
+4.290000e+02
+</td>
+<td>
+2015.000000
+</td>
+<td>
+0.000000
+</td>
+<td>
+...
+</td>
+<td>
+0.000000e+00
+</td>
+<td>
+0.000000
+</td>
+<td>
+0.000000
+</td>
+<td>
+0.000000
+</td>
+</tr>
+<tr>
+<td>
+25%
+</td>
+<td>
+2.331607e+06
+</td>
+<td>
+2015.000000
+</td>
+<td>
+0.000000
+</td>
+<td>
+...
+</td>
+<td>
+0.000000e+00
+</td>
+<td>
+0.000000
+</td>
+<td>
+0.000000
+</td>
+<td>
+0.000000
+</td>
+</tr>
+<tr>
+<td>
+50%
+</td>
+<td>
+5.981952e+06
+</td>
+<td>
+2016.000000
+</td>
+<td>
+0.000000
+</td>
+<td>
+...
+</td>
+<td>
+0.000000e+00
+</td>
+<td>
+0.000000
+</td>
+<td>
+0.000000
+</td>
+<td>
+0.000000
+</td>
+</tr>
+<tr>
+<td>
+75%
+</td>
+<td>
+5.990780e+06
+</td>
+<td>
+2017.000000
+</td>
+<td>
+0.000000
+</td>
+<td>
+...
+</td>
+<td>
+2.565000e+02
+</td>
+<td>
+0.850500
+</td>
+<td>
+0.000000
+</td>
+<td>
+0.000000
+</td>
+</tr>
+<tr>
+<td>
+max
+</td>
+<td>
+5.999998e+06
+</td>
+<td>
+2017.000000
+</td>
+<td>
+...
+</td>
+<td>
+1.257150e+06
+</td>
+<td>
+75429.000000
+</td>
+<td>
+40970.000000
+</td>
+<td>
+2458.200000
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a><span class="bu">print</span>(<span class="st">&quot;unique ID count in base data:&quot;</span>, base_test_data[<span class="st">&quot;ID&quot;</span>].nunique())</span>
+<span id="cb27-2"><a href="#cb27-2"></a><span class="bu">print</span>(<span class="st">&quot;2015 unique ID count in money data:&quot;</span>, new_money_test_data[<span class="st">&quot;ID&quot;</span>]</span>
+<span id="cb27-3"><a href="#cb27-3"></a>                                            .loc[new_money_test_data.year<span class="op">==</span><span class="dv">2015</span>]</span>
+<span id="cb27-4"><a href="#cb27-4"></a>                                            .nunique())</span>
+<span id="cb27-5"><a href="#cb27-5"></a><span class="bu">print</span>(<span class="st">&quot;2016 unique ID count in money data:&quot;</span>, new_money_test_data[<span class="st">&quot;ID&quot;</span>]</span>
+<span id="cb27-6"><a href="#cb27-6"></a>                                            .loc[new_money_test_data.year<span class="op">==</span><span class="dv">2016</span>]</span>
+<span id="cb27-7"><a href="#cb27-7"></a>                                            .nunique())</span>
+<span id="cb27-8"><a href="#cb27-8"></a><span class="bu">print</span>(<span class="st">&quot;2017 unique ID count in money data:&quot;</span>, new_money_test_data[<span class="st">&quot;ID&quot;</span>]</span>
+<span id="cb27-9"><a href="#cb27-9"></a>                                            .loc[new_money_test_data.year<span class="op">==</span><span class="dv">2017</span>]</span>
+<span id="cb27-10"><a href="#cb27-10"></a>                                            .nunique())</span></code></pre></div>
+<pre><code>unique ID count in base data: 7132
+2015 unique ID count in money data: 7132
+2016 unique ID count in money data: 7132
+2017 unique ID count in money data: 7132</code></pre>
+<h4 id="合并-year-data-和-money-data">合并 <code>year data</code> 和 <code>money data</code></h4>
+<div class="sourceCode" id="cb29"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a>combined_new_year_money_test_data <span class="op">=</span> combined_new_year_money_data(</span>
+<span id="cb29-2"><a href="#cb29-2"></a>                                              new_year_test_data, </span>
+<span id="cb29-3"><a href="#cb29-3"></a>                                              new_money_test_data</span>
+<span id="cb29-4"><a href="#cb29-4"></a>                                            )</span>
+<span id="cb29-5"><a href="#cb29-5"></a>combined_new_year_money_test_data.head()</span></code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+ID
+</th>
+<th>
+year
+</th>
+<th>
+从业人数
+</th>
+<th>
+...
+</th>
+<th>
+内部融资和贸易融资额度
+</th>
+<th>
+内部融资和贸易融资成本
+</th>
+<th>
+项目融资和政策融资额度
+</th>
+<th>
+项目融资和政策融资成本
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+0
+</td>
+<td>
+429
+</td>
+<td>
+2015.0
+</td>
+<td>
+136.0
+</td>
+<td>
+...
+</td>
+<td>
+0.0
+</td>
+<td>
+0.000
+</td>
+<td>
+0.0
+</td>
+<td>
+0.00
+</td>
+</tr>
+<tr>
+<td>
+1
+</td>
+<td>
+727
+</td>
+<td>
+2015.0
+</td>
+<td>
+375.0
+</td>
+<td>
+...
+</td>
+<td>
+0.0
+</td>
+<td>
+0.000
+</td>
+<td>
+0.0
+</td>
+<td>
+0.00
+</td>
+</tr>
+<tr>
+<td>
+2
+</td>
+<td>
+1137
+</td>
+<td>
+2015.0
+</td>
+<td>
+289.0
+</td>
+<td>
+...
+</td>
+<td>
+24460.8
+</td>
+<td>
+1467.648
+</td>
+<td>
+0.0
+</td>
+<td>
+0.00
+</td>
+</tr>
+<tr>
+<td>
+3
+</td>
+<td>
+1873
+</td>
+<td>
+2015.0
+</td>
+<td>
+889.0
+</td>
+<td>
+...
+</td>
+<td>
+0.0
+</td>
+<td>
+0.000
+</td>
+<td>
+0.0
+</td>
+<td>
+0.00
+</td>
+</tr>
+<tr>
+<td>
+4
+</td>
+<td>
+2260
+</td>
+<td>
+2015.0
+</td>
+<td>
+689.0
+</td>
+<td>
+...
+</td>
+<td>
+0.0
+</td>
+<td>
+0.000
+</td>
+<td>
+11287.5
+</td>
+<td>
+677.25
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a><span class="bu">print</span>(<span class="st">&quot;unique ID count in combined data:&quot;</span>, combined_new_year_money_test_data[<span class="st">&quot;ID&quot;</span>].nunique())</span></code></pre></div>
+<pre><code>unique ID count in combined data: 7132</code></pre>
+<h3 id="拆分新特征-1">拆分新特征</h3>
+<div class="sourceCode" id="cb32"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a>splited_year_money_test_data <span class="op">=</span> split_data(combined_new_year_money_test_data)</span>
+<span id="cb32-2"><a href="#cb32-2"></a>splited_year_money_test_data.head()</span></code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+从业人数_2015
+</th>
+<th>
+资产总额_2015
+</th>
+<th>
+负债总额_2015
+</th>
+<th>
+...
+</th>
+<th>
+内部融资和贸易融资额度_2017
+</th>
+<th>
+内部融资和贸易融资成本_2017
+</th>
+<th>
+项目融资和政策融资额度_2017
+</th>
+<th>
+项目融资和政策融资成本_2017
+</th>
+</tr>
+<tr>
+<th>
+ID
+</th>
+<th>
+</th>
+<th>
+</th>
+<th>
+</th>
+<th>
+</th>
+<th>
+</th>
+<th>
+</th>
+<th>
+</th>
+<th>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+429
+</td>
+<td>
+136.0
+</td>
+<td>
+193400.0
+</td>
+<td>
+183730.0
+</td>
+<td>
+...
+</td>
+<td>
+0.0
+</td>
+<td>
+0.000
+</td>
+<td>
+0.0
+</td>
+<td>
+0.00
+</td>
+</tr>
+<tr>
+<td>
+727
+</td>
+<td>
+375.0
+</td>
+<td>
+366240.0
+</td>
+<td>
+536280.0
+</td>
+<td>
+...
+</td>
+<td>
+0.0
+</td>
+<td>
+0.000
+</td>
+<td>
+0.0
+</td>
+<td>
+0.00
+</td>
+</tr>
+<tr>
+<td>
+1137
+</td>
+<td>
+289.0
+</td>
+<td>
+87200.0
+</td>
+<td>
+40320.0
+</td>
+<td>
+...
+</td>
+<td>
+0.0
+</td>
+<td>
+0.000
+</td>
+<td>
+1008.0
+</td>
+<td>
+60.48
+</td>
+</tr>
+<tr>
+<td>
+1873
+</td>
+<td>
+889.0
+</td>
+<td>
+229320.0
+</td>
+<td>
+222950.0
+</td>
+<td>
+...
+</td>
+<td>
+12612.6
+</td>
+<td>
+756.756
+</td>
+<td>
+0.0
+</td>
+<td>
+0.00
+</td>
+</tr>
+<tr>
+<td>
+2260
+</td>
+<td>
+689.0
+</td>
+<td>
+225750.0
+</td>
+<td>
+325080.0
+</td>
+<td>
+...
+</td>
+<td>
+0.0
+</td>
+<td>
+0.000
+</td>
+<td>
+0.0
+</td>
+<td>
+0.00
+</td>
+</tr>
+</tbody>
+</table>
+<p>
+5 rows × 48 columns
+</p>
+</div>
+<h4 id="合并处理好的数据集-1">合并处理好的数据集</h4>
+<p>根据<code>ID</code>合并处理好的数据集。</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a>test <span class="op">=</span> pd.merge(combined_base_knowledge_test_data, </span>
+<span id="cb33-2"><a href="#cb33-2"></a>                 splited_year_money_test_data, </span>
+<span id="cb33-3"><a href="#cb33-3"></a>                 on<span class="op">=</span>[<span class="st">&#39;ID&#39;</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a>test.head()</span></code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+注册时间
+</th>
+<th>
+注册资本
+</th>
+<th>
+行业
+</th>
+<th>
+...
+</th>
+<th>
+内部融资和贸易融资额度_2017
+</th>
+<th>
+内部融资和贸易融资成本_2017
+</th>
+<th>
+项目融资和政策融资额度_2017
+</th>
+<th>
+项目融资和政策融资成本_2017
+</th>
+</tr>
+<tr>
+<th>
+ID
+</th>
+<th>
+</th>
+<th>
+</th>
+<th>
+</th>
+<th>
+</th>
+<th>
+</th>
+<th>
+</th>
+<th>
+</th>
+<th>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+5991927
+</td>
+<td>
+2010.0
+</td>
+<td>
+8790.0
+</td>
+<td>
+工业
+</td>
+<td>
+...
+</td>
+<td>
+341491.5
+</td>
+<td>
+20489.49
+</td>
+<td>
+0.0
+</td>
+<td>
+0.000
+</td>
+</tr>
+<tr>
+<td>
+5998351
+</td>
+<td>
+2005.0
+</td>
+<td>
+270.0
+</td>
+<td>
+服务业
+</td>
+<td>
+...
+</td>
+<td>
+0.0
+</td>
+<td>
+0.00
+</td>
+<td>
+194.4
+</td>
+<td>
+11.664
+</td>
+</tr>
+<tr>
+<td>
+5992703
+</td>
+<td>
+2012.0
+</td>
+<td>
+230.0
+</td>
+<td>
+服务业
+</td>
+<td>
+...
+</td>
+<td>
+0.0
+</td>
+<td>
+0.00
+</td>
+<td>
+0.0
+</td>
+<td>
+0.000
+</td>
+</tr>
+<tr>
+<td>
+5979231
+</td>
+<td>
+2003.0
+</td>
+<td>
+5980.0
+</td>
+<td>
+商业服务业
+</td>
+<td>
+...
+</td>
+<td>
+75348.0
+</td>
+<td>
+4520.88
+</td>
+<td>
+0.0
+</td>
+<td>
+0.000
+</td>
+</tr>
+<tr>
+<td>
+5995422
+</td>
+<td>
+2007.0
+</td>
+<td>
+160.0
+</td>
+<td>
+工业
+</td>
+<td>
+...
+</td>
+<td>
+8856.0
+</td>
+<td>
+531.36
+</td>
+<td>
+0.0
+</td>
+<td>
+0.000
+</td>
+</tr>
+</tbody>
+</table>
+<p>
+5 rows × 58 columns
+</p>
+</div>
+<h4 id="保存处理好的测试数据集">保存处理好的测试数据集</h4>
+<div class="sourceCode" id="cb35"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a>test.to_csv(<span class="st">&quot;data/test/test.csv&quot;</span>)</span></code></pre></div>
+<h1 id="总结">总结</h1>
+<p>这次数据处理比较简单，主要注意以下几个点：<br />
+1. 对于年份数据缺失值的处理，可以根据ID和年份判断缺失的年份应该是哪一年，然后填充相应的年份值即可，如果是同一<code>ID</code>缺失两年数据，这个就随缘了😆，我是按照从上到下的顺序填充的（可能有更好的方法，大家可以提出自己的想法），例如<code>ID</code>为<code>123</code>的企业缺失<code>2015</code>和<code>2017</code>的年份，那么依次将<code>year</code>属性值填充为2015和2017；<br />
+2. 对于其他数据我就直接粗暴的填充中位数，本来是想先这么填充然后看看效果再优化，结果训练测试后的结果还不错，所以也就没有再优化了；</p>
+<p>下篇文章中我会对模型训练过程作一个说明，使用的是LightGBM框架（LightGBM是使用基于树的学习算法的梯度增强框架）。</p>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/custom/donate/WeChanQR.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2020/04/11/Technology/%E5%83%B5%E5%B0%B8%E4%BC%81%E4%B8%9A%E5%88%86%E7%B1%BB-%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83-LightGBM/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/bears/25.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/bears/25.jpg">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                僵尸企业分类|模型训练|LightGBM</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+        
+          
+            <div class="post-nepre half next">
+          
+            <a href="/2020/04/08/Technology/Leetcode-Note-in-Apri-2020-part-2-day-08-14/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/default.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/default.jpg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                Leetcode Note in Apri 2020 | part 2 |day 08-14</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "uVn0CbsTzphCnMDIxJKQ0rbg-gzGzoHsz",
+        appKey: "wc39UmG3dNqQQms9Hg2sKc1X",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="https://littlelittlemoon.github.io/" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/custom/avatar-3.jpg" itemprop="image" alt="Kayleen" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="https://littlelittlemoon.github.io/" itemprop="url" rel="author">Kayleen</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>A curious 👱‍♀️</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
+</div>
+
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML"></script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  </script>
+
+
+    </div>    
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            // PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+    <!-- <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Kayleen<br>
+      powered_by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer> -->
+<footer id="colophon" class="site-footer" role="contentinfo">
+  <div class="site-info">
+    <div class="footertext">
+      <div class="img-preload">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/wordpress-rotating-ball-o.svg">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/disqus-preloader.svg">
+      </div>
+      <p style="color: #666666;">&copy 2018</p>
+    </div>
+    <div class="footer-device">
+    <p style="font-family: 'Ubuntu', sans-serif;">
+        <span style="color: #b9b9b9;">Theme <a href="https://github.com/honjun/hexo-theme-sakura" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Sakura</a> <i class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i> by <a href="https://2heng.xin/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Mashiro</a>&<a href="https://www.hojun.cn/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Hojun</a>, Powered by Hexo, Hosted by Coding Pages</a>
+        </span>
+      </p>
+    </div>
+  </div><!-- .site-info -->
+</footer>
+
+
+
+<!-- <script src="/js/tocbot.js"></script> -->
+<script type="text/javascript" src="/js/lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/InsightSearch.js"></script>
+<script type="text/javascript" src="/js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="/js/zoom.min.js"></script>
+<script type="text/javascript" src="/js/sakura-app.js"></script>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine@1.3.4/dist/Valine.min.js'></script>
+<script src="/js/botui.js"></script>
+<!-- 不蒜子 网页计数器 -->
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script> -->
+<script type="text/javascript">
+/* <![CDATA[ */
+if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  var Poi = {"pjax":"1","movies":{"url": "https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/video","name":"we-bare-bears-ice-bear-play-2.mp4","live":"close"},"windowheight":"fixed","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+} else {
+  var Poi = {"pjax":"1","movies":{"url": "https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/video","name":"we-bare-bears-ice-bear-play-2.mp4","live":"open"},"windowheight":"auto","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+}
+/* ]]> */
+
+</script>
+<script>
+$(document).ready(function() {
+  if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
+    if ($(".pattern-center").length > 0) { //有图的情况
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -400,
+          scrollSmoothOffset: -85
+      });
+    } else {
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -85,
+          scrollSmoothOffset: -85
+      });
+    }
+    var offsetTop = $('.toc').offset().top - 95;
+    window.onscroll = function() {
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      if (scrollTop >= offsetTop) {
+        $('.toc').addClass('toc-fixed');
+      } else {
+        $('.toc').removeClass('toc-fixed');
+      }
+    }
+  }
+});
+</script>
+
+    <div class="openNav no-select" style="height: 50px;">
+      <div class="iconflat no-select" style="width: 50px; height: 50px;">
+        <div class="icon"></div>
+      </div>
+      <div class="site-branding search-form-submit">
+        <i class="iconfont js-toggle-search iconsearch icon-search"></i>
+      </div>
+    </div>
+  </section>
+  <div id="mo-nav" class="">
+  <div class="m-avatar">
+    <img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/custom/avatar-3.jpg">
+  </div>
+  <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">Bear CaveKayleen</p>
+  <p style="text-align: center; word-spacing: 20px;">
+    
+      
+        <a href="http://github.com/littlelittlemoon" class="fa fa-github" target="_blank" style="color: #333; margin-left:20px"></a>
+      
+        <a href="https://wpa.qq.com/msgrd?v=3&uin=1165156282&site=qq&menu=yes" class="fa fa-qq" target="_blank" style="color: #25c6fe; margin-left:20px"></a>
+      
+    
+  </p>
+  <ul id="menu-new-1" class="menu">
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+            首页
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/archives">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+            归档
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/categories/Technology/">
+                  <i class="fa fa-code" aria-hidden="true"></i>
+                  技术
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/Life/">
+                  <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                  生活
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/Thoughts/">
+                  <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                  随想
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/Repost/">
+                  <i class="fa fa-book" aria-hidden="true"></i>
+                  转载
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="javascript:;">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+            清单
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/tags/Reading/">
+                  <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                  悦读
+                </a>
+              </li>
+            
+              <li>
+                <a href="/music/">
+                  <i class="fa fa-headphones" aria-hidden="true"></i>
+                  音悦
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags/Pictures/">
+                  <i class="fa fa-photo" aria-hidden="true"></i>
+                  图集
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags/Cave/">
+                  <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                  Cave
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/comment/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+            留言板
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/links/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+            友人帐
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/donate/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+            赞赏
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/about/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-meetup" aria-hidden="true"></i>
+            关于我
+          </span>
+        </a>
+        
+      </li>
+    
+  </ul>
+  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2019 hexo-sakura</p>
+</div>
+<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<style>
+  .aplayer .aplayer-lrc {
+    height: 35px;
+  }
+  .aplayer .aplayer-lrc p{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px !important;
+  }
+  .aplayer .aplayer-lrc p.aplayer-lrc-current{
+    color: #FF1493;
+  }
+  .aplayer.aplayer-narrow .aplayer-body{
+    left: -66px !important;
+  }
+  .aplayer.aplayer-fixed .aplayer-lrc {
+    display: none;
+  }
+  .aplayer .aplayer-lrc.aplayer-lrc-hide {
+      display:none !important;
+  }
+  .aplayer.aplayer-fixed .lrc-show {
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>
+<meting-js
+
+    id="2188265841"
+
+    server="netease"
+
+    type="playlist"
+
+    fixed="true"
+
+    mini="true"
+
+    autoplay="false"
+
+    loop="all"
+
+    order="random"
+
+    preload="auto"
+
+    volume="0.4"
+
+    mutex="true"
+
+</meting-js>
+<script>
+  $(function(){
+    $('body').on('click', '.aplayer', function(){
+      if($('.aplayer-button').hasClass('aplayer-play')) {
+        $('.aplayer-lrc').removeClass('lrc-show');
+      } else {
+        $('.aplayer-lrc').addClass('lrc-show');
+      }
+    })
+  });
+</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>
