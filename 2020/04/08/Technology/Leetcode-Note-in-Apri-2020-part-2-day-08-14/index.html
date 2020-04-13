@@ -612,17 +612,17 @@ we combine 1 and 1 to get 0 so the array converts to [1] then that's the value o
 <code>count</code>初始值为<code>0</code>，故起点为<code>(0, 0)</code>，从<code>count</code>从<code>index=1</code>开始计数，从图中可以看出，最长的子数组是从<strong>索引2到6</strong>:</li>
 </ol>
 <figure>
-<img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn@v2.0.11/img/article_img/images/Leetcode/02.png" alt="" /><figcaption>img</figcaption>
+<img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn@v2.0.14/img/article_img/images/Leetcode/02.png" alt="" /><figcaption>img</figcaption>
 </figure>
 <p>从上面的插图中，可以很容易地理解到，具有相同y轴值的两个点表示这两个点之间的序列具有相等的0和1。</p>
 <ol start="3" type="1">
 <li><code>nums = [0，0，1，0，0，0，1，1]</code>，如下所示：<br />
-<img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn@v2.0.11/img/article_img/images/Leetcode/03.png" alt="img" /></li>
+<img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn@v2.0.14/img/article_img/images/Leetcode/03.png" alt="img" /></li>
 </ol>
 <p>有3个点具有相同的y轴值-2。因此，从索引2到4的子数组具有相等的0和1，而从索引4到8的子数组具有相等的0和1。可以将它们加起来以形成从索引2到8的最长子数组，因此最大长度 子数组的 <code>8-2 = 6</code>。</p>
 <ol start="4" type="1">
 <li><code>nums = [0，1，1，0，1，1，1，0]</code>，如下所示：<br />
-<img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn@v2.0.11/img/article_img/images/Leetcode/04.png" alt="img" /><br />
+<img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn@v2.0.14/img/article_img/images/Leetcode/04.png" alt="img" /><br />
 最长的子数组的y轴值为0。<br />
 为了找到<code>max length</code>，这里可以考虑用一个<strong>字典来存储<code>count</code>的值（作为键）及其关联的index（作为值</strong>）。<strong>只需要在<code>count</code>第一次出现某值时保存其计数值及其索引</strong>，当相同的计数值再次出现时，使用新索引减去旧索引来计算子数组的长度。<strong>变量<code>max_length</code>用于跟踪当前的最大长度</strong>。</li>
 </ol>
