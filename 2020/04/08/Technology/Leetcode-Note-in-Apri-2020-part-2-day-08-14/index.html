@@ -606,25 +606,18 @@ we combine 1 and 1 to get 0 so the array converts to [1] then that's the value o
 <p>讲真心话，我第一遍没看懂题🤣，题目大意是给一个二值(0/1)数组，找出该数组的最大连续子串的长度，该子串中满足0和1的个数相同。<br />
 明白题意之后的第一想法是通过计数的形式去找子串，例如<strong>设置一个count变量，遇到0就-1，遇到1就+1</strong>。那么如何通过这个变量去判断什么时候会出现最大子串呢？ 考虑下面几种情况：</p>
 <ol type="1">
-<li>假设<code>nums = [0, 1, 0, 0, 1, 1]</code>， 那么<code>count = [-1， 0， -1， -2， -1， 0]</code> =&gt; <code>max length：6</code>（count数组的最后一个0的index+1）<br />
-</li>
-<li><code>nums = [0, 0, 0, 0, 1, 1]</code>，<code>count = [-1, -2, -3, -4, -3, -2]</code> =&gt; 很明显这种情况的最大长度不是最后一个0的<code>index + 1 = 2</code>，而是<code>4</code>，其实也是可以通过<code>count</code>的值推测出来，最大长度的子串是<code>[1, 1, 0, 0]</code>，下面用一个图来直观的表示如何通过<code>count</code>的值来推出<code>max length</code>：<br />
-<code>count</code>初始值为<code>0</code>，故起点为<code>(0, 0)</code>，从<code>count</code>从<code>index=1</code>开始计数，从图中可以看出，最长的子数组是从<strong>索引2到6</strong>:</li>
-</ol>
-<figure>
-<img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn@v2.0.14/img/article_img/images/Leetcode/02.png" alt="" /><figcaption>img</figcaption>
-</figure>
-<p>从上面的插图中，可以很容易地理解到，具有相同y轴值的两个点表示这两个点之间的序列具有相等的0和1。</p>
-<ol start="3" type="1">
-<li><code>nums = [0，0，1，0，0，0，1，1]</code>，如下所示：<br />
-<img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn@v2.0.14/img/article_img/images/Leetcode/03.png" alt="img" /></li>
-</ol>
-<p>有3个点具有相同的y轴值-2。因此，从索引2到4的子数组具有相等的0和1，而从索引4到8的子数组具有相等的0和1。可以将它们加起来以形成从索引2到8的最长子数组，因此最大长度 子数组的 <code>8-2 = 6</code>。</p>
-<ol start="4" type="1">
-<li><code>nums = [0，1，1，0，1，1，1，0]</code>，如下所示：<br />
+<li><p>假设<code>nums = [0, 1, 0, 0, 1, 1]</code>， 那么<code>count = [-1， 0， -1， -2， -1， 0]</code> =&gt; <code>max length：6</code>（count数组的最后一个0的index+1）</p></li>
+<li><p><code>nums = [0, 0, 0, 0, 1, 1]</code>，<code>count = [-1, -2, -3, -4, -3, -2]</code> =&gt; 很明显这种情况的最大长度不是最后一个0的<code>index + 1 = 2</code>，而是<code>4</code>，其实也是可以通过<code>count</code>的值推测出来，最大长度的子串是<code>[1, 1, 0, 0]</code>，下面用一个图来直观的表示如何通过<code>count</code>的值来推出<code>max length</code>：<br />
+<code>count</code>初始值为<code>0</code>，故起点为<code>(0, 0)</code>，从<code>count</code>从<code>index=1</code>开始计数，从图中可以看出，最长的子数组是从<strong>索引2到6</strong>:<br />
+<img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn@v2.0.14/img/article_img/images/Leetcode/02.png" alt="img" /><br />
+从上面的插图中，可以很容易地理解到，具有相同y轴值的两个点表示这两个点之间的序列具有相等的0和1。</p></li>
+<li><p><code>nums = [0，0，1，0，0，0，1，1]</code>，如下所示：<br />
+<img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn@v2.0.14/img/article_img/images/Leetcode/03.png" alt="img" /><br />
+有3个点具有相同的y轴值-2。因此，从索引2到4的子数组具有相等的0和1，而从索引4到8的子数组具有相等的0和1。可以将它们加起来以形成从索引2到8的最长子数组，因此最大长度子数组的 <code>8-2 = 6</code>。</p></li>
+<li><p><code>nums = [0，1，1，0，1，1，1，0]</code>，如下所示：<br />
 <img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn@v2.0.14/img/article_img/images/Leetcode/04.png" alt="img" /><br />
 最长的子数组的y轴值为0。<br />
-为了找到<code>max length</code>，这里可以考虑用一个<strong>字典来存储<code>count</code>的值（作为键）及其关联的index（作为值</strong>）。<strong>只需要在<code>count</code>第一次出现某值时保存其计数值及其索引</strong>，当相同的计数值再次出现时，使用新索引减去旧索引来计算子数组的长度。<strong>变量<code>max_length</code>用于跟踪当前的最大长度</strong>。</li>
+为了找到<code>max length</code>，这里可以考虑用一个<strong>字典来存储<code>count</code>的值（作为键）及其关联的index（作为值</strong>）。<strong>只需要在<code>count</code>第一次出现某值时保存其计数值及其索引</strong>，当相同的计数值再次出现时，使用新索引减去旧索引来计算子数组的长度。<strong>变量<code>max_length</code>用于跟踪当前的最大长度</strong>。</p></li>
 </ol>
 <h3 id="代码实现">代码实现</h3>
 <div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">class</span> Solution:</span>
