@@ -342,166 +342,153 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h1 id="写在前面的话"><a class="markdownIt-Anchor" href="#写在前面的话"></a> 写在前面的话</h1>
+          <h1 id="写在前面的话">写在前面的话</h1>
 <p>第二次更新，继续前进~</p>
-<h1 id="backspace-string-compare"><a class="markdownIt-Anchor" href="#backspace-string-compare"></a> Backspace String Compare</h1>
+<h1 id="backspace-string-compare">Backspace String Compare</h1>
 <blockquote>
 <p>Given two strings S and T, return if they are equal when both are typed into empty text editors. # means a backspace character.<br />
-<strong>Examples:</strong></p>
-<blockquote>
-<p><strong>Input:</strong> S = “ab#c”, T = “ad#c”<br />
+<strong>Examples:</strong><br />
+<strong>Input:</strong> S = "ab#c", T = "ad#c"<br />
 <strong>Output:</strong> true<br />
-<strong>Explanation:</strong> Both S and T become “ac”.</p>
-</blockquote>
-<blockquote>
-<p><strong>Input:</strong> S = “ab##”, T = “c#d#”<br />
+<strong>Explanation:</strong> Both S and T become "ac".<br />
+<strong>Input:</strong> S = "ab##", T = "c#d#"<br />
 <strong>Output:</strong> true<br />
-<strong>Explanation:</strong> Both S and T become “”.</p>
-</blockquote>
-<blockquote>
-<p><strong>Input:</strong> S = “a##c”, T = “#a#c”<br />
+<strong>Explanation:</strong> Both S and T become "".<br />
+<strong>Input:</strong> S = "a##c", T = "#a#c"<br />
 <strong>Output:</strong> true<br />
-<strong>Explanation:</strong> Both S and T become “c”.</p>
-</blockquote>
-<blockquote>
-<p><strong>Input:</strong> S = “a#c”, T = “b”<br />
+<strong>Explanation:</strong> Both S and T become "c".<br />
+<strong>Input:</strong> S = "a#c", T = "b"<br />
 <strong>Output:</strong> false<br />
-<strong>Explanation:</strong> S becomes “c” while T becomes “b”.</p>
+<strong>Explanation:</strong> S becomes "c" while T becomes "b".</p>
 </blockquote>
-</blockquote>
-<h2 id="solution"><a class="markdownIt-Anchor" href="#solution"></a> Solution</h2>
+<h2 id="solution">Solution</h2>
 <p>这个题对于我来说有点难度，昨天(9号)晚上做了两个小时吧，重点是通不过所有测试用例，总是有一些细节没有考虑到，而且代码越写越复杂，加上昨天中午没睡午觉，到最后自己把自己都搞懵了，气😠。后面睡觉的时候发现自己脑子真的是一根筋，换个思路这题会简单很多。先看看代码吧。</p>
-<h3 id="mine"><a class="markdownIt-Anchor" href="#mine"></a> Mine</h3>
+<h3 id="mine">Mine</h3>
 <p><strong>核心思路</strong>：从后往前找可能留下来的字符，并一一比对两个字符串对应位置能留下来的的字符是否相等。注意循环判断条件的设置！</p>
-<pre class="highlight"><code class="python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">backspaceCompare</span><span class="hljs-params">(self, S: str, T: str)</span> -&gt; bool:</span>
-        s_i = len(S) - <span class="hljs-number">1</span>
-        t_i = len(T) - <span class="hljs-number">1</span>
-        s_back = t_back = <span class="hljs-number">0</span>
-        
-        <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
-            <span class="hljs-comment"># Loop will be stoped when any of the following situations occur:</span>
-            <span class="hljs-comment"># 1. s_i completed the last character access</span>
-            <span class="hljs-comment"># 2. S[s_i] is a letter (S[s_i] != '#') and don't need to go back</span>
-            <span class="hljs-comment">#    currently (s_back = 0)</span>
-            <span class="hljs-comment"># Same as T, t_i and t_back</span>
-            <span class="hljs-keyword">while</span> s_i &gt;= <span class="hljs-number">0</span>:
-                <span class="hljs-keyword">if</span> S[s_i] == <span class="hljs-string">'#'</span>:
-                    s_i, s_back = s_i - <span class="hljs-number">1</span>, s_back + <span class="hljs-number">1</span>
-                <span class="hljs-keyword">elif</span> S[s_i] != <span class="hljs-string">'#'</span> <span class="hljs-keyword">and</span> s_back &gt; <span class="hljs-number">0</span>:
-                    s_i, s_back = s_i - <span class="hljs-number">1</span>, s_back - <span class="hljs-number">1</span> 
-                <span class="hljs-keyword">else</span>:
-                    <span class="hljs-keyword">break</span>
-            <span class="hljs-keyword">while</span> t_i &gt;= <span class="hljs-number">0</span>:
-                <span class="hljs-keyword">if</span> T[t_i] == <span class="hljs-string">'#'</span>:
-                    t_i, t_back = t_i - <span class="hljs-number">1</span>, t_back + <span class="hljs-number">1</span>
-                <span class="hljs-keyword">elif</span> T[t_i] != <span class="hljs-string">'#'</span> <span class="hljs-keyword">and</span> t_back &gt; <span class="hljs-number">0</span>:
-                    t_i, t_back = t_i - <span class="hljs-number">1</span>, t_back - <span class="hljs-number">1</span>
-                <span class="hljs-keyword">else</span>:
-                    <span class="hljs-keyword">break</span>
-            
-            <span class="hljs-comment"># There are only two situations will return True:</span>
-            <span class="hljs-comment"># 1. both s_i and t_i are not out of index and  S[s_i] = T[t_i]</span>
-            <span class="hljs-comment"># 2. both s_i and t_i are out of index, it means no letter needs</span>
-            <span class="hljs-comment">#    to be compared and previous corresponding letters are equal.</span>
-            <span class="hljs-comment">#    otherwise, it will return false in situation 1</span>
-            <span class="hljs-keyword">if</span> s_i &gt;= <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> t_i &gt;= <span class="hljs-number">0</span>:
-                <span class="hljs-keyword">if</span> S[s_i] != T[t_i]:
-                    <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>
-                s_i, t_i = s_i - <span class="hljs-number">1</span>, t_i - <span class="hljs-number">1</span>
-            <span class="hljs-keyword">else</span>:
-                <span class="hljs-keyword">return</span> s_i &lt; <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> t_i &lt; <span class="hljs-number">0</span>
-        
-</code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb1-2"><a href="#cb1-2"></a>    <span class="kw">def</span> backspaceCompare(<span class="va">self</span>, S: <span class="bu">str</span>, T: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">bool</span>:</span>
+<span id="cb1-3"><a href="#cb1-3"></a>        s_i <span class="op">=</span> <span class="bu">len</span>(S) <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a>        t_i <span class="op">=</span> <span class="bu">len</span>(T) <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a>        s_back <span class="op">=</span> t_back <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a>        </span>
+<span id="cb1-7"><a href="#cb1-7"></a>        <span class="cf">while</span> <span class="va">True</span>:</span>
+<span id="cb1-8"><a href="#cb1-8"></a>            <span class="co"># Loop will be stoped when any of the following situations occur:</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a>            <span class="co"># 1. s_i completed the last character access</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a>            <span class="co"># 2. S[s_i] is a letter (S[s_i] != &#39;#&#39;) and don&#39;t need to go back</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a>            <span class="co">#    currently (s_back = 0)</span></span>
+<span id="cb1-12"><a href="#cb1-12"></a>            <span class="co"># Same as T, t_i and t_back</span></span>
+<span id="cb1-13"><a href="#cb1-13"></a>            <span class="cf">while</span> s_i <span class="op">&gt;=</span> <span class="dv">0</span>:</span>
+<span id="cb1-14"><a href="#cb1-14"></a>                <span class="cf">if</span> S[s_i] <span class="op">==</span> <span class="st">&#39;#&#39;</span>:</span>
+<span id="cb1-15"><a href="#cb1-15"></a>                    s_i, s_back <span class="op">=</span> s_i <span class="op">-</span> <span class="dv">1</span>, s_back <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb1-16"><a href="#cb1-16"></a>                <span class="cf">elif</span> S[s_i] <span class="op">!=</span> <span class="st">&#39;#&#39;</span> <span class="kw">and</span> s_back <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb1-17"><a href="#cb1-17"></a>                    s_i, s_back <span class="op">=</span> s_i <span class="op">-</span> <span class="dv">1</span>, s_back <span class="op">-</span> <span class="dv">1</span> </span>
+<span id="cb1-18"><a href="#cb1-18"></a>                <span class="cf">else</span>:</span>
+<span id="cb1-19"><a href="#cb1-19"></a>                    <span class="cf">break</span></span>
+<span id="cb1-20"><a href="#cb1-20"></a>            <span class="cf">while</span> t_i <span class="op">&gt;=</span> <span class="dv">0</span>:</span>
+<span id="cb1-21"><a href="#cb1-21"></a>                <span class="cf">if</span> T[t_i] <span class="op">==</span> <span class="st">&#39;#&#39;</span>:</span>
+<span id="cb1-22"><a href="#cb1-22"></a>                    t_i, t_back <span class="op">=</span> t_i <span class="op">-</span> <span class="dv">1</span>, t_back <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb1-23"><a href="#cb1-23"></a>                <span class="cf">elif</span> T[t_i] <span class="op">!=</span> <span class="st">&#39;#&#39;</span> <span class="kw">and</span> t_back <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb1-24"><a href="#cb1-24"></a>                    t_i, t_back <span class="op">=</span> t_i <span class="op">-</span> <span class="dv">1</span>, t_back <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb1-25"><a href="#cb1-25"></a>                <span class="cf">else</span>:</span>
+<span id="cb1-26"><a href="#cb1-26"></a>                    <span class="cf">break</span></span>
+<span id="cb1-27"><a href="#cb1-27"></a>            </span>
+<span id="cb1-28"><a href="#cb1-28"></a>            <span class="co"># There are only two situations will return True:</span></span>
+<span id="cb1-29"><a href="#cb1-29"></a>            <span class="co"># 1. both s_i and t_i are not out of index and  S[s_i] = T[t_i]</span></span>
+<span id="cb1-30"><a href="#cb1-30"></a>            <span class="co"># 2. both s_i and t_i are out of index, it means no letter needs</span></span>
+<span id="cb1-31"><a href="#cb1-31"></a>            <span class="co">#    to be compared and previous corresponding letters are equal.</span></span>
+<span id="cb1-32"><a href="#cb1-32"></a>            <span class="co">#    otherwise, it will return false in situation 1</span></span>
+<span id="cb1-33"><a href="#cb1-33"></a>            <span class="cf">if</span> s_i <span class="op">&gt;=</span> <span class="dv">0</span> <span class="kw">and</span> t_i <span class="op">&gt;=</span> <span class="dv">0</span>:</span>
+<span id="cb1-34"><a href="#cb1-34"></a>                <span class="cf">if</span> S[s_i] <span class="op">!=</span> T[t_i]:</span>
+<span id="cb1-35"><a href="#cb1-35"></a>                    <span class="cf">return</span> <span class="va">False</span></span>
+<span id="cb1-36"><a href="#cb1-36"></a>                s_i, t_i <span class="op">=</span> s_i <span class="op">-</span> <span class="dv">1</span>, t_i <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb1-37"><a href="#cb1-37"></a>            <span class="cf">else</span>:</span>
+<span id="cb1-38"><a href="#cb1-38"></a>                <span class="cf">return</span> s_i <span class="op">&lt;</span> <span class="dv">0</span> <span class="kw">and</span> t_i <span class="op">&lt;</span> <span class="dv">0</span></span>
+<span id="cb1-39"><a href="#cb1-39"></a>        </span></code></pre></div>
 <p>其实还是蛮复杂的，可能有更好的解决方法，希望小伙伴们给出你们的思路和建议。我刚开始的思路是从前往后去找可能留下的字母，但是这个变化太大了，而且判断条件特别多，总是有很多情况考虑不到，整了一晚上也没整出来。后面睡觉的时候突然想起我为啥不从后往前找呢？🤣具体解法都在注释里，emmmm，可能还有语法错误，勿介😊。</p>
-<h1 id="min-stack"><a class="markdownIt-Anchor" href="#min-stack"></a> Min Stack</h1>
+<h1 id="min-stack">Min Stack</h1>
 <blockquote>
 <p>Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.<br />
-push(x) – Push element x onto stack.<br />
-pop() – Removes the element on top of the stack.<br />
-top() – Get the top element.<br />
-getMin() – Retrieve the minimum element in the stack.<br />
-<strong>Example:</strong></p>
-<blockquote>
-<p>MinStack minStack = new MinStack();<br />
+push(x) -- Push element x onto stack.<br />
+pop() -- Removes the element on top of the stack.<br />
+top() -- Get the top element.<br />
+getMin() -- Retrieve the minimum element in the stack.<br />
+<strong>Example:</strong><br />
+MinStack minStack = new MinStack();<br />
 minStack.push(-2);<br />
 minStack.push(0);<br />
 minStack.push(-3);<br />
-minStack.getMin();   --&gt; Returns -3.<br />
+minStack.getMin(); --&gt; Returns -3.<br />
 minStack.pop();<br />
-minStack.top();      --&gt; Returns 0.<br />
-minStack.getMin();   --&gt; Returns -2.</p>
+minStack.top(); --&gt; Returns 0.<br />
+minStack.getMin(); --&gt; Returns -2.</p>
 </blockquote>
-</blockquote>
-<h2 id="solution-2"><a class="markdownIt-Anchor" href="#solution-2"></a> Solution</h2>
+<h2 id="solution-1">Solution</h2>
 <p>这个题不难，并且有很多中实现方式。我们需要实现的这个栈是在传统的栈已有的功能上增加了返回最小值的功能，这就涉及到怎么存储最小值的问题，这里有三个思路，大家有更好的思路也可以在评论区给出：</p>
-<h3 id="时间换空间"><a class="markdownIt-Anchor" href="#时间换空间"></a> 时间换空间</h3>
+<h3 id="时间换空间">时间换空间</h3>
 <p>只设计一个栈，返回最小值时通过排序方式返回。</p>
-<pre class="highlight"><code class="python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MinStack</span>:</span>
-
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self)</span>:</span>
-        <span class="hljs-string">"""
-        initialize your data structure here.
-        """</span>
-        self.stack = []
-        
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">push</span><span class="hljs-params">(self, x: int)</span> -&gt; <span class="hljs-keyword">None</span>:</span>
-        self.stack.append(x)
-
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">pop</span><span class="hljs-params">(self)</span> -&gt; <span class="hljs-keyword">None</span>:</span>
-        self.stack.pop()
-            
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">top</span><span class="hljs-params">(self)</span> -&gt; int:</span>
-        <span class="hljs-keyword">if</span> len(self.stack) &lt; <span class="hljs-number">0</span>:
-            <span class="hljs-keyword">return</span> <span class="hljs-literal">None</span>
-        <span class="hljs-keyword">return</span> self.stack[len(self.stack)<span class="hljs-number">-1</span>]
-
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getMin</span><span class="hljs-params">(self)</span> -&gt; int:</span>
-        <span class="hljs-keyword">if</span> len(self.stack) &lt; <span class="hljs-number">0</span>:
-            <span class="hljs-keyword">return</span> <span class="hljs-literal">None</span>
-        s_sorted = sorted(self.stack)
-        <span class="hljs-keyword">return</span> s_sorted[<span class="hljs-number">0</span>]
-</code></pre>
-<h3 id="更节省时间和空间的方式更巧妙"><a class="markdownIt-Anchor" href="#更节省时间和空间的方式更巧妙"></a> 更节省时间和空间的方式(更巧妙)</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">class</span> MinStack:</span>
+<span id="cb2-2"><a href="#cb2-2"></a></span>
+<span id="cb2-3"><a href="#cb2-3"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb2-4"><a href="#cb2-4"></a>        <span class="co">&quot;&quot;&quot;</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="co">        initialize your data structure here.</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="co">        &quot;&quot;&quot;</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a>        <span class="va">self</span>.stack <span class="op">=</span> []</span>
+<span id="cb2-8"><a href="#cb2-8"></a>        </span>
+<span id="cb2-9"><a href="#cb2-9"></a>    <span class="kw">def</span> push(<span class="va">self</span>, x: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb2-10"><a href="#cb2-10"></a>        <span class="va">self</span>.stack.append(x)</span>
+<span id="cb2-11"><a href="#cb2-11"></a></span>
+<span id="cb2-12"><a href="#cb2-12"></a>    <span class="kw">def</span> pop(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb2-13"><a href="#cb2-13"></a>        <span class="va">self</span>.stack.pop()</span>
+<span id="cb2-14"><a href="#cb2-14"></a>            </span>
+<span id="cb2-15"><a href="#cb2-15"></a>    <span class="kw">def</span> top(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb2-16"><a href="#cb2-16"></a>        <span class="cf">if</span> <span class="bu">len</span>(<span class="va">self</span>.stack) <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb2-17"><a href="#cb2-17"></a>            <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb2-18"><a href="#cb2-18"></a>        <span class="cf">return</span> <span class="va">self</span>.stack[<span class="bu">len</span>(<span class="va">self</span>.stack)<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb2-19"><a href="#cb2-19"></a></span>
+<span id="cb2-20"><a href="#cb2-20"></a>    <span class="kw">def</span> getMin(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb2-21"><a href="#cb2-21"></a>        <span class="cf">if</span> <span class="bu">len</span>(<span class="va">self</span>.stack) <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb2-22"><a href="#cb2-22"></a>            <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb2-23"><a href="#cb2-23"></a>        s_sorted <span class="op">=</span> <span class="bu">sorted</span>(<span class="va">self</span>.stack)</span>
+<span id="cb2-24"><a href="#cb2-24"></a>        <span class="cf">return</span> s_sorted[<span class="dv">0</span>]</span></code></pre></div>
+<h3 id="更节省时间和空间的方式更巧妙">更节省时间和空间的方式(更巧妙)</h3>
 <p>设计一个栈，一个min变量，但是栈里面只存放每个元素与最小值的差值（<code>x-min</code>），当出现更小的最小值时，保存的是负数，故课通过这个条件追溯之前的最小值，具体实现见下面的代码。</p>
-<pre class="highlight"><code class="python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MinStack</span>:</span>
-
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self)</span>:</span>
-        <span class="hljs-string">"""
-        initialize your data structure here.
-        """</span>
-        self.stack = []
-        self.s_min = <span class="hljs-literal">None</span>
-
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">push</span><span class="hljs-params">(self, x: int)</span> -&gt; <span class="hljs-keyword">None</span>:</span>
-        <span class="hljs-keyword">if</span> self.s_min == <span class="hljs-literal">None</span>:
-            self.s_min = x
-        self.stack.append(x-self.s_min)
-        self.s_min = min(self.s_min, x)
-
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">pop</span><span class="hljs-params">(self)</span> -&gt; <span class="hljs-keyword">None</span>:</span>
-        pop = self.stack.pop()
-        <span class="hljs-keyword">if</span> len(self.stack) &gt; <span class="hljs-number">0</span>:
-            <span class="hljs-keyword">if</span> pop &lt; <span class="hljs-number">0</span>:
-                self.s_min = self.s_min - pop
-        <span class="hljs-keyword">else</span>:
-            self.s_min = <span class="hljs-literal">None</span>
-
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">top</span><span class="hljs-params">(self)</span> -&gt; int:</span>
-        <span class="hljs-keyword">if</span> len(self.stack) &lt; <span class="hljs-number">0</span>:
-            <span class="hljs-keyword">return</span> <span class="hljs-literal">None</span>
-        top = self.stack[len(self.stack)<span class="hljs-number">-1</span>]
-        <span class="hljs-keyword">if</span> top &lt; <span class="hljs-number">0</span>:
-            <span class="hljs-keyword">return</span> self.s_min
-        <span class="hljs-keyword">return</span> top + self.s_min
-        
-
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getMin</span><span class="hljs-params">(self)</span> -&gt; int:</span>
-        <span class="hljs-keyword">return</span> self.s_min
-</code></pre>
-<h3 id="空间换时间"><a class="markdownIt-Anchor" href="#空间换时间"></a> 空间换时间</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">class</span> MinStack:</span>
+<span id="cb3-2"><a href="#cb3-2"></a></span>
+<span id="cb3-3"><a href="#cb3-3"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb3-4"><a href="#cb3-4"></a>        <span class="co">&quot;&quot;&quot;</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="co">        initialize your data structure here.</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="co">        &quot;&quot;&quot;</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a>        <span class="va">self</span>.stack <span class="op">=</span> []</span>
+<span id="cb3-8"><a href="#cb3-8"></a>        <span class="va">self</span>.s_min <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb3-9"><a href="#cb3-9"></a></span>
+<span id="cb3-10"><a href="#cb3-10"></a>    <span class="kw">def</span> push(<span class="va">self</span>, x: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb3-11"><a href="#cb3-11"></a>        <span class="cf">if</span> <span class="va">self</span>.s_min <span class="op">==</span> <span class="va">None</span>:</span>
+<span id="cb3-12"><a href="#cb3-12"></a>            <span class="va">self</span>.s_min <span class="op">=</span> x</span>
+<span id="cb3-13"><a href="#cb3-13"></a>        <span class="va">self</span>.stack.append(x<span class="op">-</span><span class="va">self</span>.s_min)</span>
+<span id="cb3-14"><a href="#cb3-14"></a>        <span class="va">self</span>.s_min <span class="op">=</span> <span class="bu">min</span>(<span class="va">self</span>.s_min, x)</span>
+<span id="cb3-15"><a href="#cb3-15"></a></span>
+<span id="cb3-16"><a href="#cb3-16"></a>    <span class="kw">def</span> pop(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb3-17"><a href="#cb3-17"></a>        pop <span class="op">=</span> <span class="va">self</span>.stack.pop()</span>
+<span id="cb3-18"><a href="#cb3-18"></a>        <span class="cf">if</span> <span class="bu">len</span>(<span class="va">self</span>.stack) <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb3-19"><a href="#cb3-19"></a>            <span class="cf">if</span> pop <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb3-20"><a href="#cb3-20"></a>                <span class="va">self</span>.s_min <span class="op">=</span> <span class="va">self</span>.s_min <span class="op">-</span> pop</span>
+<span id="cb3-21"><a href="#cb3-21"></a>        <span class="cf">else</span>:</span>
+<span id="cb3-22"><a href="#cb3-22"></a>            <span class="va">self</span>.s_min <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb3-23"><a href="#cb3-23"></a></span>
+<span id="cb3-24"><a href="#cb3-24"></a>    <span class="kw">def</span> top(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb3-25"><a href="#cb3-25"></a>        <span class="cf">if</span> <span class="bu">len</span>(<span class="va">self</span>.stack) <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb3-26"><a href="#cb3-26"></a>            <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb3-27"><a href="#cb3-27"></a>        top <span class="op">=</span> <span class="va">self</span>.stack[<span class="bu">len</span>(<span class="va">self</span>.stack)<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb3-28"><a href="#cb3-28"></a>        <span class="cf">if</span> top <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb3-29"><a href="#cb3-29"></a>            <span class="cf">return</span> <span class="va">self</span>.s_min</span>
+<span id="cb3-30"><a href="#cb3-30"></a>        <span class="cf">return</span> top <span class="op">+</span> <span class="va">self</span>.s_min</span>
+<span id="cb3-31"><a href="#cb3-31"></a>        </span>
+<span id="cb3-32"><a href="#cb3-32"></a></span>
+<span id="cb3-33"><a href="#cb3-33"></a>    <span class="kw">def</span> getMin(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb3-34"><a href="#cb3-34"></a>        <span class="cf">return</span> <span class="va">self</span>.s_min</span></code></pre></div>
+<h3 id="空间换时间">空间换时间</h3>
 <p>设计两个栈，多出来的那个栈用来记录出现过的最小值，我这里没有去实现了，大家可以试试。</p>
-<h1 id="diameter-of-binary-tree"><a class="markdownIt-Anchor" href="#diameter-of-binary-tree"></a> Diameter of Binary Tree</h1>
+<h1 id="diameter-of-binary-tree">Diameter of Binary Tree</h1>
 <blockquote>
 <p>Given a binary tree, you need to compute the length of the diameter of the tree. The diameter of a binary tree is the length of the longest path between any two nodes in a tree. This path may or may not pass through the root.<br />
 <strong>Example:</strong><br />
@@ -510,99 +497,94 @@ Given a binary tree<br />
 <strong>Return 3</strong>, which is the length of the path [4,2,1,3] or [5,2,1,3].<br />
 <strong>Note:</strong> The length of path between two nodes is represented by the number of edges between them.</p>
 </blockquote>
-<h2 id="solution-3"><a class="markdownIt-Anchor" href="#solution-3"></a> Solution</h2>
+<h2 id="solution-2">Solution</h2>
 <p><strong>核心思路</strong>：根据半径的定义可知，半径所在的路径一定有一个中心节点，故可通过判断二叉树每个节点（当前可能的中心点）左右子树的深度和的大小来确定半径。</p>
-<pre class="highlight"><code class="python"><span class="hljs-comment"># Definition for a binary tree node.</span>
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TreeNode</span>:</span>
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, x)</span>:</span>
-        self.val = x
-        self.left = <span class="hljs-literal">None</span>
-        self.right = <span class="hljs-literal">None</span>
-
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">diameterOfBinaryTree</span><span class="hljs-params">(self, root: TreeNode)</span> -&gt; int:</span>
-        self.diameter = <span class="hljs-number">0</span>
-        <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">count_depth</span><span class="hljs-params">(node)</span>:</span>
-            <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span>(node):
-                <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>
-            l_dep, r_dep = count_depth(node.left), count_depth(node.right)
-            self.diameter = max(self.diameter, l_dep+r_dep)
-            
-            <span class="hljs-comment"># max depth: max(left depth, right depth)</span>
-            <span class="hljs-comment"># +1: count node</span>
-            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span> + max(l_dep, r_dep)
-        
-        count_depth(root)
-        
-        <span class="hljs-keyword">return</span> self.diameter
-</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># Definition for a binary tree node.</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="kw">class</span> TreeNode:</span>
+<span id="cb4-3"><a href="#cb4-3"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, x):</span>
+<span id="cb4-4"><a href="#cb4-4"></a>        <span class="va">self</span>.val <span class="op">=</span> x</span>
+<span id="cb4-5"><a href="#cb4-5"></a>        <span class="va">self</span>.left <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a>        <span class="va">self</span>.right <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a></span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="kw">class</span> Solution:</span>
+<span id="cb4-9"><a href="#cb4-9"></a>    <span class="kw">def</span> diameterOfBinaryTree(<span class="va">self</span>, root: TreeNode) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb4-10"><a href="#cb4-10"></a>        <span class="va">self</span>.diameter <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb4-11"><a href="#cb4-11"></a>        <span class="kw">def</span> count_depth(node):</span>
+<span id="cb4-12"><a href="#cb4-12"></a>            <span class="cf">if</span> <span class="kw">not</span>(node):</span>
+<span id="cb4-13"><a href="#cb4-13"></a>                <span class="cf">return</span> <span class="dv">0</span></span>
+<span id="cb4-14"><a href="#cb4-14"></a>            l_dep, r_dep <span class="op">=</span> count_depth(node.left), count_depth(node.right)</span>
+<span id="cb4-15"><a href="#cb4-15"></a>            <span class="va">self</span>.diameter <span class="op">=</span> <span class="bu">max</span>(<span class="va">self</span>.diameter, l_dep<span class="op">+</span>r_dep)</span>
+<span id="cb4-16"><a href="#cb4-16"></a>            </span>
+<span id="cb4-17"><a href="#cb4-17"></a>            <span class="co"># max depth: max(left depth, right depth)</span></span>
+<span id="cb4-18"><a href="#cb4-18"></a>            <span class="co"># +1: count node</span></span>
+<span id="cb4-19"><a href="#cb4-19"></a>            <span class="cf">return</span> <span class="dv">1</span> <span class="op">+</span> <span class="bu">max</span>(l_dep, r_dep)</span>
+<span id="cb4-20"><a href="#cb4-20"></a>        </span>
+<span id="cb4-21"><a href="#cb4-21"></a>        count_depth(root)</span>
+<span id="cb4-22"><a href="#cb4-22"></a>        </span>
+<span id="cb4-23"><a href="#cb4-23"></a>        <span class="cf">return</span> <span class="va">self</span>.diameter</span></code></pre></div>
 <p>这题刚开始我是没有什么好的思路的，太久没做关于二叉树的题了，不对，准确来讲应该是课后就丢了，哈哈哈，后来去查了下二叉树的相关资料，看到求二叉树的深度问题给了我灵感。希望能把以前丢掉的知识点慢慢捡起来，就拿这个树相关的知识点来说，其实很多算法底层原理都有涉及，为了以后能走快一点，现在应该多走几步。</p>
-<h1 id="last-stone-weight"><a class="markdownIt-Anchor" href="#last-stone-weight"></a> Last Stone Weight</h1>
+<h1 id="last-stone-weight">Last Stone Weight</h1>
 <blockquote>
 <p>We have a collection of stones, each stone has a positive integer weight.<br />
-Each turn, we choose the two heaviest stones and smash them together.  Suppose the stones have weights <code>x</code> and <code>y</code> with <code>x &lt;= y</code>.  The result of this smash is:<br />
+Each turn, we choose the two heaviest stones and smash them together. Suppose the stones have weights <code>x</code> and <code>y</code> with <code>x &lt;= y</code>. The result of this smash is:<br />
 If <code>x == y</code>, both stones are totally destroyed;<br />
 If <code>x != y</code>, the stone of weight <code>x</code> is totally destroyed, and the stone of weight y has new weight <code>y-x</code>.<br />
-At the end, there is at most 1 stone left.  Return the weight of this stone (or 0 if there are no stones left.)</p>
-<blockquote>
-<p>Example 1:<br />
+At the end, there is at most 1 stone left. Return the weight of this stone (or 0 if there are no stones left.)<br />
+Example 1:<br />
 <strong>Input:</strong> [2,7,4,1,8,1]<br />
 <strong>Output:</strong> 1<br />
 <strong>Explanation:</strong><br />
 We combine 7 and 8 to get 1 so the array converts to [2,4,1,1,1] then,<br />
 we combine 2 and 4 to get 2 so the array converts to [2,1,1,1] then,<br />
 we combine 2 and 1 to get 1 so the array converts to [1,1,1] then,<br />
-we combine 1 and 1 to get 0 so the array converts to [1] then that’s the value of last stone.</p>
+we combine 1 and 1 to get 0 so the array converts to [1] then that's the value of last stone.</p>
 </blockquote>
-</blockquote>
-<h2 id="solution-4"><a class="markdownIt-Anchor" href="#solution-4"></a> Solution</h2>
-<h3 id="解法一-大根堆"><a class="markdownIt-Anchor" href="#解法一-大根堆"></a> 解法一 —— 大根堆</h3>
+<h2 id="solution-3">Solution</h2>
+<h3 id="解法一-大根堆">解法一 —— 大根堆</h3>
 <p>这个解法是更优的解法，得力于大根堆的特性，算法时间复杂度减少至<code>O(Nlog(N))</code>。</p>
-<pre class="highlight"><code class="python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">lastStoneWeight</span><span class="hljs-params">(self, stones: List[int])</span> -&gt; int:</span>
-        <span class="hljs-comment"># The heap in python defaults to a small root heap</span>
-        <span class="hljs-comment"># So heap pops the minimum value when use heappop, take the opposite</span>
-        <span class="hljs-comment"># value of each list (the weight of each stone &gt; 0) to ensure that the </span>
-        <span class="hljs-comment"># heaviest stone is poped.</span>
-        stones = list(map(<span class="hljs-keyword">lambda</span> x : -x, stones))
-
-        <span class="hljs-comment"># Convert stone list to heap</span>
-        heapq.heapify(stones)
-
-        <span class="hljs-keyword">while</span> len(stones) &gt; <span class="hljs-number">1</span>:
-            <span class="hljs-comment"># Pop and return the smallest element of stones, keeping the heap invariant</span>
-            y = heapq.heappop(stones)
-            <span class="hljs-keyword">if</span> stones:
-                x = heapq.heappop(stones)
-                <span class="hljs-comment"># if x != y push x-y to heap</span>
-                <span class="hljs-keyword">if</span> x != y:
-                    heapq.heappush(stones, y-x)
-                    
-        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span>(stones):
-            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>
-        <span class="hljs-keyword">return</span> -stones[<span class="hljs-number">0</span>]
-</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb5-2"><a href="#cb5-2"></a>    <span class="kw">def</span> lastStoneWeight(<span class="va">self</span>, stones: List[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb5-3"><a href="#cb5-3"></a>        <span class="co"># The heap in python defaults to a small root heap</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a>        <span class="co"># So heap pops the minimum value when use heappop, take the opposite</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a>        <span class="co"># value of each list (the weight of each stone &gt; 0) to ensure that the </span></span>
+<span id="cb5-6"><a href="#cb5-6"></a>        <span class="co"># heaviest stone is poped.</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a>        stones <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> x : <span class="op">-</span>x, stones))</span>
+<span id="cb5-8"><a href="#cb5-8"></a></span>
+<span id="cb5-9"><a href="#cb5-9"></a>        <span class="co"># Convert stone list to heap</span></span>
+<span id="cb5-10"><a href="#cb5-10"></a>        heapq.heapify(stones)</span>
+<span id="cb5-11"><a href="#cb5-11"></a></span>
+<span id="cb5-12"><a href="#cb5-12"></a>        <span class="cf">while</span> <span class="bu">len</span>(stones) <span class="op">&gt;</span> <span class="dv">1</span>:</span>
+<span id="cb5-13"><a href="#cb5-13"></a>            <span class="co"># Pop and return the smallest element of stones, keeping the heap invariant</span></span>
+<span id="cb5-14"><a href="#cb5-14"></a>            y <span class="op">=</span> heapq.heappop(stones)</span>
+<span id="cb5-15"><a href="#cb5-15"></a>            <span class="cf">if</span> stones:</span>
+<span id="cb5-16"><a href="#cb5-16"></a>                x <span class="op">=</span> heapq.heappop(stones)</span>
+<span id="cb5-17"><a href="#cb5-17"></a>                <span class="co"># if x != y push x-y to heap</span></span>
+<span id="cb5-18"><a href="#cb5-18"></a>                <span class="cf">if</span> x <span class="op">!=</span> y:</span>
+<span id="cb5-19"><a href="#cb5-19"></a>                    heapq.heappush(stones, y<span class="op">-</span>x)</span>
+<span id="cb5-20"><a href="#cb5-20"></a>                    </span>
+<span id="cb5-21"><a href="#cb5-21"></a>        <span class="cf">if</span> <span class="kw">not</span>(stones):</span>
+<span id="cb5-22"><a href="#cb5-22"></a>            <span class="cf">return</span> <span class="dv">0</span></span>
+<span id="cb5-23"><a href="#cb5-23"></a>        <span class="cf">return</span> <span class="op">-</span>stones[<span class="dv">0</span>]</span></code></pre></div>
 <p><strong>时间复杂度：O(Nlog(N))</strong></p>
-<h3 id="解法二"><a class="markdownIt-Anchor" href="#解法二"></a> 解法二</h3>
-<p>这个解法是最容易想到的解法，思想也比较简单，时间复杂度O(<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>N</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">N^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span>)。</p>
-<pre class="highlight"><code class="python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">lastStoneWeight</span><span class="hljs-params">(self, stones: List[int])</span> -&gt; int:</span>
-        stones = sorted(stones)
-
-        <span class="hljs-keyword">while</span> len(stones) &gt; <span class="hljs-number">1</span>:
-            y, x = stones.pop(), stones.pop()
-            <span class="hljs-keyword">if</span> x != y:
-                stones.append(y-x)
-            stones = sorted(stones)
-
-        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span>(stones):
-            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>
-        <span class="hljs-keyword">return</span> stones[<span class="hljs-number">0</span>]
-</code></pre>
-<p><strong>时间复杂度：O(<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>N</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">N^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span>)</strong> -----（not sure）</p>
+<h3 id="解法二">解法二</h3>
+<p>这个解法是最容易想到的解法，思想也比较简单，时间复杂度O(<span class="math inline">\(N^2\)</span>)。</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb6-2"><a href="#cb6-2"></a>    <span class="kw">def</span> lastStoneWeight(<span class="va">self</span>, stones: List[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb6-3"><a href="#cb6-3"></a>        stones <span class="op">=</span> <span class="bu">sorted</span>(stones)</span>
+<span id="cb6-4"><a href="#cb6-4"></a></span>
+<span id="cb6-5"><a href="#cb6-5"></a>        <span class="cf">while</span> <span class="bu">len</span>(stones) <span class="op">&gt;</span> <span class="dv">1</span>:</span>
+<span id="cb6-6"><a href="#cb6-6"></a>            y, x <span class="op">=</span> stones.pop(), stones.pop()</span>
+<span id="cb6-7"><a href="#cb6-7"></a>            <span class="cf">if</span> x <span class="op">!=</span> y:</span>
+<span id="cb6-8"><a href="#cb6-8"></a>                stones.append(y<span class="op">-</span>x)</span>
+<span id="cb6-9"><a href="#cb6-9"></a>            stones <span class="op">=</span> <span class="bu">sorted</span>(stones)</span>
+<span id="cb6-10"><a href="#cb6-10"></a></span>
+<span id="cb6-11"><a href="#cb6-11"></a>        <span class="cf">if</span> <span class="kw">not</span>(stones):</span>
+<span id="cb6-12"><a href="#cb6-12"></a>            <span class="cf">return</span> <span class="dv">0</span></span>
+<span id="cb6-13"><a href="#cb6-13"></a>        <span class="cf">return</span> stones[<span class="dv">0</span>]</span></code></pre></div>
+<p><strong>时间复杂度：O(<span class="math inline">\(N^2\)</span>)</strong> -----（not sure）</p>
 <p>实际采用第二种方法的在LeetCode上的run time比第一种方法更少，所以第二种方法时间复杂度比第一种方式更小，我可能需要学习一下python的内置函数<code>sorted</code>方法，看看它的实现。初步了解到python中的<code>sorted</code>排序，用的<code>Timsort</code>算法，维基百科解释：<a href="https://zh.wikipedia.org/wiki/Timsort" target="_blank" rel="noopener">Timsort是一种混合稳定的排序算法，源自合并排序和插入排序，旨在较好地处理真实世界中各种各样的数据</a>。具体原理还需深究。</p>
-<h1 id="updating"><a class="markdownIt-Anchor" href="#updating"></a> Updating…</h1>
-<p>未完待续…</p>
+<h1 id="updating...">Updating...</h1>
+<p>未完待续...</p>
 
         </div>
         <!-- .entry-content -->
