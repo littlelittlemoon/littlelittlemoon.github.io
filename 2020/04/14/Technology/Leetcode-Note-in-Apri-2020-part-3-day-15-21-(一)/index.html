@@ -4,7 +4,7 @@
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">Tag: Updating | LITTLEMEEMOON</title>
+  <title itemprop="name">Leetcode Note in Apri 2020 | part 3 | day 15-21 | (一). | LITTLEMEEMOON</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -313,64 +313,195 @@
   </div>
 </header>
 
-      
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
 <div class="pattern-center-blank"></div>
-<div class="pattern-center ">
-  <div class="pattern-attachment-img">
-    <img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/banner/reading.jpg" class="lazyload" onerror="imgError(this,3)" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;">
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/bears/29.jpg);" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/bears/29.jpg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      Leetcode Note in Apri 2020 | part 3 | day 15-21 | (一).</h1>
+      <p class="entry-census">
+        <span>
+          <a href="https://littlelittlemoon.github.io/">
+            <img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/custom/avatar-3.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="https://littlelittlemoon.github.io/">Kayleen</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2020-4-14<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
   </div>
-  <header class="pattern-header ">
-    <h1 class="cat-title">Updating</h1>
-  </header>
-</div>
+
 <div id="content" class="site-content">
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
-      
-  <!-- 首页默认取最最新文章集 -->
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/04/14/Technology/Leetcode-Note-in-Apri-2020-part-3-day-15-21-(%E4%B8%80)/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h1 id="写在前面的话">写在前面的话</h1>
+<p>第三次更新，这次更新可能会把一周的内容分为两篇文章，因为放一篇文章的话内容有点太长了。新的挑战！继续前进~</p>
+<h1 id="product-of-array-except-self">Product of Array Except Self</h1>
+<blockquote>
+<p>Given an array nums of n integers where n &gt; 1, return an array output such that output[i] is equal to the product of all the elements of nums except nums[i].<br />
+<strong>Example</strong>:<br />
+<strong>Input</strong>: [1,2,3,4]<br />
+<strong>Output</strong>: [24,12,8,6]<br />
+<strong>Constraint</strong>: It's guaranteed that the product of the elements of any prefix or suffix of the array (including the whole array) fits in a 32 bit integer.<br />
+<strong>Note</strong>: Please solve it <strong>without division</strong> and in <code>O(n)</code>.<br />
+<strong>Follow up</strong>:<br />
+Could you solve it <strong>with constant space complexity</strong>? (The output array does not count as extra space for the purpose of space complexity analysis.)</p>
+</blockquote>
+<h2 id="solution">Solution</h2>
+<p>具体思路在代码注释中已经说的很清楚了，我这里简单概括一下：</p>
+<p>这个题有个<strong>限制</strong>：<strong>不能使用除法</strong>，这个限制让这道题变得有点难度。本来我们可以把数组里面所有元素相乘，然后通过除以相应index的数就可以得到每个数对应的除自己以外的数的积。</p>
+<p>有了限制条件之后，我想了很久也没有想到很好的方法，之后看到其他小伙伴的解题思路，就突然来了灵感。我们可以<strong>将数组根据当前元素分为两部分</strong>（左边和右边）。然后分别计算元素两边的所有元素的积，再<strong>将两边所得的积相乘</strong>，就得到了当前元素应该对应的积。具体看代码实现和注释。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb1-2"><a href="#cb1-2"></a>    <span class="kw">def</span> productExceptSelf(<span class="va">self</span>, nums: List[<span class="bu">int</span>]) <span class="op">-&gt;</span> List[<span class="bu">int</span>]:</span>
+<span id="cb1-3"><a href="#cb1-3"></a>        <span class="co"># The length of the input array </span></span>
+<span id="cb1-4"><a href="#cb1-4"></a>        n_len <span class="op">=</span> <span class="bu">len</span>(nums)</span>
+<span id="cb1-5"><a href="#cb1-5"></a>        </span>
+<span id="cb1-6"><a href="#cb1-6"></a>        <span class="co"># The product array to be returned</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a>        product <span class="op">=</span> [<span class="dv">0</span>] <span class="op">*</span> n_len</span>
+<span id="cb1-8"><a href="#cb1-8"></a>        </span>
+<span id="cb1-9"><a href="#cb1-9"></a>        <span class="co"># product[i] contains the product of all the elements to the left</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a>        <span class="co"># Note: for the element at index &#39;0&#39;, there are no elements to the left,</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a>        <span class="co"># so the product[0] would be 1</span></span>
+<span id="cb1-12"><a href="#cb1-12"></a>        product[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb1-13"><a href="#cb1-13"></a>        </span>
+<span id="cb1-14"><a href="#cb1-14"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, n_len):</span>
+<span id="cb1-15"><a href="#cb1-15"></a>            <span class="co"># product[i - 1] already contains the product of elements to the left of &#39;i - 1&#39;</span></span>
+<span id="cb1-16"><a href="#cb1-16"></a>            <span class="co"># Simply multiplying it with nums[i - 1] would give the product of all </span></span>
+<span id="cb1-17"><a href="#cb1-17"></a>            <span class="co"># elements to the left of index &#39;i&#39;</span></span>
+<span id="cb1-18"><a href="#cb1-18"></a>            product[i] <span class="op">=</span> nums[i <span class="op">-</span> <span class="dv">1</span>] <span class="op">*</span> product[i <span class="op">-</span> <span class="dv">1</span>]</span>
+<span id="cb1-19"><a href="#cb1-19"></a>        </span>
+<span id="cb1-20"><a href="#cb1-20"></a>        <span class="co"># R contains the product of all the elements to the right</span></span>
+<span id="cb1-21"><a href="#cb1-21"></a>        <span class="co"># Note: for the element at index &#39;length - 1&#39;, there are no elements to the right,</span></span>
+<span id="cb1-22"><a href="#cb1-22"></a>        <span class="co"># so the R would be 1</span></span>
+<span id="cb1-23"><a href="#cb1-23"></a>        R <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb1-24"><a href="#cb1-24"></a>        </span>
+<span id="cb1-25"><a href="#cb1-25"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">reversed</span>(<span class="bu">range</span>(n_len)):</span>
+<span id="cb1-26"><a href="#cb1-26"></a>            <span class="co"># For the index &#39;i&#39;, R would contain the </span></span>
+<span id="cb1-27"><a href="#cb1-27"></a>            <span class="co"># product of all elements to the right. We update R accordingly</span></span>
+<span id="cb1-28"><a href="#cb1-28"></a>            product[i] <span class="op">=</span> product[i] <span class="op">*</span> R</span>
+<span id="cb1-29"><a href="#cb1-29"></a>            R <span class="op">*=</span> nums[i]</span>
+<span id="cb1-30"><a href="#cb1-30"></a>        </span>
+<span id="cb1-31"><a href="#cb1-31"></a>        <span class="cf">return</span> product</span></code></pre></div>
+<h1 id="updating">Updating</h1>
+<p>未完待续...</p>
+
         </div>
-        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/bears/29.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/04/14/Technology/Leetcode-Note-in-Apri-2020-part-3-day-15-21-(%E4%B8%80)/">
-    Leetcode Note in Apri 2020 | part 3 | day 15-21 | (一).</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-4-14</div>
-    <p>
-    </p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/04/14/Technology/Leetcode-Note-in-Apri-2020-part-3-day-15-21-(%E4%B8%80)/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/custom/donate/WeChanQR.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2020/04/16/Technology/BlockChain-Patient-Driven-Interoperability/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/bears/11.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/bears/11.jpg">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                Paper Smash|Blockchain Technology for Healthcare-Facilitating the Transition to Patient-Driven Interoperability</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+        
+          
+            <div class="post-nepre half next">
+          
+            <a href="/2020/04/11/Technology/%E5%83%B5%E5%B0%B8%E4%BC%81%E4%B8%9A%E5%88%86%E7%B1%BB-%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83-LightGBM/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/bears/25.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/bears/25.jpg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                僵尸企业分类|模型训练|LightGBM</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "uVn0CbsTzphCnMDIxJKQ0rbg-gzGzoHsz",
+        appKey: "wc39UmG3dNqQQms9Hg2sKc1X",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
 
-
-      <div class="clearer">
-      </div>
-    </main>
-    <!--  -->
-    
-  </div>
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="https://littlelittlemoon.github.io/" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/custom/avatar-3.jpg" itemprop="image" alt="Kayleen" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="https://littlelittlemoon.github.io/" itemprop="url" rel="author">Kayleen</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>A curious 👱‍♀️</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
 </div>
+
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML"></script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  </script>
+
+
     </div>    
     <div class="ins-search">
     <div class="ins-search-mask"></div>
