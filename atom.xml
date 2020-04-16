@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://littlelittlemoon.github.io/"/>
-  <updated>2020-04-12T13:06:54.541Z</updated>
+  <updated>2020-04-16T07:53:04.866Z</updated>
   <id>https://littlelittlemoon.github.io/</id>
   
   <author>
@@ -15,6 +15,41 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Paper Smash|Blockchain Technology for Healthcare-Facilitating the Transition to Patient-Driven Interoperability</title>
+    <link href="https://littlelittlemoon.github.io/2020/04/16/Technology/BlockChain-Patient-Driven-Interoperability/"/>
+    <id>https://littlelittlemoon.github.io/2020/04/16/Technology/BlockChain-Patient-Driven-Interoperability/</id>
+    <published>2020-04-16T07:47:09.000Z</published>
+    <updated>2020-04-16T07:53:04.866Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;摘要&quot;&gt;摘要&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;ol
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Technology" scheme="https://littlelittlemoon.github.io/categories/Technology/"/>
+    
+      <category term="Paper Smash" scheme="https://littlelittlemoon.github.io/categories/Technology/Paper-Smash/"/>
+    
+    
+      <category term="Paper" scheme="https://littlelittlemoon.github.io/tags/Paper/"/>
+    
+      <category term="Patient-Driven Interoperability" scheme="https://littlelittlemoon.github.io/tags/Patient-Driven-Interoperability/"/>
+    
+      <category term="Blockchain" scheme="https://littlelittlemoon.github.io/tags/Blockchain/"/>
+    
+  </entry>
   
   <entry>
     <title>僵尸企业分类|模型训练|LightGBM</title>
