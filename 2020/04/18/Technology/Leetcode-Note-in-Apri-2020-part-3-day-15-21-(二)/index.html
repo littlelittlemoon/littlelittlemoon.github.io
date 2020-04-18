@@ -561,7 +561,9 @@ void flood_fill(int x,int y,int color)
 <span id="cb4-42"><a href="#cb4-42"></a>                        <span class="va">self</span>.__bfs(grid, queue, cur_x, cur_y, m, n, marked)</span>
 <span id="cb4-43"><a href="#cb4-43"></a>        <span class="cf">return</span> count</span></code></pre></div>
 <h4 id="基于并查集">基于并查集</h4>
-<p>使用并查集解决本问题的思想很简单： 1、如果当前是“陆地”，尝试与周围合并； 2、如果当前是“水域”，就把所有的“水域”合并在一起，为此，可设置了一个虚拟的结点，表示“所有的水域都和这个虚拟结点是连接的”。</p>
+<p>使用并查集解决本问题的基本思想：<br />
+1. 如果当前是“陆地”，尝试与周围合并；<br />
+2. 如果当前是“水域”，就把所有的“水域”合并在一起，为此，可设置了一个虚拟的结点，表示“所有的水域都和这个虚拟结点是连接的”。</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">class</span> Solution:</span>
 <span id="cb5-2"><a href="#cb5-2"></a>    <span class="kw">def</span> numIslands(<span class="va">self</span>, grid: List[List[<span class="bu">str</span>]]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
 <span id="cb5-3"><a href="#cb5-3"></a></span>
