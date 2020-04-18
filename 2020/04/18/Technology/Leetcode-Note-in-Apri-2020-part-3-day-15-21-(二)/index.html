@@ -351,25 +351,7 @@
         <div class="entry-content">
           <h1 id="写在前面的话">写在前面的话</h1>
 <p>这篇文章只会更新一道题，这道题是我目前做LeetCode以来第一次做到的和图论相关的题，所以想单独拿出来做一个总结，借该题巩固以前学过的相关算法已经在该题中的应用。</p>
-<h1 id="number-of-islands">Number of Islands</h1>
-<blockquote>
-<p>Given a 2d grid map of '1's (land) and '0's (water), count the number of islands. An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.<br />
-<strong>Example 1</strong>:<br />
-<strong>Input:</strong><br />
-11110<br />
-11010<br />
-11000<br />
-00000<br />
-<strong>Output:</strong> 1<br />
-<strong>Example 2:</strong><br />
-<strong>Input:</strong><br />
-11000<br />
-11000<br />
-00100<br />
-00011<br />
-<strong>Output:</strong> 3</p>
-</blockquote>
-<h2 id="相关算法回顾">相关算法回顾</h2>
+<h1 id="相关算法回顾">相关算法回顾</h1>
 <h3 id="深度优先搜索算法depth-first-searchdfs">深度优先搜索算法（Depth-First-Search，DFS）</h3>
 <blockquote>
 <p>深度优先搜索算法（英语：Depth-First-Search，DFS）是一种用于遍历或搜索树或图的算法。这个算法会<strong>尽可能深</strong>的搜索树的分支。当节点v的所在边都己被探寻过，搜索将<strong>回溯</strong>到发现节点v的那条边的起始节点。这一过程一<strong>直进行到已发现从源节点可达的所有节点为止</strong>。如果还存在未被发现的节点，则选择其中一个作为源节点并重复以上过程，整个进程反复进行直到所有节点都被访问为止。这种算法不会根据图的结构等信息调整执行策略。 深度优先搜索是图论中的经典算法，利用深度优先搜索算法可以产生目标图的拓扑排序表，利用拓扑排序表可以方便的解决很多相关的图论问题，如无权最长路径问题等等。 <a href="!https://zh.wikipedia.org/wiki/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2">维基百科</a></p>
@@ -402,7 +384,7 @@
 void DFSTraverse(Graph G){
     for(v = 0; v &lt; G.vexnum; ++i)
         visited[v] = false;
-          
+
     for(v = 0; v &lt; G.vexnum; ++v)
         if(!visited[v])
             DFS(G,v);
@@ -443,6 +425,53 @@ void DFS(Graph G,int v) {
 <h3 id="flood-fill算法">Flood fill算法</h3>
 <blockquote>
 <p>Flood fill算法是从一个区域中提取若干个连通的点与其他相邻区域区分开（或分别染成不同颜色）的经典算法。因为其思路类似洪水从一个区域扩散到所有能到达的区域而得名。在GNU Go和扫雷中，Flood Fill算法被用来计算需要被清除的区域。<a href="!https://zh.wikipedia.org/wiki/Flood_fill">维基百科</a>。该算法可用<strong>深度优先遍历算法</strong>或<strong>广度优先遍历算法</strong>实现。</p>
+</blockquote>
+<h4 id="算法实现">算法实现</h4>
+<blockquote>
+<p>Flood fill算法接受三个参数：<strong>起始节点</strong>，<strong>目标颜色</strong>和<strong>替换颜色</strong>。<br />
+算法遍历所有的节点以寻找和起始节点相连的节点（通过一条目标颜色的路径相连），然后 改变他们的颜色为替换颜色。目前有许多flood-fill算法的构建方式，但是他们都显示或隐式的使用队列或者栈 根据我们是否考虑当前节点对角线方向的节点，算法分为四路算法（不考虑对角线方向的节点）和八路算法（考虑对角线方向的节点）。</p>
+</blockquote>
+<h5 id="伪代码-2">伪代码</h5>
+<pre><code>/*假设MAX_X与MAX_Y是图的宽和高*/
+void flood_fill(int x,int y,int color)
+{
+  area[x][y] = color;
+  if(x &gt; 0 &amp;&amp; area[x-1][y] == 0)
+    flood_fill(x-1, y, color);
+  if(y &gt; 0 &amp;&amp; area[x][y-1] == 0)
+    flood_fill(x, y-1, color);
+  if(x &lt; MAX_X &amp;&amp; area[x+1][y] == 0)
+    flood_fill(x+1, y, color);
+  if(y &lt; MAX_Y &amp;&amp; area[x][y+1] == 0)
+    flood_fill(x, y+1, color);
+}</code></pre>
+<h4 id="动画演示-2">动画演示</h4>
+<h5 id="四个方向上的flood-fill">四个方向上的Flood Fill</h5>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn@v2.0.19/img/article_img/images/floodfill/Recursive_Flood_Fill_4_(aka).gif" alt="" /><figcaption>flood_fill_4</figcaption>
+</figure>
+<h5 id="八个方向上的flood-fill">八个方向上的Flood Fill</h5>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn@v2.0.19/img/article_img/images/floodfill/Recursive_Flood_Fill_8_(aka).gif" alt="" /><figcaption>flood_fill_8</figcaption>
+</figure>
+<h1 id="应用">应用</h1>
+<h2 id="number-of-islands">Number of Islands</h2>
+<blockquote>
+<p>Given a 2d grid map of '1's (land) and '0's (water), count the number of islands. An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.<br />
+<strong>Example 1</strong>:<br />
+<strong>Input:</strong><br />
+11110<br />
+11010<br />
+11000<br />
+00000<br />
+<strong>Output:</strong> 1<br />
+<strong>Example 2:</strong><br />
+<strong>Input:</strong><br />
+11000<br />
+11000<br />
+00100<br />
+00011<br />
+<strong>Output:</strong> 3</p>
 </blockquote>
 
         </div>
