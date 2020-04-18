@@ -380,25 +380,25 @@
 <li>若stack为空，表示整张图都检查过了——亦即图中没有欲搜寻的目标。结束搜寻并回传“找不到目标”。</li>
 </ol>
 <h4 id="伪代码">伪代码</h4>
-<pre><code>bool visited[MAX_VERTEX_NUM];
-
-void DFSTraverse(Graph G){
-    for(v = 0; v &lt; G.vexnum; ++i)
-        visited[v] = false;
-
-    for(v = 0; v &lt; G.vexnum; ++v)
-        if(!visited[v])
-            DFS(G,v);
-}
-
-void DFS(Graph G,int v) {
-    visit（v）; 
-    visited[v] = true;
-
-    for(w = FirstNeighbor(G,v); w &gt;= 0; w = NextNeighbor(G,v,w))
-        if(!visited[w])
-            DFS(G,w);
-}</code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1"></a><span class="dt">bool</span> visited[MAX_VERTEX_NUM];</span>
+<span id="cb1-2"><a href="#cb1-2"></a></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="dt">void</span> DFSTraverse(Graph G){</span>
+<span id="cb1-4"><a href="#cb1-4"></a>    <span class="cf">for</span>(v = <span class="dv">0</span>; v &lt; G.vexnum; ++i)</span>
+<span id="cb1-5"><a href="#cb1-5"></a>        visited[v] = false;</span>
+<span id="cb1-6"><a href="#cb1-6"></a></span>
+<span id="cb1-7"><a href="#cb1-7"></a>    <span class="cf">for</span>(v = <span class="dv">0</span>; v &lt; G.vexnum; ++v)</span>
+<span id="cb1-8"><a href="#cb1-8"></a>        <span class="cf">if</span>(!visited[v])</span>
+<span id="cb1-9"><a href="#cb1-9"></a>            DFS(G,v);</span>
+<span id="cb1-10"><a href="#cb1-10"></a>}</span>
+<span id="cb1-11"><a href="#cb1-11"></a></span>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="dt">void</span> DFS(Graph G,<span class="dt">int</span> v) {</span>
+<span id="cb1-13"><a href="#cb1-13"></a>    visit（v）; </span>
+<span id="cb1-14"><a href="#cb1-14"></a>    visited[v] = true;</span>
+<span id="cb1-15"><a href="#cb1-15"></a></span>
+<span id="cb1-16"><a href="#cb1-16"></a>    <span class="cf">for</span>(w = FirstNeighbor(G,v); w &gt;= <span class="dv">0</span>; w = NextNeighbor(G,v,w))</span>
+<span id="cb1-17"><a href="#cb1-17"></a>        <span class="cf">if</span>(!visited[w])</span>
+<span id="cb1-18"><a href="#cb1-18"></a>            DFS(G,w);</span>
+<span id="cb1-19"><a href="#cb1-19"></a>}</span></code></pre></div>
 <h3 id="广度优先搜索算法breadth-first-searchbfs">广度优先搜索算法（Breadth-First Search，BFS）</h3>
 <blockquote>
 <p>广度优先搜索算法（英语：Breadth-First Search，缩写为BFS），又译作宽度优先搜索，或横向优先搜索，是一种图形搜索算法。简单的说，BFS是从根节点开始，沿着树的<strong>宽度</strong>遍历树的节点。如果<strong>所有节点均被访问，则算法中止</strong>。广度优先搜索的实现一般采用<strong>open-closed</strong>表。 <a href="!https://zh.wikipedia.org/wiki/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2">维基百科</a></p>
@@ -433,19 +433,19 @@ void DFS(Graph G,int v) {
 算法遍历所有的节点以寻找和起始节点相连的节点（通过一条目标颜色的路径相连），然后 改变他们的颜色为替换颜色。目前有许多flood-fill算法的构建方式，但是他们都显示或隐式的使用队列或者栈 根据我们是否考虑当前节点对角线方向的节点，算法分为四路算法（不考虑对角线方向的节点）和八路算法（考虑对角线方向的节点）。</p>
 </blockquote>
 <h5 id="伪代码-2">伪代码</h5>
-<pre><code>/*假设MAX_X与MAX_Y是图的宽和高*/
-void flood_fill(int x,int y,int color)
-{
-  area[x][y] = color;
-  if(x &gt; 0 &amp;&amp; area[x-1][y] == 0)
-    flood_fill(x-1, y, color);
-  if(y &gt; 0 &amp;&amp; area[x][y-1] == 0)
-    flood_fill(x, y-1, color);
-  if(x &lt; MAX_X &amp;&amp; area[x+1][y] == 0)
-    flood_fill(x+1, y, color);
-  if(y &lt; MAX_Y &amp;&amp; area[x][y+1] == 0)
-    flood_fill(x, y+1, color);
-}</code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">/*假设MAX_X与MAX_Y是图的宽和高*/</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="dt">void</span> flood_fill(<span class="dt">int</span> x,<span class="dt">int</span> y,<span class="dt">int</span> color)</span>
+<span id="cb2-3"><a href="#cb2-3"></a>{</span>
+<span id="cb2-4"><a href="#cb2-4"></a>  area[x][y] = color;</span>
+<span id="cb2-5"><a href="#cb2-5"></a>  <span class="cf">if</span>(x &gt; <span class="dv">0</span> &amp;&amp; area[x-<span class="dv">1</span>][y] == <span class="dv">0</span>)</span>
+<span id="cb2-6"><a href="#cb2-6"></a>    flood_fill(x-<span class="dv">1</span>, y, color);</span>
+<span id="cb2-7"><a href="#cb2-7"></a>  <span class="cf">if</span>(y &gt; <span class="dv">0</span> &amp;&amp; area[x][y-<span class="dv">1</span>] == <span class="dv">0</span>)</span>
+<span id="cb2-8"><a href="#cb2-8"></a>    flood_fill(x, y-<span class="dv">1</span>, color);</span>
+<span id="cb2-9"><a href="#cb2-9"></a>  <span class="cf">if</span>(x &lt; MAX_X &amp;&amp; area[x+<span class="dv">1</span>][y] == <span class="dv">0</span>)</span>
+<span id="cb2-10"><a href="#cb2-10"></a>    flood_fill(x+<span class="dv">1</span>, y, color);</span>
+<span id="cb2-11"><a href="#cb2-11"></a>  <span class="cf">if</span>(y &lt; MAX_Y &amp;&amp; area[x][y+<span class="dv">1</span>] == <span class="dv">0</span>)</span>
+<span id="cb2-12"><a href="#cb2-12"></a>    flood_fill(x, y+<span class="dv">1</span>, color);</span>
+<span id="cb2-13"><a href="#cb2-13"></a>}</span></code></pre></div>
 <h4 id="动画演示-2">动画演示</h4>
 <h5 id="四个方向上的flood-fill">四个方向上的Flood Fill</h5>
 <figure>
@@ -466,29 +466,29 @@ void flood_fill(int x,int y,int color)
 </blockquote>
 <h4 id="伪代码-3">伪代码</h4>
 <p>在并查集森林中，每个集合的代表即是集合的根节点。“查找”根据其父节点的引用向根行进直到到底树根。“联合”将两棵树合并到一起，这通过将一棵树的根连接到另一棵树的根。实现这样操作的一种方法是：</p>
-<pre><code>function MakeSet(x)
-     x.parent := x
-     x.rank   := 0
-
-function Union(x, y)
-    xRoot := Find(x)
-    yRoot := Find(y)
-    if xRoot == yRoot
-        return
-
-    // x和y不在同一个集合，合并它们。
-    if xRoot.rank &lt; yRoot.rank
-        xRoot.parent := yRoot
-    else if xRoot.rank &gt; yRoot.rank
-        yRoot.parent := xRoot
-    else
-        yRoot.parent := xRoot
-        xRoot.rank := xRoot.rank + 1 
-
-function Find(x)
-     if x.parent != x
-        x.parent := Find(x.parent)
-     return x.parent  </code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1"></a>function MakeSet(x)</span>
+<span id="cb3-2"><a href="#cb3-2"></a>     x.parent := x</span>
+<span id="cb3-3"><a href="#cb3-3"></a>     x.rank   := <span class="dv">0</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a></span>
+<span id="cb3-5"><a href="#cb3-5"></a>function Union(x, y)</span>
+<span id="cb3-6"><a href="#cb3-6"></a>    xRoot := Find(x)</span>
+<span id="cb3-7"><a href="#cb3-7"></a>    yRoot := Find(y)</span>
+<span id="cb3-8"><a href="#cb3-8"></a>    <span class="cf">if</span> xRoot == yRoot</span>
+<span id="cb3-9"><a href="#cb3-9"></a>        <span class="cf">return</span></span>
+<span id="cb3-10"><a href="#cb3-10"></a></span>
+<span id="cb3-11"><a href="#cb3-11"></a>    <span class="co">// x和y不在同一个集合，合并它们。</span></span>
+<span id="cb3-12"><a href="#cb3-12"></a>    <span class="cf">if</span> xRoot.rank &lt; yRoot.rank</span>
+<span id="cb3-13"><a href="#cb3-13"></a>        xRoot.parent := yRoot</span>
+<span id="cb3-14"><a href="#cb3-14"></a>    <span class="cf">else</span> <span class="cf">if</span> xRoot.rank &gt; yRoot.rank</span>
+<span id="cb3-15"><a href="#cb3-15"></a>        yRoot.parent := xRoot</span>
+<span id="cb3-16"><a href="#cb3-16"></a>    <span class="cf">else</span></span>
+<span id="cb3-17"><a href="#cb3-17"></a>        yRoot.parent := xRoot</span>
+<span id="cb3-18"><a href="#cb3-18"></a>        xRoot.rank := xRoot.rank + <span class="dv">1</span> </span>
+<span id="cb3-19"><a href="#cb3-19"></a></span>
+<span id="cb3-20"><a href="#cb3-20"></a>function Find(x)</span>
+<span id="cb3-21"><a href="#cb3-21"></a>     <span class="cf">if</span> x.parent != x</span>
+<span id="cb3-22"><a href="#cb3-22"></a>        x.parent := Find(x.parent)</span>
+<span id="cb3-23"><a href="#cb3-23"></a>     <span class="cf">return</span> x.parent  </span></code></pre></div>
 <h1 id="应用">应用</h1>
 <h2 id="number-of-islands">Number of Islands</h2>
 <blockquote>
