@@ -351,7 +351,8 @@
         <div class="entry-content">
           <h1 id="写在前面的话">写在前面的话</h1>
 <p>这篇文章只会更新一道题，这道题是我目前做LeetCode以来第一次做到的和图论相关的题，所以想单独拿出来做一个总结，借该题巩固以前学过的相关算法已经在该题中的应用。</p>
-<h1 id="相关算法回顾">相关算法回顾</h1>
+<h1 id="相关算法与数据结构">相关算法与数据结构</h1>
+<h2 id="算法">算法</h2>
 <h3 id="深度优先搜索算法depth-first-searchdfs">深度优先搜索算法（Depth-First-Search，DFS）</h3>
 <blockquote>
 <p>深度优先搜索算法（英语：Depth-First-Search，DFS）是一种用于遍历或搜索树或图的算法。这个算法会<strong>尽可能深</strong>的搜索树的分支。当节点v的所在边都己被探寻过，搜索将<strong>回溯</strong>到发现节点v的那条边的起始节点。这一过程一<strong>直进行到已发现从源节点可达的所有节点为止</strong>。如果还存在未被发现的节点，则选择其中一个作为源节点并重复以上过程，整个进程反复进行直到所有节点都被访问为止。这种算法不会根据图的结构等信息调整执行策略。 深度优先搜索是图论中的经典算法，利用深度优先搜索算法可以产生目标图的拓扑排序表，利用拓扑排序表可以方便的解决很多相关的图论问题，如无权最长路径问题等等。 <a href="!https://zh.wikipedia.org/wiki/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2">维基百科</a></p>
@@ -454,6 +455,40 @@ void flood_fill(int x,int y,int color)
 <figure>
 <img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn@v2.0.19/img/article_img/images/floodfill/Recursive_Flood_Fill_8_(aka).gif" alt="" /><figcaption>flood_fill_8</figcaption>
 </figure>
+<h2 id="数据结构">数据结构</h2>
+<h3 id="并查集">并查集</h3>
+<blockquote>
+<p>在计算机科学中，并查集是一种树型的数据结构，用于处理一些不交集（Disjoint Sets）的合并及查询问题。有一个联合-查找算法（union-find algorithm）定义了两个用于此数据结构的操作：<br />
+- <strong>Find</strong>：确定元素属于哪一个子集。它可以被用来确定两个元素是否属于同一子集。<br />
+- <strong>Union</strong>：将两个子集合并成同一个集合。<br />
+由于支持这两种操作，一个不相交集也常被称为<strong>联合-查找数据结构</strong>（union-find data structure）或<strong>合并-查找集合</strong>（merge-find set）。其他的重要方法，MakeSet，用于创建单元素集合。有了这些方法，许多经典的划分问题可以被解决。<br />
+为了更加精确的定义这些方法，需要定义如何表示集合。一种常用的策略是为每个集合选定一个固定的元素，称为代表，以表示整个集合。接着，Find(x) 返回x所属集合的代表，而Union使用两个集合的代表作为参数。<a href="https://zh.wikipedia.org/wiki/%E5%B9%B6%E6%9F%A5%E9%9B%86" target="_blank" rel="noopener">维基百科</a></p>
+</blockquote>
+<h4 id="伪代码-3">伪代码</h4>
+<p>在并查集森林中，每个集合的代表即是集合的根节点。“查找”根据其父节点的引用向根行进直到到底树根。“联合”将两棵树合并到一起，这通过将一棵树的根连接到另一棵树的根。实现这样操作的一种方法是：</p>
+<pre><code>function MakeSet(x)
+     x.parent := x
+     x.rank   := 0
+
+function Union(x, y)
+    xRoot := Find(x)
+    yRoot := Find(y)
+    if xRoot == yRoot
+        return
+
+    // x和y不在同一个集合，合并它们。
+    if xRoot.rank &lt; yRoot.rank
+        xRoot.parent := yRoot
+    else if xRoot.rank &gt; yRoot.rank
+        yRoot.parent := xRoot
+    else
+        yRoot.parent := xRoot
+        xRoot.rank := xRoot.rank + 1 
+
+function Find(x)
+     if x.parent != x
+        x.parent := Find(x.parent)
+     return x.parent  </code></pre>
 <h1 id="应用">应用</h1>
 <h2 id="number-of-islands">Number of Islands</h2>
 <blockquote>
@@ -478,160 +513,160 @@ void flood_fill(int x,int y,int color)
 <h4 id="基于flood-fill算法">基于Flood Fill算法</h4>
 <p>根据算法特点，我们可以从一个点出发，然后找到与其连通的点（可通过深度优先或者广度优先算法实现）。而这一片连着的区域就是我们要找的岛屿。根据题意，该题应采用四个方向的flood fill算法。具体看代码实现。</p>
 <h5 id="采用深度优先遍历实现">采用深度优先遍历实现</h5>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">class</span> Solution:</span>
-<span id="cb3-2"><a href="#cb3-2"></a>    <span class="kw">def</span> __dfs(<span class="va">self</span>, grid, i, j, m, n, marked):</span>
-<span id="cb3-3"><a href="#cb3-3"></a>        marked[i][j] <span class="op">=</span> <span class="va">True</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a>        <span class="cf">for</span> direction <span class="kw">in</span> <span class="va">self</span>.directions:</span>
-<span id="cb3-5"><a href="#cb3-5"></a>            new_i <span class="op">=</span> i <span class="op">+</span> direction[<span class="dv">0</span>]</span>
-<span id="cb3-6"><a href="#cb3-6"></a>            new_j <span class="op">=</span> j <span class="op">+</span> direction[<span class="dv">1</span>]</span>
-<span id="cb3-7"><a href="#cb3-7"></a>            <span class="cf">if</span> <span class="dv">0</span> <span class="op">&lt;=</span> new_i <span class="op">&lt;</span> m <span class="kw">and</span> <span class="dv">0</span> <span class="op">&lt;=</span> new_j <span class="op">&lt;</span> n <span class="kw">and</span> <span class="kw">not</span>(marked[new_i][new_j]) <span class="kw">and</span> grid[new_i][new_j] <span class="op">==</span> <span class="st">&#39;1&#39;</span>:</span>
-<span id="cb3-8"><a href="#cb3-8"></a>                <span class="va">self</span>.__dfs(grid, new_i, new_j, m, n, marked)</span>
-<span id="cb3-9"><a href="#cb3-9"></a>                </span>
-<span id="cb3-10"><a href="#cb3-10"></a>    <span class="co">#        x-1,y</span></span>
-<span id="cb3-11"><a href="#cb3-11"></a>    <span class="co"># x,y-1    x,y    x,y+1</span></span>
-<span id="cb3-12"><a href="#cb3-12"></a>    <span class="co">#        x+1,y</span></span>
-<span id="cb3-13"><a href="#cb3-13"></a>    <span class="co"># 方向数组，它表示了相对于当前位置的 4 个方向的横、纵坐标的偏移量，这是一个常见的技巧</span></span>
-<span id="cb3-14"><a href="#cb3-14"></a>    directions <span class="op">=</span> [(<span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>), (<span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>), (<span class="dv">1</span>, <span class="dv">0</span>), (<span class="dv">0</span>, <span class="dv">1</span>)]</span>
-<span id="cb3-15"><a href="#cb3-15"></a>    </span>
-<span id="cb3-16"><a href="#cb3-16"></a>    <span class="kw">def</span> numIslands(<span class="va">self</span>, grid: List[List[<span class="bu">str</span>]]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
-<span id="cb3-17"><a href="#cb3-17"></a>        m <span class="op">=</span> <span class="bu">len</span>(grid)</span>
-<span id="cb3-18"><a href="#cb3-18"></a>        </span>
-<span id="cb3-19"><a href="#cb3-19"></a>        <span class="co"># 特判</span></span>
-<span id="cb3-20"><a href="#cb3-20"></a>        <span class="cf">if</span> m <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb3-21"><a href="#cb3-21"></a>            <span class="cf">return</span> <span class="dv">0</span></span>
-<span id="cb3-22"><a href="#cb3-22"></a>        </span>
-<span id="cb3-23"><a href="#cb3-23"></a>        n <span class="op">=</span> <span class="bu">len</span>(grid[<span class="dv">0</span>])</span>
-<span id="cb3-24"><a href="#cb3-24"></a>        marked <span class="op">=</span> [[<span class="va">False</span> <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(n)] <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(m)]</span>
-<span id="cb3-25"><a href="#cb3-25"></a>        count <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb3-26"><a href="#cb3-26"></a>        </span>
-<span id="cb3-27"><a href="#cb3-27"></a>        <span class="co"># 从第 1 行、第 1 格开始，对每一格尝试进行一次 DFS 操作</span></span>
-<span id="cb3-28"><a href="#cb3-28"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(m):</span>
-<span id="cb3-29"><a href="#cb3-29"></a>            <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(n):</span>
-<span id="cb3-30"><a href="#cb3-30"></a>                </span>
-<span id="cb3-31"><a href="#cb3-31"></a>                <span class="co"># 只要是陆地，且没有被访问过的，就可以使用 DFS 发现与之相连的陆地，并进行标记</span></span>
-<span id="cb3-32"><a href="#cb3-32"></a>                <span class="cf">if</span> <span class="kw">not</span>(marked[i][j]) <span class="kw">and</span> grid[i][j] <span class="op">==</span> <span class="st">&#39;1&#39;</span>:</span>
-<span id="cb3-33"><a href="#cb3-33"></a>                    </span>
-<span id="cb3-34"><a href="#cb3-34"></a>                    <span class="co"># count 可以理解为连通分量</span></span>
-<span id="cb3-35"><a href="#cb3-35"></a>                    count <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb3-36"><a href="#cb3-36"></a>                    <span class="va">self</span>.__dfs(grid, i, j, m, n, marked)</span>
-<span id="cb3-37"><a href="#cb3-37"></a>        <span class="cf">return</span> count</span></code></pre></div>
-<h5 id="采用广度优先遍历实现">采用广度优先遍历实现</h5>
-<p>使用<strong>广度优先遍历</strong>不用回溯，但需要一个<strong>辅助队列</strong>。</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">class</span> Solution:</span>
-<span id="cb4-2"><a href="#cb4-2"></a>    <span class="kw">def</span> __bfs(<span class="va">self</span>, grid, queue, cur_x, cur_y, m, n, marked):</span>
-<span id="cb4-3"><a href="#cb4-3"></a>        <span class="co"># 得到 4 个方向的坐标</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>    <span class="kw">def</span> __dfs(<span class="va">self</span>, grid, i, j, m, n, marked):</span>
+<span id="cb4-3"><a href="#cb4-3"></a>        marked[i][j] <span class="op">=</span> <span class="va">True</span></span>
 <span id="cb4-4"><a href="#cb4-4"></a>        <span class="cf">for</span> direction <span class="kw">in</span> <span class="va">self</span>.directions:</span>
-<span id="cb4-5"><a href="#cb4-5"></a>            new_i <span class="op">=</span> cur_x <span class="op">+</span> direction[<span class="dv">0</span>]</span>
-<span id="cb4-6"><a href="#cb4-6"></a>            new_j <span class="op">=</span> cur_y <span class="op">+</span> direction[<span class="dv">1</span>]</span>
-<span id="cb4-7"><a href="#cb4-7"></a></span>
-<span id="cb4-8"><a href="#cb4-8"></a>            <span class="co"># 如果不越界、没有被访问过并且是陆地，继续放入队列，放入队列的同时标记已经访问过</span></span>
-<span id="cb4-9"><a href="#cb4-9"></a>            <span class="cf">if</span> <span class="dv">0</span> <span class="op">&lt;=</span> new_i <span class="op">&lt;</span> m <span class="kw">and</span> <span class="dv">0</span> <span class="op">&lt;=</span> new_j <span class="op">&lt;</span> n <span class="kw">and</span> <span class="kw">not</span>(marked[new_i][new_j]) <span class="kw">and</span> grid[new_i][new_j] <span class="op">==</span> <span class="st">&#39;1&#39;</span>:</span>
-<span id="cb4-10"><a href="#cb4-10"></a>                queue.append((new_i, new_j))</span>
-<span id="cb4-11"><a href="#cb4-11"></a></span>
-<span id="cb4-12"><a href="#cb4-12"></a>                <span class="co"># 在放入队列以后，马上标记成已经访问过，因为只要进入了队列，迟早都会遍历到它</span></span>
-<span id="cb4-13"><a href="#cb4-13"></a>                <span class="co"># 如果是出队列的时候再标记，会造成很多重复的结点进入队列，造成重复的操作</span></span>
-<span id="cb4-14"><a href="#cb4-14"></a>                marked[new_i][new_j] <span class="op">=</span> <span class="va">True</span></span>
-<span id="cb4-15"><a href="#cb4-15"></a></span>
-<span id="cb4-16"><a href="#cb4-16"></a>    directions <span class="op">=</span> [(<span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>), (<span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>), (<span class="dv">1</span>, <span class="dv">0</span>), (<span class="dv">0</span>, <span class="dv">1</span>)]</span>
-<span id="cb4-17"><a href="#cb4-17"></a></span>
-<span id="cb4-18"><a href="#cb4-18"></a>    <span class="kw">def</span> numIslands(<span class="va">self</span>, grid: List[List[<span class="bu">str</span>]]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
-<span id="cb4-19"><a href="#cb4-19"></a>        m <span class="op">=</span> <span class="bu">len</span>(grid)</span>
+<span id="cb4-5"><a href="#cb4-5"></a>            new_i <span class="op">=</span> i <span class="op">+</span> direction[<span class="dv">0</span>]</span>
+<span id="cb4-6"><a href="#cb4-6"></a>            new_j <span class="op">=</span> j <span class="op">+</span> direction[<span class="dv">1</span>]</span>
+<span id="cb4-7"><a href="#cb4-7"></a>            <span class="cf">if</span> <span class="dv">0</span> <span class="op">&lt;=</span> new_i <span class="op">&lt;</span> m <span class="kw">and</span> <span class="dv">0</span> <span class="op">&lt;=</span> new_j <span class="op">&lt;</span> n <span class="kw">and</span> <span class="kw">not</span>(marked[new_i][new_j]) <span class="kw">and</span> grid[new_i][new_j] <span class="op">==</span> <span class="st">&#39;1&#39;</span>:</span>
+<span id="cb4-8"><a href="#cb4-8"></a>                <span class="va">self</span>.__dfs(grid, new_i, new_j, m, n, marked)</span>
+<span id="cb4-9"><a href="#cb4-9"></a>                </span>
+<span id="cb4-10"><a href="#cb4-10"></a>    <span class="co">#        x-1,y</span></span>
+<span id="cb4-11"><a href="#cb4-11"></a>    <span class="co"># x,y-1    x,y    x,y+1</span></span>
+<span id="cb4-12"><a href="#cb4-12"></a>    <span class="co">#        x+1,y</span></span>
+<span id="cb4-13"><a href="#cb4-13"></a>    <span class="co"># 方向数组，它表示了相对于当前位置的 4 个方向的横、纵坐标的偏移量，这是一个常见的技巧</span></span>
+<span id="cb4-14"><a href="#cb4-14"></a>    directions <span class="op">=</span> [(<span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>), (<span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>), (<span class="dv">1</span>, <span class="dv">0</span>), (<span class="dv">0</span>, <span class="dv">1</span>)]</span>
+<span id="cb4-15"><a href="#cb4-15"></a>    </span>
+<span id="cb4-16"><a href="#cb4-16"></a>    <span class="kw">def</span> numIslands(<span class="va">self</span>, grid: List[List[<span class="bu">str</span>]]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb4-17"><a href="#cb4-17"></a>        m <span class="op">=</span> <span class="bu">len</span>(grid)</span>
+<span id="cb4-18"><a href="#cb4-18"></a>        </span>
+<span id="cb4-19"><a href="#cb4-19"></a>        <span class="co"># 特判</span></span>
 <span id="cb4-20"><a href="#cb4-20"></a>        <span class="cf">if</span> m <span class="op">==</span> <span class="dv">0</span>:</span>
 <span id="cb4-21"><a href="#cb4-21"></a>            <span class="cf">return</span> <span class="dv">0</span></span>
-<span id="cb4-22"><a href="#cb4-22"></a></span>
+<span id="cb4-22"><a href="#cb4-22"></a>        </span>
 <span id="cb4-23"><a href="#cb4-23"></a>        n <span class="op">=</span> <span class="bu">len</span>(grid[<span class="dv">0</span>])</span>
 <span id="cb4-24"><a href="#cb4-24"></a>        marked <span class="op">=</span> [[<span class="va">False</span> <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(n)] <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(m)]</span>
 <span id="cb4-25"><a href="#cb4-25"></a>        count <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb4-26"><a href="#cb4-26"></a></span>
+<span id="cb4-26"><a href="#cb4-26"></a>        </span>
 <span id="cb4-27"><a href="#cb4-27"></a>        <span class="co"># 从第 1 行、第 1 格开始，对每一格尝试进行一次 DFS 操作</span></span>
 <span id="cb4-28"><a href="#cb4-28"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(m):</span>
 <span id="cb4-29"><a href="#cb4-29"></a>            <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(n):</span>
-<span id="cb4-30"><a href="#cb4-30"></a></span>
-<span id="cb4-31"><a href="#cb4-31"></a>                <span class="co"># 只要是陆地，且没有被访问过的，就可以使用 BFS 发现与之相连的陆地，并进行标记</span></span>
+<span id="cb4-30"><a href="#cb4-30"></a>                </span>
+<span id="cb4-31"><a href="#cb4-31"></a>                <span class="co"># 只要是陆地，且没有被访问过的，就可以使用 DFS 发现与之相连的陆地，并进行标记</span></span>
 <span id="cb4-32"><a href="#cb4-32"></a>                <span class="cf">if</span> <span class="kw">not</span>(marked[i][j]) <span class="kw">and</span> grid[i][j] <span class="op">==</span> <span class="st">&#39;1&#39;</span>:</span>
-<span id="cb4-33"><a href="#cb4-33"></a>                    <span class="co"># count 可以理解为连通分量</span></span>
-<span id="cb4-34"><a href="#cb4-34"></a>                    count <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb4-35"><a href="#cb4-35"></a>                    queue <span class="op">=</span> deque()</span>
-<span id="cb4-36"><a href="#cb4-36"></a>                    queue.append((i, j))</span>
-<span id="cb4-37"><a href="#cb4-37"></a></span>
-<span id="cb4-38"><a href="#cb4-38"></a>                    <span class="co"># 标记上已经访问过</span></span>
-<span id="cb4-39"><a href="#cb4-39"></a>                    marked[i][j] <span class="op">=</span> <span class="va">True</span></span>
-<span id="cb4-40"><a href="#cb4-40"></a>                    <span class="cf">while</span> queue:</span>
-<span id="cb4-41"><a href="#cb4-41"></a>                        cur_x, cur_y <span class="op">=</span> queue.popleft()</span>
-<span id="cb4-42"><a href="#cb4-42"></a>                        <span class="va">self</span>.__bfs(grid, queue, cur_x, cur_y, m, n, marked)</span>
-<span id="cb4-43"><a href="#cb4-43"></a>        <span class="cf">return</span> count</span></code></pre></div>
+<span id="cb4-33"><a href="#cb4-33"></a>                    </span>
+<span id="cb4-34"><a href="#cb4-34"></a>                    <span class="co"># count 可以理解为连通分量</span></span>
+<span id="cb4-35"><a href="#cb4-35"></a>                    count <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb4-36"><a href="#cb4-36"></a>                    <span class="va">self</span>.__dfs(grid, i, j, m, n, marked)</span>
+<span id="cb4-37"><a href="#cb4-37"></a>        <span class="cf">return</span> count</span></code></pre></div>
+<h5 id="采用广度优先遍历实现">采用广度优先遍历实现</h5>
+<p>使用<strong>广度优先遍历</strong>不用回溯，但需要一个<strong>辅助队列</strong>。</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb5-2"><a href="#cb5-2"></a>    <span class="kw">def</span> __bfs(<span class="va">self</span>, grid, queue, cur_x, cur_y, m, n, marked):</span>
+<span id="cb5-3"><a href="#cb5-3"></a>        <span class="co"># 得到 4 个方向的坐标</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a>        <span class="cf">for</span> direction <span class="kw">in</span> <span class="va">self</span>.directions:</span>
+<span id="cb5-5"><a href="#cb5-5"></a>            new_i <span class="op">=</span> cur_x <span class="op">+</span> direction[<span class="dv">0</span>]</span>
+<span id="cb5-6"><a href="#cb5-6"></a>            new_j <span class="op">=</span> cur_y <span class="op">+</span> direction[<span class="dv">1</span>]</span>
+<span id="cb5-7"><a href="#cb5-7"></a></span>
+<span id="cb5-8"><a href="#cb5-8"></a>            <span class="co"># 如果不越界、没有被访问过并且是陆地，继续放入队列，放入队列的同时标记已经访问过</span></span>
+<span id="cb5-9"><a href="#cb5-9"></a>            <span class="cf">if</span> <span class="dv">0</span> <span class="op">&lt;=</span> new_i <span class="op">&lt;</span> m <span class="kw">and</span> <span class="dv">0</span> <span class="op">&lt;=</span> new_j <span class="op">&lt;</span> n <span class="kw">and</span> <span class="kw">not</span>(marked[new_i][new_j]) <span class="kw">and</span> grid[new_i][new_j] <span class="op">==</span> <span class="st">&#39;1&#39;</span>:</span>
+<span id="cb5-10"><a href="#cb5-10"></a>                queue.append((new_i, new_j))</span>
+<span id="cb5-11"><a href="#cb5-11"></a></span>
+<span id="cb5-12"><a href="#cb5-12"></a>                <span class="co"># 在放入队列以后，马上标记成已经访问过，因为只要进入了队列，迟早都会遍历到它</span></span>
+<span id="cb5-13"><a href="#cb5-13"></a>                <span class="co"># 如果是出队列的时候再标记，会造成很多重复的结点进入队列，造成重复的操作</span></span>
+<span id="cb5-14"><a href="#cb5-14"></a>                marked[new_i][new_j] <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb5-15"><a href="#cb5-15"></a></span>
+<span id="cb5-16"><a href="#cb5-16"></a>    directions <span class="op">=</span> [(<span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>), (<span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>), (<span class="dv">1</span>, <span class="dv">0</span>), (<span class="dv">0</span>, <span class="dv">1</span>)]</span>
+<span id="cb5-17"><a href="#cb5-17"></a></span>
+<span id="cb5-18"><a href="#cb5-18"></a>    <span class="kw">def</span> numIslands(<span class="va">self</span>, grid: List[List[<span class="bu">str</span>]]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb5-19"><a href="#cb5-19"></a>        m <span class="op">=</span> <span class="bu">len</span>(grid)</span>
+<span id="cb5-20"><a href="#cb5-20"></a>        <span class="cf">if</span> m <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb5-21"><a href="#cb5-21"></a>            <span class="cf">return</span> <span class="dv">0</span></span>
+<span id="cb5-22"><a href="#cb5-22"></a></span>
+<span id="cb5-23"><a href="#cb5-23"></a>        n <span class="op">=</span> <span class="bu">len</span>(grid[<span class="dv">0</span>])</span>
+<span id="cb5-24"><a href="#cb5-24"></a>        marked <span class="op">=</span> [[<span class="va">False</span> <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(n)] <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(m)]</span>
+<span id="cb5-25"><a href="#cb5-25"></a>        count <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb5-26"><a href="#cb5-26"></a></span>
+<span id="cb5-27"><a href="#cb5-27"></a>        <span class="co"># 从第 1 行、第 1 格开始，对每一格尝试进行一次 DFS 操作</span></span>
+<span id="cb5-28"><a href="#cb5-28"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(m):</span>
+<span id="cb5-29"><a href="#cb5-29"></a>            <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb5-30"><a href="#cb5-30"></a></span>
+<span id="cb5-31"><a href="#cb5-31"></a>                <span class="co"># 只要是陆地，且没有被访问过的，就可以使用 BFS 发现与之相连的陆地，并进行标记</span></span>
+<span id="cb5-32"><a href="#cb5-32"></a>                <span class="cf">if</span> <span class="kw">not</span>(marked[i][j]) <span class="kw">and</span> grid[i][j] <span class="op">==</span> <span class="st">&#39;1&#39;</span>:</span>
+<span id="cb5-33"><a href="#cb5-33"></a>                    <span class="co"># count 可以理解为连通分量</span></span>
+<span id="cb5-34"><a href="#cb5-34"></a>                    count <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb5-35"><a href="#cb5-35"></a>                    queue <span class="op">=</span> deque()</span>
+<span id="cb5-36"><a href="#cb5-36"></a>                    queue.append((i, j))</span>
+<span id="cb5-37"><a href="#cb5-37"></a></span>
+<span id="cb5-38"><a href="#cb5-38"></a>                    <span class="co"># 标记上已经访问过</span></span>
+<span id="cb5-39"><a href="#cb5-39"></a>                    marked[i][j] <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb5-40"><a href="#cb5-40"></a>                    <span class="cf">while</span> queue:</span>
+<span id="cb5-41"><a href="#cb5-41"></a>                        cur_x, cur_y <span class="op">=</span> queue.popleft()</span>
+<span id="cb5-42"><a href="#cb5-42"></a>                        <span class="va">self</span>.__bfs(grid, queue, cur_x, cur_y, m, n, marked)</span>
+<span id="cb5-43"><a href="#cb5-43"></a>        <span class="cf">return</span> count</span></code></pre></div>
 <h4 id="基于并查集">基于并查集</h4>
 <p>使用并查集解决本问题的基本思想：<br />
 1. 如果当前是“陆地”，尝试与周围合并；<br />
 2. 如果当前是“水域”，就把所有的“水域”合并在一起，为此，可设置了一个虚拟的结点，表示“所有的水域都和这个虚拟结点是连接的”。</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">class</span> Solution:</span>
-<span id="cb5-2"><a href="#cb5-2"></a>    <span class="kw">def</span> numIslands(<span class="va">self</span>, grid: List[List[<span class="bu">str</span>]]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
-<span id="cb5-3"><a href="#cb5-3"></a></span>
-<span id="cb5-4"><a href="#cb5-4"></a>        <span class="kw">class</span> UnionFind:</span>
-<span id="cb5-5"><a href="#cb5-5"></a></span>
-<span id="cb5-6"><a href="#cb5-6"></a>            <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, n):</span>
-<span id="cb5-7"><a href="#cb5-7"></a>                <span class="va">self</span>.count <span class="op">=</span> n</span>
-<span id="cb5-8"><a href="#cb5-8"></a>                <span class="va">self</span>.parent <span class="op">=</span> [i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n)]</span>
-<span id="cb5-9"><a href="#cb5-9"></a>                <span class="va">self</span>.rank <span class="op">=</span> [<span class="dv">1</span> <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(n)]</span>
-<span id="cb5-10"><a href="#cb5-10"></a></span>
-<span id="cb5-11"><a href="#cb5-11"></a>            <span class="kw">def</span> get_count(<span class="va">self</span>):</span>
-<span id="cb5-12"><a href="#cb5-12"></a>                <span class="cf">return</span> <span class="va">self</span>.count</span>
-<span id="cb5-13"><a href="#cb5-13"></a></span>
-<span id="cb5-14"><a href="#cb5-14"></a>            <span class="kw">def</span> find(<span class="va">self</span>, p):</span>
-<span id="cb5-15"><a href="#cb5-15"></a>                <span class="cf">while</span> p <span class="op">!=</span> <span class="va">self</span>.parent[p]:</span>
-<span id="cb5-16"><a href="#cb5-16"></a>                    <span class="va">self</span>.parent[p] <span class="op">=</span> <span class="va">self</span>.parent[<span class="va">self</span>.parent[p]]</span>
-<span id="cb5-17"><a href="#cb5-17"></a>                    p <span class="op">=</span> <span class="va">self</span>.parent[p]</span>
-<span id="cb5-18"><a href="#cb5-18"></a>                <span class="cf">return</span> p</span>
-<span id="cb5-19"><a href="#cb5-19"></a></span>
-<span id="cb5-20"><a href="#cb5-20"></a>            <span class="kw">def</span> is_connected(<span class="va">self</span>, p, q):</span>
-<span id="cb5-21"><a href="#cb5-21"></a>                <span class="cf">return</span> <span class="va">self</span>.find(p) <span class="op">==</span> <span class="va">self</span>.find(q)</span>
-<span id="cb5-22"><a href="#cb5-22"></a></span>
-<span id="cb5-23"><a href="#cb5-23"></a>            <span class="kw">def</span> union(<span class="va">self</span>, p, q):</span>
-<span id="cb5-24"><a href="#cb5-24"></a>                p_root <span class="op">=</span> <span class="va">self</span>.find(p)</span>
-<span id="cb5-25"><a href="#cb5-25"></a>                q_root <span class="op">=</span> <span class="va">self</span>.find(q)</span>
-<span id="cb5-26"><a href="#cb5-26"></a>                <span class="cf">if</span> p_root <span class="op">==</span> q_root:</span>
-<span id="cb5-27"><a href="#cb5-27"></a>                    <span class="cf">return</span></span>
-<span id="cb5-28"><a href="#cb5-28"></a></span>
-<span id="cb5-29"><a href="#cb5-29"></a>                <span class="cf">if</span> <span class="va">self</span>.rank[p_root] <span class="op">&gt;</span> <span class="va">self</span>.rank[q_root]:</span>
-<span id="cb5-30"><a href="#cb5-30"></a>                    <span class="va">self</span>.parent[q_root] <span class="op">=</span> p_root</span>
-<span id="cb5-31"><a href="#cb5-31"></a>                <span class="cf">elif</span> <span class="va">self</span>.rank[p_root] <span class="op">&lt;</span> <span class="va">self</span>.rank[q_root]:</span>
-<span id="cb5-32"><a href="#cb5-32"></a>                    <span class="va">self</span>.parent[p_root] <span class="op">=</span> q_root</span>
-<span id="cb5-33"><a href="#cb5-33"></a>                <span class="cf">else</span>:</span>
-<span id="cb5-34"><a href="#cb5-34"></a>                    <span class="va">self</span>.parent[q_root] <span class="op">=</span> p_root</span>
-<span id="cb5-35"><a href="#cb5-35"></a>                    <span class="va">self</span>.rank[p_root] <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb5-36"><a href="#cb5-36"></a></span>
-<span id="cb5-37"><a href="#cb5-37"></a>                <span class="va">self</span>.count <span class="op">-=</span> <span class="dv">1</span></span>
-<span id="cb5-38"><a href="#cb5-38"></a></span>
-<span id="cb5-39"><a href="#cb5-39"></a>        row <span class="op">=</span> <span class="bu">len</span>(grid)</span>
-<span id="cb5-40"><a href="#cb5-40"></a>        <span class="co"># 特判</span></span>
-<span id="cb5-41"><a href="#cb5-41"></a>        <span class="cf">if</span> row <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb5-42"><a href="#cb5-42"></a>            <span class="cf">return</span> <span class="dv">0</span></span>
-<span id="cb5-43"><a href="#cb5-43"></a>        col <span class="op">=</span> <span class="bu">len</span>(grid[<span class="dv">0</span>])</span>
-<span id="cb5-44"><a href="#cb5-44"></a></span>
-<span id="cb5-45"><a href="#cb5-45"></a>        <span class="kw">def</span> get_index(x, y):</span>
-<span id="cb5-46"><a href="#cb5-46"></a>            <span class="cf">return</span> x <span class="op">*</span> col <span class="op">+</span> y</span>
-<span id="cb5-47"><a href="#cb5-47"></a></span>
-<span id="cb5-48"><a href="#cb5-48"></a>        <span class="co"># 注意：我们不用像 DFS 和 BFS 一样，4 个方向都要尝试，只要看一看右边和下面就可以了</span></span>
-<span id="cb5-49"><a href="#cb5-49"></a>        directions <span class="op">=</span> [(<span class="dv">1</span>, <span class="dv">0</span>), (<span class="dv">0</span>, <span class="dv">1</span>)]</span>
-<span id="cb5-50"><a href="#cb5-50"></a></span>
-<span id="cb5-51"><a href="#cb5-51"></a>        <span class="co"># 多开一个空间，把水域 &quot;0&quot; 都归到这个虚拟空间</span></span>
-<span id="cb5-52"><a href="#cb5-52"></a>        dummy_node <span class="op">=</span> row <span class="op">*</span> col</span>
-<span id="cb5-53"><a href="#cb5-53"></a>        uf <span class="op">=</span> UnionFind(dummy_node <span class="op">+</span> <span class="dv">1</span>)</span>
-<span id="cb5-54"><a href="#cb5-54"></a></span>
-<span id="cb5-55"><a href="#cb5-55"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(row):</span>
-<span id="cb5-56"><a href="#cb5-56"></a>            <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(col):</span>
-<span id="cb5-57"><a href="#cb5-57"></a>                <span class="co"># 如果是水域，都连到那个虚拟的空间去</span></span>
-<span id="cb5-58"><a href="#cb5-58"></a>                <span class="cf">if</span> grid[i][j] <span class="op">==</span> <span class="st">&#39;0&#39;</span>:</span>
-<span id="cb5-59"><a href="#cb5-59"></a>                    uf.union(get_index(i, j), dummy_node)</span>
-<span id="cb5-60"><a href="#cb5-60"></a>                <span class="cf">if</span> grid[i][j] <span class="op">==</span> <span class="st">&#39;1&#39;</span>:</span>
-<span id="cb5-61"><a href="#cb5-61"></a>                    <span class="co"># 向下向右如果都是陆地，就合并</span></span>
-<span id="cb5-62"><a href="#cb5-62"></a>                    <span class="cf">for</span> direction <span class="kw">in</span> directions:</span>
-<span id="cb5-63"><a href="#cb5-63"></a>                        new_x <span class="op">=</span> i <span class="op">+</span> direction[<span class="dv">0</span>]</span>
-<span id="cb5-64"><a href="#cb5-64"></a>                        new_y <span class="op">=</span> j <span class="op">+</span> direction[<span class="dv">1</span>]</span>
-<span id="cb5-65"><a href="#cb5-65"></a>                        <span class="cf">if</span> new_x <span class="op">&lt;</span> row <span class="kw">and</span> new_y <span class="op">&lt;</span> col <span class="kw">and</span> grid[new_x][new_y] <span class="op">==</span> <span class="st">&#39;1&#39;</span>:</span>
-<span id="cb5-66"><a href="#cb5-66"></a>                            uf.union(get_index(i, j), get_index(new_x, new_y))</span>
-<span id="cb5-67"><a href="#cb5-67"></a>        <span class="co"># 减去虚拟结点</span></span>
-<span id="cb5-68"><a href="#cb5-68"></a>        <span class="cf">return</span> uf.get_count() <span class="op">-</span> <span class="dv">1</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb6-2"><a href="#cb6-2"></a>    <span class="kw">def</span> numIslands(<span class="va">self</span>, grid: List[List[<span class="bu">str</span>]]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb6-3"><a href="#cb6-3"></a></span>
+<span id="cb6-4"><a href="#cb6-4"></a>        <span class="kw">class</span> UnionFind:</span>
+<span id="cb6-5"><a href="#cb6-5"></a></span>
+<span id="cb6-6"><a href="#cb6-6"></a>            <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, n):</span>
+<span id="cb6-7"><a href="#cb6-7"></a>                <span class="va">self</span>.count <span class="op">=</span> n</span>
+<span id="cb6-8"><a href="#cb6-8"></a>                <span class="va">self</span>.parent <span class="op">=</span> [i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n)]</span>
+<span id="cb6-9"><a href="#cb6-9"></a>                <span class="va">self</span>.rank <span class="op">=</span> [<span class="dv">1</span> <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(n)]</span>
+<span id="cb6-10"><a href="#cb6-10"></a></span>
+<span id="cb6-11"><a href="#cb6-11"></a>            <span class="kw">def</span> get_count(<span class="va">self</span>):</span>
+<span id="cb6-12"><a href="#cb6-12"></a>                <span class="cf">return</span> <span class="va">self</span>.count</span>
+<span id="cb6-13"><a href="#cb6-13"></a></span>
+<span id="cb6-14"><a href="#cb6-14"></a>            <span class="kw">def</span> find(<span class="va">self</span>, p):</span>
+<span id="cb6-15"><a href="#cb6-15"></a>                <span class="cf">while</span> p <span class="op">!=</span> <span class="va">self</span>.parent[p]:</span>
+<span id="cb6-16"><a href="#cb6-16"></a>                    <span class="va">self</span>.parent[p] <span class="op">=</span> <span class="va">self</span>.parent[<span class="va">self</span>.parent[p]]</span>
+<span id="cb6-17"><a href="#cb6-17"></a>                    p <span class="op">=</span> <span class="va">self</span>.parent[p]</span>
+<span id="cb6-18"><a href="#cb6-18"></a>                <span class="cf">return</span> p</span>
+<span id="cb6-19"><a href="#cb6-19"></a></span>
+<span id="cb6-20"><a href="#cb6-20"></a>            <span class="kw">def</span> is_connected(<span class="va">self</span>, p, q):</span>
+<span id="cb6-21"><a href="#cb6-21"></a>                <span class="cf">return</span> <span class="va">self</span>.find(p) <span class="op">==</span> <span class="va">self</span>.find(q)</span>
+<span id="cb6-22"><a href="#cb6-22"></a></span>
+<span id="cb6-23"><a href="#cb6-23"></a>            <span class="kw">def</span> union(<span class="va">self</span>, p, q):</span>
+<span id="cb6-24"><a href="#cb6-24"></a>                p_root <span class="op">=</span> <span class="va">self</span>.find(p)</span>
+<span id="cb6-25"><a href="#cb6-25"></a>                q_root <span class="op">=</span> <span class="va">self</span>.find(q)</span>
+<span id="cb6-26"><a href="#cb6-26"></a>                <span class="cf">if</span> p_root <span class="op">==</span> q_root:</span>
+<span id="cb6-27"><a href="#cb6-27"></a>                    <span class="cf">return</span></span>
+<span id="cb6-28"><a href="#cb6-28"></a></span>
+<span id="cb6-29"><a href="#cb6-29"></a>                <span class="cf">if</span> <span class="va">self</span>.rank[p_root] <span class="op">&gt;</span> <span class="va">self</span>.rank[q_root]:</span>
+<span id="cb6-30"><a href="#cb6-30"></a>                    <span class="va">self</span>.parent[q_root] <span class="op">=</span> p_root</span>
+<span id="cb6-31"><a href="#cb6-31"></a>                <span class="cf">elif</span> <span class="va">self</span>.rank[p_root] <span class="op">&lt;</span> <span class="va">self</span>.rank[q_root]:</span>
+<span id="cb6-32"><a href="#cb6-32"></a>                    <span class="va">self</span>.parent[p_root] <span class="op">=</span> q_root</span>
+<span id="cb6-33"><a href="#cb6-33"></a>                <span class="cf">else</span>:</span>
+<span id="cb6-34"><a href="#cb6-34"></a>                    <span class="va">self</span>.parent[q_root] <span class="op">=</span> p_root</span>
+<span id="cb6-35"><a href="#cb6-35"></a>                    <span class="va">self</span>.rank[p_root] <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb6-36"><a href="#cb6-36"></a></span>
+<span id="cb6-37"><a href="#cb6-37"></a>                <span class="va">self</span>.count <span class="op">-=</span> <span class="dv">1</span></span>
+<span id="cb6-38"><a href="#cb6-38"></a></span>
+<span id="cb6-39"><a href="#cb6-39"></a>        row <span class="op">=</span> <span class="bu">len</span>(grid)</span>
+<span id="cb6-40"><a href="#cb6-40"></a>        <span class="co"># 特判</span></span>
+<span id="cb6-41"><a href="#cb6-41"></a>        <span class="cf">if</span> row <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb6-42"><a href="#cb6-42"></a>            <span class="cf">return</span> <span class="dv">0</span></span>
+<span id="cb6-43"><a href="#cb6-43"></a>        col <span class="op">=</span> <span class="bu">len</span>(grid[<span class="dv">0</span>])</span>
+<span id="cb6-44"><a href="#cb6-44"></a></span>
+<span id="cb6-45"><a href="#cb6-45"></a>        <span class="kw">def</span> get_index(x, y):</span>
+<span id="cb6-46"><a href="#cb6-46"></a>            <span class="cf">return</span> x <span class="op">*</span> col <span class="op">+</span> y</span>
+<span id="cb6-47"><a href="#cb6-47"></a></span>
+<span id="cb6-48"><a href="#cb6-48"></a>        <span class="co"># 注意：我们不用像 DFS 和 BFS 一样，4 个方向都要尝试，只要看一看右边和下面就可以了</span></span>
+<span id="cb6-49"><a href="#cb6-49"></a>        directions <span class="op">=</span> [(<span class="dv">1</span>, <span class="dv">0</span>), (<span class="dv">0</span>, <span class="dv">1</span>)]</span>
+<span id="cb6-50"><a href="#cb6-50"></a></span>
+<span id="cb6-51"><a href="#cb6-51"></a>        <span class="co"># 多开一个空间，把水域 &quot;0&quot; 都归到这个虚拟空间</span></span>
+<span id="cb6-52"><a href="#cb6-52"></a>        dummy_node <span class="op">=</span> row <span class="op">*</span> col</span>
+<span id="cb6-53"><a href="#cb6-53"></a>        uf <span class="op">=</span> UnionFind(dummy_node <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb6-54"><a href="#cb6-54"></a></span>
+<span id="cb6-55"><a href="#cb6-55"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(row):</span>
+<span id="cb6-56"><a href="#cb6-56"></a>            <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(col):</span>
+<span id="cb6-57"><a href="#cb6-57"></a>                <span class="co"># 如果是水域，都连到那个虚拟的空间去</span></span>
+<span id="cb6-58"><a href="#cb6-58"></a>                <span class="cf">if</span> grid[i][j] <span class="op">==</span> <span class="st">&#39;0&#39;</span>:</span>
+<span id="cb6-59"><a href="#cb6-59"></a>                    uf.union(get_index(i, j), dummy_node)</span>
+<span id="cb6-60"><a href="#cb6-60"></a>                <span class="cf">if</span> grid[i][j] <span class="op">==</span> <span class="st">&#39;1&#39;</span>:</span>
+<span id="cb6-61"><a href="#cb6-61"></a>                    <span class="co"># 向下向右如果都是陆地，就合并</span></span>
+<span id="cb6-62"><a href="#cb6-62"></a>                    <span class="cf">for</span> direction <span class="kw">in</span> directions:</span>
+<span id="cb6-63"><a href="#cb6-63"></a>                        new_x <span class="op">=</span> i <span class="op">+</span> direction[<span class="dv">0</span>]</span>
+<span id="cb6-64"><a href="#cb6-64"></a>                        new_y <span class="op">=</span> j <span class="op">+</span> direction[<span class="dv">1</span>]</span>
+<span id="cb6-65"><a href="#cb6-65"></a>                        <span class="cf">if</span> new_x <span class="op">&lt;</span> row <span class="kw">and</span> new_y <span class="op">&lt;</span> col <span class="kw">and</span> grid[new_x][new_y] <span class="op">==</span> <span class="st">&#39;1&#39;</span>:</span>
+<span id="cb6-66"><a href="#cb6-66"></a>                            uf.union(get_index(i, j), get_index(new_x, new_y))</span>
+<span id="cb6-67"><a href="#cb6-67"></a>        <span class="co"># 减去虚拟结点</span></span>
+<span id="cb6-68"><a href="#cb6-68"></a>        <span class="cf">return</span> uf.get_count() <span class="op">-</span> <span class="dv">1</span></span></code></pre></div>
 <h1 id="参考资料">参考资料</h1>
 <ol type="1">
 <li><a href="https://zh.wikipedia.org/wiki/Flood_fill" target="_blank" rel="noopener">Flood fill</a><br />
@@ -639,6 +674,8 @@ void flood_fill(int x,int y,int color)
 <li><a href="!https://zh.wikipedia.org/wiki/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2">深度优先算法</a><br />
 </li>
 <li><a href="!https://zh.wikipedia.org/wiki/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2">广度优先算法</a><br />
+</li>
+<li><a href="https://zh.wikipedia.org/wiki/%E5%B9%B6%E6%9F%A5%E9%9B%86" target="_blank" rel="noopener">并查集</a><br />
 </li>
 <li>https://leetcode-cn.com/problems/number-of-islands/solution/dfs-bfs-bing-cha-ji-python-dai-ma-java-dai-ma-by-l/</li>
 </ol>
