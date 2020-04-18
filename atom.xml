@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://littlelittlemoon.github.io/"/>
-  <updated>2020-04-18T08:12:26.764Z</updated>
+  <updated>2020-04-18T08:15:01.422Z</updated>
   <id>https://littlelittlemoon.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://littlelittlemoon.github.io/2020/04/18/Technology/Leetcode-Note-in-Apri-2020-part-3-day-15-21-(%E4%BA%8C)/"/>
     <id>https://littlelittlemoon.github.io/2020/04/18/Technology/Leetcode-Note-in-Apri-2020-part-3-day-15-21-(%E4%BA%8C)/</id>
     <published>2020-04-18T06:35:52.000Z</published>
-    <updated>2020-04-18T08:12:26.764Z</updated>
+    <updated>2020-04-18T08:15:01.422Z</updated>
     
     <summary type="html">
     
@@ -29,7 +29,9 @@
       
         
         
-          &lt;h1 id=&quot;写在前面的话&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#写在前面的话&quot;&gt;&lt;/a&gt;
+          &lt;h1 id=&quot;写在前面的话&quot;&gt;写在前面的话&lt;/h1&gt;
+&lt;p&gt;这篇文章只会更新一道题，这道题是我目前做LeetCode以来第一次做到的和图论相关的题，所以想单独拿出来做一个总结，借该题巩固以前学过的相关算法已经在该题中的应用。&lt;/p&gt;
+&lt;h1
         
       
     
