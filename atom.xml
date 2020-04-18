@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://littlelittlemoon.github.io/"/>
-  <updated>2020-04-18T09:47:23.535Z</updated>
+  <updated>2020-04-18T16:42:51.049Z</updated>
   <id>https://littlelittlemoon.github.io/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Blockchain | Consensus Mechanisms</title>
+    <link href="https://littlelittlemoon.github.io/2020/04/19/Repost/Consensus_Mechanisms/"/>
+    <id>https://littlelittlemoon.github.io/2020/04/19/Repost/Consensus_Mechanisms/</id>
+    <published>2020-04-18T16:42:36.000Z</published>
+    <updated>2020-04-18T16:42:51.049Z</updated>
+    
+    <summary type="html">
+    
+      Consensus Mechanisms
+    
+    </summary>
+    
+    
+      <category term="Repost" scheme="https://littlelittlemoon.github.io/categories/Repost/"/>
+    
+      <category term="Blockchain" scheme="https://littlelittlemoon.github.io/categories/Repost/Blockchain/"/>
+    
+      <category term="Consensus Mechanisms" scheme="https://littlelittlemoon.github.io/categories/Repost/Blockchain/Consensus-Mechanisms/"/>
+    
+    
+      <category term="Blockchain" scheme="https://littlelittlemoon.github.io/tags/Blockchain/"/>
+    
+      <category term="Consensus Mechanisms" scheme="https://littlelittlemoon.github.io/tags/Consensus-Mechanisms/"/>
+    
+      <category term="Bitcoin" scheme="https://littlelittlemoon.github.io/tags/Bitcoin/"/>
+    
+      <category term="PoW" scheme="https://littlelittlemoon.github.io/tags/PoW/"/>
+    
+      <category term="PoS" scheme="https://littlelittlemoon.github.io/tags/PoS/"/>
+    
+  </entry>
   
   <entry>
     <title>Leetcode Note in Apri 2020 | part 3 | day 15-21 | (二).</title>
@@ -357,39 +390,6 @@
       <category term="Line Detection" scheme="https://littlelittlemoon.github.io/tags/Line-Detection/"/>
     
       <category term="Paper" scheme="https://littlelittlemoon.github.io/tags/Paper/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Blockchain | Consensus Mechanisms</title>
-    <link href="https://littlelittlemoon.github.io/2019/12/28/Repost/Consensus_Mechanisms/"/>
-    <id>https://littlelittlemoon.github.io/2019/12/28/Repost/Consensus_Mechanisms/</id>
-    <published>2019-12-28T15:51:27.000Z</published>
-    <updated>2020-04-18T16:41:45.861Z</updated>
-    
-    <summary type="html">
-    
-      Consensus Mechanisms
-    
-    </summary>
-    
-    
-      <category term="Repost" scheme="https://littlelittlemoon.github.io/categories/Repost/"/>
-    
-      <category term="Blockchain" scheme="https://littlelittlemoon.github.io/categories/Repost/Blockchain/"/>
-    
-      <category term="Consensus Mechanisms" scheme="https://littlelittlemoon.github.io/categories/Repost/Blockchain/Consensus-Mechanisms/"/>
-    
-    
-      <category term="Blockchain" scheme="https://littlelittlemoon.github.io/tags/Blockchain/"/>
-    
-      <category term="Consensus Mechanisms" scheme="https://littlelittlemoon.github.io/tags/Consensus-Mechanisms/"/>
-    
-      <category term="Bitcoin" scheme="https://littlelittlemoon.github.io/tags/Bitcoin/"/>
-    
-      <category term="PoW" scheme="https://littlelittlemoon.github.io/tags/PoW/"/>
-    
-      <category term="PoS" scheme="https://littlelittlemoon.github.io/tags/PoS/"/>
     
   </entry>
   
