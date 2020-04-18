@@ -397,8 +397,59 @@ Could you solve it <strong>with constant space complexity</strong>? (The output 
 <span id="cb1-29"><a href="#cb1-29"></a>            R <span class="op">*=</span> nums[i]</span>
 <span id="cb1-30"><a href="#cb1-30"></a>        </span>
 <span id="cb1-31"><a href="#cb1-31"></a>        <span class="cf">return</span> product</span></code></pre></div>
-<h1 id="updating">Updating</h1>
-<p>未完待续...</p>
+<h1 id="valid-parenthesis-string">Valid Parenthesis String</h1>
+<blockquote>
+<p>Given a string containing only three types of characters: '(', ')' and '<em>', write a function to check whether this string is valid. We define the validity of a string by these rules:<br />
+1. Any left parenthesis '(' must have a corresponding right parenthesis ')'.<br />
+2. Any right parenthesis ')' must have a corresponding left parenthesis '('.<br />
+3. Left parenthesis '(' must go before the corresponding right parenthesis ')'.<br />
+4. '</em>' could be treated as a single right parenthesis ')' or a single left parenthesis '(' or an empty string.<br />
+5. An empty string is also valid.<br />
+<strong>Example 1</strong>:<br />
+<strong>Input</strong>: "()"<br />
+<strong>Output</strong>: True<br />
+<strong>Example 2</strong>:<br />
+<strong>Input</strong>: "(<em>)"<br />
+<strong>Output</strong>: True<br />
+<strong>Example 3</strong>:<br />
+<strong>Input</strong>: "(</em>))"<br />
+<strong>Output</strong>: True</p>
+</blockquote>
+<h2 id="solution-1">Solution</h2>
+<p>这个题的思路也是比较常规，可以通过判断开括号的个数来判断当前字符串是否有效（=0：有效，其他无效）。但是由于<code>*</code>可以代替左括号<code>(</code>，也可以代替右括号<code>)</code>，所以针对这道题，我们不能简单的用一个变量来计算开括号的个数。但<strong>思路是一致的</strong>，我们可以通过<strong>必须要必配</strong>的开括号个数（最小开括号个数）和<strong>最大需要匹配</strong>的开括号个数来判断字符串是否有效，故我们需要两个变量：<code>nrp_min</code>(记录需要被匹配的最小开括号个数)，<code>nrp_max</code>（记录最大需要被匹配的开括号个数）。具体实现说明见代码及注释。</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb2-2"><a href="#cb2-2"></a>    <span class="kw">def</span> checkValidString(<span class="va">self</span>, s: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">bool</span>:</span>
+<span id="cb2-3"><a href="#cb2-3"></a>        <span class="co"># nrp_min: counts the minimum open parenthesis</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a>        <span class="co"># nrp_max: counts the maximum open parenthesis,</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a>        nrp_min <span class="op">=</span> nrp_max <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a>        </span>
+<span id="cb2-7"><a href="#cb2-7"></a>        <span class="cf">for</span> i <span class="kw">in</span> s:</span>
+<span id="cb2-8"><a href="#cb2-8"></a>            <span class="co"># when we meet a &#39;(&#39;, we need a &#39;)&#39; to match </span></span>
+<span id="cb2-9"><a href="#cb2-9"></a>            <span class="cf">if</span> i <span class="op">==</span> <span class="st">&#39;(&#39;</span>:</span>
+<span id="cb2-10"><a href="#cb2-10"></a>                nrp_max <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a>                nrp_min <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb2-12"><a href="#cb2-12"></a>                </span>
+<span id="cb2-13"><a href="#cb2-13"></a>            <span class="co"># when we meet a &#39;)&#39;, we can match a &#39;(&#39;</span></span>
+<span id="cb2-14"><a href="#cb2-14"></a>            <span class="cf">if</span> i <span class="op">==</span> <span class="st">&#39;)&#39;</span>:</span>
+<span id="cb2-15"><a href="#cb2-15"></a>                nrp_max <span class="op">-=</span> <span class="dv">1</span></span>
+<span id="cb2-16"><a href="#cb2-16"></a>                nrp_min <span class="op">=</span> <span class="bu">max</span>(nrp_min <span class="op">-</span> <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb2-17"><a href="#cb2-17"></a>                </span>
+<span id="cb2-18"><a href="#cb2-18"></a>            <span class="co"># when we meet &#39;*&#39;, we can match a &#39;(&#39; and also may need a &#39;)&#39; to match</span></span>
+<span id="cb2-19"><a href="#cb2-19"></a>            <span class="co"># so the max number of  &#39;)&#39; we need should +1, and the min number of &#39;)&#39; </span></span>
+<span id="cb2-20"><a href="#cb2-20"></a>            <span class="co"># we need should -1</span></span>
+<span id="cb2-21"><a href="#cb2-21"></a>            <span class="cf">if</span> i <span class="op">==</span> <span class="st">&#39;*&#39;</span>:</span>
+<span id="cb2-22"><a href="#cb2-22"></a>                nrp_max <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb2-23"><a href="#cb2-23"></a>                nrp_min <span class="op">=</span> <span class="bu">max</span>(nrp_min <span class="op">-</span> <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb2-24"><a href="#cb2-24"></a>                </span>
+<span id="cb2-25"><a href="#cb2-25"></a>            <span class="co"># if at the end of the loop, the max number of &#39;)&#39; we need is &lt; 0, it means the</span></span>
+<span id="cb2-26"><a href="#cb2-26"></a>            <span class="co"># number of &#39;(&#39; is bigger than the number of &#39;)&#39;,this string is invalid.</span></span>
+<span id="cb2-27"><a href="#cb2-27"></a>            <span class="cf">if</span> nrp_max <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb2-28"><a href="#cb2-28"></a>                <span class="cf">return</span> <span class="va">False</span></span>
+<span id="cb2-29"><a href="#cb2-29"></a>        </span>
+<span id="cb2-30"><a href="#cb2-30"></a>        <span class="co"># if the min number of &#39;)&#39; we need is 0, it means all of the &#39;(&#39; have one &#39;)&#39; be paired</span></span>
+<span id="cb2-31"><a href="#cb2-31"></a>        <span class="cf">return</span> nrp_min <span class="op">==</span> <span class="dv">0</span></span></code></pre></div>
+<h1 id="总结">总结</h1>
+<p>这周的题比之前的要难一点，今天做了一道题让我懵圈了，因为我已经把之前学的关于图的相关算法忘完了，其实也不算是忘了相关算法，而是不能将学过的算法和实际问题联系起来，下一篇文章我会详细写一篇关于这道题的解法，也算是巩固和应用以前学过的知识吧！再接再厉！</p>
 
         </div>
         <!-- .entry-content -->
