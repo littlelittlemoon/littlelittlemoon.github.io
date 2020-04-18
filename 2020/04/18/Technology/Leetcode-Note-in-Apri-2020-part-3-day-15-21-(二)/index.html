@@ -4,7 +4,7 @@
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">Leetcode Note in Apri 2020 | part 3 | day 15-21 | (一). | LITTLEMEEMOON</title>
+  <title itemprop="name">Leetcode Note in Apri 2020 | part 3 | day 15-21 | (二). | LITTLEMEEMOON</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -323,7 +323,7 @@
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
-      Leetcode Note in Apri 2020 | part 3 | day 15-21 | (一).</h1>
+      Leetcode Note in Apri 2020 | part 3 | day 15-21 | (二).</h1>
       <p class="entry-census">
         <span>
           <a href="https://littlelittlemoon.github.io/">
@@ -413,10 +413,20 @@
 <li>重复步骤2。</li>
 </ol>
 <h4 id="伪代码">伪代码</h4>
-<p>$$<br />
-s为初始点 {R:={s},Q:={s},T=} R:={ s },Q:={ s },T=</p>
-<p>while {Q} Q  从Q中选一点<br />
-/* 若改选最后插入进Q的点，则为深度遍历,可以说后进先出。<em>/ if {wN(v)R} w N(v) R then /</em> N(v):v的邻接点 */ {Q:=Q{w}} Q:=Q { w } {R:=R{w}} R:=R { w } {T:=T{vw}} T:=T { vw } else {Q:=Q{w}} Q:=Q { w } return H=(R,T) $$</p>
+<p><span class="math display">\[  
+/* s为初始点 */  
+R:=\{s\}, Q:=\{s\}, T=\emptyset   
+while Q \neq \emptyset   
+    /* 从Q中选一点 */   
+    /* 若改选最后插入进Q的点，则为深度遍历,可以说后进先出。*/   
+    if \exists w \in N(v) \setminus R then    /* N(v):v的邻接点 */   
+        Q:=Q \cup \{ w \}  
+        R:=R \cup \{ w \}  
+        T:=T \cup \{ vw \}  
+    else   
+        Q:=Q \setminus \{ w \}  
+return H=(R,T)  
+\]</span></p>
 <h3 id="flood-fill算法">Flood fill算法</h3>
 <blockquote>
 <p>Flood fill算法是从一个区域中提取若干个连通的点与其他相邻区域区分开（或分别染成不同颜色）的经典算法。因为其思路类似洪水从一个区域扩散到所有能到达的区域而得名。在GNU Go和扫雷中，Flood Fill算法被用来计算需要被清除的区域。<a href="!https://zh.wikipedia.org/wiki/Flood_fill">维基百科</a>。该算法可用<strong>深度优先遍历算法</strong>或<strong>广度优先遍历算法</strong>实现。</p>
