@@ -376,7 +376,9 @@
 <span id="cb1-9"><a href="#cb1-9"></a>    <span class="cf">return</span> combined_base_knowledge_data</span></code></pre></div>
 <h3 id="fill_na">fill_na</h3>
 <h4 id="函数说明-1">函数说明</h4>
-<p>该函数用于填充数据集中缺失的数据： 1. 年份数据：根据ID和年份查找出对应ID缺失的年份，然后补全缺失的年份； 2. 其他缺失数据统一用中位数补齐。</p>
+<p>该函数用于填充数据集中缺失的数据：<br />
+1. 年份数据：根据ID和年份查找出对应ID缺失的年份，然后补全缺失的年份；<br />
+2. 其他缺失数据统一用中位数补齐。</p>
 <h4 id="函数实现-1">函数实现</h4>
 <div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># fill null year </span></span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="kw">def</span> fill(oragin_data, years <span class="op">=</span> [<span class="dv">2015</span>, <span class="dv">2016</span>, <span class="dv">2017</span>]):</span>
