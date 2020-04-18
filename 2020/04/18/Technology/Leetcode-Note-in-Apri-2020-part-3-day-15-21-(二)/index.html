@@ -4,7 +4,7 @@
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">Category: Imbalanced Data Modeling | LITTLEMEEMOON</title>
+  <title itemprop="name">Leetcode Note in Apri 2020 | part 3 | day 15-21 | (一). | LITTLEMEEMOON</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -313,163 +313,200 @@
   </div>
 </header>
 
-      
-
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
 <div class="pattern-center-blank"></div>
-<div class="pattern-center ">
-  <div class="pattern-attachment-img">
-    <img data-src="Imbalanced Data Modeling.img" class="lazyload" onerror="imgError(this,3)" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;">
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/bears/28.jpg);" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/bears/28.jpg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      Leetcode Note in Apri 2020 | part 3 | day 15-21 | (一).</h1>
+      <p class="entry-census">
+        <span>
+          <a href="https://littlelittlemoon.github.io/">
+            <img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/custom/avatar-3.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="https://littlelittlemoon.github.io/">Kayleen</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2020-4-18<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
   </div>
-  <header class="pattern-header ">
-    <h1 class="cat-title">Imbalanced Data Modeling.zh</h1>
-    <span class="cat-des">
-      <p>Imbalanced Data Modeling.en</p>
-    </span>
-  </header>
-</div>
+
 <div id="content" class="site-content">
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
-      <div id="contentss">
-        <style type="text/css">
-    #category-radar {
-        width: 100%;
-        height: 360px;
-    }
-</style>
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h1 id="写在前面的话">写在前面的话</h1>
+<p>这篇文章只会更新一道题，这道题是我目前做LeetCode以来第一次做到的和图论相关的题，所以想单独拿出来做一个总结，借该题巩固以前学过的相关算法已经在该题中的应用。</p>
+<h1 id="number-of-islands">Number of Islands</h1>
+<blockquote>
+<p>Given a 2d grid map of '1's (land) and '0's (water), count the number of islands. An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.<br />
+<strong>Example 1</strong>:<br />
+<strong>Input:</strong><br />
+11110<br />
+11010<br />
+11000<br />
+00000<br />
+<strong>Output:</strong> 1<br />
+<strong>Example 2:</strong><br />
+<strong>Input:</strong><br />
+11000<br />
+11000<br />
+00100<br />
+00011<br />
+<strong>Output:</strong> 3</p>
+</blockquote>
+<h2 id="相关算法回顾">相关算法回顾</h2>
+<h3 id="深度优先搜索算法depth-first-searchdfs">深度优先搜索算法（Depth-First-Search，DFS）</h3>
+<blockquote>
+<p>深度优先搜索算法（英语：Depth-First-Search，DFS）是一种用于遍历或搜索树或图的算法。这个算法会<strong>尽可能深</strong>的搜索树的分支。当节点v的所在边都己被探寻过，搜索将<strong>回溯</strong>到发现节点v的那条边的起始节点。这一过程一<strong>直进行到已发现从源节点可达的所有节点为止</strong>。如果还存在未被发现的节点，则选择其中一个作为源节点并重复以上过程，整个进程反复进行直到所有节点都被访问为止。这种算法不会根据图的结构等信息调整执行策略。 深度优先搜索是图论中的经典算法，利用深度优先搜索算法可以产生目标图的拓扑排序表，利用拓扑排序表可以方便的解决很多相关的图论问题，如无权最长路径问题等等。 <a href="!https://zh.wikipedia.org/wiki/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2">维基百科</a> #### 动画演示 <img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn@v2.0.17/img/article_img/images/DFS/dfs.gif" alt="dfs" /></p>
+</blockquote>
+<h4 id="实现方法">实现方法</h4>
+<ol type="1">
+<li>首先将根节点放入stack中。<br />
+</li>
+<li>从stack中取出第一个节点，并检验它是否为目标。<br />
+2.1 如果找到目标，则结束搜寻并回传结果。<br />
+2.2 否则将它某一个尚未检验过的直接子节点加入stack中。<br />
+</li>
+<li>重复步骤2。<br />
+</li>
+<li>如果不存在未检测过的直接子节点。<br />
+4.1 将上一级节点加入stack中。<br />
+4.2 重复步骤2。<br />
+</li>
+<li>重复步骤4。<br />
+</li>
+<li>若stack为空，表示整张图都检查过了——亦即图中没有欲搜寻的目标。结束搜寻并回传“找不到目标”。</li>
+</ol>
+<h3 id="广度优先搜索算法breadth-first-searchbfs">广度优先搜索算法（Breadth-First Search，BFS）</h3>
+<blockquote>
+<p>广度优先搜索算法（英语：Breadth-First Search，缩写为BFS），又译作宽度优先搜索，或横向优先搜索，是一种图形搜索算法。简单的说，BFS是从根节点开始，沿着树的<strong>宽度</strong>遍历树的节点。如果<strong>所有节点均被访问，则算法中止</strong>。广度优先搜索的实现一般采用<strong>open-closed</strong>表。 <a href="!https://zh.wikipedia.org/wiki/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2">维基百科</a></p>
+</blockquote>
+<h4 id="动画演示">动画演示</h4>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn@v2.0.17/img/article_img/images/BFS/bfs.gif" alt="" /><figcaption>bfs</figcaption>
+</figure>
+<h4 id="实现方法-1">实现方法</h4>
+<ol type="1">
+<li>首先将根节点放入队列中;<br />
+</li>
+<li>从队列中取出第一个节点，并检验它是否为目标;<br />
+2.1 如果找到目标，则结束搜索并回传结果;<br />
+2.2 否则将它所有尚未检验过的直接子节点加入队列中。<br />
+</li>
+<li>若队列为空，表示整张图都检查过了——亦即图中没有欲搜索的目标。结束搜索并回传“找不到目标”;<br />
+</li>
+<li>重复步骤2。</li>
+</ol>
+<h4 id="伪代码">伪代码</h4>
+<p>$$<br />
+s为初始点 {R:={s},Q:={s},T=} R:={ s },Q:={ s },T=</p>
+<p>while {Q} Q  从Q中选一点<br />
+/* 若改选最后插入进Q的点，则为深度遍历,可以说后进先出。<em>/ if {wN(v)R} w N(v) R then /</em> N(v):v的邻接点 */ {Q:=Q{w}} Q:=Q { w } {R:=R{w}} R:=R { w } {T:=T{vw}} T:=T { vw } else {Q:=Q{w}} Q:=Q { w } return H=(R,T) $$</p>
+<h3 id="flood-fill算法">Flood fill算法</h3>
+<blockquote>
+<p>Flood fill算法是从一个区域中提取若干个连通的点与其他相邻区域区分开（或分别染成不同颜色）的经典算法。因为其思路类似洪水从一个区域扩散到所有能到达的区域而得名。在GNU Go和扫雷中，Flood Fill算法被用来计算需要被清除的区域。<a href="!https://zh.wikipedia.org/wiki/Flood_fill">维基百科</a>。该算法可用<strong>深度优先遍历算法</strong>或<strong>广度优先遍历算法</strong>实现。</p>
+</blockquote>
 
-<div class="container" data-aos="fade-up">
-    <div class="card">
-        <div id="category-radar" class="card-content"></div>
-    </div>
-</div>
-<script type="text/javascript" src="/js/echarts.min.js"></script>
-<script type="text/javascript">
-    let radarChart = echarts.init(document.getElementById('category-radar'));
-
-    
-
-    let option = {
-        title: {
-            left: 'center',
-            text: '文章分类雷达图',
-            textStyle: {
-                fontWeight: 500,
-                fontSize: 22
-            }
-        },
-        tooltip: {},
-        radar: {
-            name: {
-                textStyle: {
-                    color: '#3C4858'
-                }
-            },
-            indicator: [{"name":"Technology","max":12},{"name":"Paper Smash","max":12},{"name":"Machine Learning","max":12},{"name":"Coding","max":12},{"name":"Imbalanced Data Modeling","max":12},{"name":"Leetcode","max":12},{"name":"Modeling","max":12},{"name":"Data pre-processing","max":12}],
-            nameGap: 5,
-            center: ['50%','55%'],
-            radius: '66%'
-        },
-        series: [{
-            type: 'radar',
-            color: ['#3ecf8e'],
-            itemStyle: {normal: {areaStyle: {type: 'default'}}},
-            data : [
-                {
-                    value : [11,4,3,4,1,4,1,1],
-                    name : 'categoryNumber'
-                }
-            ]
-        }]
-    };
-
-    radarChart.setOption(option);
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/custom/donate/WeChanQR.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+        
+          
+            <div class="post-nepre full next">
+          
+            <a href="/2020/04/16/Technology/BlockChain-Patient-Driven-Interoperability/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/bears/11.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/bears/11.jpg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                Paper Smash|Blockchain Technology for Healthcare-Facilitating the Transition to Patient-Driven Interoperability</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "uVn0CbsTzphCnMDIxJKQ0rbg-gzGzoHsz",
+        appKey: "wc39UmG3dNqQQms9Hg2sKc1X",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
 </script>
 
-      </div>
-      
-  <!-- 首页默认取最最新文章集 -->
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/03/21/Technology/Credit%20Card%20Fraud%20Detection/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="https://littlelittlemoon.github.io/" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/custom/avatar-3.jpg" itemprop="image" alt="Kayleen" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="https://littlelittlemoon.github.io/" itemprop="url" rel="author">Kayleen</a>
+            </h3>
+          </div>
         </div>
-        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/ml/idm_01.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/03/21/Technology/Credit%20Card%20Fraud%20Detection/">
-    Fraud Detection | Imbalanced data modeling</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-3-21</div>
-    <p>
-    </p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/03/21/Technology/Credit%20Card%20Fraud%20Detection/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-
-
-      <div class="clearer">
-      </div>
-    </main>
-    <!--  -->
-    
-  </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>A curious 👱‍♀️</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
 </div>
 
-<!-- 
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/03/21/Technology/Credit%20Card%20Fraud%20Detection/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/ml/idm_01.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/03/21/Technology/Credit%20Card%20Fraud%20Detection/">
-    Fraud Detection | Imbalanced data modeling</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-3-21</div>
-    <p>
-    </p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/03/21/Technology/Credit%20Card%20Fraud%20Detection/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
 
- -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML"></script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  </script>
+
+
     </div>    
     <div class="ins-search">
     <div class="ins-search-mask"></div>
