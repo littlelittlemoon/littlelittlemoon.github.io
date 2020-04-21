@@ -349,37 +349,37 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h1 id="问题描述">问题描述</h1>
+          <h1 id="&#x95EE;&#x9898;&#x63CF;&#x8FF0;">&#x95EE;&#x9898;&#x63CF;&#x8FF0;</h1>
 <blockquote>
-<p>僵尸企业是指<strong>缺乏盈利能力却能够以低于市场最优利率成本获得信贷资源，依靠外界输血而缺乏自生能力的企业</strong>。僵尸企业的存在破坏了市场机制，加剧了信贷资源的错配，带来了严重的产能过剩问题，还对其他非僵尸企业产生了投资挤出效应。 因此需要对正常企业和僵尸企业进行分类，现给出一批有标签的企业数据作为训练集，标签为0表示正常企业，标签为1表示僵尸企业；同时给出无标签数据作为测试集，请对无标签数据进行分类。</p>
+<p>&#x50F5;&#x5C38;&#x4F01;&#x4E1A;&#x662F;&#x6307;<strong>&#x7F3A;&#x4E4F;&#x76C8;&#x5229;&#x80FD;&#x529B;&#x5374;&#x80FD;&#x591F;&#x4EE5;&#x4F4E;&#x4E8E;&#x5E02;&#x573A;&#x6700;&#x4F18;&#x5229;&#x7387;&#x6210;&#x672C;&#x83B7;&#x5F97;&#x4FE1;&#x8D37;&#x8D44;&#x6E90;&#xFF0C;&#x4F9D;&#x9760;&#x5916;&#x754C;&#x8F93;&#x8840;&#x800C;&#x7F3A;&#x4E4F;&#x81EA;&#x751F;&#x80FD;&#x529B;&#x7684;&#x4F01;&#x4E1A;</strong>&#x3002;&#x50F5;&#x5C38;&#x4F01;&#x4E1A;&#x7684;&#x5B58;&#x5728;&#x7834;&#x574F;&#x4E86;&#x5E02;&#x573A;&#x673A;&#x5236;&#xFF0C;&#x52A0;&#x5267;&#x4E86;&#x4FE1;&#x8D37;&#x8D44;&#x6E90;&#x7684;&#x9519;&#x914D;&#xFF0C;&#x5E26;&#x6765;&#x4E86;&#x4E25;&#x91CD;&#x7684;&#x4EA7;&#x80FD;&#x8FC7;&#x5269;&#x95EE;&#x9898;&#xFF0C;&#x8FD8;&#x5BF9;&#x5176;&#x4ED6;&#x975E;&#x50F5;&#x5C38;&#x4F01;&#x4E1A;&#x4EA7;&#x751F;&#x4E86;&#x6295;&#x8D44;&#x6324;&#x51FA;&#x6548;&#x5E94;&#x3002; &#x56E0;&#x6B64;&#x9700;&#x8981;&#x5BF9;&#x6B63;&#x5E38;&#x4F01;&#x4E1A;&#x548C;&#x50F5;&#x5C38;&#x4F01;&#x4E1A;&#x8FDB;&#x884C;&#x5206;&#x7C7B;&#xFF0C;&#x73B0;&#x7ED9;&#x51FA;&#x4E00;&#x6279;&#x6709;&#x6807;&#x7B7E;&#x7684;&#x4F01;&#x4E1A;&#x6570;&#x636E;&#x4F5C;&#x4E3A;&#x8BAD;&#x7EC3;&#x96C6;&#xFF0C;&#x6807;&#x7B7E;&#x4E3A;0&#x8868;&#x793A;&#x6B63;&#x5E38;&#x4F01;&#x4E1A;&#xFF0C;&#x6807;&#x7B7E;&#x4E3A;1&#x8868;&#x793A;&#x50F5;&#x5C38;&#x4F01;&#x4E1A;&#xFF1B;&#x540C;&#x65F6;&#x7ED9;&#x51FA;&#x65E0;&#x6807;&#x7B7E;&#x6570;&#x636E;&#x4F5C;&#x4E3A;&#x6D4B;&#x8BD5;&#x96C6;&#xFF0C;&#x8BF7;&#x5BF9;&#x65E0;&#x6807;&#x7B7E;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x5206;&#x7C7B;&#x3002;</p>
 </blockquote>
-<h1 id="数据集说明">数据集说明</h1>
-<p>数据集包括训练集和测试集两部分，每个部分又包括:<br />
-1. 企业基本数据: 包含企业的一些基本属性以及企业的标签（即<strong>flag--0：正常企业，1：僵尸企业</strong>）;<br />
-2. 企业知识产权数据: 包含企业的知识产权相关信息，<strong>根据id可与基本数据一一对应</strong>;<br />
-3. 企业金融数据: 包含企业2015~2017三年的金融相关信息，<strong>根据id可与基本数据相对应</strong>;<br />
-4. 企业年报数据: 包含企业2015~2017三年的年报数据，<strong>根据id可与基本数据相对应</strong>。</p>
-<h1 id="数据预处理">数据预处理</h1>
-<h2 id="工具函数定义">工具函数定义</h2>
+<h1 id="&#x6570;&#x636E;&#x96C6;&#x8BF4;&#x660E;">&#x6570;&#x636E;&#x96C6;&#x8BF4;&#x660E;</h1>
+<p>&#x6570;&#x636E;&#x96C6;&#x5305;&#x62EC;&#x8BAD;&#x7EC3;&#x96C6;&#x548C;&#x6D4B;&#x8BD5;&#x96C6;&#x4E24;&#x90E8;&#x5206;&#xFF0C;&#x6BCF;&#x4E2A;&#x90E8;&#x5206;&#x53C8;&#x5305;&#x62EC;:<br>
+1. &#x4F01;&#x4E1A;&#x57FA;&#x672C;&#x6570;&#x636E;: &#x5305;&#x542B;&#x4F01;&#x4E1A;&#x7684;&#x4E00;&#x4E9B;&#x57FA;&#x672C;&#x5C5E;&#x6027;&#x4EE5;&#x53CA;&#x4F01;&#x4E1A;&#x7684;&#x6807;&#x7B7E;&#xFF08;&#x5373;<strong>flag--0&#xFF1A;&#x6B63;&#x5E38;&#x4F01;&#x4E1A;&#xFF0C;1&#xFF1A;&#x50F5;&#x5C38;&#x4F01;&#x4E1A;</strong>&#xFF09;;<br>
+2. &#x4F01;&#x4E1A;&#x77E5;&#x8BC6;&#x4EA7;&#x6743;&#x6570;&#x636E;: &#x5305;&#x542B;&#x4F01;&#x4E1A;&#x7684;&#x77E5;&#x8BC6;&#x4EA7;&#x6743;&#x76F8;&#x5173;&#x4FE1;&#x606F;&#xFF0C;<strong>&#x6839;&#x636E;id&#x53EF;&#x4E0E;&#x57FA;&#x672C;&#x6570;&#x636E;&#x4E00;&#x4E00;&#x5BF9;&#x5E94;</strong>;<br>
+3. &#x4F01;&#x4E1A;&#x91D1;&#x878D;&#x6570;&#x636E;: &#x5305;&#x542B;&#x4F01;&#x4E1A;2015~2017&#x4E09;&#x5E74;&#x7684;&#x91D1;&#x878D;&#x76F8;&#x5173;&#x4FE1;&#x606F;&#xFF0C;<strong>&#x6839;&#x636E;id&#x53EF;&#x4E0E;&#x57FA;&#x672C;&#x6570;&#x636E;&#x76F8;&#x5BF9;&#x5E94;</strong>;<br>
+4. &#x4F01;&#x4E1A;&#x5E74;&#x62A5;&#x6570;&#x636E;: &#x5305;&#x542B;&#x4F01;&#x4E1A;2015~2017&#x4E09;&#x5E74;&#x7684;&#x5E74;&#x62A5;&#x6570;&#x636E;&#xFF0C;<strong>&#x6839;&#x636E;id&#x53EF;&#x4E0E;&#x57FA;&#x672C;&#x6570;&#x636E;&#x76F8;&#x5BF9;&#x5E94;</strong>&#x3002;</p>
+<h1 id="&#x6570;&#x636E;&#x9884;&#x5904;&#x7406;">&#x6570;&#x636E;&#x9884;&#x5904;&#x7406;</h1>
+<h2 id="&#x5DE5;&#x5177;&#x51FD;&#x6570;&#x5B9A;&#x4E49;">&#x5DE5;&#x5177;&#x51FD;&#x6570;&#x5B9A;&#x4E49;</h2>
 <h3 id="combined_base_knowledge_data">combined_base_knowledge_data</h3>
-<h4 id="函数说明">函数说明</h4>
-<p>该函数用于根据<code>ID</code>合并<code>base data</code>和<code>knowledge data</code>数据集。</p>
-<h4 id="函数实现">函数实现</h4>
+<h4 id="&#x51FD;&#x6570;&#x8BF4;&#x660E;">&#x51FD;&#x6570;&#x8BF4;&#x660E;</h4>
+<p>&#x8BE5;&#x51FD;&#x6570;&#x7528;&#x4E8E;&#x6839;&#x636E;<code>ID</code>&#x5408;&#x5E76;<code>base data</code>&#x548C;<code>knowledge data</code>&#x6570;&#x636E;&#x96C6;&#x3002;</p>
+<h4 id="&#x51FD;&#x6570;&#x5B9E;&#x73B0;">&#x51FD;&#x6570;&#x5B9E;&#x73B0;</h4>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">def</span> combined_base_knowledge_data(base_data, knowledge_data):</span>
 <span id="cb1-2"><a href="#cb1-2"></a>    combined_base_knowledge_data <span class="op">=</span> base_data</span>
-<span id="cb1-3"><a href="#cb1-3"></a>                                  .set_index(<span class="st">&#39;ID&#39;</span>)</span>
+<span id="cb1-3"><a href="#cb1-3"></a>                                  .set_index(<span class="st">&apos;ID&apos;</span>)</span>
 <span id="cb1-4"><a href="#cb1-4"></a>                                  .join(knowledge_data</span>
-<span id="cb1-5"><a href="#cb1-5"></a>                                  .set_index(<span class="st">&#39;ID&#39;</span>))</span>
+<span id="cb1-5"><a href="#cb1-5"></a>                                  .set_index(<span class="st">&apos;ID&apos;</span>))</span>
 <span id="cb1-6"><a href="#cb1-6"></a>    combined_base_knowledge_data <span class="op">=</span> combined_base_knowledge_data</span>
 <span id="cb1-7"><a href="#cb1-7"></a>                                  .fillna(combined_base_knowledge_data</span>
 <span id="cb1-8"><a href="#cb1-8"></a>                                  .median())</span>
 <span id="cb1-9"><a href="#cb1-9"></a>    <span class="cf">return</span> combined_base_knowledge_data</span></code></pre></div>
 <h3 id="fill_na">fill_na</h3>
-<h4 id="函数说明-1">函数说明</h4>
-<p>该函数用于填充数据集中缺失的数据：<br />
-1. 年份数据：根据ID和年份查找出对应ID缺失的年份，然后补全缺失的年份；<br />
-2. 其他缺失数据统一用中位数补齐。</p>
-<h4 id="函数实现-1">函数实现</h4>
+<h4 id="&#x51FD;&#x6570;&#x8BF4;&#x660E;-1">&#x51FD;&#x6570;&#x8BF4;&#x660E;</h4>
+<p>&#x8BE5;&#x51FD;&#x6570;&#x7528;&#x4E8E;&#x586B;&#x5145;&#x6570;&#x636E;&#x96C6;&#x4E2D;&#x7F3A;&#x5931;&#x7684;&#x6570;&#x636E;&#xFF1A;<br>
+1. &#x5E74;&#x4EFD;&#x6570;&#x636E;&#xFF1A;&#x6839;&#x636E;ID&#x548C;&#x5E74;&#x4EFD;&#x67E5;&#x627E;&#x51FA;&#x5BF9;&#x5E94;ID&#x7F3A;&#x5931;&#x7684;&#x5E74;&#x4EFD;&#xFF0C;&#x7136;&#x540E;&#x8865;&#x5168;&#x7F3A;&#x5931;&#x7684;&#x5E74;&#x4EFD;&#xFF1B;<br>
+2. &#x5176;&#x4ED6;&#x7F3A;&#x5931;&#x6570;&#x636E;&#x7EDF;&#x4E00;&#x7528;&#x4E2D;&#x4F4D;&#x6570;&#x8865;&#x9F50;&#x3002;</p>
+<h4 id="&#x51FD;&#x6570;&#x5B9E;&#x73B0;-1">&#x51FD;&#x6570;&#x5B9E;&#x73B0;</h4>
 <div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># fill null year </span></span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="kw">def</span> fill(oragin_data, years <span class="op">=</span> [<span class="dv">2015</span>, <span class="dv">2016</span>, <span class="dv">2017</span>]):</span>
 <span id="cb2-3"><a href="#cb2-3"></a>    <span class="co"># pick null year data</span></span>
@@ -402,43 +402,43 @@
 <span id="cb2-20"><a href="#cb2-20"></a>    new_data <span class="op">=</span> oragin_data.fillna(oragin_data.median())</span>
 <span id="cb2-21"><a href="#cb2-21"></a>    <span class="cf">return</span> new_data<span class="op">;</span></span></code></pre></div>
 <h3 id="combined_new_year_money_data">combined_new_year_money_data</h3>
-<h4 id="函数说明-2">函数说明</h4>
-<p>该方法用于根据<code>ID</code>和<code>year</code>合并<code>year data</code>和<code>money data</code>。</p>
-<h4 id="函数实现-2">函数实现</h4>
+<h4 id="&#x51FD;&#x6570;&#x8BF4;&#x660E;-2">&#x51FD;&#x6570;&#x8BF4;&#x660E;</h4>
+<p>&#x8BE5;&#x65B9;&#x6CD5;&#x7528;&#x4E8E;&#x6839;&#x636E;<code>ID</code>&#x548C;<code>year</code>&#x5408;&#x5E76;<code>year data</code>&#x548C;<code>money data</code>&#x3002;</p>
+<h4 id="&#x51FD;&#x6570;&#x5B9E;&#x73B0;-2">&#x51FD;&#x6570;&#x5B9E;&#x73B0;</h4>
 <div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">def</span> combined_new_year_money_data(new_year_data, new_money_data):</span>
-<span id="cb3-2"><a href="#cb3-2"></a>    <span class="cf">return</span> pd.merge(new_year_data, new_money_data, on<span class="op">=</span>[<span class="st">&#39;ID&#39;</span>, <span class="st">&#39;year&#39;</span>])</span></code></pre></div>
+<span id="cb3-2"><a href="#cb3-2"></a>    <span class="cf">return</span> pd.merge(new_year_data, new_money_data, on<span class="op">=</span>[<span class="st">&apos;ID&apos;</span>, <span class="st">&apos;year&apos;</span>])</span></code></pre></div>
 <h3 id="split_data">split_data</h3>
-<h4 id="函数说明-3">函数说明</h4>
-<p>该函数用于根据<code>ID</code>和<code>year</code>拆分新特征，将原数据集三年的数据按年份拆分成新的特征，<strong>使拆分后的数据集可与base data数据集用ID一一对应</strong>。主要用于<code>year data</code>数据集和<code>money data</code>数据集的拆分。</p>
-<h4 id="函数实现-3">函数实现</h4>
+<h4 id="&#x51FD;&#x6570;&#x8BF4;&#x660E;-3">&#x51FD;&#x6570;&#x8BF4;&#x660E;</h4>
+<p>&#x8BE5;&#x51FD;&#x6570;&#x7528;&#x4E8E;&#x6839;&#x636E;<code>ID</code>&#x548C;<code>year</code>&#x62C6;&#x5206;&#x65B0;&#x7279;&#x5F81;&#xFF0C;&#x5C06;&#x539F;&#x6570;&#x636E;&#x96C6;&#x4E09;&#x5E74;&#x7684;&#x6570;&#x636E;&#x6309;&#x5E74;&#x4EFD;&#x62C6;&#x5206;&#x6210;&#x65B0;&#x7684;&#x7279;&#x5F81;&#xFF0C;<strong>&#x4F7F;&#x62C6;&#x5206;&#x540E;&#x7684;&#x6570;&#x636E;&#x96C6;&#x53EF;&#x4E0E;base data&#x6570;&#x636E;&#x96C6;&#x7528;ID&#x4E00;&#x4E00;&#x5BF9;&#x5E94;</strong>&#x3002;&#x4E3B;&#x8981;&#x7528;&#x4E8E;<code>year data</code>&#x6570;&#x636E;&#x96C6;&#x548C;<code>money data</code>&#x6570;&#x636E;&#x96C6;&#x7684;&#x62C6;&#x5206;&#x3002;</p>
+<h4 id="&#x51FD;&#x6570;&#x5B9E;&#x73B0;-3">&#x51FD;&#x6570;&#x5B9E;&#x73B0;</h4>
 <div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">def</span> split_data(combined_new_year_money_data):</span>
 <span id="cb4-2"><a href="#cb4-2"></a>    <span class="co"># split data with year</span></span>
 <span id="cb4-3"><a href="#cb4-3"></a>    combined_new_year_data_2015 <span class="op">=</span> combined_new_year_money_data.loc[</span>
 <span id="cb4-4"><a href="#cb4-4"></a>                          combined_new_year_money_data.year <span class="op">==</span> <span class="dv">2015</span>]</span>
-<span id="cb4-5"><a href="#cb4-5"></a>                          .set_index(<span class="st">&#39;ID&#39;</span>)</span>
-<span id="cb4-6"><a href="#cb4-6"></a>                          .add_suffix(<span class="st">&quot;_2015&quot;</span>).drop(columns<span class="op">=</span>[<span class="st">&#39;year_2015&#39;</span>])</span>
+<span id="cb4-5"><a href="#cb4-5"></a>                          .set_index(<span class="st">&apos;ID&apos;</span>)</span>
+<span id="cb4-6"><a href="#cb4-6"></a>                          .add_suffix(<span class="st">&quot;_2015&quot;</span>).drop(columns<span class="op">=</span>[<span class="st">&apos;year_2015&apos;</span>])</span>
 <span id="cb4-7"><a href="#cb4-7"></a>    combined_new_year_data_2016 <span class="op">=</span> combined_new_year_money_data.loc[</span>
 <span id="cb4-8"><a href="#cb4-8"></a>                          combined_new_year_money_data.year <span class="op">==</span> <span class="dv">2016</span>]</span>
-<span id="cb4-9"><a href="#cb4-9"></a>                          .set_index(<span class="st">&#39;ID&#39;</span>)</span>
-<span id="cb4-10"><a href="#cb4-10"></a>                          .add_suffix(<span class="st">&quot;_2016&quot;</span>).drop(columns<span class="op">=</span>[<span class="st">&#39;year_2016&#39;</span>])</span>
+<span id="cb4-9"><a href="#cb4-9"></a>                          .set_index(<span class="st">&apos;ID&apos;</span>)</span>
+<span id="cb4-10"><a href="#cb4-10"></a>                          .add_suffix(<span class="st">&quot;_2016&quot;</span>).drop(columns<span class="op">=</span>[<span class="st">&apos;year_2016&apos;</span>])</span>
 <span id="cb4-11"><a href="#cb4-11"></a>    combined_new_year_data_2017 <span class="op">=</span> combined_new_year_money_data.loc[</span>
 <span id="cb4-12"><a href="#cb4-12"></a>                          combined_new_year_money_data.year <span class="op">==</span> <span class="dv">2017</span>]</span>
-<span id="cb4-13"><a href="#cb4-13"></a>                          .set_index(<span class="st">&#39;ID&#39;</span>)</span>
-<span id="cb4-14"><a href="#cb4-14"></a>                          .add_suffix(<span class="st">&quot;_2017&quot;</span>).drop(columns<span class="op">=</span>[<span class="st">&#39;year_2017&#39;</span>])</span>
+<span id="cb4-13"><a href="#cb4-13"></a>                          .set_index(<span class="st">&apos;ID&apos;</span>)</span>
+<span id="cb4-14"><a href="#cb4-14"></a>                          .add_suffix(<span class="st">&quot;_2017&quot;</span>).drop(columns<span class="op">=</span>[<span class="st">&apos;year_2017&apos;</span>])</span>
 <span id="cb4-15"><a href="#cb4-15"></a>    </span>
 <span id="cb4-16"><a href="#cb4-16"></a>    <span class="co"># marge data with ID</span></span>
 <span id="cb4-17"><a href="#cb4-17"></a>    combined_new_splited_year_money_data <span class="op">=</span> pd.merge(</span>
 <span id="cb4-18"><a href="#cb4-18"></a>                                      combined_new_year_data_2015, </span>
 <span id="cb4-19"><a href="#cb4-19"></a>                                      combined_new_year_data_2016, </span>
-<span id="cb4-20"><a href="#cb4-20"></a>                                      on<span class="op">=</span>[<span class="st">&#39;ID&#39;</span>])</span>
+<span id="cb4-20"><a href="#cb4-20"></a>                                      on<span class="op">=</span>[<span class="st">&apos;ID&apos;</span>])</span>
 <span id="cb4-21"><a href="#cb4-21"></a>    combined_new_splited_year_money_data <span class="op">=</span> pd.merge(</span>
 <span id="cb4-22"><a href="#cb4-22"></a>                                      combined_new_splited_year_money_data, </span>
 <span id="cb4-23"><a href="#cb4-23"></a>                                      combined_new_year_data_2017, </span>
-<span id="cb4-24"><a href="#cb4-24"></a>                                      on<span class="op">=</span>[<span class="st">&#39;ID&#39;</span>])</span>
+<span id="cb4-24"><a href="#cb4-24"></a>                                      on<span class="op">=</span>[<span class="st">&apos;ID&apos;</span>])</span>
 <span id="cb4-25"><a href="#cb4-25"></a></span>
 <span id="cb4-26"><a href="#cb4-26"></a>    <span class="cf">return</span> combined_new_splited_year_money_data</span></code></pre></div>
-<h2 id="训练数据集处理">训练数据集处理</h2>
-<h3 id="加载原始数据">加载原始数据</h3>
+<h2 id="&#x8BAD;&#x7EC3;&#x6570;&#x636E;&#x96C6;&#x5904;&#x7406;">&#x8BAD;&#x7EC3;&#x6570;&#x636E;&#x96C6;&#x5904;&#x7406;</h2>
+<h3 id="&#x52A0;&#x8F7D;&#x539F;&#x59CB;&#x6570;&#x636E;">&#x52A0;&#x8F7D;&#x539F;&#x59CB;&#x6570;&#x636E;</h3>
 <div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb5-2"><a href="#cb5-2"></a></span>
 <span id="cb5-3"><a href="#cb5-3"></a><span class="co"># load training data</span></span>
@@ -446,7 +446,7 @@
 <span id="cb5-5"><a href="#cb5-5"></a>year_train_data <span class="op">=</span> pd.read_csv(<span class="st">&quot;data/train/year-train.csv&quot;</span>)</span>
 <span id="cb5-6"><a href="#cb5-6"></a>knowledge_train_data <span class="op">=</span> pd.read_csv(<span class="st">&quot;data/train/knowledge-train.csv&quot;</span>)</span>
 <span id="cb5-7"><a href="#cb5-7"></a>money_train_data <span class="op">=</span> pd.read_csv(<span class="st">&quot;data/train/money-train.csv&quot;</span>)</span></code></pre></div>
-<h4 id="查看原始数据集信息base-data-and-knowledge-data">查看原始数据集信息：base data and knowledge data</h4>
+<h4 id="&#x67E5;&#x770B;&#x539F;&#x59CB;&#x6570;&#x636E;&#x96C6;&#x4FE1;&#x606F;base-data-and-knowledge-data">&#x67E5;&#x770B;&#x539F;&#x59CB;&#x6570;&#x636E;&#x96C6;&#x4FE1;&#x606F;&#xFF1A;base data and knowledge data</h4>
 <h5 id="base_train_data">base_train_data</h5>
 <div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>base_train_data.head()</span></code></pre></div>
 <div>
@@ -472,25 +472,25 @@
 ID
 </th>
 <th>
-注册时间
+&#x6CE8;&#x518C;&#x65F6;&#x95F4;
 </th>
 <th>
-注册资本
+&#x6CE8;&#x518C;&#x8D44;&#x672C;
 </th>
 <th>
-行业
+&#x884C;&#x4E1A;
 </th>
 <th>
-区域
+&#x533A;&#x57DF;
 </th>
 <th>
-企业类型
+&#x4F01;&#x4E1A;&#x7C7B;&#x578B;
 </th>
 <th>
-控制人类型
+&#x63A7;&#x5236;&#x4EBA;&#x7C7B;&#x578B;
 </th>
 <th>
-控制人持股比例
+&#x63A7;&#x5236;&#x4EBA;&#x6301;&#x80A1;&#x6BD4;&#x4F8B;
 </th>
 <th>
 flag
@@ -512,16 +512,16 @@ flag
 7090.0
 </td>
 <td>
-服务业
+&#x670D;&#x52A1;&#x4E1A;
 </td>
 <td>
-湖北
+&#x6E56;&#x5317;
 </td>
 <td>
-有限责任公司
+&#x6709;&#x9650;&#x8D23;&#x4EFB;&#x516C;&#x53F8;
 </td>
 <td>
-自然人
+&#x81EA;&#x7136;&#x4EBA;
 </td>
 <td>
 0.93
@@ -544,16 +544,16 @@ flag
 5940.0
 </td>
 <td>
-零售业
+&#x96F6;&#x552E;&#x4E1A;
 </td>
 <td>
-湖南
+&#x6E56;&#x5357;
 </td>
 <td>
-合伙企业
+&#x5408;&#x4F19;&#x4F01;&#x4E1A;
 </td>
 <td>
-企业法人
+&#x4F01;&#x4E1A;&#x6CD5;&#x4EBA;
 </td>
 <td>
 0.57
@@ -576,16 +576,16 @@ flag
 9720.0
 </td>
 <td>
-工业
+&#x5DE5;&#x4E1A;
 </td>
 <td>
-福建
+&#x798F;&#x5EFA;
 </td>
 <td>
-合伙企业
+&#x5408;&#x4F19;&#x4F01;&#x4E1A;
 </td>
 <td>
-自然人
+&#x81EA;&#x7136;&#x4EBA;
 </td>
 <td>
 0.74
@@ -608,13 +608,13 @@ flag
 4800.0
 </td>
 <td>
-商业服务业
+&#x5546;&#x4E1A;&#x670D;&#x52A1;&#x4E1A;
 </td>
 <td>
-山东
+&#x5C71;&#x4E1C;
 </td>
 <td>
-股份有限公司
+&#x80A1;&#x4EFD;&#x6709;&#x9650;&#x516C;&#x53F8;
 </td>
 <td>
 NaN
@@ -640,16 +640,16 @@ NaN
 4530.0
 </td>
 <td>
-零售业
+&#x96F6;&#x552E;&#x4E1A;
 </td>
 <td>
-广东
+&#x5E7F;&#x4E1C;
 </td>
 <td>
-农民专业合作社
+&#x519C;&#x6C11;&#x4E13;&#x4E1A;&#x5408;&#x4F5C;&#x793E;
 </td>
 <td>
-自然人
+&#x81EA;&#x7136;&#x4EBA;
 </td>
 <td>
 0.95
@@ -685,13 +685,13 @@ NaN
 ID
 </th>
 <th>
-注册时间
+&#x6CE8;&#x518C;&#x65F6;&#x95F4;
 </th>
 <th>
-注册资本
+&#x6CE8;&#x518C;&#x8D44;&#x672C;
 </th>
 <th>
-控制人持股比例
+&#x63A7;&#x5236;&#x4EBA;&#x6301;&#x80A1;&#x6BD4;&#x4F8B;
 </th>
 <th>
 flag
@@ -887,13 +887,13 @@ max
 ID
 </th>
 <th>
-专利
+&#x4E13;&#x5229;
 </th>
 <th>
-商标
+&#x5546;&#x6807;
 </th>
 <th>
-著作权
+&#x8457;&#x4F5C;&#x6743;
 </th>
 </tr>
 </thead>
@@ -1010,13 +1010,13 @@ ID
 ID
 </th>
 <th>
-专利
+&#x4E13;&#x5229;
 </th>
 <th>
-商标
+&#x5546;&#x6807;
 </th>
 <th>
-著作权
+&#x8457;&#x4F5C;&#x6743;
 </th>
 </tr>
 </thead>
@@ -1160,7 +1160,7 @@ max
 </tbody>
 </table>
 </div>
-<h4 id="合并-base-data-和-knowledge-data">合并 base data 和 knowledge data</h4>
+<h4 id="&#x5408;&#x5E76;-base-data-&#x548C;-knowledge-data">&#x5408;&#x5E76; base data &#x548C; knowledge data</h4>
 <div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>combined_base_knowledge_train_data <span class="op">=</span> combined_base_knowledge_data(</span>
 <span id="cb10-2"><a href="#cb10-2"></a>                                              base_train_data,</span>
 <span id="cb10-3"><a href="#cb10-3"></a>                                              knowledge_train_data</span>
@@ -1186,37 +1186,37 @@ max
 <th>
 </th>
 <th>
-注册时间
+&#x6CE8;&#x518C;&#x65F6;&#x95F4;
 </th>
 <th>
-注册资本
+&#x6CE8;&#x518C;&#x8D44;&#x672C;
 </th>
 <th>
-行业
+&#x884C;&#x4E1A;
 </th>
 <th>
-区域
+&#x533A;&#x57DF;
 </th>
 <th>
-企业类型
+&#x4F01;&#x4E1A;&#x7C7B;&#x578B;
 </th>
 <th>
-控制人类型
+&#x63A7;&#x5236;&#x4EBA;&#x7C7B;&#x578B;
 </th>
 <th>
-控制人持股比例
+&#x63A7;&#x5236;&#x4EBA;&#x6301;&#x80A1;&#x6BD4;&#x4F8B;
 </th>
 <th>
 flag
 </th>
 <th>
-专利
+&#x4E13;&#x5229;
 </th>
 <th>
-商标
+&#x5546;&#x6807;
 </th>
 <th>
-著作权
+&#x8457;&#x4F5C;&#x6743;
 </th>
 </tr>
 <tr>
@@ -1259,16 +1259,16 @@ ID
 7090.0
 </td>
 <td>
-服务业
+&#x670D;&#x52A1;&#x4E1A;
 </td>
 <td>
-湖北
+&#x6E56;&#x5317;
 </td>
 <td>
-有限责任公司
+&#x6709;&#x9650;&#x8D23;&#x4EFB;&#x516C;&#x53F8;
 </td>
 <td>
-自然人
+&#x81EA;&#x7136;&#x4EBA;
 </td>
 <td>
 0.93
@@ -1297,16 +1297,16 @@ ID
 5940.0
 </td>
 <td>
-零售业
+&#x96F6;&#x552E;&#x4E1A;
 </td>
 <td>
-湖南
+&#x6E56;&#x5357;
 </td>
 <td>
-合伙企业
+&#x5408;&#x4F19;&#x4F01;&#x4E1A;
 </td>
 <td>
-企业法人
+&#x4F01;&#x4E1A;&#x6CD5;&#x4EBA;
 </td>
 <td>
 0.57
@@ -1335,16 +1335,16 @@ ID
 9720.0
 </td>
 <td>
-工业
+&#x5DE5;&#x4E1A;
 </td>
 <td>
-福建
+&#x798F;&#x5EFA;
 </td>
 <td>
-合伙企业
+&#x5408;&#x4F19;&#x4F01;&#x4E1A;
 </td>
 <td>
-自然人
+&#x81EA;&#x7136;&#x4EBA;
 </td>
 <td>
 0.74
@@ -1373,13 +1373,13 @@ ID
 4800.0
 </td>
 <td>
-商业服务业
+&#x5546;&#x4E1A;&#x670D;&#x52A1;&#x4E1A;
 </td>
 <td>
-山东
+&#x5C71;&#x4E1C;
 </td>
 <td>
-股份有限公司
+&#x80A1;&#x4EFD;&#x6709;&#x9650;&#x516C;&#x53F8;
 </td>
 <td>
 NaN
@@ -1411,16 +1411,16 @@ NaN
 4530.0
 </td>
 <td>
-零售业
+&#x96F6;&#x552E;&#x4E1A;
 </td>
 <td>
-广东
+&#x5E7F;&#x4E1C;
 </td>
 <td>
-农民专业合作社
+&#x519C;&#x6C11;&#x4E13;&#x4E1A;&#x5408;&#x4F5C;&#x793E;
 </td>
 <td>
-自然人
+&#x81EA;&#x7136;&#x4EBA;
 </td>
 <td>
 0.95
@@ -1441,7 +1441,7 @@ NaN
 </tbody>
 </table>
 </div>
-<h4 id="查看-year-data-和-money-data数据集信息">查看 <code>year data</code> 和 <code>money data</code>数据集信息</h4>
+<h4 id="&#x67E5;&#x770B;-year-data-&#x548C;-money-data&#x6570;&#x636E;&#x96C6;&#x4FE1;&#x606F;">&#x67E5;&#x770B; <code>year data</code> &#x548C; <code>money data</code>&#x6570;&#x636E;&#x96C6;&#x4FE1;&#x606F;</h4>
 <h5 id="year_train_data">year_train_data</h5>
 <div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>year_train_data.head(<span class="dv">10</span>)</span></code></pre></div>
 <div>
@@ -1470,28 +1470,28 @@ ID
 year
 </th>
 <th>
-从业人数
+&#x4ECE;&#x4E1A;&#x4EBA;&#x6570;
 </th>
 <th>
-资产总额
+&#x8D44;&#x4EA7;&#x603B;&#x989D;
 </th>
 <th>
-负债总额
+&#x8D1F;&#x503A;&#x603B;&#x989D;
 </th>
 <th>
-营业总收入
+&#x8425;&#x4E1A;&#x603B;&#x6536;&#x5165;
 </th>
 <th>
-主营业务收入
+&#x4E3B;&#x8425;&#x4E1A;&#x52A1;&#x6536;&#x5165;
 </th>
 <th>
-利润总额
+&#x5229;&#x6DA6;&#x603B;&#x989D;
 </th>
 <th>
-纳税总额
+&#x7EB3;&#x7A0E;&#x603B;&#x989D;
 </th>
 <th>
-所有者权益合计
+&#x6240;&#x6709;&#x8005;&#x6743;&#x76CA;&#x5408;&#x8BA1;
 </th>
 </tr>
 </thead>
@@ -1876,19 +1876,19 @@ ID
 year
 </th>
 <th>
-从业人数
+&#x4ECE;&#x4E1A;&#x4EBA;&#x6570;
 </th>
 <th>
 ...
 </th>
 <th>
-利润总额
+&#x5229;&#x6DA6;&#x603B;&#x989D;
 </th>
 <th>
-纳税总额
+&#x7EB3;&#x7A0E;&#x603B;&#x989D;
 </th>
 <th>
-所有者权益合计
+&#x6240;&#x6709;&#x8005;&#x6743;&#x76CA;&#x5408;&#x8BA1;
 </th>
 </tr>
 </thead>
@@ -2132,28 +2132,28 @@ ID
 year
 </th>
 <th>
-债权融资额度
+&#x503A;&#x6743;&#x878D;&#x8D44;&#x989D;&#x5EA6;
 </th>
 <th>
-债权融资成本
+&#x503A;&#x6743;&#x878D;&#x8D44;&#x6210;&#x672C;
 </th>
 <th>
-股权融资额度
+&#x80A1;&#x6743;&#x878D;&#x8D44;&#x989D;&#x5EA6;
 </th>
 <th>
-股权融资成本
+&#x80A1;&#x6743;&#x878D;&#x8D44;&#x6210;&#x672C;
 </th>
 <th>
-内部融资和贸易融资额度
+&#x5185;&#x90E8;&#x878D;&#x8D44;&#x548C;&#x8D38;&#x6613;&#x878D;&#x8D44;&#x989D;&#x5EA6;
 </th>
 <th>
-内部融资和贸易融资成本
+&#x5185;&#x90E8;&#x878D;&#x8D44;&#x548C;&#x8D38;&#x6613;&#x878D;&#x8D44;&#x6210;&#x672C;
 </th>
 <th>
-项目融资和政策融资额度
+&#x9879;&#x76EE;&#x878D;&#x8D44;&#x548C;&#x653F;&#x7B56;&#x878D;&#x8D44;&#x989D;&#x5EA6;
 </th>
 <th>
-项目融资和政策融资成本
+&#x9879;&#x76EE;&#x878D;&#x8D44;&#x548C;&#x653F;&#x7B56;&#x878D;&#x8D44;&#x6210;&#x672C;
 </th>
 </tr>
 </thead>
@@ -2363,19 +2363,19 @@ ID
 year
 </th>
 <th>
-债权融资额度
+&#x503A;&#x6743;&#x878D;&#x8D44;&#x989D;&#x5EA6;
 </th>
 <th>
 ...
 </th>
 <th>
-内部融资和贸易融资成本
+&#x5185;&#x90E8;&#x878D;&#x8D44;&#x548C;&#x8D38;&#x6613;&#x878D;&#x8D44;&#x6210;&#x672C;
 </th>
 <th>
-项目融资和政策融资额度
+&#x9879;&#x76EE;&#x878D;&#x8D44;&#x548C;&#x653F;&#x7B56;&#x878D;&#x8D44;&#x989D;&#x5EA6;
 </th>
 <th>
-项目融资和政策融资成本
+&#x9879;&#x76EE;&#x878D;&#x8D44;&#x548C;&#x653F;&#x7B56;&#x878D;&#x8D44;&#x6210;&#x672C;
 </th>
 </tr>
 </thead>
@@ -2591,11 +2591,11 @@ max
 </tbody>
 </table>
 </div>
-<h4 id="填充缺失数据">填充缺失数据</h4>
+<h4 id="&#x586B;&#x5145;&#x7F3A;&#x5931;&#x6570;&#x636E;">&#x586B;&#x5145;&#x7F3A;&#x5931;&#x6570;&#x636E;</h4>
 <h5 id="year_train_data-2">year_train_data</h5>
 <div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># fill null</span></span>
 <span id="cb15-2"><a href="#cb15-2"></a>new_year_train_data <span class="op">=</span> fill_na(year_train_data)</span>
-<span id="cb15-3"><a href="#cb15-3"></a>new_year_train_data.set_index([<span class="st">&#39;ID&#39;</span>, <span class="st">&#39;year&#39;</span>])</span>
+<span id="cb15-3"><a href="#cb15-3"></a>new_year_train_data.set_index([<span class="st">&apos;ID&apos;</span>, <span class="st">&apos;year&apos;</span>])</span>
 <span id="cb15-4"><a href="#cb15-4"></a></span>
 <span id="cb15-5"><a href="#cb15-5"></a>new_year_train_data.head()</span></code></pre></div>
 <div>
@@ -2624,28 +2624,28 @@ ID
 year
 </th>
 <th>
-从业人数
+&#x4ECE;&#x4E1A;&#x4EBA;&#x6570;
 </th>
 <th>
-资产总额
+&#x8D44;&#x4EA7;&#x603B;&#x989D;
 </th>
 <th>
-负债总额
+&#x8D1F;&#x503A;&#x603B;&#x989D;
 </th>
 <th>
-营业总收入
+&#x8425;&#x4E1A;&#x603B;&#x6536;&#x5165;
 </th>
 <th>
-主营业务收入
+&#x4E3B;&#x8425;&#x4E1A;&#x52A1;&#x6536;&#x5165;
 </th>
 <th>
-利润总额
+&#x5229;&#x6DA6;&#x603B;&#x989D;
 </th>
 <th>
-纳税总额
+&#x7EB3;&#x7A0E;&#x603B;&#x989D;
 </th>
 <th>
-所有者权益合计
+&#x6240;&#x6709;&#x8005;&#x6743;&#x76CA;&#x5408;&#x8BA1;
 </th>
 </tr>
 </thead>
@@ -2831,7 +2831,7 @@ year
 <h5 id="money_train_data">money_train_data</h5>
 <div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># fill null</span></span>
 <span id="cb16-2"><a href="#cb16-2"></a>new_money_train_data <span class="op">=</span> fill_na(money_train_data)</span>
-<span id="cb16-3"><a href="#cb16-3"></a>new_money_train_data.set_index([<span class="st">&#39;ID&#39;</span>, <span class="st">&#39;year&#39;</span>])</span>
+<span id="cb16-3"><a href="#cb16-3"></a>new_money_train_data.set_index([<span class="st">&apos;ID&apos;</span>, <span class="st">&apos;year&apos;</span>])</span>
 <span id="cb16-4"><a href="#cb16-4"></a></span>
 <span id="cb16-5"><a href="#cb16-5"></a><span class="co"># new_money_train_data.head(8)</span></span>
 <span id="cb16-6"><a href="#cb16-6"></a>new_money_train_data.head()</span></code></pre></div>
@@ -2861,28 +2861,28 @@ ID
 year
 </th>
 <th>
-债权融资额度
+&#x503A;&#x6743;&#x878D;&#x8D44;&#x989D;&#x5EA6;
 </th>
 <th>
-债权融资成本
+&#x503A;&#x6743;&#x878D;&#x8D44;&#x6210;&#x672C;
 </th>
 <th>
-股权融资额度
+&#x80A1;&#x6743;&#x878D;&#x8D44;&#x989D;&#x5EA6;
 </th>
 <th>
-股权融资成本
+&#x80A1;&#x6743;&#x878D;&#x8D44;&#x6210;&#x672C;
 </th>
 <th>
-内部融资和贸易融资额度
+&#x5185;&#x90E8;&#x878D;&#x8D44;&#x548C;&#x8D38;&#x6613;&#x878D;&#x8D44;&#x989D;&#x5EA6;
 </th>
 <th>
-内部融资和贸易融资成本
+&#x5185;&#x90E8;&#x878D;&#x8D44;&#x548C;&#x8D38;&#x6613;&#x878D;&#x8D44;&#x6210;&#x672C;
 </th>
 <th>
-项目融资和政策融资额度
+&#x9879;&#x76EE;&#x878D;&#x8D44;&#x548C;&#x653F;&#x7B56;&#x878D;&#x8D44;&#x989D;&#x5EA6;
 </th>
 <th>
-项目融资和政策融资成本
+&#x9879;&#x76EE;&#x878D;&#x8D44;&#x548C;&#x653F;&#x7B56;&#x878D;&#x8D44;&#x6210;&#x672C;
 </th>
 </tr>
 </thead>
@@ -3065,7 +3065,7 @@ year
 </tbody>
 </table>
 </div>
-<h4 id="合并year-data和money-data数据集">合并<code>year data</code>和<code>money data</code>数据集</h4>
+<h4 id="&#x5408;&#x5E76;year-data&#x548C;money-data&#x6570;&#x636E;&#x96C6;">&#x5408;&#x5E76;<code>year data</code>&#x548C;<code>money data</code>&#x6570;&#x636E;&#x96C6;</h4>
 <div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="co"># Merge new year and money data</span></span>
 <span id="cb17-2"><a href="#cb17-2"></a>combined_new_year_money_train_data <span class="op">=</span> combined_new_year_money_data(</span>
 <span id="cb17-3"><a href="#cb17-3"></a>                                            new_year_train_data, </span>
@@ -3098,25 +3098,25 @@ ID
 year
 </th>
 <th>
-从业人数
+&#x4ECE;&#x4E1A;&#x4EBA;&#x6570;
 </th>
 <th>
-资产总额
+&#x8D44;&#x4EA7;&#x603B;&#x989D;
 </th>
 <th>
 ...
 </th>
 <th>
-内部融资和贸易融资额度
+&#x5185;&#x90E8;&#x878D;&#x8D44;&#x548C;&#x8D38;&#x6613;&#x878D;&#x8D44;&#x989D;&#x5EA6;
 </th>
 <th>
-内部融资和贸易融资成本
+&#x5185;&#x90E8;&#x878D;&#x8D44;&#x548C;&#x8D38;&#x6613;&#x878D;&#x8D44;&#x6210;&#x672C;
 </th>
 <th>
-项目融资和政策融资额度
+&#x9879;&#x76EE;&#x878D;&#x8D44;&#x548C;&#x653F;&#x7B56;&#x878D;&#x8D44;&#x989D;&#x5EA6;
 </th>
 <th>
-项目融资和政策融资成本
+&#x9879;&#x76EE;&#x878D;&#x8D44;&#x548C;&#x653F;&#x7B56;&#x878D;&#x8D44;&#x6210;&#x672C;
 </th>
 </tr>
 </thead>
@@ -3284,8 +3284,8 @@ year
 </tbody>
 </table>
 </div>
-<h4 id="拆分新特征">拆分新特征</h4>
-<p>将合并后的数据集中每一年的数据拆分成新的特征，使之与<code>base data</code>通过<code>ID</code>一一对应。</p>
+<h4 id="&#x62C6;&#x5206;&#x65B0;&#x7279;&#x5F81;">&#x62C6;&#x5206;&#x65B0;&#x7279;&#x5F81;</h4>
+<p>&#x5C06;&#x5408;&#x5E76;&#x540E;&#x7684;&#x6570;&#x636E;&#x96C6;&#x4E2D;&#x6BCF;&#x4E00;&#x5E74;&#x7684;&#x6570;&#x636E;&#x62C6;&#x5206;&#x6210;&#x65B0;&#x7684;&#x7279;&#x5F81;&#xFF0C;&#x4F7F;&#x4E4B;&#x4E0E;<code>base data</code>&#x901A;&#x8FC7;<code>ID</code>&#x4E00;&#x4E00;&#x5BF9;&#x5E94;&#x3002;</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>splited_year_money_train_data <span class="op">=</span> split_data(combined_new_year_money_train_data)</span>
 <span id="cb18-2"><a href="#cb18-2"></a>splited_year_money_train_data.head()</span></code></pre></div>
 <div>
@@ -3308,28 +3308,28 @@ year
 <th>
 </th>
 <th>
-从业人数_2015
+&#x4ECE;&#x4E1A;&#x4EBA;&#x6570;_2015
 </th>
 <th>
-资产总额_2015
+&#x8D44;&#x4EA7;&#x603B;&#x989D;_2015
 </th>
 <th>
-负债总额_2015
+&#x8D1F;&#x503A;&#x603B;&#x989D;_2015
 </th>
 <th>
 ...
 </th>
 <th>
-内部融资和贸易融资额度_2017
+&#x5185;&#x90E8;&#x878D;&#x8D44;&#x548C;&#x8D38;&#x6613;&#x878D;&#x8D44;&#x989D;&#x5EA6;_2017
 </th>
 <th>
-内部融资和贸易融资成本_2017
+&#x5185;&#x90E8;&#x878D;&#x8D44;&#x548C;&#x8D38;&#x6613;&#x878D;&#x8D44;&#x6210;&#x672C;_2017
 </th>
 <th>
-项目融资和政策融资额度_2017
+&#x9879;&#x76EE;&#x878D;&#x8D44;&#x548C;&#x653F;&#x7B56;&#x878D;&#x8D44;&#x989D;&#x5EA6;_2017
 </th>
 <th>
-项目融资和政策融资成本_2017
+&#x9879;&#x76EE;&#x878D;&#x8D44;&#x548C;&#x653F;&#x7B56;&#x878D;&#x8D44;&#x6210;&#x672C;_2017
 </th>
 </tr>
 <tr>
@@ -3503,13 +3503,13 @@ ID
 </tbody>
 </table>
 <p>
-5 rows × 48 columns
+5 rows &#xD7; 48 columns
 </p>
 </div>
-<h2 id="合并处理好的数据集">合并处理好的数据集</h2>
+<h2 id="&#x5408;&#x5E76;&#x5904;&#x7406;&#x597D;&#x7684;&#x6570;&#x636E;&#x96C6;">&#x5408;&#x5E76;&#x5904;&#x7406;&#x597D;&#x7684;&#x6570;&#x636E;&#x96C6;</h2>
 <div class="sourceCode" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a>train <span class="op">=</span> pd.merge(combined_base_knowledge_train_data, </span>
 <span id="cb19-2"><a href="#cb19-2"></a>                 splited_year_money_train_data, </span>
-<span id="cb19-3"><a href="#cb19-3"></a>                 on<span class="op">=</span>[<span class="st">&#39;ID&#39;</span>])</span>
+<span id="cb19-3"><a href="#cb19-3"></a>                 on<span class="op">=</span>[<span class="st">&apos;ID&apos;</span>])</span>
 <span id="cb19-4"><a href="#cb19-4"></a></span>
 <span id="cb19-5"><a href="#cb19-5"></a>train.head()</span></code></pre></div>
 <div>
@@ -3532,28 +3532,28 @@ ID
 <th>
 </th>
 <th>
-注册时间
+&#x6CE8;&#x518C;&#x65F6;&#x95F4;
 </th>
 <th>
-注册资本
+&#x6CE8;&#x518C;&#x8D44;&#x672C;
 </th>
 <th>
-行业
+&#x884C;&#x4E1A;
 </th>
 <th>
 ...
 </th>
 <th>
-内部融资和贸易融资额度_2017
+&#x5185;&#x90E8;&#x878D;&#x8D44;&#x548C;&#x8D38;&#x6613;&#x878D;&#x8D44;&#x989D;&#x5EA6;_2017
 </th>
 <th>
-内部融资和贸易融资成本_2017
+&#x5185;&#x90E8;&#x878D;&#x8D44;&#x548C;&#x8D38;&#x6613;&#x878D;&#x8D44;&#x6210;&#x672C;_2017
 </th>
 <th>
-项目融资和政策融资额度_2017
+&#x9879;&#x76EE;&#x878D;&#x8D44;&#x548C;&#x653F;&#x7B56;&#x878D;&#x8D44;&#x989D;&#x5EA6;_2017
 </th>
 <th>
-项目融资和政策融资成本_2017
+&#x9879;&#x76EE;&#x878D;&#x8D44;&#x548C;&#x653F;&#x7B56;&#x878D;&#x8D44;&#x6210;&#x672C;_2017
 </th>
 </tr>
 <tr>
@@ -3590,7 +3590,7 @@ ID
 7090.0
 </td>
 <td>
-服务业
+&#x670D;&#x52A1;&#x4E1A;
 </td>
 <td>
 ...
@@ -3619,7 +3619,7 @@ ID
 5940.0
 </td>
 <td>
-零售业
+&#x96F6;&#x552E;&#x4E1A;
 </td>
 <td>
 ...
@@ -3648,7 +3648,7 @@ ID
 9720.0
 </td>
 <td>
-工业
+&#x5DE5;&#x4E1A;
 </td>
 <td>
 ...
@@ -3677,7 +3677,7 @@ ID
 4800.0
 </td>
 <td>
-商业服务业
+&#x5546;&#x4E1A;&#x670D;&#x52A1;&#x4E1A;
 </td>
 <td>
 ...
@@ -3706,7 +3706,7 @@ ID
 4530.0
 </td>
 <td>
-零售业
+&#x96F6;&#x552E;&#x4E1A;
 </td>
 <td>
 ...
@@ -3727,10 +3727,10 @@ ID
 </tbody>
 </table>
 <p>
-5 rows × 59 columns
+5 rows &#xD7; 59 columns
 </p>
 </div>
-<h3 id="保存处理好的训练数据集">保存处理好的训练数据集</h3>
+<h3 id="&#x4FDD;&#x5B58;&#x5904;&#x7406;&#x597D;&#x7684;&#x8BAD;&#x7EC3;&#x6570;&#x636E;&#x96C6;">&#x4FDD;&#x5B58;&#x5904;&#x7406;&#x597D;&#x7684;&#x8BAD;&#x7EC3;&#x6570;&#x636E;&#x96C6;</h3>
 <div class="sourceCode" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>train.to_csv(<span class="st">&quot;data/train/train.csv&quot;</span>)</span></code></pre></div>
 <div class="sourceCode" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>train.describe()</span></code></pre></div>
 <div>
@@ -3753,28 +3753,28 @@ ID
 <th>
 </th>
 <th>
-注册时间
+&#x6CE8;&#x518C;&#x65F6;&#x95F4;
 </th>
 <th>
-注册资本
+&#x6CE8;&#x518C;&#x8D44;&#x672C;
 </th>
 <th>
-控制人持股比例
+&#x63A7;&#x5236;&#x4EBA;&#x6301;&#x80A1;&#x6BD4;&#x4F8B;
 </th>
 <th>
 ...
 </th>
 <th>
-内部融资和贸易融资额度_2017
+&#x5185;&#x90E8;&#x878D;&#x8D44;&#x548C;&#x8D38;&#x6613;&#x878D;&#x8D44;&#x989D;&#x5EA6;_2017
 </th>
 <th>
-内部融资和贸易融资成本_2017
+&#x5185;&#x90E8;&#x878D;&#x8D44;&#x548C;&#x8D38;&#x6613;&#x878D;&#x8D44;&#x6210;&#x672C;_2017
 </th>
 <th>
-项目融资和政策融资额度_2017
+&#x9879;&#x76EE;&#x878D;&#x8D44;&#x548C;&#x653F;&#x7B56;&#x878D;&#x8D44;&#x989D;&#x5EA6;_2017
 </th>
 <th>
-项目融资和政策融资成本_2017
+&#x9879;&#x76EE;&#x878D;&#x8D44;&#x548C;&#x653F;&#x7B56;&#x878D;&#x8D44;&#x6210;&#x672C;_2017
 </th>
 </tr>
 </thead>
@@ -4014,17 +4014,17 @@ max
 </tbody>
 </table>
 <p>
-8 rows × 55 columns
+8 rows &#xD7; 55 columns
 </p>
 </div>
-<h2 id="训练数据集处理-1">训练数据集处理</h2>
-<p>按照刚刚处理训练集的流程处理测试数据集。 ### 加载原始数据集</p>
+<h2 id="&#x8BAD;&#x7EC3;&#x6570;&#x636E;&#x96C6;&#x5904;&#x7406;-1">&#x8BAD;&#x7EC3;&#x6570;&#x636E;&#x96C6;&#x5904;&#x7406;</h2>
+<p>&#x6309;&#x7167;&#x521A;&#x521A;&#x5904;&#x7406;&#x8BAD;&#x7EC3;&#x96C6;&#x7684;&#x6D41;&#x7A0B;&#x5904;&#x7406;&#x6D4B;&#x8BD5;&#x6570;&#x636E;&#x96C6;&#x3002; ### &#x52A0;&#x8F7D;&#x539F;&#x59CB;&#x6570;&#x636E;&#x96C6;</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a><span class="co"># load testing data</span></span>
 <span id="cb22-2"><a href="#cb22-2"></a>base_test_data <span class="op">=</span> pd.read_csv(<span class="st">&quot;data/test/base-test.csv&quot;</span>)</span>
 <span id="cb22-3"><a href="#cb22-3"></a>year_test_data <span class="op">=</span> pd.read_csv(<span class="st">&quot;data/test/year-test.csv&quot;</span>)</span>
 <span id="cb22-4"><a href="#cb22-4"></a>knowledge_test_data <span class="op">=</span> pd.read_csv(<span class="st">&quot;data/test/knowledge-test.csv&quot;</span>)</span>
 <span id="cb22-5"><a href="#cb22-5"></a>money_test_data <span class="op">=</span> pd.read_csv(<span class="st">&quot;data/test/money-test.csv&quot;</span>)</span></code></pre></div>
-<h4 id="合并-base-data-和-knowledge-data-1">合并 <code>base data</code> 和 <code>knowledge data</code></h4>
+<h4 id="&#x5408;&#x5E76;-base-data-&#x548C;-knowledge-data-1">&#x5408;&#x5E76; <code>base data</code> &#x548C; <code>knowledge data</code></h4>
 <div class="sourceCode" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>combined_base_knowledge_test_data <span class="op">=</span> combined_base_knowledge_data(</span>
 <span id="cb23-2"><a href="#cb23-2"></a>                                                  base_test_data,</span>
 <span id="cb23-3"><a href="#cb23-3"></a>                                                  knowledge_test_data</span>
@@ -4050,22 +4050,22 @@ max
 <th>
 </th>
 <th>
-注册时间
+&#x6CE8;&#x518C;&#x65F6;&#x95F4;
 </th>
 <th>
-注册资本
+&#x6CE8;&#x518C;&#x8D44;&#x672C;
 </th>
 <th>
-控制人持股比例
+&#x63A7;&#x5236;&#x4EBA;&#x6301;&#x80A1;&#x6BD4;&#x4F8B;
 </th>
 <th>
-专利
+&#x4E13;&#x5229;
 </th>
 <th>
-商标
+&#x5546;&#x6807;
 </th>
 <th>
-著作权
+&#x8457;&#x4F5C;&#x6743;
 </th>
 </tr>
 </thead>
@@ -4258,11 +4258,11 @@ max
 </table>
 </div>
 <h3 id="year-data-and-money-data">year data and money data</h3>
-<h4 id="填充缺失值并验证填充结果">填充缺失值并验证填充结果</h4>
+<h4 id="&#x586B;&#x5145;&#x7F3A;&#x5931;&#x503C;&#x5E76;&#x9A8C;&#x8BC1;&#x586B;&#x5145;&#x7ED3;&#x679C;">&#x586B;&#x5145;&#x7F3A;&#x5931;&#x503C;&#x5E76;&#x9A8C;&#x8BC1;&#x586B;&#x5145;&#x7ED3;&#x679C;</h4>
 <h5 id="year_test_data">year_test_data</h5>
 <div class="sourceCode" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a><span class="co"># fill null</span></span>
 <span id="cb24-2"><a href="#cb24-2"></a>new_year_test_data <span class="op">=</span> fill_na(year_test_data)</span>
-<span id="cb24-3"><a href="#cb24-3"></a>new_year_test_data.set_index([<span class="st">&#39;ID&#39;</span>, <span class="st">&#39;year&#39;</span>])</span>
+<span id="cb24-3"><a href="#cb24-3"></a>new_year_test_data.set_index([<span class="st">&apos;ID&apos;</span>, <span class="st">&apos;year&apos;</span>])</span>
 <span id="cb24-4"><a href="#cb24-4"></a></span>
 <span id="cb24-5"><a href="#cb24-5"></a>new_year_test_data.describe()</span>
 <span id="cb24-6"><a href="#cb24-6"></a></span>
@@ -4284,7 +4284,7 @@ max
 <h5 id="money_test_data">money_test_data</h5>
 <div class="sourceCode" id="cb26"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a><span class="co"># fill null</span></span>
 <span id="cb26-2"><a href="#cb26-2"></a>new_money_test_data <span class="op">=</span> fill_na(money_test_data)</span>
-<span id="cb26-3"><a href="#cb26-3"></a>new_money_test_data.set_index([<span class="st">&#39;ID&#39;</span>, <span class="st">&#39;year&#39;</span>])</span>
+<span id="cb26-3"><a href="#cb26-3"></a>new_money_test_data.set_index([<span class="st">&apos;ID&apos;</span>, <span class="st">&apos;year&apos;</span>])</span>
 <span id="cb26-4"><a href="#cb26-4"></a></span>
 <span id="cb26-5"><a href="#cb26-5"></a><span class="co"># new_money_train_data.head(8)</span></span>
 <span id="cb26-6"><a href="#cb26-6"></a>new_money_test_data.describe()</span></code></pre></div>
@@ -4314,22 +4314,22 @@ ID
 year
 </th>
 <th>
-债权融资额度
+&#x503A;&#x6743;&#x878D;&#x8D44;&#x989D;&#x5EA6;
 </th>
 <th>
 ...
 </th>
 <th>
-内部融资和贸易融资额度
+&#x5185;&#x90E8;&#x878D;&#x8D44;&#x548C;&#x8D38;&#x6613;&#x878D;&#x8D44;&#x989D;&#x5EA6;
 </th>
 <th>
-内部融资和贸易融资成本
+&#x5185;&#x90E8;&#x878D;&#x8D44;&#x548C;&#x8D38;&#x6613;&#x878D;&#x8D44;&#x6210;&#x672C;
 </th>
 <th>
-项目融资和政策融资额度
+&#x9879;&#x76EE;&#x878D;&#x8D44;&#x548C;&#x653F;&#x7B56;&#x878D;&#x8D44;&#x989D;&#x5EA6;
 </th>
 <th>
-项目融资和政策融资成本
+&#x9879;&#x76EE;&#x878D;&#x8D44;&#x548C;&#x653F;&#x7B56;&#x878D;&#x8D44;&#x6210;&#x672C;
 </th>
 </tr>
 </thead>
@@ -4548,6 +4548,9 @@ max
 2017.000000
 </td>
 <td>
+80410.000000
+</td>
+<td>
 ...
 </td>
 <td>
@@ -4580,7 +4583,7 @@ max
 2015 unique ID count in money data: 7132
 2016 unique ID count in money data: 7132
 2017 unique ID count in money data: 7132</code></pre>
-<h4 id="合并-year-data-和-money-data">合并 <code>year data</code> 和 <code>money data</code></h4>
+<h4 id="&#x5408;&#x5E76;-year-data-&#x548C;-money-data">&#x5408;&#x5E76; <code>year data</code> &#x548C; <code>money data</code></h4>
 <div class="sourceCode" id="cb29"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a>combined_new_year_money_test_data <span class="op">=</span> combined_new_year_money_data(</span>
 <span id="cb29-2"><a href="#cb29-2"></a>                                              new_year_test_data, </span>
 <span id="cb29-3"><a href="#cb29-3"></a>                                              new_money_test_data</span>
@@ -4612,22 +4615,22 @@ ID
 year
 </th>
 <th>
-从业人数
+&#x4ECE;&#x4E1A;&#x4EBA;&#x6570;
 </th>
 <th>
 ...
 </th>
 <th>
-内部融资和贸易融资额度
+&#x5185;&#x90E8;&#x878D;&#x8D44;&#x548C;&#x8D38;&#x6613;&#x878D;&#x8D44;&#x989D;&#x5EA6;
 </th>
 <th>
-内部融资和贸易融资成本
+&#x5185;&#x90E8;&#x878D;&#x8D44;&#x548C;&#x8D38;&#x6613;&#x878D;&#x8D44;&#x6210;&#x672C;
 </th>
 <th>
-项目融资和政策融资额度
+&#x9879;&#x76EE;&#x878D;&#x8D44;&#x548C;&#x653F;&#x7B56;&#x878D;&#x8D44;&#x989D;&#x5EA6;
 </th>
 <th>
-项目融资和政策融资成本
+&#x9879;&#x76EE;&#x878D;&#x8D44;&#x548C;&#x653F;&#x7B56;&#x878D;&#x8D44;&#x6210;&#x672C;
 </th>
 </tr>
 </thead>
@@ -4782,7 +4785,7 @@ year
 </div>
 <div class="sourceCode" id="cb30"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a><span class="bu">print</span>(<span class="st">&quot;unique ID count in combined data:&quot;</span>, combined_new_year_money_test_data[<span class="st">&quot;ID&quot;</span>].nunique())</span></code></pre></div>
 <pre><code>unique ID count in combined data: 7132</code></pre>
-<h3 id="拆分新特征-1">拆分新特征</h3>
+<h3 id="&#x62C6;&#x5206;&#x65B0;&#x7279;&#x5F81;-1">&#x62C6;&#x5206;&#x65B0;&#x7279;&#x5F81;</h3>
 <div class="sourceCode" id="cb32"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a>splited_year_money_test_data <span class="op">=</span> split_data(combined_new_year_money_test_data)</span>
 <span id="cb32-2"><a href="#cb32-2"></a>splited_year_money_test_data.head()</span></code></pre></div>
 <div>
@@ -4805,28 +4808,28 @@ year
 <th>
 </th>
 <th>
-从业人数_2015
+&#x4ECE;&#x4E1A;&#x4EBA;&#x6570;_2015
 </th>
 <th>
-资产总额_2015
+&#x8D44;&#x4EA7;&#x603B;&#x989D;_2015
 </th>
 <th>
-负债总额_2015
+&#x8D1F;&#x503A;&#x603B;&#x989D;_2015
 </th>
 <th>
 ...
 </th>
 <th>
-内部融资和贸易融资额度_2017
+&#x5185;&#x90E8;&#x878D;&#x8D44;&#x548C;&#x8D38;&#x6613;&#x878D;&#x8D44;&#x989D;&#x5EA6;_2017
 </th>
 <th>
-内部融资和贸易融资成本_2017
+&#x5185;&#x90E8;&#x878D;&#x8D44;&#x548C;&#x8D38;&#x6613;&#x878D;&#x8D44;&#x6210;&#x672C;_2017
 </th>
 <th>
-项目融资和政策融资额度_2017
+&#x9879;&#x76EE;&#x878D;&#x8D44;&#x548C;&#x653F;&#x7B56;&#x878D;&#x8D44;&#x989D;&#x5EA6;_2017
 </th>
 <th>
-项目融资和政策融资成本_2017
+&#x9879;&#x76EE;&#x878D;&#x8D44;&#x548C;&#x653F;&#x7B56;&#x878D;&#x8D44;&#x6210;&#x672C;_2017
 </th>
 </tr>
 <tr>
@@ -5000,14 +5003,14 @@ ID
 </tbody>
 </table>
 <p>
-5 rows × 48 columns
+5 rows &#xD7; 48 columns
 </p>
 </div>
-<h4 id="合并处理好的数据集-1">合并处理好的数据集</h4>
-<p>根据<code>ID</code>合并处理好的数据集。</p>
+<h4 id="&#x5408;&#x5E76;&#x5904;&#x7406;&#x597D;&#x7684;&#x6570;&#x636E;&#x96C6;-1">&#x5408;&#x5E76;&#x5904;&#x7406;&#x597D;&#x7684;&#x6570;&#x636E;&#x96C6;</h4>
+<p>&#x6839;&#x636E;<code>ID</code>&#x5408;&#x5E76;&#x5904;&#x7406;&#x597D;&#x7684;&#x6570;&#x636E;&#x96C6;&#x3002;</p>
 <div class="sourceCode" id="cb33"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a>test <span class="op">=</span> pd.merge(combined_base_knowledge_test_data, </span>
 <span id="cb33-2"><a href="#cb33-2"></a>                 splited_year_money_test_data, </span>
-<span id="cb33-3"><a href="#cb33-3"></a>                 on<span class="op">=</span>[<span class="st">&#39;ID&#39;</span>])</span></code></pre></div>
+<span id="cb33-3"><a href="#cb33-3"></a>                 on<span class="op">=</span>[<span class="st">&apos;ID&apos;</span>])</span></code></pre></div>
 <div class="sourceCode" id="cb34"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a>test.head()</span></code></pre></div>
 <div>
 <style scoped>
@@ -5029,28 +5032,28 @@ ID
 <th>
 </th>
 <th>
-注册时间
+&#x6CE8;&#x518C;&#x65F6;&#x95F4;
 </th>
 <th>
-注册资本
+&#x6CE8;&#x518C;&#x8D44;&#x672C;
 </th>
 <th>
-行业
+&#x884C;&#x4E1A;
 </th>
 <th>
 ...
 </th>
 <th>
-内部融资和贸易融资额度_2017
+&#x5185;&#x90E8;&#x878D;&#x8D44;&#x548C;&#x8D38;&#x6613;&#x878D;&#x8D44;&#x989D;&#x5EA6;_2017
 </th>
 <th>
-内部融资和贸易融资成本_2017
+&#x5185;&#x90E8;&#x878D;&#x8D44;&#x548C;&#x8D38;&#x6613;&#x878D;&#x8D44;&#x6210;&#x672C;_2017
 </th>
 <th>
-项目融资和政策融资额度_2017
+&#x9879;&#x76EE;&#x878D;&#x8D44;&#x548C;&#x653F;&#x7B56;&#x878D;&#x8D44;&#x989D;&#x5EA6;_2017
 </th>
 <th>
-项目融资和政策融资成本_2017
+&#x9879;&#x76EE;&#x878D;&#x8D44;&#x548C;&#x653F;&#x7B56;&#x878D;&#x8D44;&#x6210;&#x672C;_2017
 </th>
 </tr>
 <tr>
@@ -5087,7 +5090,7 @@ ID
 8790.0
 </td>
 <td>
-工业
+&#x5DE5;&#x4E1A;
 </td>
 <td>
 ...
@@ -5116,7 +5119,7 @@ ID
 270.0
 </td>
 <td>
-服务业
+&#x670D;&#x52A1;&#x4E1A;
 </td>
 <td>
 ...
@@ -5145,7 +5148,7 @@ ID
 230.0
 </td>
 <td>
-服务业
+&#x670D;&#x52A1;&#x4E1A;
 </td>
 <td>
 ...
@@ -5174,7 +5177,7 @@ ID
 5980.0
 </td>
 <td>
-商业服务业
+&#x5546;&#x4E1A;&#x670D;&#x52A1;&#x4E1A;
 </td>
 <td>
 ...
@@ -5203,7 +5206,7 @@ ID
 160.0
 </td>
 <td>
-工业
+&#x5DE5;&#x4E1A;
 </td>
 <td>
 ...
@@ -5224,16 +5227,16 @@ ID
 </tbody>
 </table>
 <p>
-5 rows × 58 columns
+5 rows &#xD7; 58 columns
 </p>
 </div>
-<h4 id="保存处理好的测试数据集">保存处理好的测试数据集</h4>
+<h4 id="&#x4FDD;&#x5B58;&#x5904;&#x7406;&#x597D;&#x7684;&#x6D4B;&#x8BD5;&#x6570;&#x636E;&#x96C6;">&#x4FDD;&#x5B58;&#x5904;&#x7406;&#x597D;&#x7684;&#x6D4B;&#x8BD5;&#x6570;&#x636E;&#x96C6;</h4>
 <div class="sourceCode" id="cb35"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a>test.to_csv(<span class="st">&quot;data/test/test.csv&quot;</span>)</span></code></pre></div>
-<h1 id="总结">总结</h1>
-<p>这次数据处理比较简单，主要注意以下几个点：<br />
-1. 对于年份数据缺失值的处理，可以根据ID和年份判断缺失的年份应该是哪一年，然后填充相应的年份值即可，如果是同一<code>ID</code>缺失两年数据，这个就随缘了😆，我是按照从上到下的顺序填充的（可能有更好的方法，大家可以提出自己的想法），例如<code>ID</code>为<code>123</code>的企业缺失<code>2015</code>和<code>2017</code>的年份，那么依次将<code>year</code>属性值填充为2015和2017；<br />
-2. 对于其他数据我就直接粗暴的填充中位数，本来是想先这么填充然后看看效果再优化，结果训练测试后的结果还不错，所以也就没有再优化了；</p>
-<p>下篇文章中我会对模型训练过程作一个说明，使用的是LightGBM框架（LightGBM是使用基于树的学习算法的梯度增强框架）。</p>
+<h1 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</h1>
+<p>&#x8FD9;&#x6B21;&#x6570;&#x636E;&#x5904;&#x7406;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#xFF0C;&#x4E3B;&#x8981;&#x6CE8;&#x610F;&#x4EE5;&#x4E0B;&#x51E0;&#x4E2A;&#x70B9;&#xFF1A;<br>
+1. &#x5BF9;&#x4E8E;&#x5E74;&#x4EFD;&#x6570;&#x636E;&#x7F3A;&#x5931;&#x503C;&#x7684;&#x5904;&#x7406;&#xFF0C;&#x53EF;&#x4EE5;&#x6839;&#x636E;ID&#x548C;&#x5E74;&#x4EFD;&#x5224;&#x65AD;&#x7F3A;&#x5931;&#x7684;&#x5E74;&#x4EFD;&#x5E94;&#x8BE5;&#x662F;&#x54EA;&#x4E00;&#x5E74;&#xFF0C;&#x7136;&#x540E;&#x586B;&#x5145;&#x76F8;&#x5E94;&#x7684;&#x5E74;&#x4EFD;&#x503C;&#x5373;&#x53EF;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x540C;&#x4E00;<code>ID</code>&#x7F3A;&#x5931;&#x4E24;&#x5E74;&#x6570;&#x636E;&#xFF0C;&#x8FD9;&#x4E2A;&#x5C31;&#x968F;&#x7F18;&#x4E86;&#x1F606;&#xFF0C;&#x6211;&#x662F;&#x6309;&#x7167;&#x4ECE;&#x4E0A;&#x5230;&#x4E0B;&#x7684;&#x987A;&#x5E8F;&#x586B;&#x5145;&#x7684;&#xFF08;&#x53EF;&#x80FD;&#x6709;&#x66F4;&#x597D;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x5927;&#x5BB6;&#x53EF;&#x4EE5;&#x63D0;&#x51FA;&#x81EA;&#x5DF1;&#x7684;&#x60F3;&#x6CD5;&#xFF09;&#xFF0C;&#x4F8B;&#x5982;<code>ID</code>&#x4E3A;<code>123</code>&#x7684;&#x4F01;&#x4E1A;&#x7F3A;&#x5931;<code>2015</code>&#x548C;<code>2017</code>&#x7684;&#x5E74;&#x4EFD;&#xFF0C;&#x90A3;&#x4E48;&#x4F9D;&#x6B21;&#x5C06;<code>year</code>&#x5C5E;&#x6027;&#x503C;&#x586B;&#x5145;&#x4E3A;2015&#x548C;2017&#xFF1B;<br>
+2. &#x5BF9;&#x4E8E;&#x5176;&#x4ED6;&#x6570;&#x636E;&#x6211;&#x5C31;&#x76F4;&#x63A5;&#x7C97;&#x66B4;&#x7684;&#x586B;&#x5145;&#x4E2D;&#x4F4D;&#x6570;&#xFF0C;&#x672C;&#x6765;&#x662F;&#x60F3;&#x5148;&#x8FD9;&#x4E48;&#x586B;&#x5145;&#x7136;&#x540E;&#x770B;&#x770B;&#x6548;&#x679C;&#x518D;&#x4F18;&#x5316;&#xFF0C;&#x7ED3;&#x679C;&#x8BAD;&#x7EC3;&#x6D4B;&#x8BD5;&#x540E;&#x7684;&#x7ED3;&#x679C;&#x8FD8;&#x4E0D;&#x9519;&#xFF0C;&#x6240;&#x4EE5;&#x4E5F;&#x5C31;&#x6CA1;&#x6709;&#x518D;&#x4F18;&#x5316;&#x4E86;&#xFF1B;</p>
+<p>&#x4E0B;&#x7BC7;&#x6587;&#x7AE0;&#x4E2D;&#x6211;&#x4F1A;&#x5BF9;&#x6A21;&#x578B;&#x8BAD;&#x7EC3;&#x8FC7;&#x7A0B;&#x4F5C;&#x4E00;&#x4E2A;&#x8BF4;&#x660E;&#xFF0C;&#x4F7F;&#x7528;&#x7684;&#x662F;LightGBM&#x6846;&#x67B6;&#xFF08;LightGBM&#x662F;&#x4F7F;&#x7528;&#x57FA;&#x4E8E;&#x6811;&#x7684;&#x5B66;&#x4E60;&#x7B97;&#x6CD5;&#x7684;&#x68AF;&#x5EA6;&#x589E;&#x5F3A;&#x6846;&#x67B6;&#xFF09;&#x3002;</p>
 
         </div>
         <!-- .entry-content -->
