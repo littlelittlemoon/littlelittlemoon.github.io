@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://littlelittlemoon.github.io/"/>
-  <updated>2020-04-28T08:58:45.180Z</updated>
+  <updated>2020-04-28T14:30:04.031Z</updated>
   <id>https://littlelittlemoon.github.io/</id>
   
   <author>
@@ -15,6 +15,43 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Leetcode Note in Apri 2020 | part 4 | day 22-28 | (一)</title>
+    <link href="https://littlelittlemoon.github.io/2020/04/28/Technology/Leetcode-Note-in-Apri-2020-part-4-day-22-28-(%E4%B8%80)/"/>
+    <id>https://littlelittlemoon.github.io/2020/04/28/Technology/Leetcode-Note-in-Apri-2020-part-4-day-22-28-(%E4%B8%80)/</id>
+    <published>2020-04-28T14:29:47.000Z</published>
+    <updated>2020-04-28T14:30:04.031Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Technology" scheme="https://littlelittlemoon.github.io/categories/Technology/"/>
+    
+      <category term="Coding" scheme="https://littlelittlemoon.github.io/categories/Technology/Coding/"/>
+    
+      <category term="Leetcode" scheme="https://littlelittlemoon.github.io/categories/Technology/Coding/Leetcode/"/>
+    
+    
+      <category term="Leetcode" scheme="https://littlelittlemoon.github.io/tags/Leetcode/"/>
+    
+      <category term="Python" scheme="https://littlelittlemoon.github.io/tags/Python/"/>
+    
+      <category term="Algorithm" scheme="https://littlelittlemoon.github.io/tags/Algorithm/"/>
+    
+      <category term="Updating" scheme="https://littlelittlemoon.github.io/tags/Updating/"/>
+    
+  </entry>
   
   <entry>
     <title>Leetcode Note in Apri 2020 | part 3 | day 15-21 | (三).</title>
@@ -163,11 +200,11 @@
   </entry>
   
   <entry>
-    <title>Leetcode Note in Apri 2020 | part 3 | day 15-21 | (一).</title>
+    <title>Leetcode Note in Apri 2020 | part 3 | day 15-21 | (一)</title>
     <link href="https://littlelittlemoon.github.io/2020/04/15/Technology/Leetcode-Note-in-Apri-2020-part-3-day-15-21-(%E4%B8%80)/"/>
     <id>https://littlelittlemoon.github.io/2020/04/15/Technology/Leetcode-Note-in-Apri-2020-part-3-day-15-21-(%E4%B8%80)/</id>
     <published>2020-04-15T12:33:23.000Z</published>
-    <updated>2020-04-18T06:30:33.176Z</updated>
+    <updated>2020-04-28T09:01:04.194Z</updated>
     
     <summary type="html">
     
@@ -175,9 +212,7 @@
       
         
         
-          &lt;h1 id=&quot;写在前面的话&quot;&gt;写在前面的话&lt;/h1&gt;
-&lt;p&gt;第三次更新，这次更新可能会把一周的内容分为两篇文章，因为放一篇文章的话内容有点太长了。新的挑战！继续前进~&lt;/p&gt;
-&lt;h1 id=&quot;product-of-array-except-self&quot;&gt;Product of
+          &lt;h1
         
       
     
