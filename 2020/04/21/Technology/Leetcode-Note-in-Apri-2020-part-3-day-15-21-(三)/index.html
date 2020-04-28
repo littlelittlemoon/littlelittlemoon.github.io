@@ -465,8 +465,49 @@ Your algorithm&apos;s <strong>runtime complexity must be in the order of O(log n
 <span id="cb3-29"><a href="#cb3-29"></a>                    right <span class="op">=</span> mid</span>
 <span id="cb3-30"><a href="#cb3-30"></a>        </span>
 <span id="cb3-31"><a href="#cb3-31"></a>        <span class="cf">return</span> left <span class="cf">if</span> nums[left] <span class="op">==</span> target <span class="cf">else</span> <span class="op">-</span><span class="dv">1</span></span></code></pre></div>
-<h1 id="updating">Updating</h1>
-<p>&#x592A;&#x5FD9;&#x4E86;&#xFF0C;&#x665A;&#x4E0A;&#x518D;&#x7EE7;&#x7EED;&#x66F4;&#x65B0;&#x5427;&#x3002;&#x3002;</p>
+<h1 id="construct-binary-search-tree-from-preorder-traversal">Construct Binary Search Tree from Preorder Traversal</h1>
+<blockquote>
+<p>Return the root node of a binary search tree that matches the given preorder traversal.<br>
+(Recall that a binary search tree is a binary tree where for every node, any descendant of node.left has a value &lt; node.val, and any descendant of node.right has a value &gt; node.val. Also recall that a preorder traversal displays the value of the node first, then traverses node.left, then traverses node.right.)<br>
+<strong>Example 1</strong>:<br>
+<strong>Input</strong>: [8,5,1,7,10,12]<br>
+<strong>Output</strong>: [8,5,10,1,7,null,12]<br>
+<img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn@v2.0.22/img/article_img/images/Leetcode/binary_tree_3.png"></p>
+</blockquote>
+<h2 id="solution-2">Solution</h2>
+<p>&#x9898;&#x76EE;&#x662F;&#x8981;&#x6C42;&#x662F;&#xFF0C;&#x6211;&#x4EEC;&#x6839;&#x636E;&#x7ED9;&#x5B9A;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x6784;&#x9020;&#x4E8C;&#x53C9;&#x641C;&#x7D22;&#x6811;&#x3002;&#x53EF;&#x4EE5;&#x91C7;&#x7528;<strong>&#x9012;&#x5F52;</strong>&#x7684;&#x65B9;&#x6CD5;&#x8FDB;&#x884C;&#x4E8C;&#x53C9;&#x641C;&#x7D22;&#x6811;&#x7684;&#x6784;&#x5EFA;&#x3002;</p>
+<p>&#x8FD9;&#x91CC;&#x7684;&#x6838;&#x5FC3;&#x601D;&#x8DEF;&#x662F;&#xFF1A;&#x6307;&#x5B9A;&#x4E00;&#x4E2A;<code>bound</code>&#x53D8;&#x91CF;&#xFF0C;&#x8BB0;&#x5F55;&#x5F53;&#x524D;&#x9700;&#x8981;&#x5904;&#x7406;&#x7684;&#x6700;&#x5927;&#x503C;&#xFF0C;&#x521D;&#x59CB;&#x5316;&#x4E3A;<code>inf</code>&#xFF0C;&#x4F7F;&#xFF1A;</p>
+<ol type="1">
+<li>&#x5DE6;&#x9012;&#x5F52;&#x7684;&#x6240;&#x6709;&#x5143;&#x7D20;&#x90FD;&#x5C0F;&#x4E8E;&#x5F53;&#x524D;node&#x7684;value&#xFF1B;<br>
+</li>
+<li>&#x53F3;&#x9012;&#x5F52;&#x7684;&#x6240;&#x6709;&#x5143;&#x7D20;&#x90FD;&#x5C0F;&#x4E8E;&#x5F53;&#x524D;&#x8FD9;&#x4E2A;bound&#x503C;&#x3002;</li>
+</ol>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># Definition for a binary tree node.</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="kw">class</span> TreeNode:</span>
+<span id="cb4-3"><a href="#cb4-3"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, x):</span>
+<span id="cb4-4"><a href="#cb4-4"></a>        <span class="va">self</span>.val <span class="op">=</span> x</span>
+<span id="cb4-5"><a href="#cb4-5"></a>        <span class="va">self</span>.left <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a>        <span class="va">self</span>.right <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a></span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="kw">class</span> Solution:</span>
+<span id="cb4-9"><a href="#cb4-9"></a>    i <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb4-10"><a href="#cb4-10"></a>    </span>
+<span id="cb4-11"><a href="#cb4-11"></a>    <span class="co"># &#x6307;&#x5B9A;&#x4E00;&#x4E2A;&#x6700;&#x5927;&#x6570;&#x636E;&#xFF1A;bound=float(&apos;inf&apos;)</span></span>
+<span id="cb4-12"><a href="#cb4-12"></a>    <span class="kw">def</span> bstFromPreorder(<span class="va">self</span>, A, bound<span class="op">=</span><span class="bu">float</span>(<span class="st">&apos;inf&apos;</span>)):</span>
+<span id="cb4-13"><a href="#cb4-13"></a>        </span>
+<span id="cb4-14"><a href="#cb4-14"></a>        <span class="co"># &#x5DE6;&#x9012;&#x5F52;&#x5C06;&#x91C7;&#x7528;&#x5C0F;&#x4E8E;root.val&#x7684;&#x5143;&#x7D20;</span></span>
+<span id="cb4-15"><a href="#cb4-15"></a>        <span class="co"># &#x53F3;&#x9012;&#x5F52;&#x5C06;&#x91C7;&#x7528;&#x5176;&#x4F59;&#x5C0F;&#x4E8E;bound&#x7684;&#x5143;&#x7D20;</span></span>
+<span id="cb4-16"><a href="#cb4-16"></a>        <span class="cf">if</span> <span class="va">self</span>.i <span class="op">==</span> <span class="bu">len</span>(A) <span class="kw">or</span> A[<span class="va">self</span>.i] <span class="op">&gt;</span> bound:</span>
+<span id="cb4-17"><a href="#cb4-17"></a>            <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb4-18"><a href="#cb4-18"></a>        </span>
+<span id="cb4-19"><a href="#cb4-19"></a>        root <span class="op">=</span> TreeNode(A[<span class="va">self</span>.i])</span>
+<span id="cb4-20"><a href="#cb4-20"></a>        <span class="va">self</span>.i <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb4-21"><a href="#cb4-21"></a>        root.left <span class="op">=</span> <span class="va">self</span>.bstFromPreorder(A, root.val)</span>
+<span id="cb4-22"><a href="#cb4-22"></a>        root.right <span class="op">=</span> <span class="va">self</span>.bstFromPreorder(A, bound)</span>
+<span id="cb4-23"><a href="#cb4-23"></a>        <span class="cf">return</span> root</span>
+<span id="cb4-24"><a href="#cb4-24"></a>            </span></code></pre></div>
+<h1 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</h1>
+<p>&#x6700;&#x8FD1;&#x786E;&#x5B9E;&#x662F;&#x6709;&#x70B9;&#x5FD9;&#xFF0C;&#x66F4;&#x65B0;&#x4E5F;&#x62D6;&#x4E86;&#x597D;&#x51E0;&#x5929;&#x3002;&#x4E0B;&#x5468;&#x5F00;&#x59CB;&#x6211;&#x7684;&#x8BFE;&#x7A0B;&#x9646;&#x9646;&#x7EED;&#x7EED;&#x7ED3;&#x8BFE;&#x4E86;&#xFF0C;&#x7136;&#x540E;&#x5C31;&#x6709;&#x4E00;&#x5806;&#x62A5;&#x544A;&#x5927;&#x4F5C;&#x4E1A;&#x8981;&#x505A;&#xFF0C;&#x53EF;&#x80FD;&#x66F4;&#x65B0;&#x4F1A;&#x66F4;&#x6162;&#x3002;&#x4F46;&#x662F;&#x66F4;&#x65B0;&#x53EF;&#x80FD;&#x4F1A;&#x8FDF;&#x5230;&#xFF0C;&#x4F46;&#x5374;&#x5BF9;&#x4E0D;&#x4F1A;&#x7F3A;&#x5E2D;&#xFF0C;&#x575A;&#x6301;&#xFF01;</p>
 
         </div>
         <!-- .entry-content -->
