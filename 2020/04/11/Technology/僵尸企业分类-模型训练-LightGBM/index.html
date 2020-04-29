@@ -4,7 +4,7 @@
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">僵尸企业分类|模型训练|LightGBM | LITTLEMEEMOON</title>
+  <title itemprop="name">僵尸企业分类 | 模型训练 | LightGBM | LITTLEMEEMOON</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -323,7 +323,7 @@
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
-      僵尸企业分类|模型训练|LightGBM</h1>
+      僵尸企业分类 | 模型训练 | LightGBM</h1>
       <p class="entry-census">
         <span>
           <a href="https://littlelittlemoon.github.io/">
@@ -349,42 +349,42 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h1 id="写到前面的话">写到前面的话</h1>
-<p>在上一篇文章中，我对<strong>僵尸企业分类问题的数据预处理</strong>做了介绍，这篇文章主要介绍模型训练部分，采用的算法框架是<a href="https://lightgbm.readthedocs.io/en/latest/" target="_blank" rel="noopener">LightGBM(Light Gradient Boosting Machine)</a>，是一个实现 <code>GBDT</code> 算法的框架。而<strong>GBDT(Gradient Boosting Decision Tree)</strong>的主要思想是<strong>利用弱分类器（决策树）迭代训练以得到最优模型，该模型具有训练效果好、不易过拟合等优点</strong>。</p>
-<p>LightGBM有各种很好的特性，类比很多boosting tools优化速度和内存的使用上采用基于预排序的算法进行决策树学习，<strong>LightGBM使用基于直方图的算法</strong>，支持高效率的并行训练，并且具有以下优点：<br />
-1. 更快的训练速度<br />
-2. 更低的内存消耗<br />
-3. 更好的准确率<br />
-4. 分布式支持，可以快速处理海量数据</p>
-<p>具体算法原理我也没搞太明白，哈哈。我准备后面好好学习一番，然后再写一篇关于LightGBM的文章，主要是记录自己的学习过程，写一些自己的理解。这里大家如果感兴趣可以去看看<a href="https://lightgbm.readthedocs.io/en/latest/index.html" target="_blank" rel="noopener">官方文档</a>.</p>
-<h1 id="模型训练">模型训练</h1>
-<h2 id="定义模型训练函数">定义模型训练函数</h2>
+          <h1 id="&#x5199;&#x5230;&#x524D;&#x9762;&#x7684;&#x8BDD;">&#x5199;&#x5230;&#x524D;&#x9762;&#x7684;&#x8BDD;</h1>
+<p>&#x5728;&#x4E0A;&#x4E00;&#x7BC7;&#x6587;&#x7AE0;&#x4E2D;&#xFF0C;&#x6211;&#x5BF9;<strong>&#x50F5;&#x5C38;&#x4F01;&#x4E1A;&#x5206;&#x7C7B;&#x95EE;&#x9898;&#x7684;&#x6570;&#x636E;&#x9884;&#x5904;&#x7406;</strong>&#x505A;&#x4E86;&#x4ECB;&#x7ECD;&#xFF0C;&#x8FD9;&#x7BC7;&#x6587;&#x7AE0;&#x4E3B;&#x8981;&#x4ECB;&#x7ECD;&#x6A21;&#x578B;&#x8BAD;&#x7EC3;&#x90E8;&#x5206;&#xFF0C;&#x91C7;&#x7528;&#x7684;&#x7B97;&#x6CD5;&#x6846;&#x67B6;&#x662F;<a href="https://lightgbm.readthedocs.io/en/latest/" target="_blank" rel="noopener">LightGBM(Light Gradient Boosting Machine)</a>&#xFF0C;&#x662F;&#x4E00;&#x4E2A;&#x5B9E;&#x73B0; <code>GBDT</code> &#x7B97;&#x6CD5;&#x7684;&#x6846;&#x67B6;&#x3002;&#x800C;<strong>GBDT(Gradient Boosting Decision Tree)</strong>&#x7684;&#x4E3B;&#x8981;&#x601D;&#x60F3;&#x662F;<strong>&#x5229;&#x7528;&#x5F31;&#x5206;&#x7C7B;&#x5668;&#xFF08;&#x51B3;&#x7B56;&#x6811;&#xFF09;&#x8FED;&#x4EE3;&#x8BAD;&#x7EC3;&#x4EE5;&#x5F97;&#x5230;&#x6700;&#x4F18;&#x6A21;&#x578B;&#xFF0C;&#x8BE5;&#x6A21;&#x578B;&#x5177;&#x6709;&#x8BAD;&#x7EC3;&#x6548;&#x679C;&#x597D;&#x3001;&#x4E0D;&#x6613;&#x8FC7;&#x62DF;&#x5408;&#x7B49;&#x4F18;&#x70B9;</strong>&#x3002;</p>
+<p>LightGBM&#x6709;&#x5404;&#x79CD;&#x5F88;&#x597D;&#x7684;&#x7279;&#x6027;&#xFF0C;&#x7C7B;&#x6BD4;&#x5F88;&#x591A;boosting tools&#x4F18;&#x5316;&#x901F;&#x5EA6;&#x548C;&#x5185;&#x5B58;&#x7684;&#x4F7F;&#x7528;&#x4E0A;&#x91C7;&#x7528;&#x57FA;&#x4E8E;&#x9884;&#x6392;&#x5E8F;&#x7684;&#x7B97;&#x6CD5;&#x8FDB;&#x884C;&#x51B3;&#x7B56;&#x6811;&#x5B66;&#x4E60;&#xFF0C;<strong>LightGBM&#x4F7F;&#x7528;&#x57FA;&#x4E8E;&#x76F4;&#x65B9;&#x56FE;&#x7684;&#x7B97;&#x6CD5;</strong>&#xFF0C;&#x652F;&#x6301;&#x9AD8;&#x6548;&#x7387;&#x7684;&#x5E76;&#x884C;&#x8BAD;&#x7EC3;&#xFF0C;&#x5E76;&#x4E14;&#x5177;&#x6709;&#x4EE5;&#x4E0B;&#x4F18;&#x70B9;&#xFF1A;<br>
+1. &#x66F4;&#x5FEB;&#x7684;&#x8BAD;&#x7EC3;&#x901F;&#x5EA6;<br>
+2. &#x66F4;&#x4F4E;&#x7684;&#x5185;&#x5B58;&#x6D88;&#x8017;<br>
+3. &#x66F4;&#x597D;&#x7684;&#x51C6;&#x786E;&#x7387;<br>
+4. &#x5206;&#x5E03;&#x5F0F;&#x652F;&#x6301;&#xFF0C;&#x53EF;&#x4EE5;&#x5FEB;&#x901F;&#x5904;&#x7406;&#x6D77;&#x91CF;&#x6570;&#x636E;</p>
+<p>&#x5177;&#x4F53;&#x7B97;&#x6CD5;&#x539F;&#x7406;&#x6211;&#x4E5F;&#x6CA1;&#x641E;&#x592A;&#x660E;&#x767D;&#xFF0C;&#x54C8;&#x54C8;&#x3002;&#x6211;&#x51C6;&#x5907;&#x540E;&#x9762;&#x597D;&#x597D;&#x5B66;&#x4E60;&#x4E00;&#x756A;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x5199;&#x4E00;&#x7BC7;&#x5173;&#x4E8E;LightGBM&#x7684;&#x6587;&#x7AE0;&#xFF0C;&#x4E3B;&#x8981;&#x662F;&#x8BB0;&#x5F55;&#x81EA;&#x5DF1;&#x7684;&#x5B66;&#x4E60;&#x8FC7;&#x7A0B;&#xFF0C;&#x5199;&#x4E00;&#x4E9B;&#x81EA;&#x5DF1;&#x7684;&#x7406;&#x89E3;&#x3002;&#x8FD9;&#x91CC;&#x5927;&#x5BB6;&#x5982;&#x679C;&#x611F;&#x5174;&#x8DA3;&#x53EF;&#x4EE5;&#x53BB;&#x770B;&#x770B;<a href="https://lightgbm.readthedocs.io/en/latest/index.html" target="_blank" rel="noopener">&#x5B98;&#x65B9;&#x6587;&#x6863;</a>.</p>
+<h1 id="&#x6A21;&#x578B;&#x8BAD;&#x7EC3;">&#x6A21;&#x578B;&#x8BAD;&#x7EC3;</h1>
+<h2 id="&#x5B9A;&#x4E49;&#x6A21;&#x578B;&#x8BAD;&#x7EC3;&#x51FD;&#x6570;">&#x5B9A;&#x4E49;&#x6A21;&#x578B;&#x8BAD;&#x7EC3;&#x51FD;&#x6570;</h2>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> lightgbm <span class="im">as</span> lgb</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">from</span> sklearn <span class="im">import</span> metrics</span>
 <span id="cb1-3"><a href="#cb1-3"></a></span>
 <span id="cb1-4"><a href="#cb1-4"></a><span class="kw">def</span> train_model(X_train, y_train, X_valid, y_valid, test<span class="op">=</span><span class="va">None</span>, feature_cols<span class="op">=</span><span class="va">None</span>, is_base<span class="op">=</span><span class="va">True</span>):</span>
 <span id="cb1-5"><a href="#cb1-5"></a>    <span class="cf">if</span> feature_cols <span class="kw">is</span> <span class="va">None</span>:</span>
-<span id="cb1-6"><a href="#cb1-6"></a>        feature_cols <span class="op">=</span> X_train.columns.drop([<span class="st">&quot;行业&quot;</span>, <span class="st">&quot;区域&quot;</span>, <span class="st">&quot;企业类型&quot;</span>, <span class="st">&quot;控制人类型&quot;</span>])</span>
+<span id="cb1-6"><a href="#cb1-6"></a>        feature_cols <span class="op">=</span> X_train.columns.drop([<span class="st">&quot;&#x884C;&#x4E1A;&quot;</span>, <span class="st">&quot;&#x533A;&#x57DF;&quot;</span>, <span class="st">&quot;&#x4F01;&#x4E1A;&#x7C7B;&#x578B;&quot;</span>, <span class="st">&quot;&#x63A7;&#x5236;&#x4EBA;&#x7C7B;&#x578B;&quot;</span>])</span>
 <span id="cb1-7"><a href="#cb1-7"></a>        </span>
 <span id="cb1-8"><a href="#cb1-8"></a>    dtrain <span class="op">=</span> lgb.Dataset(X_train[feature_cols], label<span class="op">=</span>y_train)</span>
 <span id="cb1-9"><a href="#cb1-9"></a>    dvalid <span class="op">=</span> lgb.Dataset(X_valid[feature_cols], label<span class="op">=</span>y_valid)</span>
 <span id="cb1-10"><a href="#cb1-10"></a>    </span>
-<span id="cb1-11"><a href="#cb1-11"></a>    param <span class="op">=</span> {<span class="st">&#39;num_leaves&#39;</span>: <span class="dv">64</span>, <span class="st">&#39;objective&#39;</span>: <span class="st">&#39;binary&#39;</span>, </span>
-<span id="cb1-12"><a href="#cb1-12"></a>             <span class="st">&#39;metric&#39;</span>: <span class="st">&#39;auc&#39;</span>, <span class="st">&#39;seed&#39;</span>: <span class="dv">7</span>}</span>
+<span id="cb1-11"><a href="#cb1-11"></a>    param <span class="op">=</span> {<span class="st">&apos;num_leaves&apos;</span>: <span class="dv">64</span>, <span class="st">&apos;objective&apos;</span>: <span class="st">&apos;binary&apos;</span>, </span>
+<span id="cb1-12"><a href="#cb1-12"></a>             <span class="st">&apos;metric&apos;</span>: <span class="st">&apos;auc&apos;</span>, <span class="st">&apos;seed&apos;</span>: <span class="dv">7</span>}</span>
 <span id="cb1-13"><a href="#cb1-13"></a>    num_round <span class="op">=</span> <span class="dv">1000</span></span>
 <span id="cb1-14"><a href="#cb1-14"></a>    </span>
 <span id="cb1-15"><a href="#cb1-15"></a>    <span class="bu">print</span>(<span class="st">&quot;Training model!&quot;</span>)</span>
 <span id="cb1-16"><a href="#cb1-16"></a>    bst <span class="op">=</span> lgb.train(param, dtrain, num_round, valid_sets<span class="op">=</span>[dvalid], </span>
 <span id="cb1-17"><a href="#cb1-17"></a>                    early_stopping_rounds<span class="op">=</span><span class="dv">20</span>, verbose_eval<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb1-18"><a href="#cb1-18"></a>    </span>
-<span id="cb1-19"><a href="#cb1-19"></a>    <span class="co"># 预测结果是概率值，将其转换为binary value</span></span>
+<span id="cb1-19"><a href="#cb1-19"></a>    <span class="co"># &#x9884;&#x6D4B;&#x7ED3;&#x679C;&#x662F;&#x6982;&#x7387;&#x503C;&#xFF0C;&#x5C06;&#x5176;&#x8F6C;&#x6362;&#x4E3A;binary value</span></span>
 <span id="cb1-20"><a href="#cb1-20"></a>    valid_pred <span class="op">=</span> bst.predict(X_valid[feature_cols])</span>
 <span id="cb1-21"><a href="#cb1-21"></a>    valid_pred <span class="op">=</span> valid_pred <span class="op">&gt;</span> <span class="fl">0.5</span>  </span>
 <span id="cb1-22"><a href="#cb1-22"></a>    valid_pred <span class="op">=</span> valid_pred.astype(<span class="bu">int</span>)</span>
 <span id="cb1-23"><a href="#cb1-23"></a>    valid_score <span class="op">=</span> metrics.roc_auc_score(y_valid, valid_pred)</span>
 <span id="cb1-24"><a href="#cb1-24"></a></span>
 <span id="cb1-25"><a href="#cb1-25"></a>    <span class="bu">print</span>(<span class="st">&quot;precision recall fscore support:&quot;</span>)</span>
-<span id="cb1-26"><a href="#cb1-26"></a>    <span class="bu">print</span>(metrics.precision_recall_fscore_support(y_valid, valid_pred, average<span class="op">=</span><span class="st">&#39;micro&#39;</span>))</span>
+<span id="cb1-26"><a href="#cb1-26"></a>    <span class="bu">print</span>(metrics.precision_recall_fscore_support(y_valid, valid_pred, average<span class="op">=</span><span class="st">&apos;micro&apos;</span>))</span>
 <span id="cb1-27"><a href="#cb1-27"></a>    <span class="bu">print</span>(<span class="ss">f&quot;Validation AUC score: </span><span class="sc">{</span>valid_score<span class="sc">}</span><span class="ss">&quot;</span>)</span>
 <span id="cb1-28"><a href="#cb1-28"></a></span>
 <span id="cb1-29"><a href="#cb1-29"></a>    <span class="cf">if</span> test <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>: </span>
@@ -392,16 +392,16 @@
 <span id="cb1-31"><a href="#cb1-31"></a>        test_pred <span class="op">=</span> test_pred <span class="op">&gt;</span> <span class="fl">0.5</span>  </span>
 <span id="cb1-32"><a href="#cb1-32"></a>        test_pred <span class="op">=</span> test_pred.astype(<span class="bu">int</span>)</span>
 <span id="cb1-33"><a href="#cb1-33"></a>        </span>
-<span id="cb1-34"><a href="#cb1-34"></a>        test_pred <span class="op">=</span> test[[<span class="st">&#39;ID&#39;</span>]].join(pd.DataFrame({<span class="st">&#39;flag&#39;</span>: test_pred}))</span>
+<span id="cb1-34"><a href="#cb1-34"></a>        test_pred <span class="op">=</span> test[[<span class="st">&apos;ID&apos;</span>]].join(pd.DataFrame({<span class="st">&apos;flag&apos;</span>: test_pred}))</span>
 <span id="cb1-35"><a href="#cb1-35"></a>        </span>
 <span id="cb1-36"><a href="#cb1-36"></a>        <span class="cf">if</span> is_base:</span>
-<span id="cb1-37"><a href="#cb1-37"></a>            test_pred.to_csv(<span class="st">&#39;test_base.txt&#39;</span>, sep<span class="op">=</span><span class="st">&#39;,&#39;</span>, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb1-37"><a href="#cb1-37"></a>            test_pred.to_csv(<span class="st">&apos;test_base.txt&apos;</span>, sep<span class="op">=</span><span class="st">&apos;,&apos;</span>, index<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb1-38"><a href="#cb1-38"></a>        <span class="cf">else</span>:</span>
-<span id="cb1-39"><a href="#cb1-39"></a>            test_pred.to_csv(<span class="st">&#39;test_.txt&#39;</span>, sep<span class="op">=</span><span class="st">&#39;,&#39;</span>, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb1-39"><a href="#cb1-39"></a>            test_pred.to_csv(<span class="st">&apos;test_.txt&apos;</span>, sep<span class="op">=</span><span class="st">&apos;,&apos;</span>, index<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb1-40"><a href="#cb1-40"></a>        <span class="cf">return</span> bst, valid_score</span>
 <span id="cb1-41"><a href="#cb1-41"></a>    <span class="cf">else</span>:</span>
 <span id="cb1-42"><a href="#cb1-42"></a>        <span class="cf">return</span> bst, valid_score</span></code></pre></div>
-<h2 id="加载处理好的数据集">加载处理好的数据集</h2>
+<h2 id="&#x52A0;&#x8F7D;&#x5904;&#x7406;&#x597D;&#x7684;&#x6570;&#x636E;&#x96C6;">&#x52A0;&#x8F7D;&#x5904;&#x7406;&#x597D;&#x7684;&#x6570;&#x636E;&#x96C6;</h2>
 <div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb2-2"><a href="#cb2-2"></a></span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="co"># load training data</span></span>
@@ -410,7 +410,7 @@
 <span id="cb2-6"><a href="#cb2-6"></a><span class="co"># load testing data</span></span>
 <span id="cb2-7"><a href="#cb2-7"></a>test <span class="op">=</span> pd.read_csv(<span class="st">&quot;data/test/test.csv&quot;</span>)</span>
 <span id="cb2-8"><a href="#cb2-8"></a>test_base <span class="op">=</span> pd.read_csv(<span class="st">&quot;data/test/base-test.csv&quot;</span>)</span></code></pre></div>
-<h2 id="将训练数据集拆分为训练集与验证集">将训练数据集拆分为训练集与验证集</h2>
+<h2 id="&#x5C06;&#x8BAD;&#x7EC3;&#x6570;&#x636E;&#x96C6;&#x62C6;&#x5206;&#x4E3A;&#x8BAD;&#x7EC3;&#x96C6;&#x4E0E;&#x9A8C;&#x8BC1;&#x96C6;">&#x5C06;&#x8BAD;&#x7EC3;&#x6570;&#x636E;&#x96C6;&#x62C6;&#x5206;&#x4E3A;&#x8BAD;&#x7EC3;&#x96C6;&#x4E0E;&#x9A8C;&#x8BC1;&#x96C6;</h2>
 <div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> OneHotEncoder, LabelEncoder</span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
 <span id="cb3-3"><a href="#cb3-3"></a><span class="im">import</span> category_encoders <span class="im">as</span> ce</span>
@@ -419,15 +419,15 @@
 <span id="cb3-6"><a href="#cb3-6"></a>all_data_X <span class="op">=</span> all_data[all_data.columns.drop([<span class="st">&quot;flag&quot;</span>])]</span>
 <span id="cb3-7"><a href="#cb3-7"></a>all_data_y <span class="op">=</span> all_data[<span class="st">&quot;flag&quot;</span>]</span>
 <span id="cb3-8"><a href="#cb3-8"></a></span>
-<span id="cb3-9"><a href="#cb3-9"></a><span class="co"># shuffle data（optional）</span></span>
+<span id="cb3-9"><a href="#cb3-9"></a><span class="co"># shuffle data&#xFF08;optional&#xFF09;</span></span>
 <span id="cb3-10"><a href="#cb3-10"></a>all_data_X, all_data_y <span class="op">=</span> shuffle(all_data_X, all_data_y)</span>
 <span id="cb3-11"><a href="#cb3-11"></a><span class="co"># test = shuffle(test)</span></span>
 <span id="cb3-12"><a href="#cb3-12"></a></span>
 <span id="cb3-13"><a href="#cb3-13"></a>train_X, valid_X, train_y, valid_y <span class="op">=</span> train_test_split(all_data_X, all_data_y, random_state<span class="op">=</span><span class="dv">66</span>)</span></code></pre></div>
-<h2 id="类型变量处理">类型变量处理</h2>
-<p>通常，本质上是分类的任何数据属性都是离散值，这些离散值属于类别或类的特定有限集合。在属性或由模型预测的变量的上下文中，通常也称为类或标签。 这些离散值本质上可以是文本或数字。这次<code>base data</code>里面的<code>行业</code>，<code>区域</code>，<code>企业类型</code>，<code>控制人类型</code>等就是属于这一类属性，我刚开始的想法是把这类属性值做一个encoding，具体什么类型的encoding可以根据属性对模型的影响程度和模型训练效果来确定。这里只给出了<code>count encoding</code>的例子，如果后面有时间我会专门写一篇处理这类属性的常用方法，做一个详细的总结，这里就不展开了。</p>
+<h2 id="&#x7C7B;&#x578B;&#x53D8;&#x91CF;&#x5904;&#x7406;">&#x7C7B;&#x578B;&#x53D8;&#x91CF;&#x5904;&#x7406;</h2>
+<p>&#x901A;&#x5E38;&#xFF0C;&#x672C;&#x8D28;&#x4E0A;&#x662F;&#x5206;&#x7C7B;&#x7684;&#x4EFB;&#x4F55;&#x6570;&#x636E;&#x5C5E;&#x6027;&#x90FD;&#x662F;&#x79BB;&#x6563;&#x503C;&#xFF0C;&#x8FD9;&#x4E9B;&#x79BB;&#x6563;&#x503C;&#x5C5E;&#x4E8E;&#x7C7B;&#x522B;&#x6216;&#x7C7B;&#x7684;&#x7279;&#x5B9A;&#x6709;&#x9650;&#x96C6;&#x5408;&#x3002;&#x5728;&#x5C5E;&#x6027;&#x6216;&#x7531;&#x6A21;&#x578B;&#x9884;&#x6D4B;&#x7684;&#x53D8;&#x91CF;&#x7684;&#x4E0A;&#x4E0B;&#x6587;&#x4E2D;&#xFF0C;&#x901A;&#x5E38;&#x4E5F;&#x79F0;&#x4E3A;&#x7C7B;&#x6216;&#x6807;&#x7B7E;&#x3002; &#x8FD9;&#x4E9B;&#x79BB;&#x6563;&#x503C;&#x672C;&#x8D28;&#x4E0A;&#x53EF;&#x4EE5;&#x662F;&#x6587;&#x672C;&#x6216;&#x6570;&#x5B57;&#x3002;&#x8FD9;&#x6B21;<code>base data</code>&#x91CC;&#x9762;&#x7684;<code>&#x884C;&#x4E1A;</code>&#xFF0C;<code>&#x533A;&#x57DF;</code>&#xFF0C;<code>&#x4F01;&#x4E1A;&#x7C7B;&#x578B;</code>&#xFF0C;<code>&#x63A7;&#x5236;&#x4EBA;&#x7C7B;&#x578B;</code>&#x7B49;&#x5C31;&#x662F;&#x5C5E;&#x4E8E;&#x8FD9;&#x4E00;&#x7C7B;&#x5C5E;&#x6027;&#xFF0C;&#x6211;&#x521A;&#x5F00;&#x59CB;&#x7684;&#x60F3;&#x6CD5;&#x662F;&#x628A;&#x8FD9;&#x7C7B;&#x5C5E;&#x6027;&#x503C;&#x505A;&#x4E00;&#x4E2A;encoding&#xFF0C;&#x5177;&#x4F53;&#x4EC0;&#x4E48;&#x7C7B;&#x578B;&#x7684;encoding&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x5C5E;&#x6027;&#x5BF9;&#x6A21;&#x578B;&#x7684;&#x5F71;&#x54CD;&#x7A0B;&#x5EA6;&#x548C;&#x6A21;&#x578B;&#x8BAD;&#x7EC3;&#x6548;&#x679C;&#x6765;&#x786E;&#x5B9A;&#x3002;&#x8FD9;&#x91CC;&#x53EA;&#x7ED9;&#x51FA;&#x4E86;<code>count encoding</code>&#x7684;&#x4F8B;&#x5B50;&#xFF0C;&#x5982;&#x679C;&#x540E;&#x9762;&#x6709;&#x65F6;&#x95F4;&#x6211;&#x4F1A;&#x4E13;&#x95E8;&#x5199;&#x4E00;&#x7BC7;&#x5904;&#x7406;&#x8FD9;&#x7C7B;&#x5C5E;&#x6027;&#x7684;&#x5E38;&#x7528;&#x65B9;&#x6CD5;&#xFF0C;&#x505A;&#x4E00;&#x4E2A;&#x8BE6;&#x7EC6;&#x7684;&#x603B;&#x7ED3;&#xFF0C;&#x8FD9;&#x91CC;&#x5C31;&#x4E0D;&#x5C55;&#x5F00;&#x4E86;&#x3002;</p>
 <h3 id="count-encoding-for-categorical-variables">Count Encoding for categorical variables</h3>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>cat_features <span class="op">=</span> [<span class="st">&quot;行业&quot;</span>, <span class="st">&quot;区域&quot;</span>, <span class="st">&quot;企业类型&quot;</span>, <span class="st">&quot;控制人类型&quot;</span>]</span>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>cat_features <span class="op">=</span> [<span class="st">&quot;&#x884C;&#x4E1A;&quot;</span>, <span class="st">&quot;&#x533A;&#x57DF;&quot;</span>, <span class="st">&quot;&#x4F01;&#x4E1A;&#x7C7B;&#x578B;&quot;</span>, <span class="st">&quot;&#x63A7;&#x5236;&#x4EBA;&#x7C7B;&#x578B;&quot;</span>]</span>
 <span id="cb4-2"><a href="#cb4-2"></a>count_enc <span class="op">=</span> ce.CountEncoder(cols<span class="op">=</span>cat_features)</span>
 <span id="cb4-3"><a href="#cb4-3"></a></span>
 <span id="cb4-4"><a href="#cb4-4"></a><span class="co"># Learn encoding from the training set</span></span>
@@ -439,9 +439,9 @@
 <span id="cb4-10"><a href="#cb4-10"></a>                         .add_suffix(<span class="st">&quot;_count&quot;</span>))</span>
 <span id="cb4-11"><a href="#cb4-11"></a>test_encoded <span class="op">=</span> test.join(count_enc.transform(test[cat_features])</span>
 <span id="cb4-12"><a href="#cb4-12"></a>                         .add_suffix(<span class="st">&quot;_count&quot;</span>))</span></code></pre></div>
-<h2 id="模型训练-1">模型训练</h2>
-<h3 id="原始数据">原始数据</h3>
-<p>为了看分类数据处理对模型性能的影响，下面的训练没有用编码后的类别数据，训练的时候会把类别属性列删掉。</p>
+<h2 id="&#x6A21;&#x578B;&#x8BAD;&#x7EC3;-1">&#x6A21;&#x578B;&#x8BAD;&#x7EC3;</h2>
+<h3 id="&#x539F;&#x59CB;&#x6570;&#x636E;">&#x539F;&#x59CB;&#x6570;&#x636E;</h3>
+<p>&#x4E3A;&#x4E86;&#x770B;&#x5206;&#x7C7B;&#x6570;&#x636E;&#x5904;&#x7406;&#x5BF9;&#x6A21;&#x578B;&#x6027;&#x80FD;&#x7684;&#x5F71;&#x54CD;&#xFF0C;&#x4E0B;&#x9762;&#x7684;&#x8BAD;&#x7EC3;&#x6CA1;&#x6709;&#x7528;&#x7F16;&#x7801;&#x540E;&#x7684;&#x7C7B;&#x522B;&#x6570;&#x636E;&#xFF0C;&#x8BAD;&#x7EC3;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x628A;&#x7C7B;&#x522B;&#x5C5E;&#x6027;&#x5217;&#x5220;&#x6389;&#x3002;</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="bu">print</span>(<span class="st">&quot;Baseline model&quot;</span>)</span>
 <span id="cb5-2"><a href="#cb5-2"></a>_ <span class="op">=</span> train_model(train_X, train_y, valid_X, valid_y, test, is_base<span class="op">=</span><span class="va">True</span>) </span></code></pre></div>
 <pre><code>Baseline model
@@ -449,8 +449,8 @@ Training model!
 precision recall fscore support:
 (1.0, 1.0, 1.0, None)
 Validation AUC score: 1.0</code></pre>
-<p>结果超出意料，就是最粗糙的数据，没有做任何特征选择和优化，就可以得到这么搞得精度，说实话我当时是怀疑自己的，反复确认了好几遍代码，发现没啥问题。🤣再次证明数据预处理的重要性，数据处理好了，最简单的模型也可以达到很好的效果。</p>
-<h3 id="count-encoding类别属性后的数据">Count Encoding类别属性后的数据</h3>
+<p>&#x7ED3;&#x679C;&#x8D85;&#x51FA;&#x610F;&#x6599;&#xFF0C;&#x5C31;&#x662F;&#x6700;&#x7C97;&#x7CD9;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x6CA1;&#x6709;&#x505A;&#x4EFB;&#x4F55;&#x7279;&#x5F81;&#x9009;&#x62E9;&#x548C;&#x4F18;&#x5316;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x5F97;&#x5230;&#x8FD9;&#x4E48;&#x641E;&#x5F97;&#x7CBE;&#x5EA6;&#xFF0C;&#x8BF4;&#x5B9E;&#x8BDD;&#x6211;&#x5F53;&#x65F6;&#x662F;&#x6000;&#x7591;&#x81EA;&#x5DF1;&#x7684;&#xFF0C;&#x53CD;&#x590D;&#x786E;&#x8BA4;&#x4E86;&#x597D;&#x51E0;&#x904D;&#x4EE3;&#x7801;&#xFF0C;&#x53D1;&#x73B0;&#x6CA1;&#x5565;&#x95EE;&#x9898;&#x3002;&#x1F923;&#x518D;&#x6B21;&#x8BC1;&#x660E;&#x6570;&#x636E;&#x9884;&#x5904;&#x7406;&#x7684;&#x91CD;&#x8981;&#x6027;&#xFF0C;&#x6570;&#x636E;&#x5904;&#x7406;&#x597D;&#x4E86;&#xFF0C;&#x6700;&#x7B80;&#x5355;&#x7684;&#x6A21;&#x578B;&#x4E5F;&#x53EF;&#x4EE5;&#x8FBE;&#x5230;&#x5F88;&#x597D;&#x7684;&#x6548;&#x679C;&#x3002;</p>
+<h3 id="count-encoding&#x7C7B;&#x522B;&#x5C5E;&#x6027;&#x540E;&#x7684;&#x6570;&#x636E;">Count Encoding&#x7C7B;&#x522B;&#x5C5E;&#x6027;&#x540E;&#x7684;&#x6570;&#x636E;</h3>
 <div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="bu">print</span>(<span class="st">&quot;Count Encoding model&quot;</span>)</span>
 <span id="cb7-2"><a href="#cb7-2"></a>_ <span class="op">=</span> train_model(train_encoded_X, train_y, valid_encoded_X, valid_y, test_encoded, is_base<span class="op">=</span><span class="va">False</span>)</span></code></pre></div>
 <pre><code>Count Encoding model
@@ -458,7 +458,7 @@ Training model!
 precision recall fscore support:
 (1.0, 1.0, 1.0, None)
 Validation AUC score: 1.0</code></pre>
-<p>两次的训练结果没有任何差别，也失去了特征优化的动力😃</p>
+<p>&#x4E24;&#x6B21;&#x7684;&#x8BAD;&#x7EC3;&#x7ED3;&#x679C;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x5DEE;&#x522B;&#xFF0C;&#x4E5F;&#x5931;&#x53BB;&#x4E86;&#x7279;&#x5F81;&#x4F18;&#x5316;&#x7684;&#x52A8;&#x529B;&#x1F603;</p>
 
         </div>
         <!-- .entry-content -->
@@ -516,7 +516,7 @@ Validation AUC score: 1.0</code></pre>
               Next Post</span>
               <div class="info">
                 <h3>
-                僵尸企业分类|数据预处理</h3>
+                僵尸企业分类 | 数据预处理</h3>
                 <hr>
               </div>
             </a>
