@@ -4,7 +4,7 @@
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">Evalution of hair and scalp condition based on microscopy image analysis | Hair Counting - part 1 | LITTLEMEEMOON</title>
+  <title itemprop="name">Hair Counting | part 1 | Evalution of hair and scalp condition based on microscopy image analysis | LITTLEMEEMOON</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -323,7 +323,7 @@
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
-      Evalution of hair and scalp condition based on microscopy image analysis | Hair Counting - part 1</h1>
+      Hair Counting | part 1 | Evalution of hair and scalp condition based on microscopy image analysis</h1>
       <p class="entry-census">
         <span>
           <a href="https://littlelittlemoon.github.io/">
@@ -350,26 +350,26 @@
         
         <div class="entry-content">
           <p><a href="https://ieeexplore.ieee.org/document/7883708" target="_blank" rel="noopener">Paper: Evalution of hair and scalp condition based on microscopy image analysis</a></p>
-<h2 id="计数方法">计数方法</h2>
+<h2 id="&#x8BA1;&#x6570;&#x65B9;&#x6CD5;">&#x8BA1;&#x6570;&#x65B9;&#x6CD5;</h2>
 <blockquote>
-<p>典型的便携式显微镜相机通常覆盖5mm x 5mm的矩形。因此，如果一根头发长于5毫米，则它必须超出矩形。基于此观察，我们对毛发计数有两个假设： 1. 每根头发由一个起点和一个终点表示; 2. 起点位于矩形内部，终点位于图像的边界上。</p>
+<p>&#x5178;&#x578B;&#x7684;&#x4FBF;&#x643A;&#x5F0F;&#x663E;&#x5FAE;&#x955C;&#x76F8;&#x673A;&#x901A;&#x5E38;&#x8986;&#x76D6;5mm x 5mm&#x7684;&#x77E9;&#x5F62;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x5982;&#x679C;&#x4E00;&#x6839;&#x5934;&#x53D1;&#x957F;&#x4E8E;5&#x6BEB;&#x7C73;&#xFF0C;&#x5219;&#x5B83;&#x5FC5;&#x987B;&#x8D85;&#x51FA;&#x77E9;&#x5F62;&#x3002;&#x57FA;&#x4E8E;&#x6B64;&#x89C2;&#x5BDF;&#xFF0C;&#x6211;&#x4EEC;&#x5BF9;&#x6BDB;&#x53D1;&#x8BA1;&#x6570;&#x6709;&#x4E24;&#x4E2A;&#x5047;&#x8BBE;&#xFF1A; 1. &#x6BCF;&#x6839;&#x5934;&#x53D1;&#x7531;&#x4E00;&#x4E2A;&#x8D77;&#x70B9;&#x548C;&#x4E00;&#x4E2A;&#x7EC8;&#x70B9;&#x8868;&#x793A;; 2. &#x8D77;&#x70B9;&#x4F4D;&#x4E8E;&#x77E9;&#x5F62;&#x5185;&#x90E8;&#xFF0C;&#x7EC8;&#x70B9;&#x4F4D;&#x4E8E;&#x56FE;&#x50CF;&#x7684;&#x8FB9;&#x754C;&#x4E0A;&#x3002;</p>
 </blockquote>
-<p><strong>头发计数</strong>：使用预处理阶段获得的<strong>骨架图像</strong>，基于上述两点假设，如果头发的骨架线的<strong>一个点在矩形内而另一点在边界上</strong>，则我们<strong>对头发进行计数</strong>。</p>
+<p><strong>&#x5934;&#x53D1;&#x8BA1;&#x6570;</strong>&#xFF1A;&#x4F7F;&#x7528;&#x9884;&#x5904;&#x7406;&#x9636;&#x6BB5;&#x83B7;&#x5F97;&#x7684;<strong>&#x9AA8;&#x67B6;&#x56FE;&#x50CF;</strong>&#xFF0C;&#x57FA;&#x4E8E;&#x4E0A;&#x8FF0;&#x4E24;&#x70B9;&#x5047;&#x8BBE;&#xFF0C;&#x5982;&#x679C;&#x5934;&#x53D1;&#x7684;&#x9AA8;&#x67B6;&#x7EBF;&#x7684;<strong>&#x4E00;&#x4E2A;&#x70B9;&#x5728;&#x77E9;&#x5F62;&#x5185;&#x800C;&#x53E6;&#x4E00;&#x70B9;&#x5728;&#x8FB9;&#x754C;&#x4E0A;</strong>&#xFF0C;&#x5219;&#x6211;&#x4EEC;<strong>&#x5BF9;&#x5934;&#x53D1;&#x8FDB;&#x884C;&#x8BA1;&#x6570;</strong>&#x3002;</p>
 <figure>
-<img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/images/EOHASCBOMIA_hair_thickness_and_counting/fig_3_Example_of_hair_counting.png" alt="" /><figcaption>fig_3_Example_of_hair_counting</figcaption>
+<img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/images/EOHASCBOMIA_hair_thickness_and_counting/fig_3_Example_of_hair_counting.png" alt><figcaption>fig_3_Example_of_hair_counting</figcaption>
 </figure>
-<p>图3示出了头发计数的示例。在图中，计数的像素用红色点标记，并且这些点叠加在原始图像上。然后，可以<strong>通过将计数的像素数除以图像尺寸来计算头发密度</strong>。</p>
-<h2 id="实验结果">实验结果</h2>
-<p>为了评估头发计数算法，我们对200个头皮图像的数据集进行了实验。 表2列出了根据我们的算法计算出的实际毛发数与估计毛发数之间的精确度/召回率。 <strong>平均准确度和召回率分别为91.35％和92.01％</strong>。即使性能相当好，精度/调用率也可以进一步提高。<strong>错误的一个关键原因是预处理和原始图像的质量</strong>。在我们的实验中，一旦图像中出现模糊点，就不可能在预处理步骤中消除所有噪音。因此，考虑到相机噪声，精度非常好。 同样，我们测试了毛孔计数算法，结果显示平均准确率约为90％。 <img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/images/EOHASCBOMIA_hair_thickness_and_counting/table_2_PRECISION_AND_RECALL_OF_HAIR_RECOGNITION.png" alt="table_2_PRECISION_AND_RECALL_OF_HAIR_RECOGNITION" /></p>
-<h2 id="总结">总结</h2>
-<h3 id="计数思路">计数思路</h3>
+<p>&#x56FE;3&#x793A;&#x51FA;&#x4E86;&#x5934;&#x53D1;&#x8BA1;&#x6570;&#x7684;&#x793A;&#x4F8B;&#x3002;&#x5728;&#x56FE;&#x4E2D;&#xFF0C;&#x8BA1;&#x6570;&#x7684;&#x50CF;&#x7D20;&#x7528;&#x7EA2;&#x8272;&#x70B9;&#x6807;&#x8BB0;&#xFF0C;&#x5E76;&#x4E14;&#x8FD9;&#x4E9B;&#x70B9;&#x53E0;&#x52A0;&#x5728;&#x539F;&#x59CB;&#x56FE;&#x50CF;&#x4E0A;&#x3002;&#x7136;&#x540E;&#xFF0C;&#x53EF;&#x4EE5;<strong>&#x901A;&#x8FC7;&#x5C06;&#x8BA1;&#x6570;&#x7684;&#x50CF;&#x7D20;&#x6570;&#x9664;&#x4EE5;&#x56FE;&#x50CF;&#x5C3A;&#x5BF8;&#x6765;&#x8BA1;&#x7B97;&#x5934;&#x53D1;&#x5BC6;&#x5EA6;</strong>&#x3002;</p>
+<h2 id="&#x5B9E;&#x9A8C;&#x7ED3;&#x679C;">&#x5B9E;&#x9A8C;&#x7ED3;&#x679C;</h2>
+<p>&#x4E3A;&#x4E86;&#x8BC4;&#x4F30;&#x5934;&#x53D1;&#x8BA1;&#x6570;&#x7B97;&#x6CD5;&#xFF0C;&#x6211;&#x4EEC;&#x5BF9;200&#x4E2A;&#x5934;&#x76AE;&#x56FE;&#x50CF;&#x7684;&#x6570;&#x636E;&#x96C6;&#x8FDB;&#x884C;&#x4E86;&#x5B9E;&#x9A8C;&#x3002; &#x8868;2&#x5217;&#x51FA;&#x4E86;&#x6839;&#x636E;&#x6211;&#x4EEC;&#x7684;&#x7B97;&#x6CD5;&#x8BA1;&#x7B97;&#x51FA;&#x7684;&#x5B9E;&#x9645;&#x6BDB;&#x53D1;&#x6570;&#x4E0E;&#x4F30;&#x8BA1;&#x6BDB;&#x53D1;&#x6570;&#x4E4B;&#x95F4;&#x7684;&#x7CBE;&#x786E;&#x5EA6;/&#x53EC;&#x56DE;&#x7387;&#x3002; <strong>&#x5E73;&#x5747;&#x51C6;&#x786E;&#x5EA6;&#x548C;&#x53EC;&#x56DE;&#x7387;&#x5206;&#x522B;&#x4E3A;91.35&#xFF05;&#x548C;92.01&#xFF05;</strong>&#x3002;&#x5373;&#x4F7F;&#x6027;&#x80FD;&#x76F8;&#x5F53;&#x597D;&#xFF0C;&#x7CBE;&#x5EA6;/&#x8C03;&#x7528;&#x7387;&#x4E5F;&#x53EF;&#x4EE5;&#x8FDB;&#x4E00;&#x6B65;&#x63D0;&#x9AD8;&#x3002;<strong>&#x9519;&#x8BEF;&#x7684;&#x4E00;&#x4E2A;&#x5173;&#x952E;&#x539F;&#x56E0;&#x662F;&#x9884;&#x5904;&#x7406;&#x548C;&#x539F;&#x59CB;&#x56FE;&#x50CF;&#x7684;&#x8D28;&#x91CF;</strong>&#x3002;&#x5728;&#x6211;&#x4EEC;&#x7684;&#x5B9E;&#x9A8C;&#x4E2D;&#xFF0C;&#x4E00;&#x65E6;&#x56FE;&#x50CF;&#x4E2D;&#x51FA;&#x73B0;&#x6A21;&#x7CCA;&#x70B9;&#xFF0C;&#x5C31;&#x4E0D;&#x53EF;&#x80FD;&#x5728;&#x9884;&#x5904;&#x7406;&#x6B65;&#x9AA4;&#x4E2D;&#x6D88;&#x9664;&#x6240;&#x6709;&#x566A;&#x97F3;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x8003;&#x8651;&#x5230;&#x76F8;&#x673A;&#x566A;&#x58F0;&#xFF0C;&#x7CBE;&#x5EA6;&#x975E;&#x5E38;&#x597D;&#x3002; &#x540C;&#x6837;&#xFF0C;&#x6211;&#x4EEC;&#x6D4B;&#x8BD5;&#x4E86;&#x6BDB;&#x5B54;&#x8BA1;&#x6570;&#x7B97;&#x6CD5;&#xFF0C;&#x7ED3;&#x679C;&#x663E;&#x793A;&#x5E73;&#x5747;&#x51C6;&#x786E;&#x7387;&#x7EA6;&#x4E3A;90&#xFF05;&#x3002; <img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/images/EOHASCBOMIA_hair_thickness_and_counting/table_2_PRECISION_AND_RECALL_OF_HAIR_RECOGNITION.png" alt="table_2_PRECISION_AND_RECALL_OF_HAIR_RECOGNITION"></p>
+<h2 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</h2>
+<h3 id="&#x8BA1;&#x6570;&#x601D;&#x8DEF;">&#x8BA1;&#x6570;&#x601D;&#x8DEF;</h3>
 <ol type="1">
-<li>将图片边缘看作一矩形；</li>
-<li>对满足“<strong>头发由一个起点和一个终点表示，且起点位于矩形内部，终点位于图像的边界上</strong>”条件的头发进行计数；</li>
-<li>使用通过细化操作获得的<strong>头发骨架图像</strong>对满足条件的头发进行计数；</li>
-<li>通过将<strong>计数的像素数</strong>除以<strong>图像尺寸</strong>来计算<strong>头发密度</strong>。</li>
+<li>&#x5C06;&#x56FE;&#x7247;&#x8FB9;&#x7F18;&#x770B;&#x4F5C;&#x4E00;&#x77E9;&#x5F62;&#xFF1B;</li>
+<li>&#x5BF9;&#x6EE1;&#x8DB3;&#x201C;<strong>&#x5934;&#x53D1;&#x7531;&#x4E00;&#x4E2A;&#x8D77;&#x70B9;&#x548C;&#x4E00;&#x4E2A;&#x7EC8;&#x70B9;&#x8868;&#x793A;&#xFF0C;&#x4E14;&#x8D77;&#x70B9;&#x4F4D;&#x4E8E;&#x77E9;&#x5F62;&#x5185;&#x90E8;&#xFF0C;&#x7EC8;&#x70B9;&#x4F4D;&#x4E8E;&#x56FE;&#x50CF;&#x7684;&#x8FB9;&#x754C;&#x4E0A;</strong>&#x201D;&#x6761;&#x4EF6;&#x7684;&#x5934;&#x53D1;&#x8FDB;&#x884C;&#x8BA1;&#x6570;&#xFF1B;</li>
+<li>&#x4F7F;&#x7528;&#x901A;&#x8FC7;&#x7EC6;&#x5316;&#x64CD;&#x4F5C;&#x83B7;&#x5F97;&#x7684;<strong>&#x5934;&#x53D1;&#x9AA8;&#x67B6;&#x56FE;&#x50CF;</strong>&#x5BF9;&#x6EE1;&#x8DB3;&#x6761;&#x4EF6;&#x7684;&#x5934;&#x53D1;&#x8FDB;&#x884C;&#x8BA1;&#x6570;&#xFF1B;</li>
+<li>&#x901A;&#x8FC7;&#x5C06;<strong>&#x8BA1;&#x6570;&#x7684;&#x50CF;&#x7D20;&#x6570;</strong>&#x9664;&#x4EE5;<strong>&#x56FE;&#x50CF;&#x5C3A;&#x5BF8;</strong>&#x6765;&#x8BA1;&#x7B97;<strong>&#x5934;&#x53D1;&#x5BC6;&#x5EA6;</strong>&#x3002;</li>
 </ol>
-<h1 id="参考文献">参考文献</h1>
+<h1 id="&#x53C2;&#x8003;&#x6587;&#x732E;">&#x53C2;&#x8003;&#x6587;&#x732E;</h1>
 <ol type="1">
 <li><a href="https://ieeexplore.ieee.org/document/7883708" target="_blank" rel="noopener">Evalution of hair and scalp condition based on microscopy image analysis</a></li>
 </ol>
@@ -412,7 +412,7 @@
               Previous Post</span>
               <div class="info">
                 <h3>
-                An Unsupervised Hair Segmentation and Counting System in Microscopy Images | Hair Counting - part 2</h3>
+                Hair Counting | part 2 | An Unsupervised Hair Segmentation and Counting System in Microscopy Images</h3>
                 <hr>
               </div>
             </a>
