@@ -4,7 +4,7 @@
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">archive_a: 2020 | LITTLEMEEMOON</title>
+  <title itemprop="name">Leetcode Note in Apri 2020 | part 4 | day 22-28 | (二) | LITTLEMEEMOON</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -313,449 +313,245 @@
   </div>
 </header>
 
-      <style type="text/css">
-  #contentss {
-    position: relative;
-    width: 800px;
-    height: 250px;
-    max-height: 1200px;
-    margin-bottom: 15px;
-    margin-top: 15px;
-    text-align: center;
-    border: 0;
-    border-radius: 10px;
-    color: rgba(0, 0, 0, .87);
-    background: #fff 50%;
-    background-size: cover;
-    box-shadow: 0 15px 35px rgba(50, 50, 93, .1), 0 5px 15px rgba(0, 0, 0, .07);
-    margin: 0 auto;
-  }
-</style>
-<div class="blank" style="padding-top: 75px;">
-</div>
-<div id="content" class="site-content">
-  <div id="main">
-    <header class="page-header">
-      <h1 class="cat-title">
-        归档</h1>
-      <span class="cat-des">
-        <p>
-          Archives</p>
-      </span>
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/bears/34.jpg);" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/bears/34.jpg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      Leetcode Note in Apri 2020 | part 4 | day 22-28 | (二)</h1>
+      <p class="entry-census">
+        <span>
+          <a href="https://littlelittlemoon.github.io/">
+            <img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/custom/avatar-3.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="https://littlelittlemoon.github.io/">Kayleen</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2020-4-30<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
     </header>
-    <div id="main-part">
-      <article class="art">
-        <div class="art-main">
-          <div class="art-content">
-            <!-- <div id="contentss">
-              <div class="container archive-calendar">
-    <div class="card">
-        <div id="post-calendar" class="card-content"></div>
-    </div>
-</div>
+  </div>
 
-<script type="text/javascript" src="/js/echarts.min.js"></script>
-<script type="text/javascript">
-    let myChart = echarts.init(document.getElementById('post-calendar'));
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h1 id="&#x5199;&#x5728;&#x524D;&#x9762;&#x7684;&#x8BDD;"><a class="markdownIt-Anchor" href="#&#x5199;&#x5728;&#x524D;&#x9762;&#x7684;&#x8BDD;"></a> &#x5199;&#x5728;&#x524D;&#x9762;&#x7684;&#x8BDD;</h1>
+<p>&#x8FD9;&#x7BC7;&#x6587;&#x7AE0;&#x7684;&#x4E24;&#x9053;&#x9898;&#x90FD;&#x662F;&#x5173;&#x4E8E;&#x6811;&#x7684;&#xFF0C;&#x5176;&#x4E2D;&#x6709;&#x4E00;&#x9053;&#x5BF9;&#x6211;&#x6765;&#x8BF4;&#x5F88;&#x6709;&#x96BE;&#x5EA6;&#xFF08;/&#x5C0F;&#x58F0;&#xFF1A;&#x8FDE;&#x9898;&#x90FD;&#x6CA1;&#x8BFB;&#x61C2;&#x1F641;&#xFF09;&#x3002;&#x6765;&#x5427;&#xFF0C;&#x4E58;&#x6B64;&#x673A;&#x4F1A;&#x597D;&#x597D;&#x7406;&#x4E00;&#x7406; ~ &#x1F4AA;</p>
+<h1 id="check-if-a-string-is-a-valid-sequence-from-root-to-leaves-path-in-a-binary-tree"><a class="markdownIt-Anchor" href="#check-if-a-string-is-a-valid-sequence-from-root-to-leaves-path-in-a-binary-tree"></a> Check If a String Is a Valid Sequence from Root to Leaves Path in a Binary Tree</h1>
+<blockquote>
+<p>Given a binary tree where each path going from the root to any leaf form a valid sequence, check if a given string is a valid sequence in such binary tree.<br>
+We get the given string from the concatenation of an array of integers arr and the concatenation of all values of the nodes along a path results in a sequence in the given binary tree.<br>
+<strong>Example 1</strong>:<br>
+![01](<a href="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/images/Leetcode/binary_tree_4.png" target="_blank" rel="noopener">https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/images/Leetcode/binary_tree_4.png</a><br>
+<strong>Input</strong>: root = [0,1,0,0,1,0,null,null,1,0,0], arr = [0,1,0,1]<br>
+<strong>Output</strong>: true<br>
+<strong>Explanation</strong>: The path 0 -&gt; 1 -&gt; 0 -&gt; 1 is a valid sequence (green color in the figure).<br>
+Other valid sequences are:<br>
+0 -&gt; 1 -&gt; 1 -&gt; 0<br>
+0 -&gt; 0 -&gt; 0 even a sequence.<br>
+<em>Example 2</em>*:<br>
+![02](<a href="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/images/Leetcode/binary_tree_5.png" target="_blank" rel="noopener">https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/images/Leetcode/binary_tree_5.png</a><br>
+<strong>Input</strong>: root = [0,1,0,0,1,0,null,null,1,0,0], arr = [0,0,1]<br>
+<strong>Output</strong>: false<br>
+<strong>Explanation</strong>: The path 0 -&gt; 0 -&gt; 1 does not exist, therefore it is not even a sequence.<br>
+<em>Example 3</em>*:<br>
+![03](<a href="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/images/Leetcode/binary_tree_6.png" target="_blank" rel="noopener">https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/images/Leetcode/binary_tree_6.png</a><br>
+<strong>Input</strong>: root = [0,1,0,0,1,0,null,null,1,0,0], arr = [0,1,1]<br>
+<strong>Output</strong>: false<br>
+<strong>Explanation</strong>: The path 0 -&gt; 1 -&gt; 1 is a sequence, but it is not a valid sequence.</p>
+</blockquote>
+<h2 id="solution"><a class="markdownIt-Anchor" href="#solution"></a> Solution</h2>
+<p>&#x8FD9;&#x4E2A;&#x9898;&#x5E94;&#x8BE5;&#x7B97;&#x662F;&#x5E38;&#x89C4;&#x9898;&#xFF0C;&#x76F4;&#x63A5;&#x7528;&#x6DF1;&#x5EA6;&#x4F18;&#x5148;&#x904D;&#x5386;&#x7B97;&#x6CD5;&#x904D;&#x5386;&#x6811;&#xFF0C;&#x6CE8;&#x610F;&#x4E00;&#x4E0B;&#x9012;&#x5F52;&#x505C;&#x6B62;&#x6761;&#x4EF6;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#xFF0C;&#x5177;&#x4F53;&#x770B;&#x4EE3;&#x7801;&#x6CE8;&#x91CA;&#x5427;&#x3002;</p>
+<pre class="highlight"><code class="python"><span class="hljs-comment"># Definition for a binary tree node.</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TreeNode</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, val=<span class="hljs-number">0</span>, left=None, right=None)</span>:</span>
+        self.val = val
+        self.left = left
+        self.right = right
+        
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">isValidSequence</span><span class="hljs-params">(self, root: TreeNode, arr: List[int])</span> -&gt; bool:</span>
+        n = len(arr) - <span class="hljs-number">1</span>
+        
+        <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">isValid</span><span class="hljs-params">(root, arr, i)</span>:</span>
+            <span class="hljs-comment"># &#x82E5;&#x5F53;&#x524D;&#x5230;&#x8FBE;&#x53F6;&#x7ED3;&#x70B9;&#x5E76;&#x4E14;&#x904D;&#x5386;&#x5230;&#x6570;&#x7EC4;&#x7684;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#xFF0C;&#x5219;&#x6BD4;&#x8F83;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x662F;&#x5426;&#x76F8;&#x7B49;</span>
+            <span class="hljs-keyword">if</span> root <span class="hljs-keyword">and</span> i == n <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span>(root.left) <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span>(root.right):
+                <span class="hljs-keyword">return</span> root.val == arr[i]
 
-    
+            <span class="hljs-comment"># &#x82E5;&#x6570;&#x7EC4;&#x672A;&#x904D;&#x5386;&#x5230;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x4E14;&#x6811;&#x904D;&#x5386;&#x5B8C;&#x6240;&#x6709;&#x7ED3;&#x70B9;&#xFF0C;</span>
+            <span class="hljs-comment"># &#x6216;&#x8005;&#x6570;&#x7EC4;&#x904D;&#x5386;&#x5B8C;&#x6240;&#x6709;&#x5143;&#x7D20;&#xFF0C;&#x4F46;&#x6811;&#x8FD8;&#x6CA1;&#x5230;&#x53F6;&#x5B50;&#x8282;&#x70B9;&#xFF0C;&#x5219;&#x65E0;&#x6548;</span>
+            <span class="hljs-keyword">if</span> (i &lt;= n <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span>(root)) <span class="hljs-keyword">or</span> (i &gt; n <span class="hljs-keyword">and</span> root):
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>
+            
+            <span class="hljs-comment"># &#x5F53;&#x524D;&#x8282;&#x70B9;&#x5BF9;&#x5E94;&#x7684;&#x6570;&#x5B57;&#x4E0D;&#x7B49;&#x4E8E;&#x6570;&#x7EC4;&#x76F8;&#x5E94;&#x4F4D;&#x7F6E;&#x7684;&#x6570;&#x5B57;&#xFF0C;&#x65E0;&#x6548;</span>
+            <span class="hljs-keyword">if</span> root.val != arr[i]:
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>
 
-    let option = {
-        title: {
-            top: 0,
-            text: 'Post Calendar',
-            left: 'center',
-            textStyle: {
-                color: '#3C4858'
-            }
-        },
-        tooltip: {
-            padding: 10,
-            backgroundColor: '#555',
-            borderColor: '#777',
-            borderWidth: 1,
-            formatter: function (obj) {
-                var value = obj.value;
-                return '<div style="font-size: 14px;">' + value[0] + '：' + value[1] + '</div>';
-            }
-        },
-        visualMap: {
-            show: true,
-            showLabel: true,
-            categories: [0, 1, 2, 3, 4],
-            calculable: true,
-            inRange: {
-                symbol: 'rect',
-                color: ['#ebedf0', '#c6e48b', '#7bc96f', '#239a3b', '#196127']
-            },
-            itemWidth: 12,
-            itemHeight: 12,
-            orient: 'horizontal',
-            left: 'center',
-            bottom: 0
-        },
-        calendar: [{
-            left: 'center',
-            range: ["2019-04-30", "2020-04-30"],
-            cellSize: [13, 13],
-            splitLine: {
-                show: false
-            },
-            itemStyle: {
-                color: '#196127',
-                borderColor: '#fff',
-                borderWidth: 2
-            },
-            yearLabel: {
-                show: false
-            },
-            monthLabel: {
-                nameMap: 'en',
-                fontSize: 11
-            },
-            dayLabel: {
-                formatter: '{start}  1st',
-                nameMap: 'en',
-                fontSize: 11
-            }
-        }],
-        series: [{
-            type: 'heatmap',
-            coordinateSystem: 'calendar',
-            calendarIndex: 0,
-            data: [["2019-04-30", 0], ["2019-05-01", 0], ["2019-05-02", 0], ["2019-05-03", 0], ["2019-05-04", 0], ["2019-05-05", 0], ["2019-05-06", 0], ["2019-05-07", 0], ["2019-05-08", 0], ["2019-05-09", 0], ["2019-05-10", 0], ["2019-05-11", 0], ["2019-05-12", 0], ["2019-05-13", 0], ["2019-05-14", 0], ["2019-05-15", 0], ["2019-05-16", 0], ["2019-05-17", 0], ["2019-05-18", 0], ["2019-05-19", 0], ["2019-05-20", 0], ["2019-05-21", 0], ["2019-05-22", 0], ["2019-05-23", 0], ["2019-05-24", 0], ["2019-05-25", 0], ["2019-05-26", 0], ["2019-05-27", 0], ["2019-05-28", 0], ["2019-05-29", 0], ["2019-05-30", 0], ["2019-05-31", 0], ["2019-06-01", 0], ["2019-06-02", 0], ["2019-06-03", 0], ["2019-06-04", 0], ["2019-06-05", 0], ["2019-06-06", 0], ["2019-06-07", 0], ["2019-06-08", 0], ["2019-06-09", 0], ["2019-06-10", 0], ["2019-06-11", 0], ["2019-06-12", 0], ["2019-06-13", 0], ["2019-06-14", 0], ["2019-06-15", 0], ["2019-06-16", 0], ["2019-06-17", 0], ["2019-06-18", 0], ["2019-06-19", 0], ["2019-06-20", 0], ["2019-06-21", 0], ["2019-06-22", 0], ["2019-06-23", 0], ["2019-06-24", 0], ["2019-06-25", 0], ["2019-06-26", 0], ["2019-06-27", 0], ["2019-06-28", 0], ["2019-06-29", 0], ["2019-06-30", 0], ["2019-07-01", 0], ["2019-07-02", 0], ["2019-07-03", 0], ["2019-07-04", 0], ["2019-07-05", 0], ["2019-07-06", 0], ["2019-07-07", 0], ["2019-07-08", 0], ["2019-07-09", 0], ["2019-07-10", 0], ["2019-07-11", 0], ["2019-07-12", 0], ["2019-07-13", 0], ["2019-07-14", 0], ["2019-07-15", 0], ["2019-07-16", 0], ["2019-07-17", 0], ["2019-07-18", 0], ["2019-07-19", 0], ["2019-07-20", 0], ["2019-07-21", 0], ["2019-07-22", 0], ["2019-07-23", 0], ["2019-07-24", 0], ["2019-07-25", 0], ["2019-07-26", 0], ["2019-07-27", 0], ["2019-07-28", 0], ["2019-07-29", 0], ["2019-07-30", 0], ["2019-07-31", 0], ["2019-08-01", 0], ["2019-08-02", 0], ["2019-08-03", 0], ["2019-08-04", 0], ["2019-08-05", 0], ["2019-08-06", 0], ["2019-08-07", 0], ["2019-08-08", 0], ["2019-08-09", 0], ["2019-08-10", 0], ["2019-08-11", 0], ["2019-08-12", 0], ["2019-08-13", 0], ["2019-08-14", 0], ["2019-08-15", 0], ["2019-08-16", 0], ["2019-08-17", 0], ["2019-08-18", 0], ["2019-08-19", 0], ["2019-08-20", 0], ["2019-08-21", 0], ["2019-08-22", 0], ["2019-08-23", 0], ["2019-08-24", 0], ["2019-08-25", 0], ["2019-08-26", 0], ["2019-08-27", 0], ["2019-08-28", 0], ["2019-08-29", 0], ["2019-08-30", 0], ["2019-08-31", 0], ["2019-09-01", 0], ["2019-09-02", 0], ["2019-09-03", 0], ["2019-09-04", 0], ["2019-09-05", 0], ["2019-09-06", 0], ["2019-09-07", 0], ["2019-09-08", 0], ["2019-09-09", 0], ["2019-09-10", 0], ["2019-09-11", 0], ["2019-09-12", 0], ["2019-09-13", 0], ["2019-09-14", 0], ["2019-09-15", 0], ["2019-09-16", 0], ["2019-09-17", 0], ["2019-09-18", 0], ["2019-09-19", 0], ["2019-09-20", 0], ["2019-09-21", 0], ["2019-09-22", 0], ["2019-09-23", 0], ["2019-09-24", 0], ["2019-09-25", 0], ["2019-09-26", 0], ["2019-09-27", 0], ["2019-09-28", 0], ["2019-09-29", 0], ["2019-09-30", 0], ["2019-10-01", 0], ["2019-10-02", 0], ["2019-10-03", 0], ["2019-10-04", 0], ["2019-10-05", 0], ["2019-10-06", 0], ["2019-10-07", 0], ["2019-10-08", 0], ["2019-10-09", 0], ["2019-10-10", 0], ["2019-10-11", 0], ["2019-10-12", 0], ["2019-10-13", 0], ["2019-10-14", 0], ["2019-10-15", 0], ["2019-10-16", 0], ["2019-10-17", 0], ["2019-10-18", 0], ["2019-10-19", 0], ["2019-10-20", 0], ["2019-10-21", 0], ["2019-10-22", 0], ["2019-10-23", 0], ["2019-10-24", 0], ["2019-10-25", 0], ["2019-10-26", 0], ["2019-10-27", 0], ["2019-10-28", 0], ["2019-10-29", 0], ["2019-10-30", 0], ["2019-10-31", 0], ["2019-11-01", 0], ["2019-11-02", 0], ["2019-11-03", 0], ["2019-11-04", 0], ["2019-11-05", 0], ["2019-11-06", 0], ["2019-11-07", 0], ["2019-11-08", 0], ["2019-11-09", 0], ["2019-11-10", 0], ["2019-11-11", 0], ["2019-11-12", 0], ["2019-11-13", 0], ["2019-11-14", 0], ["2019-11-15", 0], ["2019-11-16", 0], ["2019-11-17", 0], ["2019-11-18", 0], ["2019-11-19", 0], ["2019-11-20", 0], ["2019-11-21", 0], ["2019-11-22", 0], ["2019-11-23", 0], ["2019-11-24", 0], ["2019-11-25", 0], ["2019-11-26", 0], ["2019-11-27", 0], ["2019-11-28", 0], ["2019-11-29", 0], ["2019-11-30", 0], ["2019-12-01", 0], ["2019-12-02", 0], ["2019-12-03", 0], ["2019-12-04", 0], ["2019-12-05", 0], ["2019-12-06", 0], ["2019-12-07", 0], ["2019-12-08", 0], ["2019-12-09", 0], ["2019-12-10", 0], ["2019-12-11", 0], ["2019-12-12", 0], ["2019-12-13", 0], ["2019-12-14", 0], ["2019-12-15", 0], ["2019-12-16", 0], ["2019-12-17", 0], ["2019-12-18", 0], ["2019-12-19", 0], ["2019-12-20", 0], ["2019-12-21", 0], ["2019-12-22", 0], ["2019-12-23", 0], ["2019-12-24", 1], ["2019-12-25", 0], ["2019-12-26", 0], ["2019-12-27", 0], ["2019-12-28", 1], ["2019-12-29", 1], ["2019-12-30", 0], ["2019-12-31", 0], ["2020-01-01", 0], ["2020-01-02", 0], ["2020-01-03", 0], ["2020-01-04", 0], ["2020-01-05", 0], ["2020-01-06", 0], ["2020-01-07", 0], ["2020-01-08", 0], ["2020-01-09", 0], ["2020-01-10", 0], ["2020-01-11", 0], ["2020-01-12", 0], ["2020-01-13", 0], ["2020-01-14", 0], ["2020-01-15", 0], ["2020-01-16", 0], ["2020-01-17", 0], ["2020-01-18", 0], ["2020-01-19", 0], ["2020-01-20", 0], ["2020-01-21", 0], ["2020-01-22", 0], ["2020-01-23", 0], ["2020-01-24", 0], ["2020-01-25", 0], ["2020-01-26", 0], ["2020-01-27", 0], ["2020-01-28", 0], ["2020-01-29", 0], ["2020-01-30", 0], ["2020-01-31", 0], ["2020-02-01", 0], ["2020-02-02", 0], ["2020-02-03", 0], ["2020-02-04", 0], ["2020-02-05", 0], ["2020-02-06", 0], ["2020-02-07", 0], ["2020-02-08", 0], ["2020-02-09", 0], ["2020-02-10", 0], ["2020-02-11", 0], ["2020-02-12", 0], ["2020-02-13", 0], ["2020-02-14", 0], ["2020-02-15", 0], ["2020-02-16", 0], ["2020-02-17", 0], ["2020-02-18", 0], ["2020-02-19", 0], ["2020-02-20", 0], ["2020-02-21", 0], ["2020-02-22", 0], ["2020-02-23", 0], ["2020-02-24", 0], ["2020-02-25", 0], ["2020-02-26", 0], ["2020-02-27", 0], ["2020-02-28", 0], ["2020-02-29", 0], ["2020-03-01", 0], ["2020-03-02", 0], ["2020-03-03", 0], ["2020-03-04", 0], ["2020-03-05", 0], ["2020-03-06", 0], ["2020-03-07", 0], ["2020-03-08", 0], ["2020-03-09", 0], ["2020-03-10", 0], ["2020-03-11", 0], ["2020-03-12", 0], ["2020-03-13", 0], ["2020-03-14", 0], ["2020-03-15", 0], ["2020-03-16", 0], ["2020-03-17", 0], ["2020-03-18", 0], ["2020-03-19", 0], ["2020-03-20", 0], ["2020-03-21", 1], ["2020-03-22", 0], ["2020-03-23", 0], ["2020-03-24", 0], ["2020-03-25", 0], ["2020-03-26", 0], ["2020-03-27", 0], ["2020-03-28", 0], ["2020-03-29", 0], ["2020-03-30", 0], ["2020-03-31", 0], ["2020-04-01", 1], ["2020-04-02", 0], ["2020-04-03", 0], ["2020-04-04", 0], ["2020-04-05", 0], ["2020-04-06", 0], ["2020-04-07", 0], ["2020-04-08", 1], ["2020-04-09", 0], ["2020-04-10", 1], ["2020-04-11", 1], ["2020-04-12", 0], ["2020-04-13", 0], ["2020-04-14", 0], ["2020-04-15", 1], ["2020-04-16", 1], ["2020-04-17", 0], ["2020-04-18", 1], ["2020-04-19", 1], ["2020-04-20", 0], ["2020-04-21", 1], ["2020-04-22", 0], ["2020-04-23", 0], ["2020-04-24", 0], ["2020-04-25", 0], ["2020-04-26", 0], ["2020-04-27", 0], ["2020-04-28", 1], ["2020-04-29", 1], ["2020-04-30", 1]]
-        }]
+            <span class="hljs-comment"># &#x5982;&#x679C;&#x6570;&#x7EC4;&#x672A;&#x904D;&#x5386;&#x5B8C;&#x6240;&#x6709;&#x5143;&#x7D20;&#xFF0C;&#x5219;&#x7EE7;&#x7EED;&#x6BD4;&#x8F83;</span>
+            
+            left = isValid(root.left, arr, i+<span class="hljs-number">1</span>) <span class="hljs-keyword">if</span> i &lt; n <span class="hljs-keyword">else</span> <span class="hljs-literal">False</span>
+            
+            <span class="hljs-comment"># &#x5982;&#x679C;&#x5DE6;&#x5B50;&#x6811;&#x6EE1;&#x8DB3;&#x6761;&#x4EF6;&#xFF0C;&#x5219;&#x8FD4;&#x56DE;&#x7ED3;&#x679C;&#xFF0C;&#x5426;&#x5219;&#x904D;&#x5386;&#x53F3;&#x5B50;&#x6811;&#x662F;&#x5426;&#x6EE1;&#x8DB3;&#x6761;&#x4EF6;</span>
+            <span class="hljs-keyword">if</span> left:
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span>
+            right = isValid(root.right, arr, i+<span class="hljs-number">1</span>) <span class="hljs-keyword">if</span> i &lt; n <span class="hljs-keyword">else</span> <span class="hljs-literal">False</span>
+            
+            <span class="hljs-keyword">return</span> right
+        
+        <span class="hljs-keyword">return</span> isValid(root, arr, <span class="hljs-number">0</span>)
+        
+</code></pre>
+<h1 id="binary-tree-maximum-path-sum"><a class="markdownIt-Anchor" href="#binary-tree-maximum-path-sum"></a> Binary Tree Maximum Path Sum</h1>
+<p>Given a non-empty binary tree, find the maximum path sum.<br>
+For this problem, a path is defined as any sequence of nodes from some starting node to any node in the tree along the parent-child connections. The path must contain at least one node and does not need to go through the root.<br>
+<strong>Example 1</strong>:<br>
+<strong>Input</strong>: [1,2,3]</p>
+<pre><code>   1  
+  / \  
+ 2   3  
+</code></pre>
+<p><strong>Output</strong>: 6</p>
+<p><strong>Example 2</strong>:</p>
+<p><strong>Input</strong>: [-10,9,20,null,null,15,7]</p>
+<pre><code>  -10
+  /  \
+ 9   20
+    /  \
+   15   7
+</code></pre>
+<p><strong>Output</strong>: 42</p>
+<h2 id="solution-2"><a class="markdownIt-Anchor" href="#solution-2"></a> Solution</h2>
+<p>&#x5BF9;&#xFF0C;&#x5C31;&#x662F;&#x5B83;&#xFF0C;&#x4E0D;&#x77E5;&#x9053;&#x6765;&#x770B;&#x5230;&#x7684;&#x5C0F;&#x4F19;&#x4F34;&#x80FD;&#x4E0D;&#x80FD;&#x770B;&#x61C2;&#x8FD9;&#x9053;&#x9898;&#x7684;&#x610F;&#x601D;&#xFF0C;&#x5982;&#x679C;&#x4E00;&#x6B21;&#x5C31;&#x770B;&#x61C2;&#x4E86;&#xFF0C;&#x6211;&#x771F;&#x7684;&#x8981;&#x7ED9;&#x4F60;&#x70B9;&#x4E2A;&#x8D5E;&#x1F44D;&#xFF0C;&#x53CD;&#x6B63;&#x6211;&#x662F;&#x6CA1;&#x770B;&#x61C2;&#x3002;&#x3002;&#x6700;&#x540E;&#x53BB;&#x8BA8;&#x8BBA;&#x533A;&#x6C42;&#x52A9;&#xFF0C;&#x624D;&#x6162;&#x6162;&#x641E;&#x61C2;&#x662F;&#x8981;&#x6C42;&#x4E2A;&#x5565;&#x3002;&#x4F46;&#x662F;&#x6211;&#x4ECA;&#x5929;&#x6709;&#x70B9;&#x5FD9;&#xFF0C;&#x4E0B;&#x6B21;&#x518D;&#x6765;&#x8BE6;&#x7EC6;&#x66F4;&#x65B0;&#x8FD9;&#x9053;&#x9898;&#x7684;&#x601D;&#x8DEF;~~</p>
+<pre class="highlight"><code class="python"><span class="hljs-comment"># Definition for a binary tree node.</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TreeNode</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, val=<span class="hljs-number">0</span>, left=None, right=None)</span>:</span>
+        self.val = val
+        self.left = left
+        self.right = right
+        
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">maxPathSum</span><span class="hljs-params">(self, root: TreeNode)</span> -&gt; int:</span>
+        self.res = float(<span class="hljs-string">&quot;-inf&quot;</span>)
+        <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">helper</span><span class="hljs-params">(root)</span>:</span>
+            <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> root: <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>
+            
+            <span class="hljs-comment"># &#x5DE6;&#x8FB9;&#x6700;&#x5927;&#x503C;</span>
+            left = helper(root.left)
+            
+            <span class="hljs-comment"># &#x53F3;&#x8FB9;&#x6700;&#x5927;&#x503C;</span>
+            right = helper(root.right)
+            
+            <span class="hljs-comment"># &#x548C;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x6BD4;&#x8F83;</span>
+            self.res = max(left + right + root.val, self.res)
+            
+            <span class="hljs-comment"># &gt;0 &#x8BF4;&#x660E;&#x90FD;&#x80FD;&#x4F7F;&#x8DEF;&#x5F84;&#x53D8;&#x5927;</span>
+            <span class="hljs-keyword">return</span> max(<span class="hljs-number">0</span>, max(left,  right) + root.val)
+        
+        helper(root)
+        <span class="hljs-keyword">return</span> self.res 
+</code></pre>
+<h1 id="updating"><a class="markdownIt-Anchor" href="#updating"></a> Updating</h1>
+<p>&#x672A;&#x5B8C;&#x5F85;&#x7EED;&#x2026;</p>
 
-    };
-
-    myChart.setOption(option);
-</script>
-
-            </div> -->
-            <div>
-              <style type="text/css">
-    #category-radar {
-        width: 100%;
-        height: 360px;
-    }
-</style>
-
-<div class="container" data-aos="fade-up">
-    <div class="card">
-        <div id="category-radar" class="card-content"></div>
-    </div>
-</div>
-<script type="text/javascript" src="/js/echarts.min.js"></script>
-<script type="text/javascript">
-    let radarChart = echarts.init(document.getElementById('category-radar'));
-
-    
-
-    let option = {
-        title: {
-            left: 'center',
-            text: '文章分类雷达图',
-            textStyle: {
-                fontWeight: 500,
-                fontSize: 22
-            }
-        },
-        tooltip: {},
-        radar: {
-            name: {
-                textStyle: {
-                    color: '#3C4858'
-                }
-            },
-            indicator: [{"name":"Technology","max":16},{"name":"Paper Smash","max":16},{"name":"Machine Learning","max":16},{"name":"Coding","max":16},{"name":"Imbalanced Data Modeling","max":16},{"name":"Leetcode","max":16},{"name":"Modeling","max":16},{"name":"Data pre-processing","max":16},{"name":"Repost","max":16},{"name":"Blockchain","max":16},{"name":"Consensus Mechanisms","max":16}],
-            nameGap: 5,
-            center: ['50%','55%'],
-            radius: '66%'
-        },
-        series: [{
-            type: 'radar',
-            color: ['#3ecf8e'],
-            itemStyle: {normal: {areaStyle: {type: 'default'}}},
-            data : [
-                {
-                    value : [15,4,3,8,1,8,1,1,1,1,1],
-                    name : 'categoryNumber'
-                }
-            ]
-        }]
-    };
-
-    radarChart.setOption(option);
-</script>
-
-            </div>
-            <div id="archives">
-              <p style="text-align:right;">
-                [<span id="al_expand_collapse" style="cursor: s-resize;">
-                  全部展开/收缩</span>
-                ]</p>
-              
-              
-              
-              
-              
-              
-              <h3 class="al_year">2020年</h3>
-              
-              
-              
-              <ul class="al_mon_list">
-                <li class="al_li">
-                  <span class="al_mon" style="cursor: s-resize;">
-                    04月(<span id="post-num">
-                      3</span>
-                    篇文章)</span>
-                  <ul class="al_post_list" style="">
-                    
-                    <li>
-                      <a href="/2020/04/30/Technology/Leetcode-Note-in-Apri-2020-part-4-day-29-30-(%E4%B8%89)/">
-                        <span style="color:#0bf;">
-                          30日22:15:42</span>
-                        Leetcode Note in Apri 2020 | part 4 | day 22-28 | (二)
-                      </a>
-                    </li>
-                    
-              
-              
-              
-              
-              
-                    <li>
-                      <a href="/2020/04/29/Technology/Leetcode-Note-in-Apri-2020-part-4-day-22-28-(%E4%BA%8C)/">
-                        <span style="color:#0bf;">
-                          29日17:35:23</span>
-                        Leetcode Note in Apri 2020 | part 4 | day 22-28 | (二)
-                      </a>
-                    </li>
-                    
-              
-              
-              
-              
-              
-                    <li>
-                      <a href="/2020/04/28/Technology/Leetcode-Note-in-Apri-2020-part-4-day-22-28-(%E4%B8%80)/">
-                        <span style="color:#0bf;">
-                          28日22:29:47</span>
-                        Leetcode Note in Apri 2020 | part 4 | day 22-28 | (一)
-                      </a>
-                    </li>
-                    
-              
-              
-              
-              
-              
-                    <li>
-                      <a href="/2020/04/21/Technology/Leetcode-Note-in-Apri-2020-part-3-day-15-21-(%E4%B8%89)/">
-                        <span style="color:#0bf;">
-                          21日23:54:32</span>
-                        Leetcode Note in Apri 2020 | part 3 | day 15-21 | (三).
-                      </a>
-                    </li>
-                    
-              
-              
-              
-              
-              
-                    <li>
-                      <a href="/2020/04/19/Repost/Consensus_Mechanisms/">
-                        <span style="color:#0bf;">
-                          19日00:42:36</span>
-                        Blockchain | Consensus Mechanisms
-                      </a>
-                    </li>
-                    
-              
-              
-              
-              
-              
-                    <li>
-                      <a href="/2020/04/18/Technology/Leetcode-Note-in-Apri-2020-part-3-day-15-21-(%E4%BA%8C)/">
-                        <span style="color:#0bf;">
-                          18日14:35:52</span>
-                        Leetcode Note in Apri 2020 | part 3 | day 15-21 | (二).
-                      </a>
-                    </li>
-                    
-              
-              
-              
-              
-              
-                    <li>
-                      <a href="/2020/04/16/Technology/BlockChain-Patient-Driven-Interoperability/">
-                        <span style="color:#0bf;">
-                          16日15:47:09</span>
-                        Paper Smash|Blockchain Technology for Healthcare-Facilitating the Transition to Patient-Driven Interoperability
-                      </a>
-                    </li>
-                    
-              
-              
-              
-              
-              
-                    <li>
-                      <a href="/2020/04/15/Technology/Leetcode-Note-in-Apri-2020-part-3-day-15-21-(%E4%B8%80)/">
-                        <span style="color:#0bf;">
-                          15日20:33:23</span>
-                        Leetcode Note in Apri 2020 | part 3 | day 15-21 | (一)
-                      </a>
-                    </li>
-                    
-              
-              
-              
-              
-              
-                    <li>
-                      <a href="/2020/04/11/Technology/%E5%83%B5%E5%B0%B8%E4%BC%81%E4%B8%9A%E5%88%86%E7%B1%BB-%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83-LightGBM/">
-                        <span style="color:#0bf;">
-                          11日19:25:37</span>
-                        僵尸企业分类 | 模型训练 | LightGBM
-                      </a>
-                    </li>
-                    
-              
-              
-              
-              
-              
-                    <li>
-                      <a href="/2020/04/10/Technology/%E5%83%B5%E5%B0%B8%E4%BC%81%E4%B8%9A%E5%88%86%E7%B1%BB-%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86/">
-                        <span style="color:#0bf;">
-                          10日20:02:34</span>
-                        僵尸企业分类 | 数据预处理
-                      </a>
-                    </li>
-                    
-              
-              
-              
-              
-              
-                    <li>
-                      <a href="/2020/04/08/Technology/Leetcode-Note-in-Apri-2020-part-2-day-08-14/">
-                        <span style="color:#0bf;">
-                          08日13:54:16</span>
-                        Leetcode Note in Apri 2020 | part 2 |day 08-14
-                      </a>
-                    </li>
-                    
-              
-              
-              
-              
-              
-                    <li>
-                      <a href="/2020/04/01/Technology/Leetcode-Note-in-Apri-2020-part-1-day-01-07/">
-                        <span style="color:#0bf;">
-                          01日09:51:55</span>
-                        Leetcode Note in Apri 2020 | part 1 | day 01-07
-                      </a>
-                    </li>
-                    
-                  </ul>
-                </li>
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/custom/donate/WeChanQR.jpg"></li>
               </ul>
-              
-              
-              
-              
-              
-              
-              
-              <ul class="al_mon_list">
-                <li class="al_li">
-                  <span class="al_mon" style="cursor: s-resize;">
-                    03月(<span id="post-num">
-                      3</span>
-                    篇文章)</span>
-                  <ul class="al_post_list" style="">
-                    
-                    <li>
-                      <a href="/2020/03/21/Technology/Credit%20Card%20Fraud%20Detection/">
-                        <span style="color:#0bf;">
-                          21日21:53:06</span>
-                        Fraud Detection | Imbalanced data modeling
-                      </a>
-                    </li>
-                    
-                  </ul>
-                </li>
-              </ul>
-              
-              
-              
-              
-              
-              
-              <h3 class="al_year">2019年</h3>
-              
-              
-              
-              <ul class="al_mon_list">
-                <li class="al_li">
-                  <span class="al_mon" style="cursor: s-resize;">
-                    12月(<span id="post-num">
-                      3</span>
-                    篇文章)</span>
-                  <ul class="al_post_list" style="">
-                    
-                    <li>
-                      <a href="/2019/12/29/Technology/Evalution%20of%20hair%20and%20scalp%20condition%20based%20on%20microscopy%20image%20analysis%20%20%7C%20Hair%20Thickness%20-%201/">
-                        <span style="color:#0bf;">
-                          29日21:21:24</span>
-                        Hair Thickness | part 1 | Evalution of hair and scalp condition based on microscopy image analysis
-                      </a>
-                    </li>
-                    
-              
-              
-              
-              
-              
-                    <li>
-                      <a href="/2019/12/28/Technology/An%20Unsupervised%20Hair%20Segmentation%20and%20Counting%20System%20in%20Microscopy%20Images%20%7C%20Hair%20Counting%20-%202/">
-                        <span style="color:#0bf;">
-                          28日23:51:27</span>
-                        Hair Counting | part 2 | An Unsupervised Hair Segmentation and Counting System in Microscopy Images
-                      </a>
-                    </li>
-                    
-              
-              
-              
-              
-              
-                    <li>
-                      <a href="/2019/12/24/Technology/Evalution%20of%20hair%20and%20scalp%20condition%20based%20on%20microscopy%20image%20analysis%20%20%7C%20Hair%20Counting%20-%201/">
-                        <span style="color:#0bf;">
-                          24日20:35:33</span>
-                        Hair Counting | part 1 | Evalution of hair and scalp condition based on microscopy image analysis
-                      </a>
-                    </li>
-                    
-                  </ul>
-                </li>
-              </ul>
-              
-              
             </div>
           </div>
         </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
       </article>
-    </div>
-  </div>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+        
+          
+            <div class="post-nepre full next">
+          
+            <a href="/2020/04/29/Technology/Leetcode-Note-in-Apri-2020-part-4-day-22-28-(%E4%BA%8C)/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/bears/34.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/bears/34.jpg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                Leetcode Note in Apri 2020 | part 4 | day 22-28 | (二)</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "uVn0CbsTzphCnMDIxJKQ0rbg-gzGzoHsz",
+        appKey: "wc39UmG3dNqQQms9Hg2sKc1X",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="https://littlelittlemoon.github.io/" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/custom/avatar-3.jpg" itemprop="image" alt="Kayleen" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="https://littlelittlemoon.github.io/" itemprop="url" rel="author">Kayleen</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>A curious 👱‍♀️</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
 </div>
+
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML"></script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  </script>
+
+
     </div>    
     <div class="ins-search">
     <div class="ins-search-mask"></div>
