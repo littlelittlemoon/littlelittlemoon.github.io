@@ -435,7 +435,27 @@ For this problem, a path is defined as any sequence of nodes from some starting 
 </code></pre>
 <p><strong>Output</strong>: 42</p>
 <h2 id="solution-2"><a class="markdownIt-Anchor" href="#solution-2"></a> Solution</h2>
-<p>&#x5BF9;&#xFF0C;&#x5C31;&#x662F;&#x5B83;&#xFF0C;&#x4E0D;&#x77E5;&#x9053;&#x6765;&#x770B;&#x5230;&#x7684;&#x5C0F;&#x4F19;&#x4F34;&#x80FD;&#x4E0D;&#x80FD;&#x770B;&#x61C2;&#x8FD9;&#x9053;&#x9898;&#x7684;&#x610F;&#x601D;&#xFF0C;&#x5982;&#x679C;&#x4E00;&#x6B21;&#x5C31;&#x770B;&#x61C2;&#x4E86;&#xFF0C;&#x6211;&#x771F;&#x7684;&#x8981;&#x7ED9;&#x4F60;&#x70B9;&#x4E2A;&#x8D5E;&#x1F44D;&#xFF0C;&#x53CD;&#x6B63;&#x6211;&#x662F;&#x6CA1;&#x770B;&#x61C2;&#x3002;&#x3002;&#x6700;&#x540E;&#x53BB;&#x8BA8;&#x8BBA;&#x533A;&#x6C42;&#x52A9;&#xFF0C;&#x624D;&#x6162;&#x6162;&#x641E;&#x61C2;&#x662F;&#x8981;&#x6C42;&#x4E2A;&#x5565;&#x3002;&#x4F46;&#x662F;&#x6211;&#x4ECA;&#x5929;&#x6709;&#x70B9;&#x5FD9;&#xFF0C;&#x4E0B;&#x6B21;&#x518D;&#x6765;&#x8BE6;&#x7EC6;&#x66F4;&#x65B0;&#x8FD9;&#x9053;&#x9898;&#x7684;&#x601D;&#x8DEF;~~</p>
+<p>&#x5BF9;&#xFF0C;&#x5C31;&#x662F;&#x5B83;&#xFF0C;&#x4E0D;&#x77E5;&#x9053;&#x6765;&#x770B;&#x5230;&#x7684;&#x5C0F;&#x4F19;&#x4F34;&#x80FD;&#x4E0D;&#x80FD;&#x770B;&#x61C2;&#x8FD9;&#x9053;&#x9898;&#x7684;&#x610F;&#x601D;&#xFF0C;&#x5982;&#x679C;&#x4E00;&#x6B21;&#x5C31;&#x770B;&#x61C2;&#x4E86;&#xFF0C;&#x6211;&#x771F;&#x7684;&#x8981;&#x7ED9;&#x4F60;&#x70B9;&#x4E2A;&#x8D5E;&#x1F44D;&#xFF0C;&#x53CD;&#x6B63;&#x6211;&#x662F;&#x6CA1;&#x770B;&#x61C2;&#x3002;&#x3002;&#x6700;&#x540E;&#x53BB;&#x8BA8;&#x8BBA;&#x533A;&#x6C42;&#x52A9;&#xFF0C;&#x624D;&#x6162;&#x6162;&#x641E;&#x61C2;&#x662F;&#x8981;&#x6C42;&#x4E2A;&#x5565;&#x3002;</p>
+<p>&#x9898;&#x76EE;&#x5927;&#x610F;&#x662F;&#xFF1A;&#x6C42;&#x6700;&#x5927;&#x8DEF;&#x5F84;&#x548C;&#xFF0C;&#x4F46;&#x662F;&#x8DEF;&#x5F84;&#x7684;&#x8D77;&#x70B9;&#x548C;&#x7EC8;&#x70B9;&#x53EF;&#x4EE5;&#x662F;&#x4EFB;&#x610F;&#x8282;&#x70B9;&#xFF0C;&#x4F46;&#x4E0D;&#x53EF;&#x4EE5;&#x91CD;&#x590D;&#x8D70;&#x67D0;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#xFF0C;&#x6211;&#x4E5F;&#x4E0D;&#x77E5;&#x9053;&#x6211;&#x8BF4;&#x6E05;&#x695A;&#x6CA1;&#x1F923;&#x3002;</p>
+<p>&#x4F8B;&#x5982;&#xFF1A;&#x7B2C;&#x4E8C;&#x4E2A;&#x4F8B;&#x5B50;&#x6700;&#x5927;&#x8DEF;&#x5F84;&#x662F;&#xFF1A;<code>15 + 7 + 20 = 42</code>,<br>
+&#x56E0;&#x4E3A;&#x5176;&#x4ED6;&#x8DEF;&#x5F84;&#x90FD;&#x6BD4;&#x5B83;&#x5C0F;&#xFF1A;</p>
+<ul>
+<li>9 - 10 + 20 + 15 = 34</li>
+<li>9 - 10 + 20 + 7 = 26</li>
+<li>
+<ul>
+<li>10 + 20 + 15 = 25</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>10 + 20 + 7 = 17</li>
+</ul>
+</li>
+<li>&#x2026;</li>
+</ul>
+<p>&#x73B0;&#x5728;&#x5E94;&#x8BE5;&#x80FD;&#x660E;&#x767D;&#x4E86;&#xFF0C;&#x8FD9;&#x9898;&#x641E;&#x660E;&#x767D;&#x9898;&#x610F;&#x4E4B;&#x540E;&#xFF0C;&#x53EF;&#x4EE5;&#x60F3;&#x5230;&#x7528;&#x6DF1;&#x5EA6;&#x4F18;&#x5148;&#x904D;&#x5386;&#x7B97;&#x6CD5;&#x6765;&#x5B9E;&#x73B0;&#x6700;&#x5927;&#x8DEF;&#x5F84;&#x548C;&#x7684;&#x7D2F;&#x52A0;&#xFF0C;&#x6700;&#x540E;&#x786E;&#x5B9E;&#x4E5F;&#x662F;&#x7528;&#x8FD9;&#x4E2A;&#x6CD5;&#x5B50;&#x3002;</p>
+<p>&#x6838;&#x5FC3;&#x601D;&#x60F3;&#x662F;&#xFF1A;&#x901A;&#x8FC7;&#x7D2F;&#x52A0;&#x5C40;&#x90E8;&#x6700;&#x5927;&#x8DEF;&#x5F84;&#x548C;&#x6765;&#x6C42;&#x89E3;&#x5168;&#x5C40;&#x6700;&#x5927;&#x8DEF;&#x5F84;&#x548C;&#xFF0C;&#x5177;&#x4F53;&#x770B;&#x4EE3;&#x7801;&#x6CE8;&#x91CA;&#x3002;</p>
 <pre class="highlight"><code class="python"><span class="hljs-comment"># Definition for a binary tree node.</span>
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TreeNode</span>:</span>
     <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, val=<span class="hljs-number">0</span>, left=None, right=None)</span>:</span>
@@ -445,27 +465,44 @@ For this problem, a path is defined as any sequence of nodes from some starting 
         
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
     <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">maxPathSum</span><span class="hljs-params">(self, root: TreeNode)</span> -&gt; int:</span>
-        self.res = float(<span class="hljs-string">&quot;-inf&quot;</span>)
-        <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">helper</span><span class="hljs-params">(root)</span>:</span>
-            <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> root: <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>
+        <span class="hljs-comment"># &#x9012;&#x5F52;&#x95EE;&#x9898;&#xFF1A;</span>
+        <span class="hljs-comment"># &#x5168;&#x5C40;&#x6700;&#x5927;&#x8DEF;&#x5F84;&#x548C; = &#x5404;&#x5C40;&#x90E8;&#x6700;&#x5927;&#x8DEF;&#x5F84;&#x548C;&#xFF08;&#x5DE6;&#x5B50;&#x6811;&#x6700;&#x5927;&#x8DEF;&#x5F84;+&#x6839;&#x8282;&#x70B9;&#x6743;&#x91CD;+&#x53F3;&#x5B50;&#x6811;&#x6700;&#x5927;&#x8DEF;&#x5F84;&#xFF09;</span>
+        self.max_path = float(<span class="hljs-string">&quot;-inf&quot;</span>)
+        
+        <span class="hljs-comment"># &#x9012;&#x5F52;&#x8BA1;&#x7B97;&#x5DE6;&#x53F3;&#x5B50;&#x6811;&#x4E2D;&#x7684;&#x6700;&#x5927;&#x8DEF;&#x5F84;&#xFF0C;&#x56E0;&#x4E3A;&#x8DEF;&#x5F84;&#x53EA;&#x80FD;&#x5305;&#x542B;&#x4E00;&#x6761;&#x5206;&#x652F;&#xFF0C;&#x5E76;&#x4E0E;&#x5176;&#x4ED6;&#x5206;&#x652F;&#x901A;&#x8FC7;&#x6839;&#x8282;&#x70B9;&#x8FDE;&#x63A5;&#xFF1B;</span>
+        <span class="hljs-comment"># &#x6240;&#x4EE5;&#x8FD9;&#x91CC;&#x8FD4;&#x56DE;&#x7684;&#x503C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x786E;&#x5B9A;&#x4E3A;&#xFF1A;max(0, max(left,  right) + root.val)&#xFF1B;</span>
+        <span class="hljs-comment"># &#x8FD9;&#x91CC;&#x5982;&#x679C;&#x8BA1;&#x7B97;&#x51FA;&#x8D1F;&#x503C;&#x7684;&#x53EF;&#x76F4;&#x63A5;&#x820D;&#x53BB;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x53EA;&#x4F1A;&#x8BA9;&#x4E4B;&#x524D;&#x7D2F;&#x52A0;&#x7684;&#x6700;&#x5927;&#x8DEF;&#x5F84;&#x53D8;&#x5C0F;&#xFF1B;</span>
+        <span class="hljs-comment"># &#x9012;&#x5F52;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x8FD4;&#x56DE;&#x6761;&#x4EF6;&#x662F;&#x5F53;&#x524D;&#x8282;&#x70B9;&#x4E3A;None&#xFF0C;None&#x8282;&#x70B9;&#x53EF;&#x8D21;&#x732E;&#x7684;&#x8DEF;&#x5F84;&#x4E3A;0&#xFF0C;&#x7136;&#x540E;&#x5F00;&#x59CB;&#x56DE;&#x6EAF;&#x3002;</span>
+        <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">count_path</span><span class="hljs-params">(root)</span>:</span>
             
-            <span class="hljs-comment"># &#x5DE6;&#x8FB9;&#x6700;&#x5927;&#x503C;</span>
-            left = helper(root.left)
+            <span class="hljs-comment"># &#x5982;&#x679C;&#x5F53;&#x524D;node&#x4E3A;null&#xFF0C;&#x5219;&#x53EF;&#x56DE;&#x6EAF;&#x7684;&#x6700;&#x5927;&#x8DEF;&#x5F84;&#x4E3A;0</span>
+            <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span>(root): <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>
             
-            <span class="hljs-comment"># &#x53F3;&#x8FB9;&#x6700;&#x5927;&#x503C;</span>
-            right = helper(root.right)
+            <span class="hljs-comment"># &#x8FD8;&#x662F;&#x6DF1;&#x5EA6;&#x4F18;&#x5148;&#x904D;&#x5386;&#x7B97;&#x6CD5;&#x7684;&#x601D;&#x60F3;&#xFF0C;&#x4F46;&#x662F;&#x4E0D;&#x540C;&#x7684;&#x662F;&#xFF0C;&#x6839;&#x636E;&#x9898;&#x76EE;&#x5B9A;&#x4E49;&#x6838;&#x8981;&#x6C42;&#x8BA1;&#x7B97;&#x5168;&#x5C40;&#x6700;&#x5927;&#x8DEF;&#x5F84;&#x548C;&#xFF0C;</span>
+            <span class="hljs-comment"># &#x53EF;&#x901A;&#x8FC7;&#x8BA1;&#x7B97;&#x5DE6;&#x53F3;&#x6700;&#x5927;&#x8DEF;&#x5F84;&#xFF08;&#x5C40;&#x90E8;&#x6700;&#x5927;&#xFF09;&#xFF0C;&#x5E76;&#x901A;&#x8FC7;&#x6839;&#x8282;&#x70B9;&#x8FDE;&#x63A5;&#x6210;&#x5168;&#x5C40;&#x6700;&#x5927;&#x8DEF;&#x5F84;&#x548C;</span>
             
-            <span class="hljs-comment"># &#x548C;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x6BD4;&#x8F83;</span>
-            self.res = max(left + right + root.val, self.res)
+            <span class="hljs-comment"># &#x5C40;&#x90E8;&#x6700;&#x5927;&#xFF1A;&#x5DE6;&#x5B50;&#x6811;&#x6700;&#x5927;&#x8DEF;&#x5F84;</span>
+            left = count_path(root.left)
             
-            <span class="hljs-comment"># &gt;0 &#x8BF4;&#x660E;&#x90FD;&#x80FD;&#x4F7F;&#x8DEF;&#x5F84;&#x53D8;&#x5927;</span>
+            <span class="hljs-comment"># &#x5C40;&#x90E8;&#x6700;&#x5927;&#xFF1A;&#x53F3;&#x5B50;&#x6811;&#x6700;&#x5927;&#x8DEF;&#x5F84;</span>
+            right = count_path(root.right)
+            
+            <span class="hljs-comment"># &#x5B9E;&#x65F6;&#x66F4;&#x65B0;&#x53EF;&#x80FD;&#x4EA7;&#x751F;&#x7684;&#x6700;&#x5927;&#x8DEF;&#x5F84;&#x548C;&#xFF1A;&#x5DE6;&#x5B50;&#x6811;&#x6700;&#x5927;&#x8DEF;&#x5F84;+&#x53F3;&#x5B50;&#x6811;&#x6700;&#x5927;&#x8DEF;&#x5F84;+&#x6839;&#x8282;&#x70B9;&#x6743;&#x503C;</span>
+            <span class="hljs-comment"># &#x4E0E;&#x4E4B;&#x524D;&#x7684;&#x6700;&#x5927;&#x8DEF;&#x5F84;&#x6BD4;&#x8F83;&#xFF0C;&#x5982;&#x679C;&#x5927;&#x4E8E;&#x4E4B;&#x524D;&#x7684;&#x6700;&#x5927;&#x8DEF;&#x5F84;&#xFF0C;&#x5219;&#x5C06;&#x5F53;&#x524D;&#x6700;&#x5927;&#x8DEF;&#x5F84;&#x4F5C;&#x4E3A;&#x6700;&#x5927;&#x8DEF;&#x5F84;</span>
+            self.max_path = max(self.max_path, left + right + root.val)
+            
+            <span class="hljs-comment"># &#x5C40;&#x90E8;&#x6700;&#x5927;&#x8DEF;&#x5F84;&#x548C;&#xFF08;&#x8DEF;&#x5F84;&#x548C;&#xFF1A;&#x53EA;&#x8D70;&#x4E00;&#x6761;&#x5206;&#x652F;-&gt;&#x9009;&#x6700;&#x5927;&#x5206;&#x652F;&#xFF09;&#xFF1A;&#x56DE;&#x6EAF;&#x5F53;&#x524D;&#x904D;&#x5386;&#x5230;&#x7684;&#x6700;&#x5927;&#x8DEF;&#x5F84;&#xFF0C;</span>
+            <span class="hljs-comment"># &#x5982;&#x679C;&#x51FA;&#x73B0;&#x8D1F;&#x503C;&#x53EA;&#x4F1A;&#x8BA9;&#x5168;&#x5C40;&#x8DEF;&#x5F84;&#x548C;&#x66F4;&#x5C0F;&#xFF0C;&#x6545;&#x4E0D;&#x8BA1;&#xFF08;&#x820D;-&gt;0&#xFF09;</span>
             <span class="hljs-keyword">return</span> max(<span class="hljs-number">0</span>, max(left,  right) + root.val)
         
-        helper(root)
-        <span class="hljs-keyword">return</span> self.res 
+        
+        count_path(root)
+        <span class="hljs-keyword">return</span> self.max_path 
 </code></pre>
-<h1 id="updating"><a class="markdownIt-Anchor" href="#updating"></a> Updating</h1>
-<p>&#x672A;&#x5B8C;&#x5F85;&#x7EED;&#x2026;</p>
+<h1 id="&#x603B;&#x7ED3;"><a class="markdownIt-Anchor" href="#&#x603B;&#x7ED3;"></a> &#x603B;&#x7ED3;</h1>
+<p>&#x56DB;&#x6708;&#x7684;&#x6311;&#x6218;&#x7ED3;&#x675F;&#x4E86;&#xFF0C;&#x8FD9;&#x4E2A;&#x6708;&#x786E;&#x5B9E;&#x662F;&#x5F88;&#x5FD9;&#xFF0C;&#x4F46;&#x5F88;&#x5F00;&#x5FC3;&#x81EA;&#x5DF1;&#x8FD8;&#x662F;&#x575A;&#x6301;&#x4E0B;&#x6765;&#x4E86;&#xFF0C;&#x867D;&#x7136;&#x6BCF;&#x5929;&#x53EA;&#x505A;&#x4E00;&#x9053;&#x9898;&#xFF0C;&#x4F46;&#x662F;&#x6709;&#x7684;&#x9898;&#x8FD8;&#x662F;&#x633A;&#x78E8;&#x4EBA;&#x7684;&#x3002;&#x4F46;&#x597D;&#x5728;&#x6700;&#x540E;&#x6311;&#x6218;&#x6210;&#x529F;&#xFF0C;&#x4E5F;&#x62FF;&#x5230;&#x4E86;&#x6240;&#x6709;&#x7684;&#x5956;&#x52B1;&#x3002;&#x1F60A;</p>
+<p>&#x6211;&#x7684;&#x62D6;&#x5EF6;&#x75C7;&#x5F88;&#x4E25;&#x91CD;&#x8BF6;&#xFF0C;&#x867D;&#x7136;&#x6BCF;&#x5929;&#x4E8B;&#x5F88;&#x591A;&#xFF0C;&#x4F46;&#x4ED4;&#x7EC6;&#x60F3;&#x60F3;&#xFF0C;&#x6709;&#x65F6;&#x5019;&#x81EA;&#x5DF1;&#x8FD8;&#x662F;&#x6709;&#x5F88;&#x591A;&#x65F6;&#x95F4;&#x7684;&#xFF0C;&#x600E;&#x4E48;&#x5C31;&#x975E;&#x5F97;&#x8981;&#x62D6;&#x5230;deadline&#xFF0C;&#x8BA9;&#x540E;&#x7126;&#x8651;&#x4E0D;&#x5DF2;&#xFFE3;&#x25A1;&#xFFE3;&#xFF5C;&#xFF5C;&#x3002;&#x6162;&#x6162;&#x6539;&#x6389;&#x8FD9;&#x4E2A;&#x4E0D;&#x597D;&#x7684;&#x4E60;&#x60EF;&#x5427;&#xFF01;</p>
+<p>&#x7ACB;&#x4E2A;flag&#xFF0C;&#x4E94;&#x6708;&#x7EE7;&#x7EED;~ &#x1F60A;</p>
 
         </div>
         <!-- .entry-content -->
