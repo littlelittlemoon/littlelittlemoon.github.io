@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+  <title itemprop="name">Leetcode Note in Apri 2020 | part 3 | day 15-21 | (二). | LITTLEMEEMOON</title>
+  
+    <link rel="shortcut icon" href="/images/favicon.ico">
+  
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/css/matery.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="stylesheet" id="saukra_css-css" href="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/css/style.css" type="text/css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/css/lib.min.css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/css/font.css" media="all">
+  <link rel="stylesheet" href="/css/insight.css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/css/jquery.fancybox.min.css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/css/zoom.css" media="all">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/css/sharejs.css">
+<!--   <link rel="stylesheet" id="saukra_css-css" href="https://2heng.xin/wp-content/cache/autoptimize/css/autoptimize_ad42a61f4c7d4bdd9f91afcff6b5dda5.css
+" type="text/css" media="all"> -->
+  <script>
+  /*Initial Variables*/
+  var mashiro_option = new Object();
+  var mashiro_global = new Object();
+  mashiro_option.NProgressON = true;
+  /* 
+   * 邮箱信息之类的东西可以填在这里，这些js变量基本都作用于sakura-app.js
+   * 这样的设置仅是为了方便在基于PHP开发的主题中设置js变量，既然移植到了Node上，我想或许可以精简这一逻辑吧
+   */
+  mashiro_option.email_domain = "";
+  mashiro_option.email_name = "";
+  mashiro_option.cookie_version_control = "";
+  mashiro_option.qzone_autocomplete = false;
+  mashiro_option.site_name = "Bear CaveKayleen";
+  mashiro_option.author_name = "Kayleen";
+  mashiro_option.site_url = "https://littlelittlemoon.github.io/";
+  mashiro_option.v_appId = "uVn0CbsTzphCnMDIxJKQ0rbg-gzGzoHsz";
+  mashiro_option.v_appKey = "wc39UmG3dNqQQms9Hg2sKc1X";
+  mashiro_option.mathjax = "[object Object]";
+  mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
+  mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
+
+  // mashiro_option.jsdelivr_css_src = "https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/css/lib.min.css";
+  // mashiro_option.float_player_on = true;
+
+  /*End of Initial Variables*/
+  </script>
+  <script type="text/javascript">
+  var bg = "https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/cover/2/(0).webp,https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/cover/2/(1).webp,https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/cover/2/(2).webp,https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/cover/2/(3).webp,https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/cover/2/(4).webp,https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/cover/2/(5).webp,https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/cover/2/(6).webp,https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/cover/2/(7).webp,https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/cover/2/(8).webp".split(",");
+  var bgindex = Math.floor(Math.random()*bg.length);
+  if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+    alert('朋友，IE浏览器未适配哦~');
+  }
+  </script>
+  <style type="text/css">
+  .hljs-ln{border-collapse:collapse}.hljs-ln td{padding:0}.hljs-ln-n:before{content:attr(data-line-number)}
+  </style>
+  <style type="text/css">.site-top .lower nav{display:block !important;}.author-profile i,.post-like a,.post-share .show-share,.sub-text,.we-info a,span.sitename,.post-more i:hover,#pagination a:hover,.post-content a:hover,.float-content i:hover{color:#FE9600}.feature i,.download,.navigator i:hover,.links ul li:before,.ar-time i,span.ar-circle,.object,.comment .comment-reply-link,.siren-checkbox-radio:checked + .siren-checkbox-radioInput:after{background:#FE9600}::-webkit-scrollbar-thumb{background:#FE9600}.download,.navigator i:hover,.link-title,.links ul li:hover,#pagination a:hover,.comment-respond input[type='submit']:hover{border-color:#FE9600}.entry-content a:hover,.site-info a:hover,.comment h4 a,#comments-navi a.prev,#comments-navi a.next,.comment h4 a:hover,.site-top ul li a:hover,.entry-title a:hover,#archives-temp h3,span.page-numbers.current,.sorry li a:hover,.site-title a:hover,i.iconfont.js-toggle-search.iconsearch:hover,.comment-respond input[type='submit']:hover{color:#FE9600}.comments .comments-main{display:block !important;}.comments .comments-hidden{display:none !important;}background-position:center center;background-attachment:inherit;}
+  </style>
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="LITTLEMEEMOON" type="application/atom+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="scrollbar" id="bar">
+  </div>
+  <a href="#" class="cd-top faa-float animated"></a>
+  <section id="main-container">
+    <div class="headertop ">
+  <div id="banner_wave_1"></div>
+  <div id="banner_wave_2"></div>
+  <figure id="centerbg" class="centerbg">
+    <div class="focusinfo no-select">
+      <div class="header-tou">
+        <a href="https://littlelittlemoon.github.io/">
+          <img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/custom/avatar-3.jpg">
+        </a>
+      </div>
+      <div class="header-info">
+        <p>Do not pray for easy lives, pray to be stronger men.</p>
+        <div class="top-social_v2">
+          <li id="bg-pre">
+            <img class="flipx" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+          
+            
+              
+                <li>
+                  <a href="http://github.com/littlelittlemoon" target="_blank" class="social-github" title="github">
+                    <img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/social/github.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="mailto:littlemeemoon@gmail.com" target="_blank" class="social-github" title="email">
+                    <img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/social/email.svg">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://wpa.qq.com/msgrd?v=3&amp;uin=1165156282&amp;site=qq&amp;menu=yes" target="_blank" class="social-github" title="qq">
+                    <img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/social/qq.png">
+                  </a>
+                </li>
+              
+            
+          
+          <li id="bg-next">
+            <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+        </div>
+      </div>
+    </div>
+  </figure>
+  <div id="video-container" style="">
+    <video style="object-fit: fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto">
+    </video>
+    <div id="video-btn" class="loadvideo videolive">
+    </div>
+    <div id="video-add">
+    </div>
+    <div class="video-stu">
+    </div>
+  </div>
+  <div class="headertop-down faa-float animated" onclick="headertop_down()">
+    <span>
+      <i class="fa fa-chevron-down" aria-hidden="true">
+      </i>
+    </span>
+  </div>
+</div>
+    <div id="page" class="site wrapper">
+      <header class="site-header no-select gizle sabit" role="banner">
+  <div class="site-top">
+    <div class="site-branding">
+      <span class="site-title">
+        <span class="logolink moe-mashiro">
+          <a href="/">
+            <span class="sakurasono">Bear Cave</span>
+            <span class="shironeko">Kayleen</span>
+          </a>
+        </span>
+      </span>
+    </div>
+    <div class="searchbox search-form-submit">
+      <i class="iconfont js-toggle-search iconsearch icon-search">
+      </i>
+    </div>
+    <div id="show-nav" class="showNav mobile-fit">
+      <div class="line line1">
+      </div>
+      <div class="line line2">
+      </div>
+      <div class="line line3">
+      </div>
+    </div>
+    <div class="lower-cantiner">
+      <div class="lower">
+        <nav class="mobile-fit-control hide">
+          <ul id="menu-new" class="menu">
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+                    首页
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/archives/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+                    归档
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/tags/Updating/">
+                          <i class="fa fa-circle-o-notch" aria-hidden="true"></i>
+                          更新
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/Technology/">
+                          <i class="fa fa-code" aria-hidden="true"></i>
+                          技术
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/Life/">
+                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                          生活
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/Thoughts/">
+                          <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                          随想
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/Repost/">
+                          <i class="fa fa-book" aria-hidden="true"></i>
+                          转载
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+                    清单
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/tags/Reading/">
+                          <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                          悦读
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/music/">
+                          <i class="fa fa-headphones" aria-hidden="true"></i>
+                          音悦
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/tags/Pictures/">
+                          <i class="fa fa-photo" aria-hidden="true"></i>
+                          图集
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/tags/Cave/">
+                          <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                          Cave
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/comment/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+                    留言板
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/links/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+                    友人帐
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/donate/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+                    赞赏
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/about/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-meetup" aria-hidden="true"></i>
+                    关于我
+                  </span>
+                </a>
+                
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/bears/28.jpg);" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/bears/28.jpg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      Leetcode Note in Apri 2020 | part 3 | day 15-21 | (二).</h1>
+      <p class="entry-census">
+        <span>
+          <a href="https://littlelittlemoon.github.io/">
+            <img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/custom/avatar-3.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="https://littlelittlemoon.github.io/">Kayleen</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2020-4-18<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
+  </div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h1 id="写在前面的话">写在前面的话</h1>
+<p>这篇文章只会更新一道题，这道题是我目前做LeetCode以来第一次做到的和图论相关的题，所以想单独拿出来做一个总结，借该题巩固以前学过的相关算法以及在该题中的应用。</p>
+<h1 id="相关算法与数据结构">相关算法与数据结构</h1>
+<h2 id="算法">算法</h2>
+<h3 id="深度优先搜索算法depth-first-searchdfs">深度优先搜索算法（Depth-First-Search，DFS）</h3>
+<blockquote>
+<p>深度优先搜索算法（英语：Depth-First-Search，DFS）是一种用于遍历或搜索树或图的算法。这个算法会<strong>尽可能深</strong>的搜索树的分支。当节点v的所在边都己被探寻过，搜索将<strong>回溯</strong>到发现节点v的那条边的起始节点。这一过程一<strong>直进行到已发现从源节点可达的所有节点为止</strong>。如果还存在未被发现的节点，则选择其中一个作为源节点并重复以上过程，整个进程反复进行直到所有节点都被访问为止。这种算法不会根据图的结构等信息调整执行策略。 深度优先搜索是图论中的经典算法，利用深度优先搜索算法可以产生目标图的拓扑排序表，利用拓扑排序表可以方便的解决很多相关的图论问题，如无权最长路径问题等等。 <a href="!https://zh.wikipedia.org/wiki/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2">维基百科</a></p>
+</blockquote>
+<h4 id="动画演示">动画演示</h4>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn@v2.0.17/img/article_img/images/DFS/dfs.gif" alt="" /><figcaption>dfs</figcaption>
+</figure>
+<h4 id="实现方法">实现方法</h4>
+<ol type="1">
+<li>首先将根节点放入stack中。<br />
+</li>
+<li>从stack中取出第一个节点，并检验它是否为目标。<br />
+2.1 如果找到目标，则结束搜寻并回传结果。<br />
+2.2 否则将它某一个尚未检验过的直接子节点加入stack中。<br />
+</li>
+<li>重复步骤2。<br />
+</li>
+<li>如果不存在未检测过的直接子节点。<br />
+4.1 将上一级节点加入stack中。<br />
+4.2 重复步骤2。<br />
+</li>
+<li>重复步骤4。<br />
+</li>
+<li>若stack为空，表示整张图都检查过了——亦即图中没有欲搜寻的目标。结束搜寻并回传“找不到目标”。</li>
+</ol>
+<h4 id="伪代码">伪代码</h4>
+<div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1"></a><span class="dt">bool</span> visited[MAX_VERTEX_NUM];</span>
+<span id="cb1-2"><a href="#cb1-2"></a></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="dt">void</span> DFSTraverse(Graph G){</span>
+<span id="cb1-4"><a href="#cb1-4"></a>    <span class="cf">for</span>(v = <span class="dv">0</span>; v &lt; G.vexnum; ++i)</span>
+<span id="cb1-5"><a href="#cb1-5"></a>        visited[v] = false;</span>
+<span id="cb1-6"><a href="#cb1-6"></a></span>
+<span id="cb1-7"><a href="#cb1-7"></a>    <span class="cf">for</span>(v = <span class="dv">0</span>; v &lt; G.vexnum; ++v)</span>
+<span id="cb1-8"><a href="#cb1-8"></a>        <span class="cf">if</span>(!visited[v])</span>
+<span id="cb1-9"><a href="#cb1-9"></a>            DFS(G,v);</span>
+<span id="cb1-10"><a href="#cb1-10"></a>}</span>
+<span id="cb1-11"><a href="#cb1-11"></a></span>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="dt">void</span> DFS(Graph G,<span class="dt">int</span> v) {</span>
+<span id="cb1-13"><a href="#cb1-13"></a>    visit（v）; </span>
+<span id="cb1-14"><a href="#cb1-14"></a>    visited[v] = true;</span>
+<span id="cb1-15"><a href="#cb1-15"></a></span>
+<span id="cb1-16"><a href="#cb1-16"></a>    <span class="cf">for</span>(w = FirstNeighbor(G,v); w &gt;= <span class="dv">0</span>; w = NextNeighbor(G,v,w))</span>
+<span id="cb1-17"><a href="#cb1-17"></a>        <span class="cf">if</span>(!visited[w])</span>
+<span id="cb1-18"><a href="#cb1-18"></a>            DFS(G,w);</span>
+<span id="cb1-19"><a href="#cb1-19"></a>}</span></code></pre></div>
+<h3 id="广度优先搜索算法breadth-first-searchbfs">广度优先搜索算法（Breadth-First Search，BFS）</h3>
+<blockquote>
+<p>广度优先搜索算法（英语：Breadth-First Search，缩写为BFS），又译作宽度优先搜索，或横向优先搜索，是一种图形搜索算法。简单的说，BFS是从根节点开始，沿着树的<strong>宽度</strong>遍历树的节点。如果<strong>所有节点均被访问，则算法中止</strong>。广度优先搜索的实现一般采用<strong>open-closed</strong>表。 <a href="!https://zh.wikipedia.org/wiki/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2">维基百科</a></p>
+</blockquote>
+<h4 id="动画演示-1">动画演示</h4>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn@v2.0.17/img/article_img/images/BFS/bfs.gif" alt="" /><figcaption>bfs</figcaption>
+</figure>
+<h4 id="实现方法-1">实现方法</h4>
+<ol type="1">
+<li>首先将根节点放入队列中;<br />
+</li>
+<li>从队列中取出第一个节点，并检验它是否为目标;<br />
+2.1 如果找到目标，则结束搜索并回传结果;<br />
+2.2 否则将它所有尚未检验过的直接子节点加入队列中。<br />
+</li>
+<li>若队列为空，表示整张图都检查过了——亦即图中没有欲搜索的目标。结束搜索并回传“找不到目标”;<br />
+</li>
+<li>重复步骤2。</li>
+</ol>
+<h4 id="伪代码-1">伪代码</h4>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn@v2.0.20/img/article_img/images/BFS/bfs_code.png" alt="" /><figcaption>bfs_code</figcaption>
+</figure>
+<h3 id="flood-fill算法">Flood fill算法</h3>
+<blockquote>
+<p>Flood fill算法是从一个区域中提取若干个连通的点与其他相邻区域区分开（或分别染成不同颜色）的经典算法。因为其思路类似洪水从一个区域扩散到所有能到达的区域而得名。在GNU Go和扫雷中，Flood Fill算法被用来计算需要被清除的区域。<a href="!https://zh.wikipedia.org/wiki/Flood_fill">维基百科</a>。该算法可用<strong>深度优先遍历算法</strong>或<strong>广度优先遍历算法</strong>实现。</p>
+</blockquote>
+<h4 id="算法实现">算法实现</h4>
+<blockquote>
+<p>Flood fill算法接受三个参数：<strong>起始节点</strong>，<strong>目标颜色</strong>和<strong>替换颜色</strong>。<br />
+算法遍历所有的节点以寻找和起始节点相连的节点（通过一条目标颜色的路径相连），然后 改变他们的颜色为替换颜色。目前有许多flood-fill算法的构建方式，但是他们都显示或隐式的使用队列或者栈 根据我们是否考虑当前节点对角线方向的节点，算法分为四路算法（不考虑对角线方向的节点）和八路算法（考虑对角线方向的节点）。</p>
+</blockquote>
+<h5 id="伪代码-2">伪代码</h5>
+<div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">/*假设MAX_X与MAX_Y是图的宽和高*/</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="dt">void</span> flood_fill(<span class="dt">int</span> x,<span class="dt">int</span> y,<span class="dt">int</span> color)</span>
+<span id="cb2-3"><a href="#cb2-3"></a>{</span>
+<span id="cb2-4"><a href="#cb2-4"></a>  area[x][y] = color;</span>
+<span id="cb2-5"><a href="#cb2-5"></a>  <span class="cf">if</span>(x &gt; <span class="dv">0</span> &amp;&amp; area[x-<span class="dv">1</span>][y] == <span class="dv">0</span>)</span>
+<span id="cb2-6"><a href="#cb2-6"></a>    flood_fill(x-<span class="dv">1</span>, y, color);</span>
+<span id="cb2-7"><a href="#cb2-7"></a>  <span class="cf">if</span>(y &gt; <span class="dv">0</span> &amp;&amp; area[x][y-<span class="dv">1</span>] == <span class="dv">0</span>)</span>
+<span id="cb2-8"><a href="#cb2-8"></a>    flood_fill(x, y-<span class="dv">1</span>, color);</span>
+<span id="cb2-9"><a href="#cb2-9"></a>  <span class="cf">if</span>(x &lt; MAX_X &amp;&amp; area[x+<span class="dv">1</span>][y] == <span class="dv">0</span>)</span>
+<span id="cb2-10"><a href="#cb2-10"></a>    flood_fill(x+<span class="dv">1</span>, y, color);</span>
+<span id="cb2-11"><a href="#cb2-11"></a>  <span class="cf">if</span>(y &lt; MAX_Y &amp;&amp; area[x][y+<span class="dv">1</span>] == <span class="dv">0</span>)</span>
+<span id="cb2-12"><a href="#cb2-12"></a>    flood_fill(x, y+<span class="dv">1</span>, color);</span>
+<span id="cb2-13"><a href="#cb2-13"></a>}</span></code></pre></div>
+<h4 id="动画演示-2">动画演示</h4>
+<h5 id="四个方向上的flood-fill">四个方向上的Flood Fill</h5>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn@v2.0.19/img/article_img/images/floodfill/Recursive_Flood_Fill_4_(aka).gif" alt="" /><figcaption>flood_fill_4</figcaption>
+</figure>
+<h5 id="八个方向上的flood-fill">八个方向上的Flood Fill</h5>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn@v2.0.19/img/article_img/images/floodfill/Recursive_Flood_Fill_8_(aka).gif" alt="" /><figcaption>flood_fill_8</figcaption>
+</figure>
+<h2 id="数据结构">数据结构</h2>
+<h3 id="并查集">并查集</h3>
+<blockquote>
+<p>在计算机科学中，并查集是一种树型的数据结构，用于处理一些不交集（Disjoint Sets）的合并及查询问题。有一个联合-查找算法（union-find algorithm）定义了两个用于此数据结构的操作：<br />
+- <strong>Find</strong>：确定元素属于哪一个子集。它可以被用来确定两个元素是否属于同一子集。<br />
+- <strong>Union</strong>：将两个子集合并成同一个集合。<br />
+由于支持这两种操作，一个不相交集也常被称为<strong>联合-查找数据结构</strong>（union-find data structure）或<strong>合并-查找集合</strong>（merge-find set）。其他的重要方法，MakeSet，用于创建单元素集合。有了这些方法，许多经典的划分问题可以被解决。<br />
+为了更加精确的定义这些方法，需要定义如何表示集合。一种常用的策略是为每个集合选定一个固定的元素，称为代表，以表示整个集合。接着，Find(x) 返回x所属集合的代表，而Union使用两个集合的代表作为参数。<a href="https://zh.wikipedia.org/wiki/%E5%B9%B6%E6%9F%A5%E9%9B%86" target="_blank" rel="noopener">维基百科</a></p>
+</blockquote>
+<h4 id="伪代码-3">伪代码</h4>
+<p>在并查集森林中，每个集合的代表即是集合的根节点。“查找”根据其父节点的引用向根行进直到到底树根。“联合”将两棵树合并到一起，这通过将一棵树的根连接到另一棵树的根。实现这样操作的一种方法是：</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1"></a>function MakeSet(x)</span>
+<span id="cb3-2"><a href="#cb3-2"></a>     x.parent := x</span>
+<span id="cb3-3"><a href="#cb3-3"></a>     x.rank   := <span class="dv">0</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a></span>
+<span id="cb3-5"><a href="#cb3-5"></a>function Union(x, y)</span>
+<span id="cb3-6"><a href="#cb3-6"></a>    xRoot := Find(x)</span>
+<span id="cb3-7"><a href="#cb3-7"></a>    yRoot := Find(y)</span>
+<span id="cb3-8"><a href="#cb3-8"></a>    <span class="cf">if</span> xRoot == yRoot</span>
+<span id="cb3-9"><a href="#cb3-9"></a>        <span class="cf">return</span></span>
+<span id="cb3-10"><a href="#cb3-10"></a></span>
+<span id="cb3-11"><a href="#cb3-11"></a>    <span class="co">// x和y不在同一个集合，合并它们。</span></span>
+<span id="cb3-12"><a href="#cb3-12"></a>    <span class="cf">if</span> xRoot.rank &lt; yRoot.rank</span>
+<span id="cb3-13"><a href="#cb3-13"></a>        xRoot.parent := yRoot</span>
+<span id="cb3-14"><a href="#cb3-14"></a>    <span class="cf">else</span> <span class="cf">if</span> xRoot.rank &gt; yRoot.rank</span>
+<span id="cb3-15"><a href="#cb3-15"></a>        yRoot.parent := xRoot</span>
+<span id="cb3-16"><a href="#cb3-16"></a>    <span class="cf">else</span></span>
+<span id="cb3-17"><a href="#cb3-17"></a>        yRoot.parent := xRoot</span>
+<span id="cb3-18"><a href="#cb3-18"></a>        xRoot.rank := xRoot.rank + <span class="dv">1</span> </span>
+<span id="cb3-19"><a href="#cb3-19"></a></span>
+<span id="cb3-20"><a href="#cb3-20"></a>function Find(x)</span>
+<span id="cb3-21"><a href="#cb3-21"></a>     <span class="cf">if</span> x.parent != x</span>
+<span id="cb3-22"><a href="#cb3-22"></a>        x.parent := Find(x.parent)</span>
+<span id="cb3-23"><a href="#cb3-23"></a>     <span class="cf">return</span> x.parent  </span></code></pre></div>
+<h1 id="应用">应用</h1>
+<h2 id="number-of-islands">Number of Islands</h2>
+<blockquote>
+<p>Given a 2d grid map of '1's (land) and '0's (water), count the number of islands. An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.<br />
+<strong>Example 1</strong>:<br />
+<strong>Input:</strong><br />
+11110<br />
+11010<br />
+11000<br />
+00000<br />
+<strong>Output:</strong> 1<br />
+<strong>Example 2:</strong><br />
+<strong>Input:</strong><br />
+11000<br />
+11000<br />
+00100<br />
+00011<br />
+<strong>Output:</strong> 3</p>
+</blockquote>
+<h3 id="solutions">Solutions</h3>
+<p>该题的解题思路有两个，一个是使用<code>Flood fill</code>算法，一个是采用<code>并查集的</code>方法。</p>
+<h4 id="基于flood-fill算法">基于Flood Fill算法</h4>
+<p>根据算法特点，我们可以从一个点出发，然后找到与其连通的点（可通过深度优先或者广度优先算法实现）。而这一片连着的区域就是我们要找的岛屿。根据题意，该题应采用四个方向的flood fill算法。具体看代码实现。</p>
+<h5 id="采用深度优先遍历实现">采用深度优先遍历实现</h5>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb4-2"><a href="#cb4-2"></a>    <span class="kw">def</span> __dfs(<span class="va">self</span>, grid, i, j, m, n, marked):</span>
+<span id="cb4-3"><a href="#cb4-3"></a>        marked[i][j] <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a>        <span class="cf">for</span> direction <span class="kw">in</span> <span class="va">self</span>.directions:</span>
+<span id="cb4-5"><a href="#cb4-5"></a>            new_i <span class="op">=</span> i <span class="op">+</span> direction[<span class="dv">0</span>]</span>
+<span id="cb4-6"><a href="#cb4-6"></a>            new_j <span class="op">=</span> j <span class="op">+</span> direction[<span class="dv">1</span>]</span>
+<span id="cb4-7"><a href="#cb4-7"></a>            <span class="cf">if</span> <span class="dv">0</span> <span class="op">&lt;=</span> new_i <span class="op">&lt;</span> m <span class="kw">and</span> <span class="dv">0</span> <span class="op">&lt;=</span> new_j <span class="op">&lt;</span> n <span class="kw">and</span> <span class="kw">not</span>(marked[new_i][new_j]) <span class="kw">and</span> grid[new_i][new_j] <span class="op">==</span> <span class="st">&#39;1&#39;</span>:</span>
+<span id="cb4-8"><a href="#cb4-8"></a>                <span class="va">self</span>.__dfs(grid, new_i, new_j, m, n, marked)</span>
+<span id="cb4-9"><a href="#cb4-9"></a>                </span>
+<span id="cb4-10"><a href="#cb4-10"></a>    <span class="co">#        x-1,y</span></span>
+<span id="cb4-11"><a href="#cb4-11"></a>    <span class="co"># x,y-1    x,y    x,y+1</span></span>
+<span id="cb4-12"><a href="#cb4-12"></a>    <span class="co">#        x+1,y</span></span>
+<span id="cb4-13"><a href="#cb4-13"></a>    <span class="co"># 方向数组，它表示了相对于当前位置的 4 个方向的横、纵坐标的偏移量，这是一个常见的技巧</span></span>
+<span id="cb4-14"><a href="#cb4-14"></a>    directions <span class="op">=</span> [(<span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>), (<span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>), (<span class="dv">1</span>, <span class="dv">0</span>), (<span class="dv">0</span>, <span class="dv">1</span>)]</span>
+<span id="cb4-15"><a href="#cb4-15"></a>    </span>
+<span id="cb4-16"><a href="#cb4-16"></a>    <span class="kw">def</span> numIslands(<span class="va">self</span>, grid: List[List[<span class="bu">str</span>]]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb4-17"><a href="#cb4-17"></a>        m <span class="op">=</span> <span class="bu">len</span>(grid)</span>
+<span id="cb4-18"><a href="#cb4-18"></a>        </span>
+<span id="cb4-19"><a href="#cb4-19"></a>        <span class="co"># 特判</span></span>
+<span id="cb4-20"><a href="#cb4-20"></a>        <span class="cf">if</span> m <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb4-21"><a href="#cb4-21"></a>            <span class="cf">return</span> <span class="dv">0</span></span>
+<span id="cb4-22"><a href="#cb4-22"></a>        </span>
+<span id="cb4-23"><a href="#cb4-23"></a>        n <span class="op">=</span> <span class="bu">len</span>(grid[<span class="dv">0</span>])</span>
+<span id="cb4-24"><a href="#cb4-24"></a>        marked <span class="op">=</span> [[<span class="va">False</span> <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(n)] <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(m)]</span>
+<span id="cb4-25"><a href="#cb4-25"></a>        count <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb4-26"><a href="#cb4-26"></a>        </span>
+<span id="cb4-27"><a href="#cb4-27"></a>        <span class="co"># 从第 1 行、第 1 格开始，对每一格尝试进行一次 DFS 操作</span></span>
+<span id="cb4-28"><a href="#cb4-28"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(m):</span>
+<span id="cb4-29"><a href="#cb4-29"></a>            <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb4-30"><a href="#cb4-30"></a>                </span>
+<span id="cb4-31"><a href="#cb4-31"></a>                <span class="co"># 只要是陆地，且没有被访问过的，就可以使用 DFS 发现与之相连的陆地，并进行标记</span></span>
+<span id="cb4-32"><a href="#cb4-32"></a>                <span class="cf">if</span> <span class="kw">not</span>(marked[i][j]) <span class="kw">and</span> grid[i][j] <span class="op">==</span> <span class="st">&#39;1&#39;</span>:</span>
+<span id="cb4-33"><a href="#cb4-33"></a>                    </span>
+<span id="cb4-34"><a href="#cb4-34"></a>                    <span class="co"># count 可以理解为连通分量</span></span>
+<span id="cb4-35"><a href="#cb4-35"></a>                    count <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb4-36"><a href="#cb4-36"></a>                    <span class="va">self</span>.__dfs(grid, i, j, m, n, marked)</span>
+<span id="cb4-37"><a href="#cb4-37"></a>        <span class="cf">return</span> count</span></code></pre></div>
+<h5 id="采用广度优先遍历实现">采用广度优先遍历实现</h5>
+<p>使用<strong>广度优先遍历</strong>不用回溯，但需要一个<strong>辅助队列</strong>。</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb5-2"><a href="#cb5-2"></a>    <span class="kw">def</span> __bfs(<span class="va">self</span>, grid, queue, cur_x, cur_y, m, n, marked):</span>
+<span id="cb5-3"><a href="#cb5-3"></a>        <span class="co"># 得到 4 个方向的坐标</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a>        <span class="cf">for</span> direction <span class="kw">in</span> <span class="va">self</span>.directions:</span>
+<span id="cb5-5"><a href="#cb5-5"></a>            new_i <span class="op">=</span> cur_x <span class="op">+</span> direction[<span class="dv">0</span>]</span>
+<span id="cb5-6"><a href="#cb5-6"></a>            new_j <span class="op">=</span> cur_y <span class="op">+</span> direction[<span class="dv">1</span>]</span>
+<span id="cb5-7"><a href="#cb5-7"></a></span>
+<span id="cb5-8"><a href="#cb5-8"></a>            <span class="co"># 如果不越界、没有被访问过并且是陆地，继续放入队列，放入队列的同时标记已经访问过</span></span>
+<span id="cb5-9"><a href="#cb5-9"></a>            <span class="cf">if</span> <span class="dv">0</span> <span class="op">&lt;=</span> new_i <span class="op">&lt;</span> m <span class="kw">and</span> <span class="dv">0</span> <span class="op">&lt;=</span> new_j <span class="op">&lt;</span> n <span class="kw">and</span> <span class="kw">not</span>(marked[new_i][new_j]) <span class="kw">and</span> grid[new_i][new_j] <span class="op">==</span> <span class="st">&#39;1&#39;</span>:</span>
+<span id="cb5-10"><a href="#cb5-10"></a>                queue.append((new_i, new_j))</span>
+<span id="cb5-11"><a href="#cb5-11"></a></span>
+<span id="cb5-12"><a href="#cb5-12"></a>                <span class="co"># 在放入队列以后，马上标记成已经访问过，因为只要进入了队列，迟早都会遍历到它</span></span>
+<span id="cb5-13"><a href="#cb5-13"></a>                <span class="co"># 如果是出队列的时候再标记，会造成很多重复的结点进入队列，造成重复的操作</span></span>
+<span id="cb5-14"><a href="#cb5-14"></a>                marked[new_i][new_j] <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb5-15"><a href="#cb5-15"></a></span>
+<span id="cb5-16"><a href="#cb5-16"></a>    directions <span class="op">=</span> [(<span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>), (<span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>), (<span class="dv">1</span>, <span class="dv">0</span>), (<span class="dv">0</span>, <span class="dv">1</span>)]</span>
+<span id="cb5-17"><a href="#cb5-17"></a></span>
+<span id="cb5-18"><a href="#cb5-18"></a>    <span class="kw">def</span> numIslands(<span class="va">self</span>, grid: List[List[<span class="bu">str</span>]]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb5-19"><a href="#cb5-19"></a>        m <span class="op">=</span> <span class="bu">len</span>(grid)</span>
+<span id="cb5-20"><a href="#cb5-20"></a>        <span class="cf">if</span> m <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb5-21"><a href="#cb5-21"></a>            <span class="cf">return</span> <span class="dv">0</span></span>
+<span id="cb5-22"><a href="#cb5-22"></a></span>
+<span id="cb5-23"><a href="#cb5-23"></a>        n <span class="op">=</span> <span class="bu">len</span>(grid[<span class="dv">0</span>])</span>
+<span id="cb5-24"><a href="#cb5-24"></a>        marked <span class="op">=</span> [[<span class="va">False</span> <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(n)] <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(m)]</span>
+<span id="cb5-25"><a href="#cb5-25"></a>        count <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb5-26"><a href="#cb5-26"></a></span>
+<span id="cb5-27"><a href="#cb5-27"></a>        <span class="co"># 从第 1 行、第 1 格开始，对每一格尝试进行一次 DFS 操作</span></span>
+<span id="cb5-28"><a href="#cb5-28"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(m):</span>
+<span id="cb5-29"><a href="#cb5-29"></a>            <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb5-30"><a href="#cb5-30"></a></span>
+<span id="cb5-31"><a href="#cb5-31"></a>                <span class="co"># 只要是陆地，且没有被访问过的，就可以使用 BFS 发现与之相连的陆地，并进行标记</span></span>
+<span id="cb5-32"><a href="#cb5-32"></a>                <span class="cf">if</span> <span class="kw">not</span>(marked[i][j]) <span class="kw">and</span> grid[i][j] <span class="op">==</span> <span class="st">&#39;1&#39;</span>:</span>
+<span id="cb5-33"><a href="#cb5-33"></a>                    <span class="co"># count 可以理解为连通分量</span></span>
+<span id="cb5-34"><a href="#cb5-34"></a>                    count <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb5-35"><a href="#cb5-35"></a>                    queue <span class="op">=</span> deque()</span>
+<span id="cb5-36"><a href="#cb5-36"></a>                    queue.append((i, j))</span>
+<span id="cb5-37"><a href="#cb5-37"></a></span>
+<span id="cb5-38"><a href="#cb5-38"></a>                    <span class="co"># 标记上已经访问过</span></span>
+<span id="cb5-39"><a href="#cb5-39"></a>                    marked[i][j] <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb5-40"><a href="#cb5-40"></a>                    <span class="cf">while</span> queue:</span>
+<span id="cb5-41"><a href="#cb5-41"></a>                        cur_x, cur_y <span class="op">=</span> queue.popleft()</span>
+<span id="cb5-42"><a href="#cb5-42"></a>                        <span class="va">self</span>.__bfs(grid, queue, cur_x, cur_y, m, n, marked)</span>
+<span id="cb5-43"><a href="#cb5-43"></a>        <span class="cf">return</span> count</span></code></pre></div>
+<h4 id="基于并查集">基于并查集</h4>
+<p>使用并查集解决本问题的基本思想：<br />
+1. 如果当前是“陆地”，尝试与周围合并；<br />
+2. 如果当前是“水域”，就把所有的“水域”合并在一起，为此，可设置了一个虚拟的结点，表示“所有的水域都和这个虚拟结点是连接的”。</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb6-2"><a href="#cb6-2"></a>    <span class="kw">def</span> numIslands(<span class="va">self</span>, grid: List[List[<span class="bu">str</span>]]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb6-3"><a href="#cb6-3"></a></span>
+<span id="cb6-4"><a href="#cb6-4"></a>        <span class="kw">class</span> UnionFind:</span>
+<span id="cb6-5"><a href="#cb6-5"></a></span>
+<span id="cb6-6"><a href="#cb6-6"></a>            <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, n):</span>
+<span id="cb6-7"><a href="#cb6-7"></a>                <span class="va">self</span>.count <span class="op">=</span> n</span>
+<span id="cb6-8"><a href="#cb6-8"></a>                <span class="va">self</span>.parent <span class="op">=</span> [i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n)]</span>
+<span id="cb6-9"><a href="#cb6-9"></a>                <span class="va">self</span>.rank <span class="op">=</span> [<span class="dv">1</span> <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(n)]</span>
+<span id="cb6-10"><a href="#cb6-10"></a></span>
+<span id="cb6-11"><a href="#cb6-11"></a>            <span class="kw">def</span> get_count(<span class="va">self</span>):</span>
+<span id="cb6-12"><a href="#cb6-12"></a>                <span class="cf">return</span> <span class="va">self</span>.count</span>
+<span id="cb6-13"><a href="#cb6-13"></a></span>
+<span id="cb6-14"><a href="#cb6-14"></a>            <span class="kw">def</span> find(<span class="va">self</span>, p):</span>
+<span id="cb6-15"><a href="#cb6-15"></a>                <span class="cf">while</span> p <span class="op">!=</span> <span class="va">self</span>.parent[p]:</span>
+<span id="cb6-16"><a href="#cb6-16"></a>                    <span class="va">self</span>.parent[p] <span class="op">=</span> <span class="va">self</span>.parent[<span class="va">self</span>.parent[p]]</span>
+<span id="cb6-17"><a href="#cb6-17"></a>                    p <span class="op">=</span> <span class="va">self</span>.parent[p]</span>
+<span id="cb6-18"><a href="#cb6-18"></a>                <span class="cf">return</span> p</span>
+<span id="cb6-19"><a href="#cb6-19"></a></span>
+<span id="cb6-20"><a href="#cb6-20"></a>            <span class="kw">def</span> is_connected(<span class="va">self</span>, p, q):</span>
+<span id="cb6-21"><a href="#cb6-21"></a>                <span class="cf">return</span> <span class="va">self</span>.find(p) <span class="op">==</span> <span class="va">self</span>.find(q)</span>
+<span id="cb6-22"><a href="#cb6-22"></a></span>
+<span id="cb6-23"><a href="#cb6-23"></a>            <span class="kw">def</span> union(<span class="va">self</span>, p, q):</span>
+<span id="cb6-24"><a href="#cb6-24"></a>                p_root <span class="op">=</span> <span class="va">self</span>.find(p)</span>
+<span id="cb6-25"><a href="#cb6-25"></a>                q_root <span class="op">=</span> <span class="va">self</span>.find(q)</span>
+<span id="cb6-26"><a href="#cb6-26"></a>                <span class="cf">if</span> p_root <span class="op">==</span> q_root:</span>
+<span id="cb6-27"><a href="#cb6-27"></a>                    <span class="cf">return</span></span>
+<span id="cb6-28"><a href="#cb6-28"></a></span>
+<span id="cb6-29"><a href="#cb6-29"></a>                <span class="cf">if</span> <span class="va">self</span>.rank[p_root] <span class="op">&gt;</span> <span class="va">self</span>.rank[q_root]:</span>
+<span id="cb6-30"><a href="#cb6-30"></a>                    <span class="va">self</span>.parent[q_root] <span class="op">=</span> p_root</span>
+<span id="cb6-31"><a href="#cb6-31"></a>                <span class="cf">elif</span> <span class="va">self</span>.rank[p_root] <span class="op">&lt;</span> <span class="va">self</span>.rank[q_root]:</span>
+<span id="cb6-32"><a href="#cb6-32"></a>                    <span class="va">self</span>.parent[p_root] <span class="op">=</span> q_root</span>
+<span id="cb6-33"><a href="#cb6-33"></a>                <span class="cf">else</span>:</span>
+<span id="cb6-34"><a href="#cb6-34"></a>                    <span class="va">self</span>.parent[q_root] <span class="op">=</span> p_root</span>
+<span id="cb6-35"><a href="#cb6-35"></a>                    <span class="va">self</span>.rank[p_root] <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb6-36"><a href="#cb6-36"></a></span>
+<span id="cb6-37"><a href="#cb6-37"></a>                <span class="va">self</span>.count <span class="op">-=</span> <span class="dv">1</span></span>
+<span id="cb6-38"><a href="#cb6-38"></a></span>
+<span id="cb6-39"><a href="#cb6-39"></a>        row <span class="op">=</span> <span class="bu">len</span>(grid)</span>
+<span id="cb6-40"><a href="#cb6-40"></a>        <span class="co"># 特判</span></span>
+<span id="cb6-41"><a href="#cb6-41"></a>        <span class="cf">if</span> row <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb6-42"><a href="#cb6-42"></a>            <span class="cf">return</span> <span class="dv">0</span></span>
+<span id="cb6-43"><a href="#cb6-43"></a>        col <span class="op">=</span> <span class="bu">len</span>(grid[<span class="dv">0</span>])</span>
+<span id="cb6-44"><a href="#cb6-44"></a></span>
+<span id="cb6-45"><a href="#cb6-45"></a>        <span class="kw">def</span> get_index(x, y):</span>
+<span id="cb6-46"><a href="#cb6-46"></a>            <span class="cf">return</span> x <span class="op">*</span> col <span class="op">+</span> y</span>
+<span id="cb6-47"><a href="#cb6-47"></a></span>
+<span id="cb6-48"><a href="#cb6-48"></a>        <span class="co"># 注意：我们不用像 DFS 和 BFS 一样，4 个方向都要尝试，只要看一看右边和下面就可以了</span></span>
+<span id="cb6-49"><a href="#cb6-49"></a>        directions <span class="op">=</span> [(<span class="dv">1</span>, <span class="dv">0</span>), (<span class="dv">0</span>, <span class="dv">1</span>)]</span>
+<span id="cb6-50"><a href="#cb6-50"></a></span>
+<span id="cb6-51"><a href="#cb6-51"></a>        <span class="co"># 多开一个空间，把水域 &quot;0&quot; 都归到这个虚拟空间</span></span>
+<span id="cb6-52"><a href="#cb6-52"></a>        dummy_node <span class="op">=</span> row <span class="op">*</span> col</span>
+<span id="cb6-53"><a href="#cb6-53"></a>        uf <span class="op">=</span> UnionFind(dummy_node <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb6-54"><a href="#cb6-54"></a></span>
+<span id="cb6-55"><a href="#cb6-55"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(row):</span>
+<span id="cb6-56"><a href="#cb6-56"></a>            <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(col):</span>
+<span id="cb6-57"><a href="#cb6-57"></a>                <span class="co"># 如果是水域，都连到那个虚拟的空间去</span></span>
+<span id="cb6-58"><a href="#cb6-58"></a>                <span class="cf">if</span> grid[i][j] <span class="op">==</span> <span class="st">&#39;0&#39;</span>:</span>
+<span id="cb6-59"><a href="#cb6-59"></a>                    uf.union(get_index(i, j), dummy_node)</span>
+<span id="cb6-60"><a href="#cb6-60"></a>                <span class="cf">if</span> grid[i][j] <span class="op">==</span> <span class="st">&#39;1&#39;</span>:</span>
+<span id="cb6-61"><a href="#cb6-61"></a>                    <span class="co"># 向下向右如果都是陆地，就合并</span></span>
+<span id="cb6-62"><a href="#cb6-62"></a>                    <span class="cf">for</span> direction <span class="kw">in</span> directions:</span>
+<span id="cb6-63"><a href="#cb6-63"></a>                        new_x <span class="op">=</span> i <span class="op">+</span> direction[<span class="dv">0</span>]</span>
+<span id="cb6-64"><a href="#cb6-64"></a>                        new_y <span class="op">=</span> j <span class="op">+</span> direction[<span class="dv">1</span>]</span>
+<span id="cb6-65"><a href="#cb6-65"></a>                        <span class="cf">if</span> new_x <span class="op">&lt;</span> row <span class="kw">and</span> new_y <span class="op">&lt;</span> col <span class="kw">and</span> grid[new_x][new_y] <span class="op">==</span> <span class="st">&#39;1&#39;</span>:</span>
+<span id="cb6-66"><a href="#cb6-66"></a>                            uf.union(get_index(i, j), get_index(new_x, new_y))</span>
+<span id="cb6-67"><a href="#cb6-67"></a>        <span class="co"># 减去虚拟结点</span></span>
+<span id="cb6-68"><a href="#cb6-68"></a>        <span class="cf">return</span> uf.get_count() <span class="op">-</span> <span class="dv">1</span></span></code></pre></div>
+<h1 id="参考资料">参考资料</h1>
+<ol type="1">
+<li><a href="https://zh.wikipedia.org/wiki/Flood_fill" target="_blank" rel="noopener">Flood fill</a><br />
+</li>
+<li><a href="!https://zh.wikipedia.org/wiki/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2">深度优先算法</a><br />
+</li>
+<li><a href="!https://zh.wikipedia.org/wiki/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2">广度优先算法</a><br />
+</li>
+<li><a href="https://zh.wikipedia.org/wiki/%E5%B9%B6%E6%9F%A5%E9%9B%86" target="_blank" rel="noopener">并查集</a><br />
+</li>
+<li>https://leetcode-cn.com/problems/number-of-islands/solution/dfs-bfs-bing-cha-ji-python-dai-ma-java-dai-ma-by-l/</li>
+</ol>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/custom/donate/WeChanQR.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2020/04/19/Repost/Consensus_Mechanisms/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/bears/15.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/bears/15.jpg">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                Blockchain | Consensus Mechanisms</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+        
+          
+            <div class="post-nepre half next">
+          
+            <a href="/2020/04/16/Technology/BlockChain-Patient-Driven-Interoperability/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/bears/11.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/bears/11.jpg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                Paper Smash | Blockchain Technology for Healthcare-Facilitating the Transition to Patient-Driven Interoperability</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "uVn0CbsTzphCnMDIxJKQ0rbg-gzGzoHsz",
+        appKey: "wc39UmG3dNqQQms9Hg2sKc1X",
+        avatar: "monsterid", 
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="https://littlelittlemoon.github.io/" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/custom/avatar-3.jpg" itemprop="image" alt="Kayleen" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="https://littlelittlemoon.github.io/" itemprop="url" rel="author">Kayleen</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>A curious 👱‍♀️</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
+</div>
+
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML"></script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  </script>
+
+
+    </div>    
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            // PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+    <!-- <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Kayleen<br>
+      powered_by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer> -->
+<footer id="colophon" class="site-footer" role="contentinfo">
+  <div class="site-info">
+    <div class="footertext">
+      <div class="img-preload">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/wordpress-rotating-ball-o.svg">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/disqus-preloader.svg">
+      </div>
+      <p style="color: #666666;">&copy 2018</p>
+    </div>
+    <div class="footer-device">
+    <p style="font-family: 'Ubuntu', sans-serif;">
+        <span style="color: #b9b9b9;">Theme <a href="https://github.com/honjun/hexo-theme-sakura" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Sakura</a> <i class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i> by <a href="https://2heng.xin/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Mashiro</a>&<a href="https://www.hojun.cn/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Hojun&Kayleen</a>, Powered by Hexo, Hosted by Github Pages</a>
+        </span>
+      </p>
+    </div>
+  </div><!-- .site-info -->
+</footer>
+
+
+
+<!-- <script src="/js/tocbot.js"></script> -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/js/lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/js/InsightSearch.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/js/zoom.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/js/sakura-app.js"></script>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine@1.3.4/dist/Valine.min.js'></script>
+<script src="/js/botui.js"></script>
+<!-- 不蒜子 网页计数器 -->
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script> -->
+<script type="text/javascript">
+/* <![CDATA[ */
+if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  var Poi = {"pjax":"1","movies":{"url": "https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/video","name":"we-bare-bears-ice-bear-play-2.mp4","live":"close"},"windowheight":"fixed","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+} else {
+  var Poi = {"pjax":"1","movies":{"url": "https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/video","name":"we-bare-bears-ice-bear-play-2.mp4","live":"open"},"windowheight":"auto","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+}
+/* ]]> */
+
+</script>
+<script>
+$(document).ready(function() {
+  if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
+    if ($(".pattern-center").length > 0) { //有图的情况
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -400,
+          scrollSmoothOffset: -85
+      });
+    } else {
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -85,
+          scrollSmoothOffset: -85
+      });
+    }
+    var offsetTop = $('.toc').offset().top - 95;
+    window.onscroll = function() {
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      if (scrollTop >= offsetTop) {
+        $('.toc').addClass('toc-fixed');
+      } else {
+        $('.toc').removeClass('toc-fixed');
+      }
+    }
+  }
+});
+</script>
+
+    <div class="openNav no-select" style="height: 50px;">
+      <div class="iconflat no-select" style="width: 50px; height: 50px;">
+        <div class="icon"></div>
+      </div>
+      <div class="site-branding search-form-submit">
+        <i class="iconfont js-toggle-search iconsearch icon-search"></i>
+      </div>
+    </div>
+  </section>
+  <div id="mo-nav" class="">
+  <div class="m-avatar">
+    <img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/custom/avatar-3.jpg">
+  </div>
+  <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">Bear CaveKayleen</p>
+  <p style="text-align: center; word-spacing: 20px;">
+    
+      
+        <a href="http://github.com/littlelittlemoon" class="fa fa-github" target="_blank" style="color: #333; margin-left:20px"></a>
+      
+        <a href="https://wpa.qq.com/msgrd?v=3&uin=1165156282&site=qq&menu=yes" class="fa fa-qq" target="_blank" style="color: #25c6fe; margin-left:20px"></a>
+      
+    
+  </p>
+  <ul id="menu-new-1" class="menu">
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+            首页
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/archives/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+            归档
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/tags/Updating/">
+                  <i class="fa fa-circle-o-notch" aria-hidden="true"></i>
+                  更新
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/Technology/">
+                  <i class="fa fa-code" aria-hidden="true"></i>
+                  技术
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/Life/">
+                  <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                  生活
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/Thoughts/">
+                  <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                  随想
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/Repost/">
+                  <i class="fa fa-book" aria-hidden="true"></i>
+                  转载
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="javascript:;">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+            清单
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/tags/Reading/">
+                  <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                  悦读
+                </a>
+              </li>
+            
+              <li>
+                <a href="/music/">
+                  <i class="fa fa-headphones" aria-hidden="true"></i>
+                  音悦
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags/Pictures/">
+                  <i class="fa fa-photo" aria-hidden="true"></i>
+                  图集
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags/Cave/">
+                  <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                  Cave
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/comment/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+            留言板
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/links/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+            友人帐
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/donate/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+            赞赏
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/about/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-meetup" aria-hidden="true"></i>
+            关于我
+          </span>
+        </a>
+        
+      </li>
+    
+  </ul>
+  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2019 hexo-sakura</p>
+</div>
+<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<style>
+  .aplayer .aplayer-lrc {
+    height: 35px;
+  }
+  .aplayer .aplayer-lrc p{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px !important;
+  }
+  .aplayer .aplayer-lrc p.aplayer-lrc-current{
+    color: #FF1493;
+  }
+  .aplayer.aplayer-narrow .aplayer-body{
+    left: -66px !important;
+  }
+  .aplayer.aplayer-fixed .aplayer-lrc {
+    display: none;
+  }
+  .aplayer .aplayer-lrc.aplayer-lrc-hide {
+      display:none !important;
+  }
+  .aplayer.aplayer-fixed .lrc-show {
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>
+<meting-js
+
+    id="2188265841"
+
+    server="netease"
+
+    type="playlist"
+
+    fixed="true"
+
+    mini="true"
+
+    autoplay="false"
+
+    loop="all"
+
+    order="random"
+
+    preload="auto"
+
+    volume="0.4"
+
+    mutex="true"
+
+</meting-js>
+<script>
+  $(function(){
+    $('body').on('click', '.aplayer', function(){
+      if($('.aplayer-button').hasClass('aplayer-play')) {
+        $('.aplayer-lrc').removeClass('lrc-show');
+      } else {
+        $('.aplayer-lrc').addClass('lrc-show');
+      }
+    })
+  });
+</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>
