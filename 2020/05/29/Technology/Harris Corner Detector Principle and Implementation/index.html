@@ -484,7 +484,7 @@ trace \space M = \lambda_1 + \lambda_2
 <div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>thresh <span class="op">=</span> <span class="fl">0.04</span> <span class="op">*</span> harris_score.<span class="bu">max</span>()</span>
 <span id="cb6-2"><a href="#cb6-2"></a></span>
 <span id="cb6-3"><a href="#cb6-3"></a><span class="cf">for</span> r_i, score <span class="kw">in</span> <span class="bu">enumerate</span>(harris_score):</span>
-<span id="cb6-4"><a href="#cb6-4"></a>    <span class="cf">for</span> c_i, s <span class="kw">in</span> <span class="bu">enumerate</span>(response):</span>
+<span id="cb6-4"><a href="#cb6-4"></a>    <span class="cf">for</span> c_i, s <span class="kw">in</span> <span class="bu">enumerate</span>(score):</span>
 <span id="cb6-5"><a href="#cb6-5"></a>        <span class="cf">if</span> s <span class="op">&gt;</span> thresh:</span>
 <span id="cb6-6"><a href="#cb6-6"></a>            <span class="co"># corner</span></span>
 <span id="cb6-7"><a href="#cb6-7"></a>            corners.append([r_i, c_i])</span></code></pre></div>
