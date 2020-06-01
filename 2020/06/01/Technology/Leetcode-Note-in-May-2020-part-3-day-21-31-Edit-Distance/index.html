@@ -349,10 +349,10 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h1 id="&#x5199;&#x5728;&#x524D;&#x9762;&#x7684;&#x8BDD;">&#x5199;&#x5728;&#x524D;&#x9762;&#x7684;&#x8BDD;</h1>
+          <h1 id="&#x5199;&#x5728;&#x524D;&#x9762;&#x7684;&#x8BDD;"><a class="markdownIt-Anchor" href="#&#x5199;&#x5728;&#x524D;&#x9762;&#x7684;&#x8BDD;"></a> &#x5199;&#x5728;&#x524D;&#x9762;&#x7684;&#x8BDD;</h1>
 <p>&#x8FD9;&#x9053;&#x9898;&#x662F;&#x4E94;&#x6708;Leetcode&#x6BCF;&#x65E5;&#x6311;&#x6218;&#x7684;&#x6700;&#x540E;&#x4E00;&#x9898;&#xFF0C;&#x8FD8;&#x662F;&#x6709;&#x70B9;&#x96BE;&#x5EA6;&#x7684;&#xFF0C;&#x8FD9;&#x91CC;&#x5355;&#x72EC;&#x628A;&#x5B83;&#x62FF;&#x51FA;&#x6765;&#x8BB0;&#x5F55;&#xFF0C;&#x662F;&#x4E3A;&#x4E86;&#x4EE5;&#x540E;&#x66F4;&#x65B9;&#x4FBF;&#x7684;&#x68C0;&#x7D22;&#x548C;&#x5B66;&#x4E60;&#x3002;</p>
 <p>&#x5BF9;&#x4E86;&#xFF0C;&#x795D;&#x5404;&#x4F4D;&#x5C0F;&#x670B;&#x53CB;&#x5927;&#x670B;&#x53CB;&#x8282;&#x65E5;&#x5FEB;&#x4E50;~ &#x1F603;</p>
-<h1 id="edit-distance">Edit Distance</h1>
+<h1 id="edit-distance"><a class="markdownIt-Anchor" href="#edit-distance"></a> Edit Distance</h1>
 <blockquote>
 <p>Given two words word1 and word2, find the minimum number of operations required to convert word1 to word2.<br>
 You have the following 3 operations permitted on a word:<br>
@@ -360,150 +360,154 @@ You have the following 3 operations permitted on a word:<br>
 - Delete a character<br>
 - Replace a character<br>
 <strong>Example 1:</strong><br>
-<strong>Input</strong>: word1 = &quot;horse&quot;, word2 = &quot;ros&quot;<br>
+<strong>Input</strong>: word1 = &#x201C;horse&#x201D;, word2 = &#x201C;ros&#x201D;<br>
 <strong>Output</strong>: 3<br>
 <strong>Explanation</strong>:<br>
-horse -&gt; rorse (replace &apos;h&apos; with &apos;r&apos;)<br>
-rorse -&gt; rose (remove &apos;r&apos;)<br>
-rose -&gt; ros (remove &apos;e&apos;)<br>
+horse -&gt; rorse (replace &#x2018;h&#x2019; with &#x2018;r&#x2019;)<br>
+rorse -&gt; rose (remove &#x2018;r&#x2019;)<br>
+rose -&gt; ros (remove &#x2018;e&#x2019;)<br>
 <strong>Example 2:</strong><br>
-<strong>Input</strong>: word1 = &quot;intention&quot;, word2 = &quot;execution&quot;<br>
+<strong>Input</strong>: word1 = &#x201C;intention&#x201D;, word2 = &#x201C;execution&#x201D;<br>
 <strong>Output</strong>: 5<br>
 <strong>Explanation</strong>:<br>
-intention -&gt; inention (remove &apos;t&apos;)<br>
-inention -&gt; enention (replace &apos;i&apos; with &apos;e&apos;)<br>
-enention -&gt; exention (replace &apos;n&apos; with &apos;x&apos;)<br>
-exention -&gt; exection (replace &apos;n&apos; with &apos;c&apos;)<br>
-exection -&gt; execution (insert &apos;u&apos;)</p>
+intention -&gt; inention (remove &#x2018;t&#x2019;)<br>
+inention -&gt; enention (replace &#x2018;i&#x2019; with &#x2018;e&#x2019;)<br>
+enention -&gt; exention (replace &#x2018;n&#x2019; with &#x2018;x&#x2019;)<br>
+exention -&gt; exection (replace &#x2018;n&#x2019; with &#x2018;c&#x2019;)<br>
+exection -&gt; execution (insert &#x2018;u&#x2019;)</p>
 </blockquote>
-<h2 id="wiki">wiki</h2>
+<h2 id="wiki"><a class="markdownIt-Anchor" href="#wiki"></a> wiki</h2>
 <blockquote>
 <p>&#x5728;&#x8BA1;&#x7B97;&#x8BED;&#x8A00;&#x5B66;&#x548C;&#x8BA1;&#x7B97;&#x673A;&#x79D1;&#x5B66;&#x4E2D;&#xFF0C;&#x7F16;&#x8F91;&#x8DDD;&#x79BB;&#x662F;&#x4E00;&#x79CD;&#x901A;&#x8FC7;&#x8BA1;&#x7B97;&#x5C06;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x8F6C;&#x6362;&#x4E3A;&#x53E6;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x6240;&#x9700;&#x7684;&#x6700;&#x5C0F;&#x64CD;&#x4F5C;&#x6570;&#x6765;&#x91CF;&#x5316;&#x4E24;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#xFF08;&#x4F8B;&#x5982;&#x5355;&#x8BCD;&#xFF09;&#x5F7C;&#x6B64;&#x4E4B;&#x95F4;&#x6709;&#x591A;&#x4E48;&#x4E0D;&#x540C;&#x7684;&#x65B9;&#x5F0F;&#x3002;&#x7F16;&#x8F91;&#x8DDD;&#x79BB;&#x53EF;&#x4EE5;&#x5728;&#x81EA;&#x7136;&#x8BED;&#x8A00;&#x5904;&#x7406;&#x4E2D;&#x627E;&#x5230;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#xFF0C;&#x5176;&#x4E2D;&#x81EA;&#x52A8;&#x62FC;&#x5199;&#x6821;&#x6B63;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4ECE;&#x5B57;&#x5178;&#x4E2D;&#x9009;&#x62E9;&#x4E0E;&#x6240;&#x8BA8;&#x8BBA;&#x5355;&#x8BCD;&#x7684;&#x8DDD;&#x79BB;&#x8F83;&#x5C0F;&#x7684;&#x5355;&#x8BCD;&#x6765;&#x786E;&#x5B9A;&#x62FC;&#x5199;&#x9519;&#x8BEF;&#x7684;&#x5355;&#x8BCD;&#x7684;&#x5019;&#x9009;&#x8005;&#x66F4;&#x6B63;&#x3002;&#x5728;&#x751F;&#x7269;&#x4FE1;&#x606F;&#x5B66;&#x4E2D;&#xFF0C;&#x5B83;&#x53EF;&#x4EE5;&#x7528;&#x4E8E;&#x91CF;&#x5316;DNA&#x5E8F;&#x5217;&#x7684;&#x76F8;&#x4F3C;&#x6027;&#xFF0C;&#x53EF;&#x4EE5;&#x5C06;&#x5176;&#x89C6;&#x4E3A;&#x5B57;&#x6BCD;A&#xFF0C;C&#xFF0C;G&#x548C;T&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x3002;&#x7F16;&#x8F91;&#x8DDD;&#x79BB;&#x7684;&#x4E0D;&#x540C;&#x5B9A;&#x4E49;&#x4F7F;&#x7528;&#x4E0D;&#x540C;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x64CD;&#x4F5C;&#x96C6;&#x3002;Levenshtein&#x8DDD;&#x79BB;&#x64CD;&#x4F5C;&#x662F;&#x5B57;&#x7B26;&#x4E32;&#x4E2D;&#x5B57;&#x7B26;&#x7684;&#x5220;&#x9664;&#xFF0C;&#x63D2;&#x5165;&#x6216;&#x66FF;&#x6362;&#x3002;&#x4F5C;&#x4E3A;&#x6700;&#x5E38;&#x7528;&#x7684;&#x5EA6;&#x91CF;&#x6807;&#x51C6;&#xFF0C;&#x672F;&#x8BED;Levenshtein&#x8DDD;&#x79BB;&#x7ECF;&#x5E38;&#x4E0E;&#x7F16;&#x8F91;&#x8DDD;&#x79BB;&#x4E92;&#x6362;&#x4F7F;&#x7528;&#x3002;</p>
 </blockquote>
-<h3 id="types-of-edit-distance">Types of edit distance</h3>
+<h3 id="types-of-edit-distance"><a class="markdownIt-Anchor" href="#types-of-edit-distance"></a> Types of edit distance</h3>
 <p>&#x4E0D;&#x540C;&#x7C7B;&#x578B;&#x7684;&#x7F16;&#x8F91;&#x8DDD;&#x79BB;&#x5141;&#x8BB8;&#x4E0D;&#x540C;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x64CD;&#x4F5C;&#x96C6;&#x3002;&#x4F8B;&#x5982;&#xFF1A;</p>
-<ol type="1">
+<ol>
 <li>Levenshtein&#x8DDD;&#x79BB;&#x5141;&#x8BB8;&#x5220;&#x9664;&#xFF0C;&#x63D2;&#x5165;&#x548C;&#x66FF;&#x6362;;</li>
 <li>&#x6700;&#x957F;&#x516C;&#x5171;&#x5B50;&#x5E8F;&#x5217;&#xFF08;LCS&#xFF09;&#x8DDD;&#x79BB;&#x4EC5;&#x5141;&#x8BB8;&#x63D2;&#x5165;&#x548C;&#x5220;&#x9664;&#xFF0C;&#x800C;&#x4E0D;&#x5141;&#x8BB8;&#x66FF;&#x6362;;</li>
 <li>&#x6C49;&#x660E;&#x8DDD;&#x79BB;&#x4EC5;&#x5141;&#x8BB8;&#x66FF;&#x6362;&#xFF0C;&#x56E0;&#x6B64;&#xFF0C;&#x5B83;&#x4EC5;&#x9002;&#x7528;&#x4E8E;&#x76F8;&#x540C;&#x957F;&#x5EA6;&#x7684;&#x5B57;&#x7B26;&#x4E32;;</li>
 <li>Damerau&#x2013;Levenshtein&#x8DDD;&#x79BB;&#x5141;&#x8BB8;&#x4E24;&#x4E2A;&#x76F8;&#x90BB;&#x5B57;&#x7B26;&#x7684;&#x63D2;&#x5165;&#xFF0C;&#x5220;&#x9664;&#xFF0C;&#x66FF;&#x6362;&#x548C;&#x79FB;&#x4F4D;;</li>
 <li>Jaro&#x8DDD;&#x79BB;&#x4EC5;&#x5141;&#x8BB8;&#x6362;&#x4F4D;&#x3002;</li>
 </ol>
-<h3 id="definition">Definition</h3>
-<p>&#x7ED9;&#x5B9A;&#x5B57;&#x6BCD;<code>&#x3A3;</code>&#x4E0A;&#x7684;&#x4E24;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;<code>a</code>&#x548C;<code>b</code>&#xFF08;&#x4F8B;&#x5982;ASCII&#x5B57;&#x7B26;&#x96C6;&#xFF0C;&#x5B57;&#x8282;&#x96C6;[0..255]&#x7B49;&#xFF09;&#xFF0C;&#x7F16;&#x8F91;&#x8DDD;&#x79BB;<code>d(a, b)</code>&#x662F;&#x6700;&#x5C0F;&#x6743;&#x91CD;&#x7684;&#x7F16;&#x8F91;&#x5E8F;&#x5217;&#x5C06;<code>a</code>&#x8F6C;&#x6362;&#x4E3A;<code>b</code>&#x7684;&#x8FD0;&#x7B97;&#x3002;Levenshtein&#x5728;1966&#x5E74;&#x5B9A;&#x4E49;&#x7684;&#x6700;&#x7B80;&#x5355;&#x7684;&#x4E00;&#x7EC4;&#x7F16;&#x8F91;&#x64CD;&#x4F5C;&#x4E4B;&#x4E00;&#x662F;&#xFF1A;</p>
-<ol type="1">
+<h3 id="definition"><a class="markdownIt-Anchor" href="#definition"></a> Definition</h3>
+<p>&#x7ED9;&#x5B9A;&#x5B57;&#x6BCD;<code>&#x3A3;</code>&#x4E0A;&#x7684;&#x4E24;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;<code>a</code>&#x548C;<code>b</code>&#xFF08;&#x4F8B;&#x5982;ASCII&#x5B57;&#x7B26;&#x96C6;&#xFF0C;&#x5B57;&#x8282;&#x96C6;[0&#x2026;255]&#x7B49;&#xFF09;&#xFF0C;&#x7F16;&#x8F91;&#x8DDD;&#x79BB;<code>d(a, b)</code>&#x662F;&#x6700;&#x5C0F;&#x6743;&#x91CD;&#x7684;&#x7F16;&#x8F91;&#x5E8F;&#x5217;&#x5C06;<code>a</code>&#x8F6C;&#x6362;&#x4E3A;<code>b</code>&#x7684;&#x8FD0;&#x7B97;&#x3002;Levenshtein&#x5728;1966&#x5E74;&#x5B9A;&#x4E49;&#x7684;&#x6700;&#x7B80;&#x5355;&#x7684;&#x4E00;&#x7EC4;&#x7F16;&#x8F91;&#x64CD;&#x4F5C;&#x4E4B;&#x4E00;&#x662F;&#xFF1A;</p>
+<ol>
 <li>&#x63D2;&#x5165;&#x5355;&#x4E2A;&#x7B26;&#x53F7;&#x3002;&#x5982;&#x679C;<code>a = uv</code>&#xFF0C;&#x5219;&#x63D2;&#x5165;&#x7B26;&#x53F7;<code>x</code>&#x4F1A;&#x751F;&#x6210;<code>uxv</code>&#x3002;&#x8FD9;&#x4E5F;&#x53EF;&#x4EE5;&#x8868;&#x793A;&#x4E3A;<code>&#x3B5;&#x2192;x</code>&#xFF0C;&#x4F7F;&#x7528;<code>&#x3B5;</code>&#x8868;&#x793A;&#x7A7A;&#x5B57;&#x7B26;&#x4E32;;</li>
 <li>&#x5220;&#x9664;&#x5355;&#x4E2A;&#x7B26;&#x53F7;&#xFF0C;&#x4F1A;&#x5C06;<code>uxv</code>&#x66F4;&#x6539;&#x4E3A;<code>uv(x&#x2192;&#x3B5;)</code>;</li>
 <li>&#x7528;&#x5355;&#x4E2A;&#x7B26;&#x53F7;<code>x</code>&#x66FF;&#x6362;&#x7B26;&#x53F7;<code>y&#x2260;x</code>&#x5C06;<code>uxv</code>&#x66F4;&#x6539;&#x4E3A;<code>uyv(x&#x2192;y)</code>&#x3002;</li>
 </ol>
-<h4 id="example">Example</h4>
+<h4 id="example"><a class="markdownIt-Anchor" href="#example"></a> Example</h4>
 <p><code>&quot;kitten&quot;</code>&#x548C;<code>&quot;sitting&quot;</code>&#x4E4B;&#x95F4;&#x7684;<strong>Levenshtein&#x8DDD;&#x79BB;&#x4E3A;3</strong>&#x3002;&#x5C06;&#x524D;&#x8005;&#x8F6C;&#x6362;&#x4E3A;&#x540E;&#x8005;&#x7684;&#x6700;&#x5C0F;&#x7F16;&#x8F91;&#x811A;&#x672C;&#x4E3A;&#xFF1A;</p>
-<ol type="1">
-<li><strong>k</strong>itten &#x2192; <strong>s</strong>itten (substitute &quot;s&quot; for &quot;k&quot;)</li>
-<li>sitt<strong>e</strong>n &#x2192; sitt<strong>i</strong>n (substitute &quot;i&quot; for &quot;e&quot;)</li>
-<li>sittin &#x2192; sittin<strong>g</strong> (insert &quot;g&quot; at the end)</li>
+<ol>
+<li><strong>k</strong>itten &#x2192; <strong>s</strong>itten (substitute &#x201C;s&#x201D; for &#x201C;k&#x201D;)</li>
+<li>sitt<strong>e</strong>n &#x2192; sitt<strong>i</strong>n (substitute &#x201C;i&#x201D; for &#x201C;e&#x201D;)</li>
+<li>sittin &#x2192; sittin<strong>g</strong> (insert &#x201C;g&#x201D; at the end)</li>
 </ol>
 <p>LCS&#x8DDD;&#x79BB;&#xFF08;&#x4EC5;&#x63D2;&#x5165;&#x548C;&#x5220;&#x9664;&#xFF09;&#x63D0;&#x4F9B;&#x4E86;&#x4E0D;&#x540C;&#x7684;&#x8DDD;&#x79BB;&#x548C;&#x6700;&#x5C0F;&#x7684;&#x7F16;&#x8F91;&#x811A;&#x672C;&#xFF1A;</p>
-<ol type="1">
-<li><strong>k</strong>itten &#x2192; itten (delete &quot;k&quot; at 0)</li>
-<li>itten &#x2192; <strong>s</strong>itten (insert &quot;s&quot; at 0)</li>
-<li>sitt<strong>e</strong>n &#x2192; sittn (delete &quot;e&quot; at 4)</li>
-<li>sittn &#x2192; sitt<strong>i</strong>n (insert &quot;i&quot; at 4)</li>
-<li>sittin &#x2192; sittin<strong>g</strong> (insert &quot;g&quot; at 6)</li>
+<ol>
+<li><strong>k</strong>itten &#x2192; itten (delete &#x201C;k&#x201D; at 0)</li>
+<li>itten &#x2192; <strong>s</strong>itten (insert &#x201C;s&#x201D; at 0)</li>
+<li>sitt<strong>e</strong>n &#x2192; sittn (delete &#x201C;e&#x201D; at 4)</li>
+<li>sittn &#x2192; sitt<strong>i</strong>n (insert &#x201C;i&#x201D; at 4)</li>
+<li>sittin &#x2192; sittin<strong>g</strong> (insert &#x201C;g&#x201D; at 6)</li>
 </ol>
 <p>&#x603B;&#x6210;&#x672C;/&#x8DDD;&#x79BB;&#x4E3A;5&#x6B21;&#x64CD;&#x4F5C;&#x3002;</p>
-<p><strong><a href="https://en.wikipedia.org/wiki/Edit_distance" target="_blank" rel="noopener">More...</a></strong></p>
-<h2 id="solution">Solution</h2>
-<p>&#x8FD9;&#x9053;&#x9898;&#x7684;&#x9898;&#x610F;&#x5F88;&#x6E05;&#x695A;&#xFF1A;&#x6C42;&#x4ECE;&#x5355;&#x8BCD;<code>word1</code>&#x8F6C;&#x4E3A;&#x5355;&#x8BCD;<code>word2</code>&#x6240;&#x9700;&#x8981;&#x7684;&#x6700;&#x5C11;&#x53D8;&#x6362;&#x6B21;&#x6570;&#x3002;&#x6211;&#x770B;&#x5230;&#x8FD9;&#x9053;&#x9898;&#x4E5F;&#x6709;&#x5F88;&#x591A;&#x601D;&#x7EEA;&#xFF0C;&#x4F46;&#x662F;&#x6700;&#x540E;&#x6211;&#x8FD8;&#x662F;&#x6CA1;&#x80FD;&#x505A;&#x51FA;&#x6765;&#xFF08;&#x601D;&#x7EEA;&#x592A;&#x4E71;&#x4E86;&#xFF0C;&#x6700;&#x540E;&#x4E5F;&#x6CA1;&#x7406;&#x6E05;&#x695A;&#x3002;&#x3002;&#x540E;&#x9762;&#x6211;&#x53BB;&#x8BA8;&#x8BBA;&#x533A;&#x770B;&#x4E86;&#x5927;&#x5BB6;&#x7684;&#x8BA8;&#x8BBA;&#xFF0C;&#x8FD9;&#x9898;&#x7684;&#x6700;&#x4F73;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x8FD8;&#x662F;&#x52A8;&#x6001;&#x89C4;&#x5212;&#xFF08;&#x6211;&#x867D;&#x7136;&#x601D;&#x7EEA;&#x4E07;&#x5343;&#xFF0C;&#x4F46;&#x662F;&#x6CA1;&#x5F80;&#x52A8;&#x6001;&#x89C4;&#x5212;&#x60F3;(&#x2299;o&#x2299;)&#x2026;&#x3002;&#x7136;&#x540E;&#x6211;&#x770B;&#x5230;&#x4E00;&#x4E2A;&#x70B9;&#x8D5E;&#x6BD4;&#x8F83;&#x591A;&#x7684;&#x8BA8;&#x8BBA;&#xFF08;<span class="citation" data-cites="anderson5">[@anderson5&apos;s discussion]</span>(https://leetcode.com/problems/edit-distance/discuss/159295/Python-solutions-and-intuition)&#xFF09;&#xFF0C;&#x6211;&#x89C9;&#x5F97;&#x5199;&#x5F97;&#x633A;&#x597D;&#xFF0C;&#x8FD9;&#x91CC;&#x5F15;&#x7528;&#x4E00;&#x4E0B;&#x4ED6;&#x7684;&#x89E3;&#x9898;&#x601D;&#x8DEF;&#x3002;&#x56E0;&#x4E3A;&#x6211;&#x89C9;&#x5F97;&#x4ED6;&#x7684;&#x89E3;&#x9898;&#x601D;&#x8DEF;&#x4E0D;&#x4EC5;&#x4EC5;&#x662F;&#x9488;&#x5BF9;&#x8FD9;&#x9053;&#x9898;&#xFF0C;&#x4EE5;&#x540E;&#x8BBE;&#x8BA1;&#x5230;&#x540C;&#x7C7B;&#x578B;&#x7684;&#x9898;&#x90FD;&#x4F1A;&#x6709;&#x542F;&#x53D1;&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x91CC;&#x9A6C;&#x4E00;&#x4E0B;&#xFF1A;</p>
-<h3 id="anderson5s-thought">anderson5&#x2019;s thought</h3>
-<p>&#x5BF9;&#x4E8E;&#x90A3;&#x4E9B;&#x96BE;&#x4EE5;&#x7834;&#x89E3;&#x52A8;&#x6001;&#x7F16;&#x7A0B;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x7684;&#x4EBA;&#xFF0C;&#x6211;&#x53D1;&#x73B0;&#x6700;&#x7B80;&#x5355;&#x7684;&#x89E3;&#x51B3;&#x65B9;&#x6CD5;&#x662F;&#x9996;&#x5148;&#x4ECE;&#x4E00;&#x4E2A;&#x6734;&#x7D20;&#x4F46;&#x53EF;&#x884C;&#x7684;&#x9012;&#x5F52;&#x5B9E;&#x73B0;&#x5F00;&#x59CB;&#x3002;&#x8FD9;&#x6837;&#x505A;&#x662F;&#x5FC5;&#x4E0D;&#x53EF;&#x5C11;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x52A8;&#x6001;&#x7F16;&#x7A0B;&#x57FA;&#x672C;&#x4E0A;&#x662F;&#x4F7F;&#x7528;<strong>&#x7F13;&#x5B58;&#x8FDB;&#x884C;&#x9012;&#x5F52;</strong>&#x7684;&#x3002;&#x901A;&#x8FC7;&#x8FD9;&#x6837;&#x7684;&#x8FC7;&#x7A0B;&#xFF0C;&#x5BF9;&#x6211;&#x4EEC;&#x666E;&#x901A;&#x4EBA;&#x6765;&#x8BF4;&#xFF0C;&#x89E3;&#x7B54;&#x52A8;&#x6001;&#x7F16;&#x7A0B;&#x95EE;&#x9898;&#x5C06;&#x53D8;&#x5F97;&#x66F4;&#x52A0;&#x5BB9;&#x6613;&#x3002;:)</p>
-<h4 id="&#x601D;&#x8003;&#x8FC7;&#x7A0B;">&#x601D;&#x8003;&#x8FC7;&#x7A0B;</h4>
+<p><strong><a href="https://en.wikipedia.org/wiki/Edit_distance" target="_blank" rel="noopener">More&#x2026;</a></strong></p>
+<h2 id="solution"><a class="markdownIt-Anchor" href="#solution"></a> Solution</h2>
+<p>&#x8FD9;&#x9053;&#x9898;&#x7684;&#x9898;&#x610F;&#x5F88;&#x6E05;&#x695A;&#xFF1A;&#x6C42;&#x4ECE;&#x5355;&#x8BCD;<code>word1</code>&#x8F6C;&#x4E3A;&#x5355;&#x8BCD;<code>word2</code>&#x6240;&#x9700;&#x8981;&#x7684;&#x6700;&#x5C11;&#x53D8;&#x6362;&#x6B21;&#x6570;&#x3002;&#x6211;&#x770B;&#x5230;&#x8FD9;&#x9053;&#x9898;&#x4E5F;&#x6709;&#x5F88;&#x591A;&#x601D;&#x7EEA;&#xFF0C;&#x4F46;&#x662F;&#x6700;&#x540E;&#x6211;&#x8FD8;&#x662F;&#x6CA1;&#x80FD;&#x505A;&#x51FA;&#x6765;&#xFF08;&#x601D;&#x7EEA;&#x592A;&#x4E71;&#x4E86;&#xFF0C;&#x6700;&#x540E;&#x4E5F;&#x6CA1;&#x7406;&#x6E05;&#x695A;&#x3002;&#x3002;&#x540E;&#x9762;&#x6211;&#x53BB;&#x8BA8;&#x8BBA;&#x533A;&#x770B;&#x4E86;&#x5927;&#x5BB6;&#x7684;&#x8BA8;&#x8BBA;&#xFF0C;&#x8FD9;&#x9898;&#x7684;&#x6700;&#x4F73;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x8FD8;&#x662F;&#x52A8;&#x6001;&#x89C4;&#x5212;&#xFF08;&#x6211;&#x867D;&#x7136;&#x601D;&#x7EEA;&#x4E07;&#x5343;&#xFF0C;&#x4F46;&#x662F;&#x6CA1;&#x5F80;&#x52A8;&#x6001;&#x89C4;&#x5212;&#x60F3;(&#x2299;o&#x2299;)&#x2026;&#x3002;&#x7136;&#x540E;&#x6211;&#x770B;&#x5230;&#x4E00;&#x4E2A;&#x70B9;&#x8D5E;&#x6BD4;&#x8F83;&#x591A;&#x7684;&#x8BA8;&#x8BBA;&#xFF08;<a href="https://leetcode.com/problems/edit-distance/discuss/159295/Python-solutions-and-intuition" target="_blank" rel="noopener">@anderson5&#x2019;s discussion</a>&#xFF09;&#xFF0C;&#x6211;&#x89C9;&#x5F97;&#x5199;&#x5F97;&#x633A;&#x597D;&#xFF0C;&#x8FD9;&#x91CC;&#x5F15;&#x7528;&#x4E00;&#x4E0B;&#x4ED6;&#x7684;&#x89E3;&#x9898;&#x601D;&#x8DEF;&#x3002;&#x56E0;&#x4E3A;&#x6211;&#x89C9;&#x5F97;&#x4ED6;&#x7684;&#x89E3;&#x9898;&#x601D;&#x8DEF;&#x4E0D;&#x4EC5;&#x4EC5;&#x662F;&#x9488;&#x5BF9;&#x8FD9;&#x9053;&#x9898;&#xFF0C;&#x4EE5;&#x540E;&#x8BBE;&#x8BA1;&#x5230;&#x540C;&#x7C7B;&#x578B;&#x7684;&#x9898;&#x90FD;&#x4F1A;&#x6709;&#x542F;&#x53D1;&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x91CC;&#x9A6C;&#x4E00;&#x4E0B;&#xFF1A;</p>
+<h3 id="anderson5s-thought"><a class="markdownIt-Anchor" href="#anderson5s-thought"></a> anderson5&#x2019;s thought</h3>
+<p>&#x5BF9;&#x4E8E;&#x90A3;&#x4E9B;&#x96BE;&#x4EE5;&#x7834;&#x89E3;&#x52A8;&#x6001;&#x7F16;&#x7A0B;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x7684;&#x4EBA;&#xFF0C;&#x6211;&#x53D1;&#x73B0;&#x6700;&#x7B80;&#x5355;&#x7684;&#x89E3;&#x51B3;&#x65B9;&#x6CD5;&#x662F;&#x9996;&#x5148;&#x4ECE;&#x4E00;&#x4E2A;&#x6734;&#x7D20;&#x4F46;&#x53EF;&#x884C;&#x7684;&#x9012;&#x5F52;&#x5B9E;&#x73B0;&#x5F00;&#x59CB;&#x3002;&#x8FD9;&#x6837;&#x505A;&#x662F;&#x5FC5;&#x4E0D;&#x53EF;&#x5C11;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x52A8;&#x6001;&#x7F16;&#x7A0B;&#x57FA;&#x672C;&#x4E0A;&#x662F;&#x4F7F;&#x7528;<strong>&#x7F13;&#x5B58;&#x8FDB;&#x884C;&#x9012;&#x5F52;</strong>&#x7684;&#x3002;&#x901A;&#x8FC7;&#x8FD9;&#x6837;&#x7684;&#x8FC7;&#x7A0B;&#xFF0C;&#x5BF9;&#x6211;&#x4EEC;&#x666E;&#x901A;&#x4EBA;&#x6765;&#x8BF4;&#xFF0C;&#x89E3;&#x7B54;&#x52A8;&#x6001;&#x7F16;&#x7A0B;&#x95EE;&#x9898;&#x5C06;&#x53D8;&#x5F97;&#x66F4;&#x52A0;&#x5BB9;&#x6613;&#x3002;&#x1F603;</p>
+<h4 id="&#x601D;&#x8003;&#x8FC7;&#x7A0B;"><a class="markdownIt-Anchor" href="#&#x601D;&#x8003;&#x8FC7;&#x7A0B;"></a> &#x601D;&#x8003;&#x8FC7;&#x7A0B;</h4>
 <p>&#x5728;&#x7ED9;&#x5B9A;&#x4E24;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x6211;&#x4EEC;&#x7684;&#x4EFB;&#x52A1;&#x662F;&#x627E;&#x5230;&#x4E3A;&#x83B7;&#x5F97;&#x7B49;&#x6548;&#x5B57;&#x7B26;&#x4E32;&#x800C;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x7684;&#x6700;&#x5C11;&#x8F6C;&#x6362;&#x6570;&#x91CF;&#x3002;&#x4ECE;&#x4E00;&#x5F00;&#x59CB;&#xFF0C;&#x4F3C;&#x4E4E;&#x6CA1;&#x6709;&#x529E;&#x6CD5;&#x89E3;&#x51B3;&#x6240;&#x6709;&#x53EF;&#x80FD;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x5728;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x53EF;&#x80FD;&#x6027;&#x662F;&#x6307;&#x63D2;&#x5165;&#xFF0C;&#x5220;&#x9664;&#x6216;&#x66FF;&#x6362;&#x5B57;&#x7B26;&#x3002;&#x9012;&#x5F52;&#x901A;&#x5E38;&#x662F;&#x5C1D;&#x8BD5;&#x6240;&#x6709;&#x53EF;&#x80FD;&#x6027;&#x7684;&#x4E0D;&#x9519;&#x9009;&#x62E9;&#x3002;</p>
 <p>&#x6BCF;&#x5F53;&#x6211;&#x4EEC;&#x7F16;&#x5199;&#x9012;&#x5F52;&#x51FD;&#x6570;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x90FD;&#x9700;&#x8981;<strong>&#x67D0;&#x79CD;&#x65B9;&#x6CD5;&#x6765;&#x7EC8;&#x6B62;</strong>&#xFF0C;&#x5426;&#x5219;&#x6211;&#x4EEC;&#x5C06;&#x901A;&#x8FC7;&#x65E0;&#x9650;&#x9012;&#x5F52;&#x6700;&#x7EC8;&#x5BFC;&#x81F4;&#x5806;&#x6808;&#x6EA2;&#x51FA;&#x3002;&#x5BF9;&#x4E8E;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x8981;&#x8DDF;&#x8E2A;&#x7684;&#x662F;&#x7D22;&#x5F15;&#x3002;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x4E24;&#x4E2A;&#x7D22;&#x5F15;&#xFF0C;&#x4E00;&#x4E2A;&#x7528;&#x4E8E;word1&#xFF0C;&#x4E00;&#x4E2A;&#x7528;&#x4E8E;word2&#x3002;&#x73B0;&#x5728;&#xFF0C;&#x6211;&#x4EEC;&#x53EA;&#x9700;&#x8981;&#x5904;&#x7406;<strong>&#x57FA;&#x672C;&#x6848;&#x4F8B;</strong>&#x548C;<strong>&#x9012;&#x5F52;&#x6848;&#x4F8B;</strong>&#x3002;&#x5F53;&#x6211;&#x4EEC;&#x904D;&#x5386;&#x5B8C;&#x4E24;&#x4E2A;&#x5B57;&#x540E;&#x4F1A;&#x600E;&#x6837;&#xFF1F;&#x6709;&#x4E9B;&#x60F3;&#x6CD5;&#x4F1A;&#x544A;&#x8BC9;&#x60A8;&#xFF0C;&#x8F6C;&#x6362;&#x7684;&#x6700;&#x5C0F;&#x6B21;&#x6570;&#x53EA;&#x662F;&#x63D2;&#x5165;&#x5176;&#x4ED6;&#x5355;&#x8BCD;&#x7684;&#x5176;&#x4F59;&#x90E8;&#x5206;&#x3002;&#x8FD9;&#x662F;&#x6211;&#x4EEC;&#x7684;&#x57FA;&#x672C;&#x60C5;&#x51B5;&#x3002;&#x5F53;&#x6211;&#x4EEC;&#x4E0D;&#x4F7F;&#x7528;&#x4EFB;&#x4F55;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x600E;&#x4E48;&#x529E;&#xFF1F;&#x6211;&#x4EEC;&#x8981;&#x4E48;&#x5339;&#x914D;&#x4E24;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x4E2D;&#x5F53;&#x524D;&#x7D22;&#x5F15;&#x7684;&#x5B57;&#x7B26;&#xFF0C;&#x8981;&#x4E48;&#x4E0D;&#x5339;&#x914D;&#x3002;&#x5728;&#x7B2C;&#x4E00;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x6211;&#x4EEC;&#x4E0D;&#x4F1A;&#x4EA7;&#x751F;&#x4EFB;&#x4F55;&#x635F;&#x5931;&#xFF0C;&#x5E76;&#x4E14;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x91CD;&#x590D;&#x4E24;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x5176;&#x4F59;&#x90E8;&#x5206;&#x6765;&#x7EE7;&#x7EED;&#x6BD4;&#x8F83;&#x5176;&#x4F59;&#x5B57;&#x7B26;&#x4E32;&#x3002;&#x5728;&#x4E0D;&#x5339;&#x914D;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x63D2;&#x5165;&#xFF0C;&#x5220;&#x9664;&#x6216;&#x66FF;&#x6362;&#x3002;&#x56DE;&#x987E;&#x4E00;&#x4E0B;&#xFF1A;</p>
-<ol type="1">
-<li>&#x57FA;&#x672C;&#x60C5;&#x51B5;&#xFF1A;word1 =&#x201C;&#x201D;&#x6216;word2 =&#x201C;&#x201D; =&gt;&#x8FD4;&#x56DE;&#x5176;&#x4ED6;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x957F;&#x5EA6;&#xFF1B;</li>
-<li>&#x9012;&#x5F52;&#x7684;&#x60C5;&#x51B5;&#xFF1A;word1 [0] == word2 [0] =&gt;&#x5BF9;word1 [1&#xFF1A;]&#x548C;word2 [1&#xFF1A;]&#x8FDB;&#x884C;&#x9012;&#x5F52;&#xFF1B;</li>
-<li>&#x9012;&#x5F52;&#x7684;&#x60C5;&#x51B5;&#xFF1A;word1 [0]&#xFF01;= word2 [0] =&gt;&#x901A;&#x8FC7;&#x63D2;&#x5165;&#xFF0C;&#x5220;&#x9664;&#x6216;&#x66FF;&#x6362;&#x6765;&#x9012;&#x5F52;&#x3002;</li>
+<ol>
+<li>&#x57FA;&#x672C;&#x60C5;&#x51B5;&#xFF1A;<code>word1 = &quot;&quot;</code> &#x6216; <code>word2 = &quot;&quot;</code> =&gt; &#x8FD4;&#x56DE;&#x5176;&#x4ED6;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x957F;&#x5EA6;&#xFF1B;</li>
+<li>&#x9012;&#x5F52;&#x7684;&#x60C5;&#x51B5;&#xFF1A;<code>word1 [0] == word2 [0]</code> =&gt; &#x5BF9;<code>word1 [1:]</code>&#x548C;<code>word2 [1:]</code>&#x8FDB;&#x884C;&#x9012;&#x5F52;&#xFF1B;</li>
+<li>&#x9012;&#x5F52;&#x7684;&#x60C5;&#x51B5;&#xFF1A;<code>word1 [0] != word2 [0]</code> =&gt; &#x901A;&#x8FC7;&#x63D2;&#x5165;&#xFF0C;&#x5220;&#x9664;&#x6216;&#x66FF;&#x6362;&#x6765;&#x9012;&#x5F52;&#x3002;</li>
 </ol>
 <p>&#x5728;Python&#x4E2D;&#xFF1A;</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">class</span> Solution:</span>
-<span id="cb1-2"><a href="#cb1-2"></a>    <span class="kw">def</span> minDistance(<span class="va">self</span>, word1, word2):</span>
-<span id="cb1-3"><a href="#cb1-3"></a>        <span class="co">&quot;&quot;&quot;Naive recursive solution&quot;&quot;&quot;</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a>        <span class="cf">if</span> <span class="kw">not</span> word1 <span class="kw">and</span> <span class="kw">not</span> word2:</span>
-<span id="cb1-5"><a href="#cb1-5"></a>            <span class="cf">return</span> <span class="dv">0</span></span>
-<span id="cb1-6"><a href="#cb1-6"></a>        <span class="cf">if</span> <span class="kw">not</span> word1:</span>
-<span id="cb1-7"><a href="#cb1-7"></a>            <span class="cf">return</span> <span class="bu">len</span>(word2)</span>
-<span id="cb1-8"><a href="#cb1-8"></a>        <span class="cf">if</span> <span class="kw">not</span> word2:</span>
-<span id="cb1-9"><a href="#cb1-9"></a>            <span class="cf">return</span> <span class="bu">len</span>(word1)</span>
-<span id="cb1-10"><a href="#cb1-10"></a>        <span class="cf">if</span> word1[<span class="dv">0</span>] <span class="op">==</span> word2[<span class="dv">0</span>]:</span>
-<span id="cb1-11"><a href="#cb1-11"></a>            <span class="cf">return</span> <span class="va">self</span>.minDistance(word1[<span class="dv">1</span>:], word2[<span class="dv">1</span>:])</span>
-<span id="cb1-12"><a href="#cb1-12"></a>        insert <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> <span class="va">self</span>.minDistance(word1, word2[<span class="dv">1</span>:])</span>
-<span id="cb1-13"><a href="#cb1-13"></a>        delete <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> <span class="va">self</span>.minDistance(word1[<span class="dv">1</span>:], word2)</span>
-<span id="cb1-14"><a href="#cb1-14"></a>        replace <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> <span class="va">self</span>.minDistance(word1[<span class="dv">1</span>:], word2[<span class="dv">1</span>:])</span>
-<span id="cb1-15"><a href="#cb1-15"></a>        <span class="cf">return</span> <span class="bu">min</span>(insert, replace, delete)</span></code></pre></div>
+<pre class="highlight"><code class="python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">minDistance</span><span class="hljs-params">(self, word1, word2)</span>:</span>
+        <span class="hljs-string">&quot;&quot;&quot;Naive recursive solution&quot;&quot;&quot;</span>
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> word1 <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span> word2:
+            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> word1:
+            <span class="hljs-keyword">return</span> len(word2)
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> word2:
+            <span class="hljs-keyword">return</span> len(word1)
+        <span class="hljs-keyword">if</span> word1[<span class="hljs-number">0</span>] == word2[<span class="hljs-number">0</span>]:
+            <span class="hljs-keyword">return</span> self.minDistance(word1[<span class="hljs-number">1</span>:], word2[<span class="hljs-number">1</span>:])
+        insert = <span class="hljs-number">1</span> + self.minDistance(word1, word2[<span class="hljs-number">1</span>:])
+        delete = <span class="hljs-number">1</span> + self.minDistance(word1[<span class="hljs-number">1</span>:], word2)
+        replace = <span class="hljs-number">1</span> + self.minDistance(word1[<span class="hljs-number">1</span>:], word2[<span class="hljs-number">1</span>:])
+        <span class="hljs-keyword">return</span> min(insert, replace, delete)
+</code></pre>
 <p>&#x6709;&#x4E86;&#x4E00;&#x4E2A;&#x53EF;&#x7528;&#x7684;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#xFF0C;&#x6211;&#x4EEC;&#x6B23;&#x559C;&#x82E5;&#x72C2;&#xFF0C;&#x6211;&#x4EEC;&#x53BB;&#x63D0;&#x4EA4;&#x6211;&#x4EEC;&#x7684;&#x4EE3;&#x7801;&#x3002;&#x4E00;&#x5207;&#x90FD;&#x5F88;&#x597D;&#xFF0C;&#x76F4;&#x5230;&#x6211;&#x4EEC;&#x770B;&#x5230;&#x53EF;&#x6015;&#x7684;&#x7EA2;&#x8272;&#x6587;&#x672C;&#x4E3A;&#x6B62;&#x2026;&#x2026;<code>TIME LIMIT EXCEEDED</code>&#x3002;&#x6211;&#x4EEC;&#x505A;&#x9519;&#x4E86;&#x4EC0;&#x4E48;&#xFF1F;&#x8BA9;&#x6211;&#x4EEC;&#x770B;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x793A;&#x4F8B;&#xFF0C;&#x4E3A;&#x4E86;&#x7B80;&#x6D01;&#x8D77;&#x89C1;&#xFF0C;&#x6211;&#x5C06;minDistance&#x51FD;&#x6570;&#x6CE8;&#x91CA;&#x4E3A;md&#x3002;</p>
 <ul>
-<li>word1 = &quot;horse&quot;</li>
-<li>word2 = &quot;hello&quot;</li>
+<li>word1 = &#x201C;horse&#x201D;</li>
+<li>word2 = &#x201C;hello&#x201D;</li>
 </ul>
 <p>&#x9012;&#x5F52;&#x8C03;&#x7528;&#x6811;&#x6DF1;3&#x5C42;&#xFF0C;&#x5982;&#x4E0B;&#x6240;&#x793A;&#x3002;&#x6211;&#x91CD;&#x70B9;&#x4ECB;&#x7ECD;&#x4E86;&#x5177;&#x6709;&#x591A;&#x4E2A;&#x8C03;&#x7528;&#x7684;&#x9012;&#x5F52;&#x8C03;&#x7528;&#x3002;&#x6240;&#x4EE5;&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x770B;&#x5230;&#x6211;&#x4EEC;&#x6B63;&#x5728;&#x91CD;&#x590D;&#x5DE5;&#x4F5C;&#x3002;&#x6211;&#x4E0D;&#x4F1A;&#x5C1D;&#x8BD5;&#x5206;&#x6790;&#x6B64;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x7684;&#x8FD0;&#x884C;&#x65F6;&#xFF0C;&#x4F46;&#x662F;&#x5B83;&#x662F;&#x6307;&#x6570;&#x7EA7;&#x7684;&#x3002;</p>
-<pre><code>md(&quot;horse&quot;, &quot;hello&quot;)
-    md(&quot;orse&quot;, &quot;ello&quot;)
-        md(&quot;orse&quot;, &quot;llo&quot;)
-            md(&quot;orse&quot;, &quot;lo&quot;)
-            md(&quot;rse&quot;, &quot;llo&quot;) &lt;- 
-            md(&quot;rse&quot;, &quot;lo&quot;)
-        md(&quot;rse&quot;, &quot;ello&quot;)
-            md(&quot;rse&quot;, &quot;llo&quot;) &lt;-
-            md(&quot;se&quot;, &quot;ello&quot;)
-            md(&quot;se&quot;, &quot;llo&quot;) &lt;&lt;-
-        md(&quot;rse&quot;, &quot;llo&quot;)
-            md(&quot;rse&quot;, &quot;llo&quot;) &lt;-
-            md(&quot;se&quot;, &quot;llo&quot;) &lt;&lt;-
-            md(&quot;se&quot;, &quot;lo&quot;)</code></pre>
-<p>&#x6211;&#x4EEC;&#x89E3;&#x51B3;&#x6B64;&#x95EE;&#x9898;&#x7684;&#x65B9;&#x6CD5;&#x662F;&#x901A;&#x8FC7;<strong>&#x7F13;&#x5B58;</strong>&#x3002;&#x6211;&#x4EEC;<strong>&#x5C06;&#x4E2D;&#x95F4;&#x8BA1;&#x7B97;&#x7ED3;&#x679C;&#x4FDD;&#x5B58;&#x5728;&#x4E00;&#x4E2A;&#x5B57;&#x5178;&#x4E2D;</strong>&#xFF0C;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x518D;&#x6B21;&#x5904;&#x7406;&#x76F8;&#x540C;&#x7684;&#x5B50;&#x95EE;&#x9898;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x518D;&#x6B21;&#x6267;&#x884C;&#x76F8;&#x540C;&#x7684;&#x5DE5;&#x4F5C;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x8FD4;&#x56DE;&#x4FDD;&#x5B58;&#x7684;&#x503C;&#x3002;&#x8FD9;&#x662F;&#x8BB0;&#x5FC6;&#x5316;&#x7684;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#xFF0C;&#x6211;&#x4EEC;&#x4ECE;&#x8F83;&#x5927;&#x7684;&#x5B50;&#x95EE;&#x9898;&#x6784;&#x5EFA;&#x4E3A;&#x8F83;&#x5C0F;&#x7684;&#x5B50;&#x95EE;&#x9898;&#xFF08;&#x81EA;&#x4E0A;&#x800C;&#x4E0B;&#xFF09;&#x3002;</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">class</span> Solution:</span>
-<span id="cb3-2"><a href="#cb3-2"></a>    <span class="kw">def</span> minDistance(<span class="va">self</span>, word1, word2, i, j, memo):</span>
-<span id="cb3-3"><a href="#cb3-3"></a>        <span class="co">&quot;&quot;&quot;Memoized solution&quot;&quot;&quot;</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a>        <span class="cf">if</span> i <span class="op">==</span> <span class="bu">len</span>(word1) <span class="kw">and</span> j <span class="op">==</span> <span class="bu">len</span>(word2):</span>
-<span id="cb3-5"><a href="#cb3-5"></a>            <span class="cf">return</span> <span class="dv">0</span></span>
-<span id="cb3-6"><a href="#cb3-6"></a>        <span class="cf">if</span> i <span class="op">==</span> <span class="bu">len</span>(word1):</span>
-<span id="cb3-7"><a href="#cb3-7"></a>            <span class="cf">return</span> <span class="bu">len</span>(word2) <span class="op">-</span> j</span>
-<span id="cb3-8"><a href="#cb3-8"></a>        <span class="cf">if</span> j <span class="op">==</span> <span class="bu">len</span>(word2):</span>
-<span id="cb3-9"><a href="#cb3-9"></a>            <span class="cf">return</span> <span class="bu">len</span>(word1) <span class="op">-</span> i</span>
-<span id="cb3-10"><a href="#cb3-10"></a></span>
-<span id="cb3-11"><a href="#cb3-11"></a>        <span class="cf">if</span> (i, j) <span class="kw">not</span> <span class="kw">in</span> memo:</span>
-<span id="cb3-12"><a href="#cb3-12"></a>            <span class="cf">if</span> word1[i] <span class="op">==</span> word2[j]:</span>
-<span id="cb3-13"><a href="#cb3-13"></a>                ans <span class="op">=</span> <span class="va">self</span>.minDistance2(word1, word2, i <span class="op">+</span> <span class="dv">1</span>, j <span class="op">+</span> <span class="dv">1</span>, memo)</span>
-<span id="cb3-14"><a href="#cb3-14"></a>            <span class="cf">else</span>: </span>
-<span id="cb3-15"><a href="#cb3-15"></a>                insert <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> <span class="va">self</span>.minDistance2(word1, word2, i, j <span class="op">+</span> <span class="dv">1</span>, memo)</span>
-<span id="cb3-16"><a href="#cb3-16"></a>                delete <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> <span class="va">self</span>.minDistance2(word1, word2, i <span class="op">+</span> <span class="dv">1</span>, j, memo)</span>
-<span id="cb3-17"><a href="#cb3-17"></a>                replace <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> <span class="va">self</span>.minDistance2(word1, word2, i <span class="op">+</span> <span class="dv">1</span>, j <span class="op">+</span> <span class="dv">1</span>, memo)</span>
-<span id="cb3-18"><a href="#cb3-18"></a>                ans <span class="op">=</span> <span class="bu">min</span>(insert, delete, replace)</span>
-<span id="cb3-19"><a href="#cb3-19"></a>            memo[(i, j)] <span class="op">=</span> ans</span>
-<span id="cb3-20"><a href="#cb3-20"></a>        <span class="cf">return</span> memo[(i, j)]</span></code></pre></div>
+<pre class="highlight"><code class>md(&quot;horse&quot;, &quot;hello&quot;)
+	md(&quot;orse&quot;, &quot;ello&quot;)
+		md(&quot;orse&quot;, &quot;llo&quot;)
+			md(&quot;orse&quot;, &quot;lo&quot;)
+			md(&quot;rse&quot;, &quot;llo&quot;) &lt;- 
+			md(&quot;rse&quot;, &quot;lo&quot;)
+		md(&quot;rse&quot;, &quot;ello&quot;)
+			md(&quot;rse&quot;, &quot;llo&quot;) &lt;-
+			md(&quot;se&quot;, &quot;ello&quot;)
+			md(&quot;se&quot;, &quot;llo&quot;) &lt;&lt;-
+		md(&quot;rse&quot;, &quot;llo&quot;)
+			md(&quot;rse&quot;, &quot;llo&quot;) &lt;-
+			md(&quot;se&quot;, &quot;llo&quot;) &lt;&lt;-
+			md(&quot;se&quot;, &quot;lo&quot;)
+</code></pre>
+<p>&#x6211;&#x4EEC;&#x89E3;&#x51B3;&#x6B64;&#x95EE;&#x9898;&#x7684;&#x65B9;&#x6CD5;&#x662F;&#x901A;&#x8FC7;<strong>&#x7F13;&#x5B58;</strong>&#x3002;&#x6211;&#x4EEC;<strong>&#x5C06;&#x4E2D;&#x95F4;&#x8BA1;&#x7B97;&#x7ED3;&#x679C;&#x4FDD;&#x5B58;&#x5728;&#x4E00;&#x4E2A;&#x5B57;&#x5178;&#x4E2D;</strong>&#xFF0C;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x518D;&#x6B21;&#x5904;&#x7406;&#x76F8;&#x540C;&#x7684;&#x5B50;&#x95EE;&#x9898;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x518D;&#x6B21;&#x6267;&#x884C;&#x76F8;&#x540C;&#x7684;&#x5DE5;&#x4F5C;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x8FD4;&#x56DE;&#x4FDD;&#x5B58;&#x7684;&#x503C;&#x3002;&#x8FD9;&#x662F;&#x8BB0;&#x5FC6;&#x5316;&#x7684;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#xFF0C;&#x6211;&#x4EEC;&#x4ECE;&#x8F83;&#x5927;&#x7684;&#x5B50;&#x95EE;&#x9898;&#x6784;&#x5EFA;&#x4E3A;&#x8F83;&#x5C0F;&#x7684;&#x5B50;&#x95EE;&#x9898;&#xFF08;<strong>&#x81EA;&#x4E0A;&#x800C;&#x4E0B;</strong>&#xFF09;&#x3002;</p>
+<pre class="highlight"><code class="python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">minDistance</span><span class="hljs-params">(self, word1, word2, i, j, memo)</span>:</span>
+        <span class="hljs-string">&quot;&quot;&quot;Memoized solution&quot;&quot;&quot;</span>
+        <span class="hljs-keyword">if</span> i == len(word1) <span class="hljs-keyword">and</span> j == len(word2):
+            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>
+        <span class="hljs-keyword">if</span> i == len(word1):
+            <span class="hljs-keyword">return</span> len(word2) - j
+        <span class="hljs-keyword">if</span> j == len(word2):
+            <span class="hljs-keyword">return</span> len(word1) - i
+
+        <span class="hljs-keyword">if</span> (i, j) <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> memo:
+            <span class="hljs-keyword">if</span> word1[i] == word2[j]:
+                ans = self.minDistance2(word1, word2, i + <span class="hljs-number">1</span>, j + <span class="hljs-number">1</span>, memo)
+            <span class="hljs-keyword">else</span>: 
+                insert = <span class="hljs-number">1</span> + self.minDistance2(word1, word2, i, j + <span class="hljs-number">1</span>, memo)
+                delete = <span class="hljs-number">1</span> + self.minDistance2(word1, word2, i + <span class="hljs-number">1</span>, j, memo)
+                replace = <span class="hljs-number">1</span> + self.minDistance2(word1, word2, i + <span class="hljs-number">1</span>, j + <span class="hljs-number">1</span>, memo)
+                ans = min(insert, delete, replace)
+            memo[(i, j)] = ans
+        <span class="hljs-keyword">return</span> memo[(i, j)]
+</code></pre>
 <p>&#x5F53;&#x7136;&#xFF0C;<strong>&#x4EA4;&#x4E92;&#x5F0F;&#x5B9E;&#x73B0;&#x901A;&#x5E38;&#x6BD4;&#x5176;&#x9012;&#x5F52;&#x5B9E;&#x73B0;&#x8981;&#x597D;</strong>&#xFF0C;&#x56E0;&#x4E3A;&#x5728;&#x9012;&#x5F52;&#x8C03;&#x7528;&#x7684;&#x6570;&#x91CF;&#x975E;&#x5E38;&#x591A;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x6211;&#x4EEC;&#x4E0D;&#x627F;&#x62C5;&#x70B8;&#x6BC1;&#x5806;&#x6808;&#x7684;&#x98CE;&#x9669;&#x3002;&#x6211;&#x4EEC;&#x8FD8;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<strong>2D&#x6570;&#x7EC4;&#x6267;&#x884C;&#x4E0E;&#x7F13;&#x5B58;&#x503C;&#x7684;&#x5B57;&#x5178;&#x57FA;&#x672C;&#x76F8;&#x540C;&#x7684;&#x64CD;&#x4F5C;</strong>&#x3002;&#x5F53;&#x6211;&#x4EEC;&#x8FD9;&#x6837;&#x505A;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x5EFA;&#x7ACB;&#x4E86;<strong>&#x4ECE;&#x8F83;&#x5C0F;&#x7684;&#x5B50;&#x95EE;&#x9898;&#x5230;&#x8F83;&#x5927;&#x7684;&#x5B50;&#x95EE;&#x9898;&#xFF08;&#x81EA;&#x4E0B;&#x800C;&#x4E0A;&#xFF09;&#x7684;&#x89E3;&#x51B3;&#x65B9;&#x6848;</strong>&#x3002;&#x5728;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x7531;&#x4E8E;&#x4E0D;&#x518D;&#x9700;&#x8981;&#x4F20;&#x7EDF;&#x610F;&#x4E49;&#x4E0A;&#x7684;&#x201C;&#x91CD;&#x590D;&#x53D1;&#x751F;&#x201D;&#xFF0C;&#x56E0;&#x6B64;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x57FA;&#x672C;&#x7EA6;&#x675F;&#x6765;&#x521D;&#x59CB;&#x5316;2D&#x8868;&#x3002;&#x8BE5;&#x8868;&#x7684;&#x7B2C;&#x4E00;&#x884C;&#x548C;&#x5217;&#x5177;&#x6709;&#x5DF2;&#x77E5;&#x503C;&#xFF0C;&#x56E0;&#x4E3A;&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x4E3A;&#x7A7A;&#xFF0C;&#x6211;&#x4EEC;&#x53EA;&#x9700;&#x6DFB;&#x52A0;&#x975E;&#x7A7A;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x957F;&#x5EA6;&#xFF0C;&#x56E0;&#x4E3A;&#x8FD9;&#x662F;&#x8FBE;&#x5230;&#x7B49;&#x6548;&#x5B57;&#x7B26;&#x4E32;&#x6240;&#x9700;&#x7684;&#x6700;&#x5C11;&#x7F16;&#x8F91;&#x6B21;&#x6570;&#x3002;&#x5BF9;&#x4E8E;&#x8BB0;&#x5FC6;&#x548C;&#x52A8;&#x6001;&#x7F16;&#x7A0B;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#xFF0C;<strong>&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x5747;&#x4E3A;<code>O(mn)</code></strong>&#xFF0C;<strong>&#x7A7A;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x4E3A;<code>O(mn)</code></strong>&#xFF0C;&#x5176;&#x4E2D;<code>m</code>&#x548C;<code>n</code>&#x5206;&#x522B;&#x662F;<code>word1</code>&#x548C;<code>word2</code>&#x7684;&#x957F;&#x5EA6;&#x3002;</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">class</span> Solution:</span>
-<span id="cb4-2"><a href="#cb4-2"></a>    <span class="kw">def</span> minDistance(<span class="va">self</span>, word1, word2):</span>
-<span id="cb4-3"><a href="#cb4-3"></a>        <span class="co">&quot;&quot;&quot;Dynamic programming solution&quot;&quot;&quot;</span></span>
-<span id="cb4-4"><a href="#cb4-4"></a>        m <span class="op">=</span> <span class="bu">len</span>(word1)</span>
-<span id="cb4-5"><a href="#cb4-5"></a>        n <span class="op">=</span> <span class="bu">len</span>(word2)</span>
-<span id="cb4-6"><a href="#cb4-6"></a>        table <span class="op">=</span> [[<span class="dv">0</span>] <span class="op">*</span> (n <span class="op">+</span> <span class="dv">1</span>) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(m <span class="op">+</span> <span class="dv">1</span>)]</span>
-<span id="cb4-7"><a href="#cb4-7"></a></span>
-<span id="cb4-8"><a href="#cb4-8"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(m <span class="op">+</span> <span class="dv">1</span>):</span>
-<span id="cb4-9"><a href="#cb4-9"></a>            table[i][<span class="dv">0</span>] <span class="op">=</span> i</span>
-<span id="cb4-10"><a href="#cb4-10"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(n <span class="op">+</span> <span class="dv">1</span>):</span>
-<span id="cb4-11"><a href="#cb4-11"></a>            table[<span class="dv">0</span>][j] <span class="op">=</span> j</span>
-<span id="cb4-12"><a href="#cb4-12"></a></span>
-<span id="cb4-13"><a href="#cb4-13"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, m <span class="op">+</span> <span class="dv">1</span>):</span>
-<span id="cb4-14"><a href="#cb4-14"></a>            <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, n <span class="op">+</span> <span class="dv">1</span>):</span>
-<span id="cb4-15"><a href="#cb4-15"></a>                <span class="cf">if</span> word1[i <span class="op">-</span> <span class="dv">1</span>] <span class="op">==</span> word2[j <span class="op">-</span> <span class="dv">1</span>]:</span>
-<span id="cb4-16"><a href="#cb4-16"></a>                    table[i][j] <span class="op">=</span> table[i <span class="op">-</span> <span class="dv">1</span>][j <span class="op">-</span> <span class="dv">1</span>]</span>
-<span id="cb4-17"><a href="#cb4-17"></a>                <span class="cf">else</span>:</span>
-<span id="cb4-18"><a href="#cb4-18"></a>                    table[i][j] <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> <span class="bu">min</span>(table[i <span class="op">-</span> <span class="dv">1</span>][j], table[i][j <span class="op">-</span> <span class="dv">1</span>], table[i <span class="op">-</span> <span class="dv">1</span>][j <span class="op">-</span> <span class="dv">1</span>])</span>
-<span id="cb4-19"><a href="#cb4-19"></a>        <span class="cf">return</span> table[<span class="op">-</span><span class="dv">1</span>][<span class="op">-</span><span class="dv">1</span>]</span></code></pre></div>
-<h1 id="reference">Reference</h1>
-<ol type="1">
+<pre class="highlight"><code class="python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">minDistance</span><span class="hljs-params">(self, word1, word2)</span>:</span>
+        <span class="hljs-string">&quot;&quot;&quot;Dynamic programming solution&quot;&quot;&quot;</span>
+        m = len(word1)
+        n = len(word2)
+        table = [[<span class="hljs-number">0</span>] * (n + <span class="hljs-number">1</span>) <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> range(m + <span class="hljs-number">1</span>)]
+
+        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(m + <span class="hljs-number">1</span>):
+            table[i][<span class="hljs-number">0</span>] = i
+        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> range(n + <span class="hljs-number">1</span>):
+            table[<span class="hljs-number">0</span>][j] = j
+
+        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>, m + <span class="hljs-number">1</span>):
+            <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>, n + <span class="hljs-number">1</span>):
+                <span class="hljs-keyword">if</span> word1[i - <span class="hljs-number">1</span>] == word2[j - <span class="hljs-number">1</span>]:
+                    table[i][j] = table[i - <span class="hljs-number">1</span>][j - <span class="hljs-number">1</span>]
+                <span class="hljs-keyword">else</span>:
+                    table[i][j] = <span class="hljs-number">1</span> + min(table[i - <span class="hljs-number">1</span>][j], table[i][j - <span class="hljs-number">1</span>], table[i - <span class="hljs-number">1</span>][j - <span class="hljs-number">1</span>])
+        <span class="hljs-keyword">return</span> table[<span class="hljs-number">-1</span>][<span class="hljs-number">-1</span>]
+</code></pre>
+<h1 id="reference"><a class="markdownIt-Anchor" href="#reference"></a> Reference</h1>
+<ol>
 <li><a href="https://en.wikipedia.org/wiki/Edit_distance" target="_blank" rel="noopener">Edit distance</a></li>
 <li><a href="https://leetcode.com/problems/edit-distance/discuss/159295/Python-solutions-and-intuition" target="_blank" rel="noopener">Python solutions and intuition</a></li>
 </ol>
