@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://littlelittlemoon.github.io/"/>
-  <updated>2020-06-04T04:19:01.759Z</updated>
+  <updated>2020-06-04T13:53:56.377Z</updated>
   <id>https://littlelittlemoon.github.io/</id>
   
   <author>
@@ -15,6 +15,47 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CV | Facial Recognition | Fisherfaces vs Eigenfaces Principle</title>
+    <link href="https://littlelittlemoon.github.io/2020/06/04/Technology/CV-Algorithm/Facial-Recognition/Facial%20Recognition%20-%20Fisherfaces%20vs%20Eigenfaces%20-%20principle/"/>
+    <id>https://littlelittlemoon.github.io/2020/06/04/Technology/CV-Algorithm/Facial-Recognition/Facial%20Recognition%20-%20Fisherfaces%20vs%20Eigenfaces%20-%20principle/</id>
+    <published>2020-06-04T08:33:06.000Z</published>
+    <updated>2020-06-04T13:53:56.377Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Technology" scheme="https://littlelittlemoon.github.io/categories/Technology/"/>
+    
+      <category term="Facial Recognition" scheme="https://littlelittlemoon.github.io/categories/Technology/Facial-Recognition/"/>
+    
+    
+      <category term="LDA" scheme="https://littlelittlemoon.github.io/tags/LDA/"/>
+    
+      <category term="Computer vision" scheme="https://littlelittlemoon.github.io/tags/Computer-vision/"/>
+    
+      <category term="Algorithm Principle" scheme="https://littlelittlemoon.github.io/tags/Algorithm-Principle/"/>
+    
+      <category term="Facial Recognition" scheme="https://littlelittlemoon.github.io/tags/Facial-Recognition/"/>
+    
+      <category term="Fisherfaces" scheme="https://littlelittlemoon.github.io/tags/Fisherfaces/"/>
+    
+      <category term="Eigenfaces" scheme="https://littlelittlemoon.github.io/tags/Eigenfaces/"/>
+    
+      <category term="PCA" scheme="https://littlelittlemoon.github.io/tags/PCA/"/>
+    
+  </entry>
   
   <entry>
     <title>Leetcode Note in May 2020 | part 3 | day 21-31 | (三) | Edit Distance</title>
@@ -126,7 +167,7 @@
     <link href="https://littlelittlemoon.github.io/2020/05/29/Technology/CV-Algorithm/Harris%20Corner%20Detector%20Principle%20and%20Implementation/"/>
     <id>https://littlelittlemoon.github.io/2020/05/29/Technology/CV-Algorithm/Harris%20Corner%20Detector%20Principle%20and%20Implementation/</id>
     <published>2020-05-29T08:46:06.000Z</published>
-    <updated>2020-06-04T04:20:42.567Z</updated>
+    <updated>2020-06-04T05:52:42.551Z</updated>
     
     <summary type="html">
     
@@ -134,7 +175,7 @@
       
         
         
-          &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css&quot;
+          &lt;h1 id=&quot;&amp;#x524D;&amp;#x8A00;&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#&amp;#x524D;&amp;#x8A00;&quot;&gt;&lt;/a&gt;
         
       
     
@@ -674,35 +715,6 @@
       <category term="Machine Learning" scheme="https://littlelittlemoon.github.io/tags/Machine-Learning/"/>
     
       <category term="Classify" scheme="https://littlelittlemoon.github.io/tags/Classify/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hair Thickness | part 1 | Evalution of hair and scalp condition based on microscopy image analysis</title>
-    <link href="https://littlelittlemoon.github.io/2019/12/29/Technology/Paper-Smash/Evalution%20of%20hair%20and%20scalp%20condition%20based%20on%20microscopy%20image%20analysis%20%20|%20Hair%20Thickness%20-%201/"/>
-    <id>https://littlelittlemoon.github.io/2019/12/29/Technology/Paper-Smash/Evalution%20of%20hair%20and%20scalp%20condition%20based%20on%20microscopy%20image%20analysis%20%20|%20Hair%20Thickness%20-%201/</id>
-    <published>2019-12-29T13:21:24.000Z</published>
-    <updated>2020-06-04T04:20:03.415Z</updated>
-    
-    <summary type="html">
-    
-      Hair Thickness
-    
-    </summary>
-    
-    
-      <category term="Technology" scheme="https://littlelittlemoon.github.io/categories/Technology/"/>
-    
-      <category term="Paper Smash" scheme="https://littlelittlemoon.github.io/categories/Technology/Paper-Smash/"/>
-    
-    
-      <category term="Digital Image Processing" scheme="https://littlelittlemoon.github.io/tags/Digital-Image-Processing/"/>
-    
-      <category term="Line Detection" scheme="https://littlelittlemoon.github.io/tags/Line-Detection/"/>
-    
-      <category term="Paper" scheme="https://littlelittlemoon.github.io/tags/Paper/"/>
-    
-      <category term="Hair Thickness" scheme="https://littlelittlemoon.github.io/tags/Hair-Thickness/"/>
     
   </entry>
   
