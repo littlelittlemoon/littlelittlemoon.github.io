@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+  <title itemprop="name">Leetcode Note in Apri 2020 | part 2 |day 08-14 | LITTLEMEEMOON</title>
+  
+    <link rel="shortcut icon" href="/images/favicon.ico">
+  
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/css/matery.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="stylesheet" id="saukra_css-css" href="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/css/style.css" type="text/css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/css/lib.min.css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/css/font.css" media="all">
+  <link rel="stylesheet" href="/css/insight.css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/css/jquery.fancybox.min.css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/css/zoom.css" media="all">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/css/sharejs.css">
+<!--   <link rel="stylesheet" id="saukra_css-css" href="https://2heng.xin/wp-content/cache/autoptimize/css/autoptimize_ad42a61f4c7d4bdd9f91afcff6b5dda5.css
+" type="text/css" media="all"> -->
+  <script>
+  /*Initial Variables*/
+  var mashiro_option = new Object();
+  var mashiro_global = new Object();
+  mashiro_option.NProgressON = true;
+  /* 
+   * 邮箱信息之类的东西可以填在这里，这些js变量基本都作用于sakura-app.js
+   * 这样的设置仅是为了方便在基于PHP开发的主题中设置js变量，既然移植到了Node上，我想或许可以精简这一逻辑吧
+   */
+  mashiro_option.email_domain = "";
+  mashiro_option.email_name = "";
+  mashiro_option.cookie_version_control = "";
+  mashiro_option.qzone_autocomplete = false;
+  mashiro_option.site_name = "Bear CaveKayleen";
+  mashiro_option.author_name = "Kayleen";
+  mashiro_option.site_url = "https://littlelittlemoon.github.io/";
+  mashiro_option.v_appId = "muFSHxz8L08M3G7SvAW4JeCL-MdYXbMMI";
+  mashiro_option.v_appKey = "kVLkvQrw5ye4OnhwwEdjS9JB";
+  mashiro_option.mathjax = "[object Object]";
+  mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
+  mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
+
+  // mashiro_option.jsdelivr_css_src = "https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/css/lib.min.css";
+  // mashiro_option.float_player_on = true;
+
+  /*End of Initial Variables*/
+  </script>
+  <script type="text/javascript">
+  var bg = "https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/cover/2/(0).webp,https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/cover/2/(1).webp,https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/cover/2/(2).webp,https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/cover/2/(3).webp,https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/cover/2/(4).webp,https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/cover/2/(5).webp,https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/cover/2/(6).webp,https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/cover/2/(7).webp,https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/cover/2/(8).webp".split(",");
+  var bgindex = Math.floor(Math.random()*bg.length);
+  if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+    alert('朋友，IE浏览器未适配哦~');
+  }
+  </script>
+  <style type="text/css">
+  .hljs-ln{border-collapse:collapse}.hljs-ln td{padding:0}.hljs-ln-n:before{content:attr(data-line-number)}
+  </style>
+  <style type="text/css">.site-top .lower nav{display:block !important;}.author-profile i,.post-like a,.post-share .show-share,.sub-text,.we-info a,span.sitename,.post-more i:hover,#pagination a:hover,.post-content a:hover,.float-content i:hover{color:#FE9600}.feature i,.download,.navigator i:hover,.links ul li:before,.ar-time i,span.ar-circle,.object,.comment .comment-reply-link,.siren-checkbox-radio:checked + .siren-checkbox-radioInput:after{background:#FE9600}::-webkit-scrollbar-thumb{background:#FE9600}.download,.navigator i:hover,.link-title,.links ul li:hover,#pagination a:hover,.comment-respond input[type='submit']:hover{border-color:#FE9600}.entry-content a:hover,.site-info a:hover,.comment h4 a,#comments-navi a.prev,#comments-navi a.next,.comment h4 a:hover,.site-top ul li a:hover,.entry-title a:hover,#archives-temp h3,span.page-numbers.current,.sorry li a:hover,.site-title a:hover,i.iconfont.js-toggle-search.iconsearch:hover,.comment-respond input[type='submit']:hover{color:#FE9600}.comments .comments-main{display:block !important;}.comments .comments-hidden{display:none !important;}background-position:center center;background-attachment:inherit;}
+  </style>
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="LITTLEMEEMOON" type="application/atom+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="scrollbar" id="bar">
+  </div>
+  <a href="#" class="cd-top faa-float animated"></a>
+  <section id="main-container">
+    <div class="headertop ">
+  <div id="banner_wave_1"></div>
+  <div id="banner_wave_2"></div>
+  <figure id="centerbg" class="centerbg">
+    <div class="focusinfo no-select">
+      <div class="header-tou">
+        <a href="https://littlelittlemoon.github.io/">
+          <img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/custom/avatar-3.jpg">
+        </a>
+      </div>
+      <div class="header-info">
+        <p>Do not pray for easy lives, pray to be stronger men.</p>
+        <div class="top-social_v2">
+          <li id="bg-pre">
+            <img class="flipx" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+          
+            
+              
+                <li>
+                  <a href="http://github.com/littlelittlemoon" target="_blank" class="social-github" title="github">
+                    <img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/social/github.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="mailto:littlemeemoon@gmail.com" target="_blank" class="social-github" title="email">
+                    <img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/social/email.svg">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://wpa.qq.com/msgrd?v=3&amp;uin=1165156282&amp;site=qq&amp;menu=yes" target="_blank" class="social-github" title="qq">
+                    <img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/social/qq.png">
+                  </a>
+                </li>
+              
+            
+          
+          <li id="bg-next">
+            <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+        </div>
+      </div>
+    </div>
+  </figure>
+  <div id="video-container" style="">
+    <video style="object-fit: fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto">
+    </video>
+    <div id="video-btn" class="loadvideo videolive">
+    </div>
+    <div id="video-add">
+    </div>
+    <div class="video-stu">
+    </div>
+  </div>
+  <div class="headertop-down faa-float animated" onclick="headertop_down()">
+    <span>
+      <i class="fa fa-chevron-down" aria-hidden="true">
+      </i>
+    </span>
+  </div>
+</div>
+    <div id="page" class="site wrapper">
+      <header class="site-header no-select gizle sabit" role="banner">
+  <div class="site-top">
+    <div class="site-branding">
+      <span class="site-title">
+        <span class="logolink moe-mashiro">
+          <a href="/">
+            <span class="sakurasono">Bear Cave</span>
+            <span class="shironeko">Kayleen</span>
+          </a>
+        </span>
+      </span>
+    </div>
+    <div class="searchbox search-form-submit">
+      <i class="iconfont js-toggle-search iconsearch icon-search">
+      </i>
+    </div>
+    <div id="show-nav" class="showNav mobile-fit">
+      <div class="line line1">
+      </div>
+      <div class="line line2">
+      </div>
+      <div class="line line3">
+      </div>
+    </div>
+    <div class="lower-cantiner">
+      <div class="lower">
+        <nav class="mobile-fit-control hide">
+          <ul id="menu-new" class="menu">
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+                    首页
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/archives/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+                    归档
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/tags/Updating/">
+                          <i class="fa fa-circle-o-notch" aria-hidden="true"></i>
+                          更新
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/Technology/">
+                          <i class="fa fa-code" aria-hidden="true"></i>
+                          技术
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/Life/">
+                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                          生活
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/Thoughts/">
+                          <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                          随想
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/Repost/">
+                          <i class="fa fa-book" aria-hidden="true"></i>
+                          转载
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+                    清单
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/tags/Reading/">
+                          <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                          悦读
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/music/">
+                          <i class="fa fa-headphones" aria-hidden="true"></i>
+                          音悦
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/tags/Pictures/">
+                          <i class="fa fa-photo" aria-hidden="true"></i>
+                          图集
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/tags/Cave/">
+                          <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                          Cave
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/comment/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+                    留言板
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/links/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+                    友人帐
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/donate/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+                    赞赏
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/about/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-meetup" aria-hidden="true"></i>
+                    关于我
+                  </span>
+                </a>
+                
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/default.jpg);" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/default.jpg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      Leetcode Note in Apri 2020 | part 2 |day 08-14</h1>
+      <p class="entry-census">
+        <span>
+          <a href="https://littlelittlemoon.github.io/">
+            <img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/custom/avatar-3.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="https://littlelittlemoon.github.io/">Kayleen</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2020-4-8<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
+  </div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css" integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ" crossorigin="anonymous"><h1 id="&#x5199;&#x5728;&#x524D;&#x9762;&#x7684;&#x8BDD;">&#x5199;&#x5728;&#x524D;&#x9762;&#x7684;&#x8BDD;</h1>
+<p>&#x7B2C;&#x4E8C;&#x6B21;&#x66F4;&#x65B0;&#xFF0C;&#x7EE7;&#x7EED;&#x524D;&#x8FDB;~</p>
+<h1 id="backspace-string-compare">Backspace String Compare</h1>
+<blockquote>
+<p>Given two strings S and T, return if they are equal when both are typed into empty text editors. # means a backspace character.<br>
+<strong>Examples:</strong><br>
+<strong>Input:</strong> S = &quot;ab#c&quot;, T = &quot;ad#c&quot;<br>
+<strong>Output:</strong> true<br>
+<strong>Explanation:</strong> Both S and T become &quot;ac&quot;.<br>
+<strong>Input:</strong> S = &quot;ab##&quot;, T = &quot;c#d#&quot;<br>
+<strong>Output:</strong> true<br>
+<strong>Explanation:</strong> Both S and T become &quot;&quot;.<br>
+<strong>Input:</strong> S = &quot;a##c&quot;, T = &quot;#a#c&quot;<br>
+<strong>Output:</strong> true<br>
+<strong>Explanation:</strong> Both S and T become &quot;c&quot;.<br>
+<strong>Input:</strong> S = &quot;a#c&quot;, T = &quot;b&quot;<br>
+<strong>Output:</strong> false<br>
+<strong>Explanation:</strong> S becomes &quot;c&quot; while T becomes &quot;b&quot;.</p>
+</blockquote>
+<h2 id="solution">Solution</h2>
+<p>&#x8FD9;&#x4E2A;&#x9898;&#x5BF9;&#x4E8E;&#x6211;&#x6765;&#x8BF4;&#x6709;&#x70B9;&#x96BE;&#x5EA6;&#xFF0C;&#x6628;&#x5929;(9&#x53F7;)&#x665A;&#x4E0A;&#x505A;&#x4E86;&#x4E24;&#x4E2A;&#x5C0F;&#x65F6;&#x5427;&#xFF0C;&#x91CD;&#x70B9;&#x662F;&#x901A;&#x4E0D;&#x8FC7;&#x6240;&#x6709;&#x6D4B;&#x8BD5;&#x7528;&#x4F8B;&#xFF0C;&#x603B;&#x662F;&#x6709;&#x4E00;&#x4E9B;&#x7EC6;&#x8282;&#x6CA1;&#x6709;&#x8003;&#x8651;&#x5230;&#xFF0C;&#x800C;&#x4E14;&#x4EE3;&#x7801;&#x8D8A;&#x5199;&#x8D8A;&#x590D;&#x6742;&#xFF0C;&#x52A0;&#x4E0A;&#x6628;&#x5929;&#x4E2D;&#x5348;&#x6CA1;&#x7761;&#x5348;&#x89C9;&#xFF0C;&#x5230;&#x6700;&#x540E;&#x81EA;&#x5DF1;&#x628A;&#x81EA;&#x5DF1;&#x90FD;&#x641E;&#x61F5;&#x4E86;&#xFF0C;&#x6C14;&#x1F620;&#x3002;&#x540E;&#x9762;&#x7761;&#x89C9;&#x7684;&#x65F6;&#x5019;&#x53D1;&#x73B0;&#x81EA;&#x5DF1;&#x8111;&#x5B50;&#x771F;&#x7684;&#x662F;&#x4E00;&#x6839;&#x7B4B;&#xFF0C;&#x6362;&#x4E2A;&#x601D;&#x8DEF;&#x8FD9;&#x9898;&#x4F1A;&#x7B80;&#x5355;&#x5F88;&#x591A;&#x3002;&#x5148;&#x770B;&#x770B;&#x4EE3;&#x7801;&#x5427;&#x3002;</p>
+<h3 id="mine">Mine</h3>
+<p><strong>&#x6838;&#x5FC3;&#x601D;&#x8DEF;</strong>&#xFF1A;&#x4ECE;&#x540E;&#x5F80;&#x524D;&#x627E;&#x53EF;&#x80FD;&#x7559;&#x4E0B;&#x6765;&#x7684;&#x5B57;&#x7B26;&#xFF0C;&#x5E76;&#x4E00;&#x4E00;&#x6BD4;&#x5BF9;&#x4E24;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x5BF9;&#x5E94;&#x4F4D;&#x7F6E;&#x80FD;&#x7559;&#x4E0B;&#x6765;&#x7684;&#x7684;&#x5B57;&#x7B26;&#x662F;&#x5426;&#x76F8;&#x7B49;&#x3002;&#x6CE8;&#x610F;&#x5FAA;&#x73AF;&#x5224;&#x65AD;&#x6761;&#x4EF6;&#x7684;&#x8BBE;&#x7F6E;&#xFF01;</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb1-2"><a href="#cb1-2"></a>    <span class="kw">def</span> backspaceCompare(<span class="va">self</span>, S: <span class="bu">str</span>, T: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">bool</span>:</span>
+<span id="cb1-3"><a href="#cb1-3"></a>        s_i <span class="op">=</span> <span class="bu">len</span>(S) <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a>        t_i <span class="op">=</span> <span class="bu">len</span>(T) <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a>        s_back <span class="op">=</span> t_back <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a>        </span>
+<span id="cb1-7"><a href="#cb1-7"></a>        <span class="cf">while</span> <span class="va">True</span>:</span>
+<span id="cb1-8"><a href="#cb1-8"></a>            <span class="co"># Loop will be stoped when any of the following situations occur:</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a>            <span class="co"># 1. s_i completed the last character access</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a>            <span class="co"># 2. S[s_i] is a letter (S[s_i] != &apos;#&apos;) and don&apos;t need to go back</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a>            <span class="co">#    currently (s_back = 0)</span></span>
+<span id="cb1-12"><a href="#cb1-12"></a>            <span class="co"># Same as T, t_i and t_back</span></span>
+<span id="cb1-13"><a href="#cb1-13"></a>            <span class="cf">while</span> s_i <span class="op">&gt;=</span> <span class="dv">0</span>:</span>
+<span id="cb1-14"><a href="#cb1-14"></a>                <span class="cf">if</span> S[s_i] <span class="op">==</span> <span class="st">&apos;#&apos;</span>:</span>
+<span id="cb1-15"><a href="#cb1-15"></a>                    s_i, s_back <span class="op">=</span> s_i <span class="op">-</span> <span class="dv">1</span>, s_back <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb1-16"><a href="#cb1-16"></a>                <span class="cf">elif</span> S[s_i] <span class="op">!=</span> <span class="st">&apos;#&apos;</span> <span class="kw">and</span> s_back <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb1-17"><a href="#cb1-17"></a>                    s_i, s_back <span class="op">=</span> s_i <span class="op">-</span> <span class="dv">1</span>, s_back <span class="op">-</span> <span class="dv">1</span> </span>
+<span id="cb1-18"><a href="#cb1-18"></a>                <span class="cf">else</span>:</span>
+<span id="cb1-19"><a href="#cb1-19"></a>                    <span class="cf">break</span></span>
+<span id="cb1-20"><a href="#cb1-20"></a>            <span class="cf">while</span> t_i <span class="op">&gt;=</span> <span class="dv">0</span>:</span>
+<span id="cb1-21"><a href="#cb1-21"></a>                <span class="cf">if</span> T[t_i] <span class="op">==</span> <span class="st">&apos;#&apos;</span>:</span>
+<span id="cb1-22"><a href="#cb1-22"></a>                    t_i, t_back <span class="op">=</span> t_i <span class="op">-</span> <span class="dv">1</span>, t_back <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb1-23"><a href="#cb1-23"></a>                <span class="cf">elif</span> T[t_i] <span class="op">!=</span> <span class="st">&apos;#&apos;</span> <span class="kw">and</span> t_back <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb1-24"><a href="#cb1-24"></a>                    t_i, t_back <span class="op">=</span> t_i <span class="op">-</span> <span class="dv">1</span>, t_back <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb1-25"><a href="#cb1-25"></a>                <span class="cf">else</span>:</span>
+<span id="cb1-26"><a href="#cb1-26"></a>                    <span class="cf">break</span></span>
+<span id="cb1-27"><a href="#cb1-27"></a>            </span>
+<span id="cb1-28"><a href="#cb1-28"></a>            <span class="co"># There are only two situations will return True:</span></span>
+<span id="cb1-29"><a href="#cb1-29"></a>            <span class="co"># 1. both s_i and t_i are not out of index and  S[s_i] = T[t_i]</span></span>
+<span id="cb1-30"><a href="#cb1-30"></a>            <span class="co"># 2. both s_i and t_i are out of index, it means no letter needs</span></span>
+<span id="cb1-31"><a href="#cb1-31"></a>            <span class="co">#    to be compared and previous corresponding letters are equal.</span></span>
+<span id="cb1-32"><a href="#cb1-32"></a>            <span class="co">#    otherwise, it will return false in situation 1</span></span>
+<span id="cb1-33"><a href="#cb1-33"></a>            <span class="cf">if</span> s_i <span class="op">&gt;=</span> <span class="dv">0</span> <span class="kw">and</span> t_i <span class="op">&gt;=</span> <span class="dv">0</span>:</span>
+<span id="cb1-34"><a href="#cb1-34"></a>                <span class="cf">if</span> S[s_i] <span class="op">!=</span> T[t_i]:</span>
+<span id="cb1-35"><a href="#cb1-35"></a>                    <span class="cf">return</span> <span class="va">False</span></span>
+<span id="cb1-36"><a href="#cb1-36"></a>                s_i, t_i <span class="op">=</span> s_i <span class="op">-</span> <span class="dv">1</span>, t_i <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb1-37"><a href="#cb1-37"></a>            <span class="cf">else</span>:</span>
+<span id="cb1-38"><a href="#cb1-38"></a>                <span class="cf">return</span> s_i <span class="op">&lt;</span> <span class="dv">0</span> <span class="kw">and</span> t_i <span class="op">&lt;</span> <span class="dv">0</span></span>
+<span id="cb1-39"><a href="#cb1-39"></a>        </span></code></pre></div>
+<p>&#x5176;&#x5B9E;&#x8FD8;&#x662F;&#x86EE;&#x590D;&#x6742;&#x7684;&#xFF0C;&#x53EF;&#x80FD;&#x6709;&#x66F4;&#x597D;&#x7684;&#x89E3;&#x51B3;&#x65B9;&#x6CD5;&#xFF0C;&#x5E0C;&#x671B;&#x5C0F;&#x4F19;&#x4F34;&#x4EEC;&#x7ED9;&#x51FA;&#x4F60;&#x4EEC;&#x7684;&#x601D;&#x8DEF;&#x548C;&#x5EFA;&#x8BAE;&#x3002;&#x6211;&#x521A;&#x5F00;&#x59CB;&#x7684;&#x601D;&#x8DEF;&#x662F;&#x4ECE;&#x524D;&#x5F80;&#x540E;&#x53BB;&#x627E;&#x53EF;&#x80FD;&#x7559;&#x4E0B;&#x7684;&#x5B57;&#x6BCD;&#xFF0C;&#x4F46;&#x662F;&#x8FD9;&#x4E2A;&#x53D8;&#x5316;&#x592A;&#x5927;&#x4E86;&#xFF0C;&#x800C;&#x4E14;&#x5224;&#x65AD;&#x6761;&#x4EF6;&#x7279;&#x522B;&#x591A;&#xFF0C;&#x603B;&#x662F;&#x6709;&#x5F88;&#x591A;&#x60C5;&#x51B5;&#x8003;&#x8651;&#x4E0D;&#x5230;&#xFF0C;&#x6574;&#x4E86;&#x4E00;&#x665A;&#x4E0A;&#x4E5F;&#x6CA1;&#x6574;&#x51FA;&#x6765;&#x3002;&#x540E;&#x9762;&#x7761;&#x89C9;&#x7684;&#x65F6;&#x5019;&#x7A81;&#x7136;&#x60F3;&#x8D77;&#x6211;&#x4E3A;&#x5565;&#x4E0D;&#x4ECE;&#x540E;&#x5F80;&#x524D;&#x627E;&#x5462;&#xFF1F;&#x1F923;&#x5177;&#x4F53;&#x89E3;&#x6CD5;&#x90FD;&#x5728;&#x6CE8;&#x91CA;&#x91CC;&#xFF0C;emmmm&#xFF0C;&#x53EF;&#x80FD;&#x8FD8;&#x6709;&#x8BED;&#x6CD5;&#x9519;&#x8BEF;&#xFF0C;&#x52FF;&#x4ECB;&#x1F60A;&#x3002;</p>
+<h1 id="min-stack">Min Stack</h1>
+<blockquote>
+<p>Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.<br>
+push(x) -- Push element x onto stack.<br>
+pop() -- Removes the element on top of the stack.<br>
+top() -- Get the top element.<br>
+getMin() -- Retrieve the minimum element in the stack.<br>
+<strong>Example:</strong><br>
+MinStack minStack = new MinStack();<br>
+minStack.push(-2);<br>
+minStack.push(0);<br>
+minStack.push(-3);<br>
+minStack.getMin(); --&gt; Returns -3.<br>
+minStack.pop();<br>
+minStack.top(); --&gt; Returns 0.<br>
+minStack.getMin(); --&gt; Returns -2.</p>
+</blockquote>
+<h2 id="solution-1">Solution</h2>
+<p>&#x8FD9;&#x4E2A;&#x9898;&#x4E0D;&#x96BE;&#xFF0C;&#x5E76;&#x4E14;&#x6709;&#x5F88;&#x591A;&#x4E2D;&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;&#x3002;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5B9E;&#x73B0;&#x7684;&#x8FD9;&#x4E2A;&#x6808;&#x662F;&#x5728;&#x4F20;&#x7EDF;&#x7684;&#x6808;&#x5DF2;&#x6709;&#x7684;&#x529F;&#x80FD;&#x4E0A;&#x589E;&#x52A0;&#x4E86;&#x8FD4;&#x56DE;&#x6700;&#x5C0F;&#x503C;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x8FD9;&#x5C31;&#x6D89;&#x53CA;&#x5230;&#x600E;&#x4E48;&#x5B58;&#x50A8;&#x6700;&#x5C0F;&#x503C;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x8FD9;&#x91CC;&#x6709;&#x4E09;&#x4E2A;&#x601D;&#x8DEF;&#xFF0C;&#x5927;&#x5BB6;&#x6709;&#x66F4;&#x597D;&#x7684;&#x601D;&#x8DEF;&#x4E5F;&#x53EF;&#x4EE5;&#x5728;&#x8BC4;&#x8BBA;&#x533A;&#x7ED9;&#x51FA;&#xFF1A;</p>
+<h3 id="&#x65F6;&#x95F4;&#x6362;&#x7A7A;&#x95F4;">&#x65F6;&#x95F4;&#x6362;&#x7A7A;&#x95F4;</h3>
+<p>&#x53EA;&#x8BBE;&#x8BA1;&#x4E00;&#x4E2A;&#x6808;&#xFF0C;&#x8FD4;&#x56DE;&#x6700;&#x5C0F;&#x503C;&#x65F6;&#x901A;&#x8FC7;&#x6392;&#x5E8F;&#x65B9;&#x5F0F;&#x8FD4;&#x56DE;&#x3002;</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">class</span> MinStack:</span>
+<span id="cb2-2"><a href="#cb2-2"></a></span>
+<span id="cb2-3"><a href="#cb2-3"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb2-4"><a href="#cb2-4"></a>        <span class="co">&quot;&quot;&quot;</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="co">        initialize your data structure here.</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="co">        &quot;&quot;&quot;</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a>        <span class="va">self</span>.stack <span class="op">=</span> []</span>
+<span id="cb2-8"><a href="#cb2-8"></a>        </span>
+<span id="cb2-9"><a href="#cb2-9"></a>    <span class="kw">def</span> push(<span class="va">self</span>, x: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb2-10"><a href="#cb2-10"></a>        <span class="va">self</span>.stack.append(x)</span>
+<span id="cb2-11"><a href="#cb2-11"></a></span>
+<span id="cb2-12"><a href="#cb2-12"></a>    <span class="kw">def</span> pop(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb2-13"><a href="#cb2-13"></a>        <span class="va">self</span>.stack.pop()</span>
+<span id="cb2-14"><a href="#cb2-14"></a>            </span>
+<span id="cb2-15"><a href="#cb2-15"></a>    <span class="kw">def</span> top(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb2-16"><a href="#cb2-16"></a>        <span class="cf">if</span> <span class="bu">len</span>(<span class="va">self</span>.stack) <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb2-17"><a href="#cb2-17"></a>            <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb2-18"><a href="#cb2-18"></a>        <span class="cf">return</span> <span class="va">self</span>.stack[<span class="bu">len</span>(<span class="va">self</span>.stack)<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb2-19"><a href="#cb2-19"></a></span>
+<span id="cb2-20"><a href="#cb2-20"></a>    <span class="kw">def</span> getMin(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb2-21"><a href="#cb2-21"></a>        <span class="cf">if</span> <span class="bu">len</span>(<span class="va">self</span>.stack) <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb2-22"><a href="#cb2-22"></a>            <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb2-23"><a href="#cb2-23"></a>        s_sorted <span class="op">=</span> <span class="bu">sorted</span>(<span class="va">self</span>.stack)</span>
+<span id="cb2-24"><a href="#cb2-24"></a>        <span class="cf">return</span> s_sorted[<span class="dv">0</span>]</span></code></pre></div>
+<h3 id="&#x66F4;&#x8282;&#x7701;&#x65F6;&#x95F4;&#x548C;&#x7A7A;&#x95F4;&#x7684;&#x65B9;&#x5F0F;&#x66F4;&#x5DE7;&#x5999;">&#x66F4;&#x8282;&#x7701;&#x65F6;&#x95F4;&#x548C;&#x7A7A;&#x95F4;&#x7684;&#x65B9;&#x5F0F;(&#x66F4;&#x5DE7;&#x5999;)</h3>
+<p>&#x8BBE;&#x8BA1;&#x4E00;&#x4E2A;&#x6808;&#xFF0C;&#x4E00;&#x4E2A;min&#x53D8;&#x91CF;&#xFF0C;&#x4F46;&#x662F;&#x6808;&#x91CC;&#x9762;&#x53EA;&#x5B58;&#x653E;&#x6BCF;&#x4E2A;&#x5143;&#x7D20;&#x4E0E;&#x6700;&#x5C0F;&#x503C;&#x7684;&#x5DEE;&#x503C;&#xFF08;<code>x-min</code>&#xFF09;&#xFF0C;&#x5F53;&#x51FA;&#x73B0;&#x66F4;&#x5C0F;&#x7684;&#x6700;&#x5C0F;&#x503C;&#x65F6;&#xFF0C;&#x4FDD;&#x5B58;&#x7684;&#x662F;&#x8D1F;&#x6570;&#xFF0C;&#x6545;&#x8BFE;&#x901A;&#x8FC7;&#x8FD9;&#x4E2A;&#x6761;&#x4EF6;&#x8FFD;&#x6EAF;&#x4E4B;&#x524D;&#x7684;&#x6700;&#x5C0F;&#x503C;&#xFF0C;&#x5177;&#x4F53;&#x5B9E;&#x73B0;&#x89C1;&#x4E0B;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x3002;</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">class</span> MinStack:</span>
+<span id="cb3-2"><a href="#cb3-2"></a></span>
+<span id="cb3-3"><a href="#cb3-3"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb3-4"><a href="#cb3-4"></a>        <span class="co">&quot;&quot;&quot;</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="co">        initialize your data structure here.</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="co">        &quot;&quot;&quot;</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a>        <span class="va">self</span>.stack <span class="op">=</span> []</span>
+<span id="cb3-8"><a href="#cb3-8"></a>        <span class="va">self</span>.s_min <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb3-9"><a href="#cb3-9"></a></span>
+<span id="cb3-10"><a href="#cb3-10"></a>    <span class="kw">def</span> push(<span class="va">self</span>, x: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb3-11"><a href="#cb3-11"></a>        <span class="cf">if</span> <span class="va">self</span>.s_min <span class="op">==</span> <span class="va">None</span>:</span>
+<span id="cb3-12"><a href="#cb3-12"></a>            <span class="va">self</span>.s_min <span class="op">=</span> x</span>
+<span id="cb3-13"><a href="#cb3-13"></a>        <span class="va">self</span>.stack.append(x<span class="op">-</span><span class="va">self</span>.s_min)</span>
+<span id="cb3-14"><a href="#cb3-14"></a>        <span class="va">self</span>.s_min <span class="op">=</span> <span class="bu">min</span>(<span class="va">self</span>.s_min, x)</span>
+<span id="cb3-15"><a href="#cb3-15"></a></span>
+<span id="cb3-16"><a href="#cb3-16"></a>    <span class="kw">def</span> pop(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb3-17"><a href="#cb3-17"></a>        pop <span class="op">=</span> <span class="va">self</span>.stack.pop()</span>
+<span id="cb3-18"><a href="#cb3-18"></a>        <span class="cf">if</span> <span class="bu">len</span>(<span class="va">self</span>.stack) <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb3-19"><a href="#cb3-19"></a>            <span class="cf">if</span> pop <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb3-20"><a href="#cb3-20"></a>                <span class="va">self</span>.s_min <span class="op">=</span> <span class="va">self</span>.s_min <span class="op">-</span> pop</span>
+<span id="cb3-21"><a href="#cb3-21"></a>        <span class="cf">else</span>:</span>
+<span id="cb3-22"><a href="#cb3-22"></a>            <span class="va">self</span>.s_min <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb3-23"><a href="#cb3-23"></a></span>
+<span id="cb3-24"><a href="#cb3-24"></a>    <span class="kw">def</span> top(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb3-25"><a href="#cb3-25"></a>        <span class="cf">if</span> <span class="bu">len</span>(<span class="va">self</span>.stack) <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb3-26"><a href="#cb3-26"></a>            <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb3-27"><a href="#cb3-27"></a>        top <span class="op">=</span> <span class="va">self</span>.stack[<span class="bu">len</span>(<span class="va">self</span>.stack)<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb3-28"><a href="#cb3-28"></a>        <span class="cf">if</span> top <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb3-29"><a href="#cb3-29"></a>            <span class="cf">return</span> <span class="va">self</span>.s_min</span>
+<span id="cb3-30"><a href="#cb3-30"></a>        <span class="cf">return</span> top <span class="op">+</span> <span class="va">self</span>.s_min</span>
+<span id="cb3-31"><a href="#cb3-31"></a>        </span>
+<span id="cb3-32"><a href="#cb3-32"></a></span>
+<span id="cb3-33"><a href="#cb3-33"></a>    <span class="kw">def</span> getMin(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb3-34"><a href="#cb3-34"></a>        <span class="cf">return</span> <span class="va">self</span>.s_min</span></code></pre></div>
+<h3 id="&#x7A7A;&#x95F4;&#x6362;&#x65F6;&#x95F4;">&#x7A7A;&#x95F4;&#x6362;&#x65F6;&#x95F4;</h3>
+<p>&#x8BBE;&#x8BA1;&#x4E24;&#x4E2A;&#x6808;&#xFF0C;&#x591A;&#x51FA;&#x6765;&#x7684;&#x90A3;&#x4E2A;&#x6808;&#x7528;&#x6765;&#x8BB0;&#x5F55;&#x51FA;&#x73B0;&#x8FC7;&#x7684;&#x6700;&#x5C0F;&#x503C;&#xFF0C;&#x6211;&#x8FD9;&#x91CC;&#x6CA1;&#x6709;&#x53BB;&#x5B9E;&#x73B0;&#x4E86;&#xFF0C;&#x5927;&#x5BB6;&#x53EF;&#x4EE5;&#x8BD5;&#x8BD5;&#x3002;</p>
+<h1 id="diameter-of-binary-tree">Diameter of Binary Tree</h1>
+<blockquote>
+<p>Given a binary tree, you need to compute the length of the diameter of the tree. The diameter of a binary tree is the length of the longest path between any two nodes in a tree. This path may or may not pass through the root.<br>
+<strong>Example:</strong><br>
+Given a binary tree<br>
+<img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn@v2.0.11/img/article_img/images/Leetcode/binary_tree_1.png" alt="img"><br>
+<strong>Return 3</strong>, which is the length of the path [4,2,1,3] or [5,2,1,3].<br>
+<strong>Note:</strong> The length of path between two nodes is represented by the number of edges between them.</p>
+</blockquote>
+<h2 id="solution-2">Solution</h2>
+<p><strong>&#x6838;&#x5FC3;&#x601D;&#x8DEF;</strong>&#xFF1A;&#x6839;&#x636E;&#x534A;&#x5F84;&#x7684;&#x5B9A;&#x4E49;&#x53EF;&#x77E5;&#xFF0C;&#x534A;&#x5F84;&#x6240;&#x5728;&#x7684;&#x8DEF;&#x5F84;&#x4E00;&#x5B9A;&#x6709;&#x4E00;&#x4E2A;&#x4E2D;&#x5FC3;&#x8282;&#x70B9;&#xFF0C;&#x6545;&#x53EF;&#x901A;&#x8FC7;&#x5224;&#x65AD;&#x4E8C;&#x53C9;&#x6811;&#x6BCF;&#x4E2A;&#x8282;&#x70B9;&#xFF08;&#x5F53;&#x524D;&#x53EF;&#x80FD;&#x7684;&#x4E2D;&#x5FC3;&#x70B9;&#xFF09;&#x5DE6;&#x53F3;&#x5B50;&#x6811;&#x7684;&#x6DF1;&#x5EA6;&#x548C;&#x7684;&#x5927;&#x5C0F;&#x6765;&#x786E;&#x5B9A;&#x534A;&#x5F84;&#x3002;</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># Definition for a binary tree node.</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="kw">class</span> TreeNode:</span>
+<span id="cb4-3"><a href="#cb4-3"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, x):</span>
+<span id="cb4-4"><a href="#cb4-4"></a>        <span class="va">self</span>.val <span class="op">=</span> x</span>
+<span id="cb4-5"><a href="#cb4-5"></a>        <span class="va">self</span>.left <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a>        <span class="va">self</span>.right <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a></span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="kw">class</span> Solution:</span>
+<span id="cb4-9"><a href="#cb4-9"></a>    <span class="kw">def</span> diameterOfBinaryTree(<span class="va">self</span>, root: TreeNode) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb4-10"><a href="#cb4-10"></a>        <span class="va">self</span>.diameter <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb4-11"><a href="#cb4-11"></a>        <span class="kw">def</span> count_depth(node):</span>
+<span id="cb4-12"><a href="#cb4-12"></a>            <span class="cf">if</span> <span class="kw">not</span>(node):</span>
+<span id="cb4-13"><a href="#cb4-13"></a>                <span class="cf">return</span> <span class="dv">0</span></span>
+<span id="cb4-14"><a href="#cb4-14"></a>            l_dep, r_dep <span class="op">=</span> count_depth(node.left), count_depth(node.right)</span>
+<span id="cb4-15"><a href="#cb4-15"></a>            <span class="va">self</span>.diameter <span class="op">=</span> <span class="bu">max</span>(<span class="va">self</span>.diameter, l_dep<span class="op">+</span>r_dep)</span>
+<span id="cb4-16"><a href="#cb4-16"></a>            </span>
+<span id="cb4-17"><a href="#cb4-17"></a>            <span class="co"># max depth: max(left depth, right depth)</span></span>
+<span id="cb4-18"><a href="#cb4-18"></a>            <span class="co"># +1: count node</span></span>
+<span id="cb4-19"><a href="#cb4-19"></a>            <span class="cf">return</span> <span class="dv">1</span> <span class="op">+</span> <span class="bu">max</span>(l_dep, r_dep)</span>
+<span id="cb4-20"><a href="#cb4-20"></a>        </span>
+<span id="cb4-21"><a href="#cb4-21"></a>        count_depth(root)</span>
+<span id="cb4-22"><a href="#cb4-22"></a>        </span>
+<span id="cb4-23"><a href="#cb4-23"></a>        <span class="cf">return</span> <span class="va">self</span>.diameter</span></code></pre></div>
+<p>&#x8FD9;&#x9898;&#x521A;&#x5F00;&#x59CB;&#x6211;&#x662F;&#x6CA1;&#x6709;&#x4EC0;&#x4E48;&#x597D;&#x7684;&#x601D;&#x8DEF;&#x7684;&#xFF0C;&#x592A;&#x4E45;&#x6CA1;&#x505A;&#x5173;&#x4E8E;&#x4E8C;&#x53C9;&#x6811;&#x7684;&#x9898;&#x4E86;&#xFF0C;&#x4E0D;&#x5BF9;&#xFF0C;&#x51C6;&#x786E;&#x6765;&#x8BB2;&#x5E94;&#x8BE5;&#x662F;&#x8BFE;&#x540E;&#x5C31;&#x4E22;&#x4E86;&#xFF0C;&#x54C8;&#x54C8;&#x54C8;&#xFF0C;&#x540E;&#x6765;&#x53BB;&#x67E5;&#x4E86;&#x4E0B;&#x4E8C;&#x53C9;&#x6811;&#x7684;&#x76F8;&#x5173;&#x8D44;&#x6599;&#xFF0C;&#x770B;&#x5230;&#x6C42;&#x4E8C;&#x53C9;&#x6811;&#x7684;&#x6DF1;&#x5EA6;&#x95EE;&#x9898;&#x7ED9;&#x4E86;&#x6211;&#x7075;&#x611F;&#x3002;&#x5E0C;&#x671B;&#x80FD;&#x628A;&#x4EE5;&#x524D;&#x4E22;&#x6389;&#x7684;&#x77E5;&#x8BC6;&#x70B9;&#x6162;&#x6162;&#x6361;&#x8D77;&#x6765;&#xFF0C;&#x5C31;&#x62FF;&#x8FD9;&#x4E2A;&#x6811;&#x76F8;&#x5173;&#x7684;&#x77E5;&#x8BC6;&#x70B9;&#x6765;&#x8BF4;&#xFF0C;&#x5176;&#x5B9E;&#x5F88;&#x591A;&#x7B97;&#x6CD5;&#x5E95;&#x5C42;&#x539F;&#x7406;&#x90FD;&#x6709;&#x6D89;&#x53CA;&#xFF0C;&#x4E3A;&#x4E86;&#x4EE5;&#x540E;&#x80FD;&#x8D70;&#x5FEB;&#x4E00;&#x70B9;&#xFF0C;&#x73B0;&#x5728;&#x5E94;&#x8BE5;&#x591A;&#x8D70;&#x51E0;&#x6B65;&#x3002;</p>
+<h1 id="last-stone-weight">Last Stone Weight</h1>
+<blockquote>
+<p>We have a collection of stones, each stone has a positive integer weight.<br>
+Each turn, we choose the two heaviest stones and smash them together. Suppose the stones have weights <code>x</code> and <code>y</code> with <code>x &lt;= y</code>. The result of this smash is:<br>
+If <code>x == y</code>, both stones are totally destroyed;<br>
+If <code>x != y</code>, the stone of weight <code>x</code> is totally destroyed, and the stone of weight y has new weight <code>y-x</code>.<br>
+At the end, there is at most 1 stone left. Return the weight of this stone (or 0 if there are no stones left.)<br>
+<strong>Example 1</strong>:<br>
+<strong>Input:</strong> [2,7,4,1,8,1]<br>
+<strong>Output:</strong> 1<br>
+<strong>Explanation:</strong><br>
+We combine 7 and 8 to get 1 so the array converts to [2,4,1,1,1] then,<br>
+we combine 2 and 4 to get 2 so the array converts to [2,1,1,1] then,<br>
+we combine 2 and 1 to get 1 so the array converts to [1,1,1] then,<br>
+we combine 1 and 1 to get 0 so the array converts to [1] then that&apos;s the value of last stone.</p>
+</blockquote>
+<h2 id="solution-3">Solution</h2>
+<h3 id="&#x89E3;&#x6CD5;&#x4E00;-&#x5927;&#x6839;&#x5806;">&#x89E3;&#x6CD5;&#x4E00; &#x2014;&#x2014; &#x5927;&#x6839;&#x5806;</h3>
+<p>&#x8FD9;&#x4E2A;&#x89E3;&#x6CD5;&#x662F;&#x66F4;&#x4F18;&#x7684;&#x89E3;&#x6CD5;&#xFF0C;&#x5F97;&#x529B;&#x4E8E;&#x5927;&#x6839;&#x5806;&#x7684;&#x7279;&#x6027;&#xFF0C;&#x7B97;&#x6CD5;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x51CF;&#x5C11;&#x81F3;<code>O(Nlog(N))</code>&#x3002;</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb5-2"><a href="#cb5-2"></a>    <span class="kw">def</span> lastStoneWeight(<span class="va">self</span>, stones: List[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb5-3"><a href="#cb5-3"></a>        <span class="co"># The heap in python defaults to a small root heap</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a>        <span class="co"># So heap pops the minimum value when use heappop, take the opposite</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a>        <span class="co"># value of each list (the weight of each stone &gt; 0) to ensure that the </span></span>
+<span id="cb5-6"><a href="#cb5-6"></a>        <span class="co"># heaviest stone is poped.</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a>        stones <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> x : <span class="op">-</span>x, stones))</span>
+<span id="cb5-8"><a href="#cb5-8"></a></span>
+<span id="cb5-9"><a href="#cb5-9"></a>        <span class="co"># Convert stone list to heap</span></span>
+<span id="cb5-10"><a href="#cb5-10"></a>        heapq.heapify(stones)</span>
+<span id="cb5-11"><a href="#cb5-11"></a></span>
+<span id="cb5-12"><a href="#cb5-12"></a>        <span class="cf">while</span> <span class="bu">len</span>(stones) <span class="op">&gt;</span> <span class="dv">1</span>:</span>
+<span id="cb5-13"><a href="#cb5-13"></a>            <span class="co"># Pop and return the smallest element of stones, keeping the heap invariant</span></span>
+<span id="cb5-14"><a href="#cb5-14"></a>            y <span class="op">=</span> heapq.heappop(stones)</span>
+<span id="cb5-15"><a href="#cb5-15"></a>            <span class="cf">if</span> stones:</span>
+<span id="cb5-16"><a href="#cb5-16"></a>                x <span class="op">=</span> heapq.heappop(stones)</span>
+<span id="cb5-17"><a href="#cb5-17"></a>                <span class="co"># if x != y push x-y to heap</span></span>
+<span id="cb5-18"><a href="#cb5-18"></a>                <span class="cf">if</span> x <span class="op">!=</span> y:</span>
+<span id="cb5-19"><a href="#cb5-19"></a>                    heapq.heappush(stones, y<span class="op">-</span>x)</span>
+<span id="cb5-20"><a href="#cb5-20"></a>                    </span>
+<span id="cb5-21"><a href="#cb5-21"></a>        <span class="cf">if</span> <span class="kw">not</span>(stones):</span>
+<span id="cb5-22"><a href="#cb5-22"></a>            <span class="cf">return</span> <span class="dv">0</span></span>
+<span id="cb5-23"><a href="#cb5-23"></a>        <span class="cf">return</span> <span class="op">-</span>stones[<span class="dv">0</span>]</span></code></pre></div>
+<p><strong>&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#xFF1A;O(Nlog(N))</strong></p>
+<h3 id="&#x89E3;&#x6CD5;&#x4E8C;">&#x89E3;&#x6CD5;&#x4E8C;</h3>
+<p>&#x8FD9;&#x4E2A;&#x89E3;&#x6CD5;&#x662F;&#x6700;&#x5BB9;&#x6613;&#x60F3;&#x5230;&#x7684;&#x89E3;&#x6CD5;&#xFF0C;&#x601D;&#x60F3;&#x4E5F;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#xFF0C;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;O(<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>N</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">N^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span>)&#x3002;</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb6-2"><a href="#cb6-2"></a>    <span class="kw">def</span> lastStoneWeight(<span class="va">self</span>, stones: List[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb6-3"><a href="#cb6-3"></a>        stones <span class="op">=</span> <span class="bu">sorted</span>(stones)</span>
+<span id="cb6-4"><a href="#cb6-4"></a></span>
+<span id="cb6-5"><a href="#cb6-5"></a>        <span class="cf">while</span> <span class="bu">len</span>(stones) <span class="op">&gt;</span> <span class="dv">1</span>:</span>
+<span id="cb6-6"><a href="#cb6-6"></a>            y, x <span class="op">=</span> stones.pop(), stones.pop()</span>
+<span id="cb6-7"><a href="#cb6-7"></a>            <span class="cf">if</span> x <span class="op">!=</span> y:</span>
+<span id="cb6-8"><a href="#cb6-8"></a>                stones.append(y<span class="op">-</span>x)</span>
+<span id="cb6-9"><a href="#cb6-9"></a>            stones <span class="op">=</span> <span class="bu">sorted</span>(stones)</span>
+<span id="cb6-10"><a href="#cb6-10"></a></span>
+<span id="cb6-11"><a href="#cb6-11"></a>        <span class="cf">if</span> <span class="kw">not</span>(stones):</span>
+<span id="cb6-12"><a href="#cb6-12"></a>            <span class="cf">return</span> <span class="dv">0</span></span>
+<span id="cb6-13"><a href="#cb6-13"></a>        <span class="cf">return</span> stones[<span class="dv">0</span>]</span></code></pre></div>
+<p><strong>&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#xFF1A;O(<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>N</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">N^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span>)</strong> -----&#xFF08;not sure&#xFF09;</p>
+<p>&#x5B9E;&#x9645;&#x91C7;&#x7528;&#x7B2C;&#x4E8C;&#x79CD;&#x65B9;&#x6CD5;&#x7684;&#x5728;LeetCode&#x4E0A;&#x7684;run time&#x6BD4;&#x7B2C;&#x4E00;&#x79CD;&#x65B9;&#x6CD5;&#x66F4;&#x5C11;&#xFF0C;&#x6240;&#x4EE5;&#x7B2C;&#x4E8C;&#x79CD;&#x65B9;&#x6CD5;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x6BD4;&#x7B2C;&#x4E00;&#x79CD;&#x65B9;&#x5F0F;&#x66F4;&#x5C0F;&#xFF0C;&#x6211;&#x53EF;&#x80FD;&#x9700;&#x8981;&#x5B66;&#x4E60;&#x4E00;&#x4E0B;python&#x7684;&#x5185;&#x7F6E;&#x51FD;&#x6570;<code>sorted</code>&#x65B9;&#x6CD5;&#xFF0C;&#x770B;&#x770B;&#x5B83;&#x7684;&#x5B9E;&#x73B0;&#x3002;&#x521D;&#x6B65;&#x4E86;&#x89E3;&#x5230;python&#x4E2D;&#x7684;<code>sorted</code>&#x6392;&#x5E8F;&#xFF0C;&#x7528;&#x7684;<code>Timsort</code>&#x7B97;&#x6CD5;&#xFF0C;&#x7EF4;&#x57FA;&#x767E;&#x79D1;&#x89E3;&#x91CA;&#xFF1A;<a href="https://zh.wikipedia.org/wiki/Timsort" target="_blank" rel="noopener">Timsort&#x662F;&#x4E00;&#x79CD;&#x6DF7;&#x5408;&#x7A33;&#x5B9A;&#x7684;&#x6392;&#x5E8F;&#x7B97;&#x6CD5;&#xFF0C;&#x6E90;&#x81EA;&#x5408;&#x5E76;&#x6392;&#x5E8F;&#x548C;&#x63D2;&#x5165;&#x6392;&#x5E8F;&#xFF0C;&#x65E8;&#x5728;&#x8F83;&#x597D;&#x5730;&#x5904;&#x7406;&#x771F;&#x5B9E;&#x4E16;&#x754C;&#x4E2D;&#x5404;&#x79CD;&#x5404;&#x6837;&#x7684;&#x6570;&#x636E;</a>&#x3002;&#x5177;&#x4F53;&#x539F;&#x7406;&#x8FD8;&#x9700;&#x6DF1;&#x7A76;&#x3002;</p>
+<h1 id="contiguous-array">Contiguous Array</h1>
+<blockquote>
+<p>Given a binary array, find the maximum length of a contiguous subarray with equal number of 0 and 1.<br>
+<strong>Example 1</strong>:<br>
+<strong>Input:</strong> [0,1]<br>
+<strong>Output</strong>: 2<br>
+<strong>Explanation</strong>: [0, 1] is the longest contiguous subarray with equal number of 0 and 1.<br>
+<strong>Example 2</strong>:<br>
+<strong>Input</strong>: [0,1,0]<br>
+<strong>Output</strong>: 2<br>
+<strong>Explanation</strong>: [0, 1] (or [1, 0]) is a longest contiguous subarray with equal number of 0 and 1.</p>
+</blockquote>
+<h2 id="solution-4">Solution</h2>
+<p>&#x8BB2;&#x771F;&#x5FC3;&#x8BDD;&#xFF0C;&#x6211;&#x7B2C;&#x4E00;&#x904D;&#x6CA1;&#x770B;&#x61C2;&#x9898;&#x1F923;&#xFF0C;&#x9898;&#x76EE;&#x5927;&#x610F;&#x662F;&#x7ED9;&#x4E00;&#x4E2A;&#x4E8C;&#x503C;(0/1)&#x6570;&#x7EC4;&#xFF0C;&#x627E;&#x51FA;&#x8BE5;&#x6570;&#x7EC4;&#x7684;&#x6700;&#x5927;&#x8FDE;&#x7EED;&#x5B50;&#x4E32;&#x7684;&#x957F;&#x5EA6;&#xFF0C;&#x8BE5;&#x5B50;&#x4E32;&#x4E2D;&#x6EE1;&#x8DB3;0&#x548C;1&#x7684;&#x4E2A;&#x6570;&#x76F8;&#x540C;&#x3002;<br>
+&#x660E;&#x767D;&#x9898;&#x610F;&#x4E4B;&#x540E;&#x7684;&#x7B2C;&#x4E00;&#x60F3;&#x6CD5;&#x662F;&#x901A;&#x8FC7;&#x8BA1;&#x6570;&#x7684;&#x5F62;&#x5F0F;&#x53BB;&#x627E;&#x5B50;&#x4E32;&#xFF0C;&#x4F8B;&#x5982;<strong>&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;count&#x53D8;&#x91CF;&#xFF0C;&#x9047;&#x5230;0&#x5C31;-1&#xFF0C;&#x9047;&#x5230;1&#x5C31;+1</strong>&#x3002;&#x90A3;&#x4E48;&#x5982;&#x4F55;&#x901A;&#x8FC7;&#x8FD9;&#x4E2A;&#x53D8;&#x91CF;&#x53BB;&#x5224;&#x65AD;&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x4F1A;&#x51FA;&#x73B0;&#x6700;&#x5927;&#x5B50;&#x4E32;&#x5462;&#xFF1F; &#x8003;&#x8651;&#x4E0B;&#x9762;&#x51E0;&#x79CD;&#x60C5;&#x51B5;&#xFF1A;</p>
+<ol type="1">
+<li><p>&#x5047;&#x8BBE;<code>nums = [0, 1, 0, 0, 1, 1]</code>&#xFF0C; &#x90A3;&#x4E48;<code>count = [-1&#xFF0C; 0&#xFF0C; -1&#xFF0C; -2&#xFF0C; -1&#xFF0C; 0]</code> =&gt; <code>max length&#xFF1A;6</code>&#xFF08;count&#x6570;&#x7EC4;&#x7684;&#x6700;&#x540E;&#x4E00;&#x4E2A;0&#x7684;index+1&#xFF09;</p></li>
+<li><p><code>nums = [0, 0, 0, 0, 1, 1]</code>&#xFF0C;<code>count = [-1, -2, -3, -4, -3, -2]</code> =&gt; &#x5F88;&#x660E;&#x663E;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x7684;&#x6700;&#x5927;&#x957F;&#x5EA6;&#x4E0D;&#x662F;&#x6700;&#x540E;&#x4E00;&#x4E2A;0&#x7684;<code>index + 1 = 2</code>&#xFF0C;&#x800C;&#x662F;<code>4</code>&#xFF0C;&#x5176;&#x5B9E;&#x4E5F;&#x662F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;<code>count</code>&#x7684;&#x503C;&#x63A8;&#x6D4B;&#x51FA;&#x6765;&#xFF0C;&#x6700;&#x5927;&#x957F;&#x5EA6;&#x7684;&#x5B50;&#x4E32;&#x662F;<code>[1, 1, 0, 0]</code>&#xFF0C;&#x4E0B;&#x9762;&#x7528;&#x4E00;&#x4E2A;&#x56FE;&#x6765;&#x76F4;&#x89C2;&#x7684;&#x8868;&#x793A;&#x5982;&#x4F55;&#x901A;&#x8FC7;<code>count</code>&#x7684;&#x503C;&#x6765;&#x63A8;&#x51FA;<code>max length</code>&#xFF1A;<br>
+<code>count</code>&#x521D;&#x59CB;&#x503C;&#x4E3A;<code>0</code>&#xFF0C;&#x6545;&#x8D77;&#x70B9;&#x4E3A;<code>(0, 0)</code>&#xFF0C;&#x4ECE;<code>count</code>&#x4ECE;<code>index=1</code>&#x5F00;&#x59CB;&#x8BA1;&#x6570;&#xFF0C;&#x4ECE;&#x56FE;&#x4E2D;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;&#x6700;&#x957F;&#x7684;&#x5B50;&#x6570;&#x7EC4;&#x662F;&#x4ECE;<strong>&#x7D22;&#x5F15;2&#x5230;6</strong>:<br>
+<img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn@v2.0.14/img/article_img/images/Leetcode/02.png" alt="img"><br>
+&#x4ECE;&#x4E0A;&#x9762;&#x7684;&#x63D2;&#x56FE;&#x4E2D;&#xFF0C;&#x53EF;&#x4EE5;&#x5F88;&#x5BB9;&#x6613;&#x5730;&#x7406;&#x89E3;&#x5230;&#xFF0C;&#x5177;&#x6709;&#x76F8;&#x540C;y&#x8F74;&#x503C;&#x7684;&#x4E24;&#x4E2A;&#x70B9;&#x8868;&#x793A;&#x8FD9;&#x4E24;&#x4E2A;&#x70B9;&#x4E4B;&#x95F4;&#x7684;&#x5E8F;&#x5217;&#x5177;&#x6709;&#x76F8;&#x7B49;&#x7684;0&#x548C;1&#x3002;</p></li>
+<li><p><code>nums = [0&#xFF0C;0&#xFF0C;1&#xFF0C;0&#xFF0C;0&#xFF0C;0&#xFF0C;1&#xFF0C;1]</code>&#xFF0C;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;<br>
+<img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn@v2.0.14/img/article_img/images/Leetcode/03.png" alt="img"><br>
+&#x6709;3&#x4E2A;&#x70B9;&#x5177;&#x6709;&#x76F8;&#x540C;&#x7684;y&#x8F74;&#x503C;-2&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x4ECE;&#x7D22;&#x5F15;2&#x5230;4&#x7684;&#x5B50;&#x6570;&#x7EC4;&#x5177;&#x6709;&#x76F8;&#x7B49;&#x7684;0&#x548C;1&#xFF0C;&#x800C;&#x4ECE;&#x7D22;&#x5F15;4&#x5230;8&#x7684;&#x5B50;&#x6570;&#x7EC4;&#x5177;&#x6709;&#x76F8;&#x7B49;&#x7684;0&#x548C;1&#x3002;&#x53EF;&#x4EE5;&#x5C06;&#x5B83;&#x4EEC;&#x52A0;&#x8D77;&#x6765;&#x4EE5;&#x5F62;&#x6210;&#x4ECE;&#x7D22;&#x5F15;2&#x5230;8&#x7684;&#x6700;&#x957F;&#x5B50;&#x6570;&#x7EC4;&#xFF0C;&#x56E0;&#x6B64;&#x6700;&#x5927;&#x957F;&#x5EA6;&#x5B50;&#x6570;&#x7EC4;&#x7684; <code>8-2 = 6</code>&#x3002;</p></li>
+<li><p><code>nums = [0&#xFF0C;1&#xFF0C;1&#xFF0C;0&#xFF0C;1&#xFF0C;1&#xFF0C;1&#xFF0C;0]</code>&#xFF0C;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;<br>
+<img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn@v2.0.14/img/article_img/images/Leetcode/04.png" alt="img"><br>
+&#x6700;&#x957F;&#x7684;&#x5B50;&#x6570;&#x7EC4;&#x7684;y&#x8F74;&#x503C;&#x4E3A;0&#x3002;<br>
+&#x4E3A;&#x4E86;&#x627E;&#x5230;<code>max length</code>&#xFF0C;&#x8FD9;&#x91CC;&#x53EF;&#x4EE5;&#x8003;&#x8651;&#x7528;&#x4E00;&#x4E2A;<strong>&#x5B57;&#x5178;&#x6765;&#x5B58;&#x50A8;<code>count</code>&#x7684;&#x503C;&#xFF08;&#x4F5C;&#x4E3A;&#x952E;&#xFF09;&#x53CA;&#x5176;&#x5173;&#x8054;&#x7684;index&#xFF08;&#x4F5C;&#x4E3A;&#x503C;</strong>&#xFF09;&#x3002;<strong>&#x53EA;&#x9700;&#x8981;&#x5728;<code>count</code>&#x7B2C;&#x4E00;&#x6B21;&#x51FA;&#x73B0;&#x67D0;&#x503C;&#x65F6;&#x4FDD;&#x5B58;&#x5176;&#x8BA1;&#x6570;&#x503C;&#x53CA;&#x5176;&#x7D22;&#x5F15;</strong>&#xFF0C;&#x5F53;&#x76F8;&#x540C;&#x7684;&#x8BA1;&#x6570;&#x503C;&#x518D;&#x6B21;&#x51FA;&#x73B0;&#x65F6;&#xFF0C;&#x4F7F;&#x7528;&#x65B0;&#x7D22;&#x5F15;&#x51CF;&#x53BB;&#x65E7;&#x7D22;&#x5F15;&#x6765;&#x8BA1;&#x7B97;&#x5B50;&#x6570;&#x7EC4;&#x7684;&#x957F;&#x5EA6;&#x3002;<strong>&#x53D8;&#x91CF;<code>max_length</code>&#x7528;&#x4E8E;&#x8DDF;&#x8E2A;&#x5F53;&#x524D;&#x7684;&#x6700;&#x5927;&#x957F;&#x5EA6;</strong>&#x3002;</p></li>
+</ol>
+<h3 id="&#x4EE3;&#x7801;&#x5B9E;&#x73B0;">&#x4EE3;&#x7801;&#x5B9E;&#x73B0;</h3>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb7-2"><a href="#cb7-2"></a>    <span class="kw">def</span> findMaxLength(<span class="va">self</span>, nums: List[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb7-3"><a href="#cb7-3"></a>        count <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a>        max_len <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a>        dic <span class="op">=</span> {<span class="dv">0</span>: <span class="dv">0</span>}</span>
+<span id="cb7-6"><a href="#cb7-6"></a>        </span>
+<span id="cb7-7"><a href="#cb7-7"></a>        <span class="cf">for</span> i, num <span class="kw">in</span> <span class="bu">enumerate</span>(nums, <span class="dv">1</span>):</span>
+<span id="cb7-8"><a href="#cb7-8"></a>            count <span class="op">+=</span> <span class="dv">1</span> <span class="cf">if</span> num <span class="op">==</span> <span class="dv">1</span> <span class="cf">else</span> <span class="op">-</span><span class="dv">1</span></span>
+<span id="cb7-9"><a href="#cb7-9"></a>            <span class="cf">if</span> count <span class="kw">in</span> dic:</span>
+<span id="cb7-10"><a href="#cb7-10"></a>                max_len <span class="op">=</span> <span class="bu">max</span>(max_len, i <span class="op">-</span> dic[count])</span>
+<span id="cb7-11"><a href="#cb7-11"></a>            <span class="cf">else</span>:</span>
+<span id="cb7-12"><a href="#cb7-12"></a>                dic[count] <span class="op">=</span> i</span>
+<span id="cb7-13"><a href="#cb7-13"></a>            </span>
+<span id="cb7-14"><a href="#cb7-14"></a>        <span class="cf">return</span> max_len</span></code></pre></div>
+<h3 id="reference">Reference</h3>
+<ol type="1">
+<li><a href="https://leetcode.com/problems/contiguous-array/discuss/99655/Python-O(n)-Solution-with-Visual-Explanation" target="_blank" rel="noopener">Python O(n) Solution with Visual Explanation</a></li>
+</ol>
+<h1 id="perform-string-shifts">Perform String Shifts</h1>
+<blockquote>
+<p>You are given a string s containing lowercase English letters, and a matrix shift, where <code>shift[i] = [direction, amount]</code>:<br>
+1. direction can be 0 (for left shift) or 1 (for right shift).<br>
+2. amount is the amount by which string s is to be shifted.<br>
+3. A left shift by 1 means remove the first character of s and append it to the end.<br>
+4. Similarly, a right shift by 1 means remove the last character of s and add it to the beginning.<br>
+Return the final string after all operations. <strong>Example 1</strong>:<br>
+<strong>Input</strong>: s = &quot;abc&quot;, shift = [[0,1],[1,2]]<br>
+<strong>Output</strong>: &quot;cab&quot;<br>
+<strong>Explanation</strong>:<br>
+[0,1] means shift to left by 1. &quot;abc&quot; -&gt; &quot;bca&quot;<br>
+[1,2] means shift to right by 2. &quot;bca&quot; -&gt; &quot;cab&quot;<br>
+<strong>Example 2</strong>:<br>
+<strong>Input</strong>: s = &quot;abcdefg&quot;, shift = [[1,1],[1,1],[0,2],[1,3]]<br>
+<strong>Output</strong>: &quot;efgabcd&quot;<br>
+<strong>Explanation</strong>:<br>
+[1,1] means shift to right by 1. &quot;abcdefg&quot; -&gt; &quot;gabcdef&quot;<br>
+[1,1] means shift to right by 1. &quot;gabcdef&quot; -&gt; &quot;fgabcde&quot;<br>
+[0,2] means shift to left by 2. &quot;fgabcde&quot; -&gt; &quot;abcdefg&quot;<br>
+[1,3] means shift to right by 3. &quot;abcdefg&quot; -&gt; &quot;efgabcd&quot;</p>
+</blockquote>
+<h2 id="solution-5">Solution</h2>
+<p><strong>&#x601D;&#x8DEF;</strong>&#xFF1A;&#x8FD9;&#x4E2A;&#x9898;&#x80AF;&#x5B9A;&#x4E0D;&#x80FD;&#x7528;&#x86EE;&#x529B;&#x6CD5;&#xFF0C;&#x6BD4;&#x5982;&#x8BF4;&#x4F60;&#x6328;&#x4E2A;&#x53BB;&#x5224;&#x65AD;&#x77E9;&#x9635;&#x5143;&#x7D20;&#xFF0C;&#x7136;&#x540E;&#x6839;&#x636E;&#x8981;&#x6C42;&#x53BB;&#x79FB;&#x52A8;&#xFF0C;&#x8FD9;&#x6837;&#x590D;&#x6742;&#x5EA6;&#x592A;&#x9AD8;&#x4E86;&#x3002;&#x6838;&#x5FC3;&#x601D;&#x8DEF;&#x662F;&#x5C06;&#x8981;&#x79FB;&#x52A8;&#x7684;&#x6B65;&#x6570;&#x7EDF;&#x8BA1;&#x5728;&#x4E00;&#x8D77;&#xFF0C;&#x7136;&#x540E;&#x53EA;&#x79FB;&#x52A8;&#x4E00;&#x6B21;&#x3002;</p>
+<p>&#x4F8B;&#x5982;&#xFF0C;&#x9996;&#x5148;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;<code>move_steps</code>&#x53D8;&#x91CF;&#xFF0C;&#x5411;&#x5DE6;&#x4E00;&#x6B65;&#x79FB;&#x5C31;<code>-1</code>&#xFF0C;&#x5411;&#x53F3;&#x79FB;&#x4E24;&#x6B65;&#x5C31;<code>+2</code>&#x3002;&#x7136;&#x540E;&#x5224;&#x65AD;&#x79FB;&#x52A8;&#x6B65;&#x6570;&#xFF0C;&#x5982;&#x679C;&#x79FB;&#x52A8;&#x6B65;&#x6570;&#x8D85;&#x8FC7;&#x5B57;&#x7B26;&#x4E32;&#x957F;&#x5EA6;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x901A;&#x8FC7;&#x5B57;&#x7B26;&#x4E32;&#x957F;&#x5EA6;&#x53D6;&#x4F59;&#xFF08;&#x56E0;&#x4E3A;&#x79FB;&#x52A8;&#x5B57;&#x7B26;&#x4E32;&#x957F;&#x5EA6;&#x90A3;&#x4E48;&#x591A;&#x6B65;&#x6700;&#x540E;&#x53C8;&#x6062;&#x590D;&#x539F;&#x6837;&#xFF0C;&#x76F8;&#x5F53;&#x4E8E;&#x6CA1;&#x79FB;&#xFF09;&#x3002;&#x6700;&#x540E;&#x7EDF;&#x4E00;&#x5411;&#x4E00;&#x4E2A;&#x65B9;&#x5411;&#xFF08;&#x4F8B;&#x5982;&#x5411;&#x53F3;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x5DE6;&#x79FB;&#xFF0C;&#x5219;&#x901A;&#x8FC7;&#x5B57;&#x7B26;&#x4E32;&#x957F;&#x5EA6;&#x53D8;&#x4E3A;&#x5411;&#x53F3;&#x79FB;&#x52A8;&#xFF09;&#x79FB;&#x52A8;&#x3002;&#x601D;&#x8DEF;&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x5177;&#x4F53;&#x5B9E;&#x73B0;&#xFF0C;&#x8BF7;&#x770B;&#x4EE3;&#x7801;~&#x1F60A;</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb8-2"><a href="#cb8-2"></a>    <span class="kw">def</span> stringShift(<span class="va">self</span>, s: <span class="bu">str</span>, shift: List[List[<span class="bu">int</span>]]) <span class="op">-&gt;</span> <span class="bu">str</span>:</span>
+<span id="cb8-3"><a href="#cb8-3"></a>        move_steps <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a>        </span>
+<span id="cb8-5"><a href="#cb8-5"></a>        <span class="cf">for</span> data <span class="kw">in</span> shift:</span>
+<span id="cb8-6"><a href="#cb8-6"></a>            direction <span class="op">=</span> data[<span class="dv">0</span>]</span>
+<span id="cb8-7"><a href="#cb8-7"></a>            move_steps <span class="op">+=</span> data[<span class="dv">1</span>] <span class="cf">if</span> direction <span class="op">==</span> <span class="dv">1</span> <span class="cf">else</span> <span class="op">-</span>data[<span class="dv">1</span>]</span>
+<span id="cb8-8"><a href="#cb8-8"></a></span>
+<span id="cb8-9"><a href="#cb8-9"></a>        s_len <span class="op">=</span> <span class="bu">len</span>(s)    </span>
+<span id="cb8-10"><a href="#cb8-10"></a>        move_steps <span class="op">%=</span> s_len <span class="cf">if</span> move_steps <span class="op">&gt;</span> <span class="dv">0</span> <span class="cf">else</span> <span class="op">-</span>s_len</span>
+<span id="cb8-11"><a href="#cb8-11"></a>        </span>
+<span id="cb8-12"><a href="#cb8-12"></a>        <span class="co"># Do not need to move</span></span>
+<span id="cb8-13"><a href="#cb8-13"></a>        <span class="cf">if</span> move_steps <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb8-14"><a href="#cb8-14"></a>            <span class="cf">return</span> s</span>
+<span id="cb8-15"><a href="#cb8-15"></a>        </span>
+<span id="cb8-16"><a href="#cb8-16"></a>        <span class="co"># move right</span></span>
+<span id="cb8-17"><a href="#cb8-17"></a>        <span class="cf">if</span> move_steps <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb8-18"><a href="#cb8-18"></a>            move_steps <span class="op">+=</span> s_len</span>
+<span id="cb8-19"><a href="#cb8-19"></a></span>
+<span id="cb8-20"><a href="#cb8-20"></a>        <span class="co"># move</span></span>
+<span id="cb8-21"><a href="#cb8-21"></a>        s_list <span class="op">=</span> <span class="bu">list</span>(s)</span>
+<span id="cb8-22"><a href="#cb8-22"></a>        <span class="cf">while</span> move_steps <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb8-23"><a href="#cb8-23"></a>            s_list.insert(<span class="dv">0</span>, s_list[<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb8-24"><a href="#cb8-24"></a>            s_list <span class="op">=</span> s_list[:<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb8-25"><a href="#cb8-25"></a>            move_steps <span class="op">-=</span> <span class="dv">1</span></span>
+<span id="cb8-26"><a href="#cb8-26"></a>        </span>
+<span id="cb8-27"><a href="#cb8-27"></a>        <span class="cf">return</span> <span class="st">&apos;&apos;</span>.join(s_list)</span></code></pre></div>
+<h1 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</h1>
+<p>&#x8FD9;&#x5468;&#x9898;&#x7684;&#x96BE;&#x5EA6;&#x660E;&#x663E;&#x8981;&#x6BD4;&#x4E0A;&#x5468;&#x7684;&#x9AD8;&#x90A3;&#x4E48;&#x4E00;&#x70B9;&#xFF0C;&#x5E0C;&#x671B;&#x81EA;&#x5DF1;&#x80FD;&#x575A;&#x6301;&#x4E0B;&#x53BB;&#xFF0C;&#x7ED9;&#x81EA;&#x5DF1;&#x4E00;&#x4E9B;&#x4FE1;&#x5FC3;&#x3002;&#x5662;&#x5BF9;&#x4E86;&#xFF0C;&#x6211;&#x611F;&#x89C9;&#x4E00;&#x7BC7;&#x6587;&#x7AE0;&#x66F4;&#x65B0;&#x4E00;&#x5468;&#x7684;&#x5185;&#x5BB9;&#x8FD8;&#x60F3;&#x6709;&#x70B9;&#x592A;&#x957F;&#x4E86;&#xFF0C;&#x4E0B;&#x5468;&#x6211;&#x53EF;&#x80FD;&#x4F1A;&#x8003;&#x8651;&#x4E00;&#x7BC7;&#x6587;&#x7AE0;&#x53EA;&#x6536;&#x7EB3;2-3&#x9053;&#x9898;&#x3002;&#x8FD9;&#x5468;&#x7684;&#x66F4;&#x65B0;&#x5C31;&#x5230;&#x6B64;&#x4E3A;&#x6B62;&#x4E86;&#xFF0C;&#x671F;&#x5F85;&#x4E0B;&#x6B21;&#x66F4;&#x65B0;&#x5427;~&#x1F44B;</p>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/custom/donate/WeChanQR.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2020/04/10/Technology/Machine-Learning/%E5%83%B5%E5%B0%B8%E4%BC%81%E4%B8%9A%E5%88%86%E7%B1%BB-%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/bears/9.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/bears/9.jpg">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                僵尸企业分类 | 数据预处理</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+        
+          
+            <div class="post-nepre half next">
+          
+            <a href="/2020/04/01/Technology/Coding/Leetcode/Leetcode-Note-in-Apri-2020-part-1-day-01-07/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/coding/leetcode_01.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/coding/leetcode_01.png">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                Leetcode Note in Apri 2020 | part 1 | day 01-07</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "muFSHxz8L08M3G7SvAW4JeCL-MdYXbMMI",
+        appKey: "kVLkvQrw5ye4OnhwwEdjS9JB",
+        avatar: "monsterid", 
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="https://littlelittlemoon.github.io/" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/custom/avatar-3.jpg" itemprop="image" alt="Kayleen" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="https://littlelittlemoon.github.io/" itemprop="url" rel="author">Kayleen</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>A curious 👱‍♀️</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
+</div>
+
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML"></script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  </script>
+
+
+    </div>    
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            // PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+    <!-- <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Kayleen<br>
+      powered_by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer> -->
+<footer id="colophon" class="site-footer" role="contentinfo">
+  <div class="site-info">
+    <div class="footertext">
+      <div class="img-preload">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/wordpress-rotating-ball-o.svg">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/disqus-preloader.svg">
+      </div>
+      <p style="color: #666666;">&copy 2018</p>
+    </div>
+    <div class="footer-device">
+    <p style="font-family: 'Ubuntu', sans-serif;">
+        <span style="color: #b9b9b9;">Theme <a href="https://github.com/honjun/hexo-theme-sakura" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Sakura</a> <i class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i> by <a href="https://2heng.xin/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Mashiro</a>&<a href="https://www.hojun.cn/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Hojun&Kayleen</a>, Powered by Hexo, Hosted by Github Pages</a>
+        </span>
+      </p>
+    </div>
+  </div><!-- .site-info -->
+</footer>
+
+
+
+<!-- <script src="/js/tocbot.js"></script> -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/js/lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/js/InsightSearch.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/js/zoom.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/js/sakura-app.js"></script>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine@1.3.4/dist/Valine.min.js'></script>
+<script src="/js/botui.js"></script>
+<!-- 不蒜子 网页计数器 -->
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script> -->
+<script type="text/javascript">
+/* <![CDATA[ */
+if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  var Poi = {"pjax":"1","movies":{"url": "https://cdn.jsdelivr.net/gh/littlelittlemoon","name":"cdn/video/we-bare-bears-ice-bear-play-2.mp4,cdn@v2.1.0/video/we-bare-bears-ice-bear-play-3.mp4","live":"close"},"windowheight":"fixed","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+} else {
+  var Poi = {"pjax":"1","movies":{"url": "https://cdn.jsdelivr.net/gh/littlelittlemoon","name":"cdn/video/we-bare-bears-ice-bear-play-2.mp4,cdn@v2.1.0/video/we-bare-bears-ice-bear-play-3.mp4","live":"open"},"windowheight":"auto","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+}
+/* ]]> */
+
+</script>
+<script>
+$(document).ready(function() {
+  if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
+    if ($(".pattern-center").length > 0) { //有图的情况
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -400,
+          scrollSmoothOffset: -85
+      });
+    } else {
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -85,
+          scrollSmoothOffset: -85
+      });
+    }
+    var offsetTop = $('.toc').offset().top - 95;
+    window.onscroll = function() {
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      if (scrollTop >= offsetTop) {
+        $('.toc').addClass('toc-fixed');
+      } else {
+        $('.toc').removeClass('toc-fixed');
+      }
+    }
+  }
+});
+</script>
+
+    <div class="openNav no-select" style="height: 50px;">
+      <div class="iconflat no-select" style="width: 50px; height: 50px;">
+        <div class="icon"></div>
+      </div>
+      <div class="site-branding search-form-submit">
+        <i class="iconfont js-toggle-search iconsearch icon-search"></i>
+      </div>
+    </div>
+  </section>
+  <div id="mo-nav" class="">
+  <div class="m-avatar">
+    <img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/custom/avatar-3.jpg">
+  </div>
+  <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">Bear CaveKayleen</p>
+  <p style="text-align: center; word-spacing: 20px;">
+    
+      
+        <a href="http://github.com/littlelittlemoon" class="fa fa-github" target="_blank" style="color: #333; margin-left:20px"></a>
+      
+        <a href="https://wpa.qq.com/msgrd?v=3&uin=1165156282&site=qq&menu=yes" class="fa fa-qq" target="_blank" style="color: #25c6fe; margin-left:20px"></a>
+      
+    
+  </p>
+  <ul id="menu-new-1" class="menu">
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+            首页
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/archives/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+            归档
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/tags/Updating/">
+                  <i class="fa fa-circle-o-notch" aria-hidden="true"></i>
+                  更新
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/Technology/">
+                  <i class="fa fa-code" aria-hidden="true"></i>
+                  技术
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/Life/">
+                  <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                  生活
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/Thoughts/">
+                  <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                  随想
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/Repost/">
+                  <i class="fa fa-book" aria-hidden="true"></i>
+                  转载
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="javascript:;">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+            清单
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/tags/Reading/">
+                  <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                  悦读
+                </a>
+              </li>
+            
+              <li>
+                <a href="/music/">
+                  <i class="fa fa-headphones" aria-hidden="true"></i>
+                  音悦
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags/Pictures/">
+                  <i class="fa fa-photo" aria-hidden="true"></i>
+                  图集
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags/Cave/">
+                  <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                  Cave
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/comment/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+            留言板
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/links/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+            友人帐
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/donate/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+            赞赏
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/about/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-meetup" aria-hidden="true"></i>
+            关于我
+          </span>
+        </a>
+        
+      </li>
+    
+  </ul>
+  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2019 hexo-sakura</p>
+</div>
+<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<style>
+  .aplayer .aplayer-lrc {
+    height: 35px;
+  }
+  .aplayer .aplayer-lrc p{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px !important;
+  }
+  .aplayer .aplayer-lrc p.aplayer-lrc-current{
+    color: #FF1493;
+  }
+  .aplayer.aplayer-narrow .aplayer-body{
+    left: -66px !important;
+  }
+  .aplayer.aplayer-fixed .aplayer-lrc {
+    display: none;
+  }
+  .aplayer .aplayer-lrc.aplayer-lrc-hide {
+      display:none !important;
+  }
+  .aplayer.aplayer-fixed .lrc-show {
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>
+<meting-js
+
+    id="2188265841"
+
+    server="netease"
+
+    type="playlist"
+
+    fixed="true"
+
+    mini="true"
+
+    autoplay="false"
+
+    loop="all"
+
+    order="random"
+
+    preload="auto"
+
+    volume="0.4"
+
+    mutex="true"
+
+</meting-js>
+<script>
+  $(function(){
+    $('body').on('click', '.aplayer', function(){
+      if($('.aplayer-button').hasClass('aplayer-play')) {
+        $('.aplayer-lrc').removeClass('lrc-show');
+      } else {
+        $('.aplayer-lrc').addClass('lrc-show');
+      }
+    })
+  });
+</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>

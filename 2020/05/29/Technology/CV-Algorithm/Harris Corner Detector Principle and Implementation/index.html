@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+  <title itemprop="name">CV | Algorithm | Harris Corner Detector Principle and Implementation | LITTLEMEEMOON</title>
+  
+    <link rel="shortcut icon" href="/images/favicon.ico">
+  
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/css/matery.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="stylesheet" id="saukra_css-css" href="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/css/style.css" type="text/css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/css/lib.min.css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/css/font.css" media="all">
+  <link rel="stylesheet" href="/css/insight.css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/css/jquery.fancybox.min.css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/css/zoom.css" media="all">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/css/sharejs.css">
+<!--   <link rel="stylesheet" id="saukra_css-css" href="https://2heng.xin/wp-content/cache/autoptimize/css/autoptimize_ad42a61f4c7d4bdd9f91afcff6b5dda5.css
+" type="text/css" media="all"> -->
+  <script>
+  /*Initial Variables*/
+  var mashiro_option = new Object();
+  var mashiro_global = new Object();
+  mashiro_option.NProgressON = true;
+  /* 
+   * 邮箱信息之类的东西可以填在这里，这些js变量基本都作用于sakura-app.js
+   * 这样的设置仅是为了方便在基于PHP开发的主题中设置js变量，既然移植到了Node上，我想或许可以精简这一逻辑吧
+   */
+  mashiro_option.email_domain = "";
+  mashiro_option.email_name = "";
+  mashiro_option.cookie_version_control = "";
+  mashiro_option.qzone_autocomplete = false;
+  mashiro_option.site_name = "Bear CaveKayleen";
+  mashiro_option.author_name = "Kayleen";
+  mashiro_option.site_url = "https://littlelittlemoon.github.io/";
+  mashiro_option.v_appId = "muFSHxz8L08M3G7SvAW4JeCL-MdYXbMMI";
+  mashiro_option.v_appKey = "kVLkvQrw5ye4OnhwwEdjS9JB";
+  mashiro_option.mathjax = "[object Object]";
+  mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
+  mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
+
+  // mashiro_option.jsdelivr_css_src = "https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/css/lib.min.css";
+  // mashiro_option.float_player_on = true;
+
+  /*End of Initial Variables*/
+  </script>
+  <script type="text/javascript">
+  var bg = "https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/cover/2/(0).webp,https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/cover/2/(1).webp,https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/cover/2/(2).webp,https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/cover/2/(3).webp,https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/cover/2/(4).webp,https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/cover/2/(5).webp,https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/cover/2/(6).webp,https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/cover/2/(7).webp,https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/cover/2/(8).webp".split(",");
+  var bgindex = Math.floor(Math.random()*bg.length);
+  if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+    alert('朋友，IE浏览器未适配哦~');
+  }
+  </script>
+  <style type="text/css">
+  .hljs-ln{border-collapse:collapse}.hljs-ln td{padding:0}.hljs-ln-n:before{content:attr(data-line-number)}
+  </style>
+  <style type="text/css">.site-top .lower nav{display:block !important;}.author-profile i,.post-like a,.post-share .show-share,.sub-text,.we-info a,span.sitename,.post-more i:hover,#pagination a:hover,.post-content a:hover,.float-content i:hover{color:#FE9600}.feature i,.download,.navigator i:hover,.links ul li:before,.ar-time i,span.ar-circle,.object,.comment .comment-reply-link,.siren-checkbox-radio:checked + .siren-checkbox-radioInput:after{background:#FE9600}::-webkit-scrollbar-thumb{background:#FE9600}.download,.navigator i:hover,.link-title,.links ul li:hover,#pagination a:hover,.comment-respond input[type='submit']:hover{border-color:#FE9600}.entry-content a:hover,.site-info a:hover,.comment h4 a,#comments-navi a.prev,#comments-navi a.next,.comment h4 a:hover,.site-top ul li a:hover,.entry-title a:hover,#archives-temp h3,span.page-numbers.current,.sorry li a:hover,.site-title a:hover,i.iconfont.js-toggle-search.iconsearch:hover,.comment-respond input[type='submit']:hover{color:#FE9600}.comments .comments-main{display:block !important;}.comments .comments-hidden{display:none !important;}background-position:center center;background-attachment:inherit;}
+  </style>
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="LITTLEMEEMOON" type="application/atom+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="scrollbar" id="bar">
+  </div>
+  <a href="#" class="cd-top faa-float animated"></a>
+  <section id="main-container">
+    <div class="headertop ">
+  <div id="banner_wave_1"></div>
+  <div id="banner_wave_2"></div>
+  <figure id="centerbg" class="centerbg">
+    <div class="focusinfo no-select">
+      <div class="header-tou">
+        <a href="https://littlelittlemoon.github.io/">
+          <img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/custom/avatar-3.jpg">
+        </a>
+      </div>
+      <div class="header-info">
+        <p>Do not pray for easy lives, pray to be stronger men.</p>
+        <div class="top-social_v2">
+          <li id="bg-pre">
+            <img class="flipx" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+          
+            
+              
+                <li>
+                  <a href="http://github.com/littlelittlemoon" target="_blank" class="social-github" title="github">
+                    <img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/social/github.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="mailto:littlemeemoon@gmail.com" target="_blank" class="social-github" title="email">
+                    <img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/social/email.svg">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://wpa.qq.com/msgrd?v=3&amp;uin=1165156282&amp;site=qq&amp;menu=yes" target="_blank" class="social-github" title="qq">
+                    <img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/social/qq.png">
+                  </a>
+                </li>
+              
+            
+          
+          <li id="bg-next">
+            <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+        </div>
+      </div>
+    </div>
+  </figure>
+  <div id="video-container" style="">
+    <video style="object-fit: fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto">
+    </video>
+    <div id="video-btn" class="loadvideo videolive">
+    </div>
+    <div id="video-add">
+    </div>
+    <div class="video-stu">
+    </div>
+  </div>
+  <div class="headertop-down faa-float animated" onclick="headertop_down()">
+    <span>
+      <i class="fa fa-chevron-down" aria-hidden="true">
+      </i>
+    </span>
+  </div>
+</div>
+    <div id="page" class="site wrapper">
+      <header class="site-header no-select gizle sabit" role="banner">
+  <div class="site-top">
+    <div class="site-branding">
+      <span class="site-title">
+        <span class="logolink moe-mashiro">
+          <a href="/">
+            <span class="sakurasono">Bear Cave</span>
+            <span class="shironeko">Kayleen</span>
+          </a>
+        </span>
+      </span>
+    </div>
+    <div class="searchbox search-form-submit">
+      <i class="iconfont js-toggle-search iconsearch icon-search">
+      </i>
+    </div>
+    <div id="show-nav" class="showNav mobile-fit">
+      <div class="line line1">
+      </div>
+      <div class="line line2">
+      </div>
+      <div class="line line3">
+      </div>
+    </div>
+    <div class="lower-cantiner">
+      <div class="lower">
+        <nav class="mobile-fit-control hide">
+          <ul id="menu-new" class="menu">
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+                    首页
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/archives/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+                    归档
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/tags/Updating/">
+                          <i class="fa fa-circle-o-notch" aria-hidden="true"></i>
+                          更新
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/Technology/">
+                          <i class="fa fa-code" aria-hidden="true"></i>
+                          技术
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/Life/">
+                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                          生活
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/Thoughts/">
+                          <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                          随想
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/Repost/">
+                          <i class="fa fa-book" aria-hidden="true"></i>
+                          转载
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+                    清单
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/tags/Reading/">
+                          <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                          悦读
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/music/">
+                          <i class="fa fa-headphones" aria-hidden="true"></i>
+                          音悦
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/tags/Pictures/">
+                          <i class="fa fa-photo" aria-hidden="true"></i>
+                          图集
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/tags/Cave/">
+                          <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                          Cave
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/comment/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+                    留言板
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/links/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+                    友人帐
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/donate/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+                    赞赏
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/about/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-meetup" aria-hidden="true"></i>
+                    关于我
+                  </span>
+                </a>
+                
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/bears/6.jpg);" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/bears/6.jpg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      CV | Algorithm | Harris Corner Detector Principle and Implementation</h1>
+      <p class="entry-census">
+        <span>
+          <a href="https://littlelittlemoon.github.io/">
+            <img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/custom/avatar-3.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="https://littlelittlemoon.github.io/">Kayleen</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2020-5-29<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
+  </div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css" integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ" crossorigin="anonymous"><h1 id="&#x524D;&#x8A00;">&#x524D;&#x8A00;</h1>
+<p>&#x4E00;&#x822C;&#x5C40;&#x90E8;&#x7279;&#x5F81;&#x5339;&#x914D;&#x6D89;&#x53CA;&#x4EE5;&#x4E0B;&#x4E09;&#x4E2A;&#x6B65;&#x9AA4;&#xFF1A;</p>
+<ol type="1">
+<li>&#x68C0;&#x6D4B;&#xFF1A;&#x627E;&#x5230;&#x4E00;&#x7EC4;&#x72EC;&#x7279;&#x7684;&#x5174;&#x8DA3;&#x70B9;&#xFF08; &#x1F43B; &#x672C;&#x6587;&#x7B97;&#x6CD5;&#x89E3;&#x51B3;&#x7684;&#x95EE;&#x9898;&#xFF09;&#xFF1B;</li>
+<li>&#x63CF;&#x8FF0;&#xFF1A;&#x63D0;&#x53D6;&#x6BCF;&#x4E2A;&#x5174;&#x8DA3;&#x70B9;&#x5468;&#x56F4;&#x7684;&#x7279;&#x5F81;&#x63CF;&#x8FF0;&#x7B26;&#x4F5C;&#x4E3A;&#x77E2;&#x91CF;&#xFF1B;</li>
+<li>&#x5339;&#x914D;&#xFF1A;&#x8BA1;&#x7B97;&#x7279;&#x5F81;&#x5411;&#x91CF;&#x4E4B;&#x95F4;&#x7684;&#x8DDD;&#x79BB;&#x4EE5;&#x627E;&#x5230;&#x5BF9;&#x5E94;&#x5173;&#x7CFB;&#x3002;</li>
+</ol>
+<p>&#x8FD9;&#x7BC7;&#x6587;&#x7AE0;&#x4E3B;&#x8981;&#x4ECB;&#x7ECD;&#x68C0;&#x6D4B;&#x5174;&#x8DA3;&#x70B9;&#x7684;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7B97;&#x6CD5;: Harris Corner Detector&#x3002;&#x4E3B;&#x8981;&#x5185;&#x5BB9;&#x5305;&#x62EC;&#x8BE5;&#x7B97;&#x6CD5;&#x7684;&#x539F;&#x7406;&#x4ECB;&#x7ECD;&#x548C;python&#x7684;&#x5B9E;&#x73B0;&#x65B9;&#x6CD5;&#x3002;</p>
+<h1 id="harris-corner-detector-principle-and-implementation">Harris Corner Detector Principle and Implementation</h1>
+<h2 id="harris-corner-detector">Harris Corner Detector</h2>
+<h3 id="&#x62D0;&#x89D2;-corner">&#x62D0;&#x89D2; (Corner)</h3>
+<p>Harris&#x62D0;&#x89D2;&#x68C0;&#x6D4B;&#x7B97;&#x6CD5;&#xFF08;&#x4E5F;&#x79F0;&#x4E3A;Harris&#xFF06;Stephens&#x62D0;&#x89D2;&#x68C0;&#x6D4B;&#x5668;&#xFF09;&#x662F;&#x53EF;&#x7528;&#x7684;&#x6700;&#x7B80;&#x5355;&#x7684;&#x62D0;&#x89D2;&#x68C0;&#x6D4B;&#x5668;&#x4E4B;&#x4E00;&#x3002;<strong>&#x62D0;&#x89D2;</strong>&#x662F;&#x4E00;&#x4E2A;&#x70B9;&#xFF0C;&#x5176;&#x5C40;&#x90E8;&#x90BB;&#x57DF;&#x4F4D;&#x4E8E;&#x4E24;&#x4E2A;&#x4E3B;&#x8981;&#x4E14;&#x4E0D;&#x540C;&#x7684;&#x8FB9;&#x7F18;&#x65B9;&#x5411;&#x3002;&#x6362;&#x53E5;&#x8BDD;&#x8BF4;&#xFF0C;&#x4E00;&#x4E2A;&#x89D2;&#x53EF;&#x4EE5;&#x89E3;&#x91CA;&#x4E3A;&#x4E24;&#x4E2A;&#x8FB9;&#x7F18;&#x7684;&#x4EA4;&#x70B9;&#xFF0C;&#x5176;&#x4E2D;&#x8FB9;&#x7F18;&#x662F;&#x56FE;&#x50CF;&#x4EAE;&#x5EA6;&#x7684;&#x7A81;&#x7136;&#x53D8;&#x5316;&#x3002;<strong>&#x89D2;&#x662F;&#x56FE;&#x50CF;&#x4E2D;&#x7684;&#x91CD;&#x8981;&#x7279;&#x5F81;&#xFF0C;&#x901A;&#x5E38;&#x88AB;&#x79F0;&#x4E3A;&#x5174;&#x8DA3;&#x70B9;&#xFF0C;&#x5B83;&#x4EEC;&#x5BF9;&#x5E73;&#x79FB;&#xFF0C;&#x65CB;&#x8F6C;&#x548C;&#x7167;&#x660E;&#x4E0D;&#x53D8;</strong>&#x3002;</p>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn@v2.0.28/img/article_img/images/HarrisCornerDetector/corner.jpg" alt><figcaption>Corner(sorce:https://miro.medium.com/max/950/0*PPJxP5y_k4GCWLBM.jpg)</figcaption>
+</figure>
+<p>&#x56E0;&#x6B64;&#xFF0C;&#x8BA9;&#x6211;&#x4EEC;&#x7406;&#x89E3;&#x4E3A;&#x4EC0;&#x4E48;&#x62D0;&#x89D2;&#x88AB;&#x8BA4;&#x4E3A;&#x662F;&#x66F4;&#x597D;&#x7684;&#x7279;&#x5F81;&#x6216;&#x5BF9;&#x7279;&#x5F81;&#x5757;&#x5339;&#x914D;&#x6709;&#x7528;&#x3002;&#x5728;&#x4E0A;&#x56FE;&#x4E2D;&#xFF0C;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x9009;&#x53D6;&#x5E73;&#x5766;&#x533A;&#x57DF;&#xFF0C;&#x5219;&#x5728;&#x4EFB;&#x4F55;&#x65B9;&#x5411;&#x90FD;&#x4E0D;&#x4F1A;&#x89C2;&#x5BDF;&#x5230;&#x68AF;&#x5EA6;&#x53D8;&#x5316;&#x3002;&#x7C7B;&#x4F3C;&#x5730;&#xFF0C;&#x5728;&#x8FB9;&#x7F18;&#x533A;&#x57DF;&#x4E2D;&#xFF0C;&#x6CBF;&#x8FB9;&#x7F18;&#x65B9;&#x5411;&#x6CA1;&#x6709;&#x89C2;&#x5BDF;&#x5230;&#x68AF;&#x5EA6;&#x53D8;&#x5316;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x5E73;&#x5766;&#x533A;&#x57DF;&#x548C;&#x8FB9;&#x7F18;&#x533A;&#x57DF;&#x90FD;&#x4E0D;&#x5229;&#x4E8E;&#x8272;&#x5757;&#x5339;&#x914D;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x4EEC;&#x7684;&#x533A;&#x522B;&#x4E0D;&#x5927;&#xFF08;&#x6CBF;&#x8FB9;&#x7F18;&#x533A;&#x57DF;&#x4E2D;&#x7684;&#x8FB9;&#x7F18;&#x5B58;&#x5728;&#x8BB8;&#x591A;&#x76F8;&#x4F3C;&#x7684;&#x8272;&#x5757;&#xFF09;&#x3002;&#x5728;&#x62D0;&#x89D2;&#x533A;&#x57DF;&#xFF0C;&#x6211;&#x4EEC;&#x89C2;&#x5BDF;&#x5230;&#x5728;&#x6240;&#x6709;&#x65B9;&#x5411;&#x4E0A;&#x7684;&#x660E;&#x663E;&#x68AF;&#x5EA6;&#x53D8;&#x5316;&#x3002;&#x7531;&#x4E8E;&#x8FD9;&#x4E2A;&#x89D2;&#x88AB;&#x8BA4;&#x4E3A;&#x5BF9;&#x7279;&#x5F81;&#x5757;&#x5339;&#x914D;&#x6709;&#x76CA;&#xFF08;&#x5728;&#x4EFB;&#x4F55;&#x65B9;&#x5411;&#x4E0A;&#x79FB;&#x52A8;&#x7A97;&#x53E3;&#x90FD;&#x4F1A;&#x4EA7;&#x751F;&#x5F88;&#x5927;&#x7684;&#x5916;&#x89C2;&#x53D8;&#x5316;&#xFF09;&#xFF0C;&#x5E76;&#x4E14;&#x901A;&#x5E38;&#x5728;&#x89C6;&#x70B9;&#x53D8;&#x5316;&#x65F6;&#x66F4;&#x7A33;&#x5B9A;&#x3002;</p>
+<h3 id="&#x62D0;&#x89D2;&#x68C0;&#x6D4B;-corner-detection">&#x62D0;&#x89D2;&#x68C0;&#x6D4B; (Corner Detection)</h3>
+<p>&#x4ECE;&#x4E0A;&#x8FF0;&#x62D0;&#x89D2;&#x7684;&#x6982;&#x5FF5;&#xFF0C;&#x6211;&#x4EEC;&#x5F88;&#x5BB9;&#x6613;&#x53EF;&#x4EE5;&#x60F3;&#x5230;&#x7684;&#x662F;&#x8003;&#x8651;&#x56FE;&#x50CF;&#x4E2D;&#x6BCF;&#x4E2A;&#x50CF;&#x7D20;p&#x5468;&#x56F4;&#x7684;&#x5C0F;&#x7A97;&#x53E3;&#x3002;&#x8981;&#x786E;&#x5B9A;&#x6240;&#x6709;&#x6B64;&#x7C7B;&#x552F;&#x4E00;&#x7684;&#x50CF;&#x7D20;&#x7A97;&#x53E3;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5728;&#x7ED9;&#x5B9A;&#x65B9;&#x5411;&#x4E0A;&#x5C06;&#x6BCF;&#x4E2A;&#x7A97;&#x53E3;&#x5C11;&#x91CF;&#x79FB;&#x52A8;&#x5E76;&#x6D4B;&#x91CF;&#x50CF;&#x7D20;&#x503C;&#x4E2D;&#x53D1;&#x751F;&#x7684;&#x53D8;&#x5316;&#x91CF;&#x6765;&#x5224;&#x65AD;&#x3002;&#x6545;&#x7B97;&#x6CD5;&#x7684;&#x57FA;&#x672C;&#x601D;&#x60F3;&#x662F;&#x627E;&#x5230;<code>(u, v)</code>&#x5728;&#x6240;&#x6709;&#x65B9;&#x5411;&#x4E0A;&#x7684;&#x4F4D;&#x79FB;&#x7684;&#x5F3A;&#x5EA6;&#x5DEE;&#x5F02;&#xFF0C;&#x8868;&#x793A;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>E</mi><mo stretchy="false">(</mo><mi>u</mi><mo separator="true">,</mo><mi>v</mi><mo stretchy="false">)</mo><mo>=</mo><munder><mo>&#x2211;</mo><mrow><mi>x</mi><mo separator="true">,</mo><mi>y</mi></mrow></munder><munder><munder><mrow><mi>w</mi><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><mo stretchy="true">&#x23DF;</mo></munder><mtext>window&#xA0;function</mtext></munder><mo stretchy="false">[</mo><munder><munder><mrow><mi>I</mi><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mi>u</mi><mo separator="true">,</mo><mi>y</mi><mo>+</mo><mi>v</mi><mo stretchy="false">)</mo></mrow><mo stretchy="true">&#x23DF;</mo></munder><mtext>shifted&#xA0;intensity</mtext></munder><mo>&#x2212;</mo><munder><munder><mrow><mi>I</mi><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><mo stretchy="true">&#x23DF;</mo></munder><mtext>intensity</mtext></munder><msup><mo stretchy="false">]</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">  
+E(u, v) = \sum_{x,y} \underbrace{w(x, y)}_{\text{window function}} [ \underbrace{I(x+u, y+v)}_{\text{shifted intensity}} - \underbrace{I(x, y)}_{\text{intensity}}]^2
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mopen">(</span><span class="mord mathdefault">u</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.7702210000000003em;vertical-align:-1.720216em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0500050000000003em;"><span style="top:-1.8999949999999999em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">x</span><span class="mpunct mtight">,</span><span class="mord mathdefault mtight" style="margin-right:0.03588em;">y</span></span></span></span><span style="top:-3.050005em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">&#x2211;</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:1.386113em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord munder"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.75em;"><span style="top:-1.415892em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">window&#xA0;function</span></span></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord munder"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.75em;"><span class="svg-align" style="top:-2.102em;"><span class="pstrut" style="height:3em;"></span><span class="stretchy" style="height:0.548em;min-width:1.6em;"><span class="brace-left" style="height:0.548em;"><svg width="400em" height="0.548em" viewbox="0 0 400000 548" preserveaspectratio="xMinYMin slice"><path d="M0 6l6-6h17c12.688 0 19.313.3 20 1 4 4 7.313 8.3 10 13
+ 35.313 51.3 80.813 93.8 136.5 127.5 55.688 33.7 117.188 55.8 184.5 66.5.688
+ 0 2 .3 4 1 18.688 2.7 76 4.3 172 5h399450v120H429l-6-1c-124.688-8-235-61.7
+-331-161C60.687 138.7 32.312 99.3 7 54L0 41V6z"/></svg></span><span class="brace-center" style="height:0.548em;"><svg width="400em" height="0.548em" viewbox="0 0 400000 548" preserveaspectratio="xMidYMin slice"><path d="M199572 214
+c100.7 8.3 195.3 44 280 108 55.3 42 101.7 93 139 153l9 14c2.7-4 5.7-8.7 9-14
+ 53.3-86.7 123.7-153 211-199 66.7-36 137.3-56.3 212-62h199568v120H200432c-178.3
+ 11.7-311.7 78.3-403 201-6 8-9.7 12-11 12-.7.7-6.7 1-18 1s-17.3-.3-18-1c-1.3 0
+-5-4-11-12-44.7-59.3-101.3-106.3-170-141s-145.3-54.3-229-60H0V214z"/></svg></span><span class="brace-right" style="height:0.548em;"><svg width="400em" height="0.548em" viewbox="0 0 400000 548" preserveaspectratio="xMaxYMin slice"><path d="M399994 0l6 6v35l-6 11c-56 104-135.3 181.3-238 232-57.3
+ 28.7-117 45-179 50H-300V214h399897c43.3-7 81-15 113-26 100.7-33 179.7-91 237
+-174 2.7-5 6-9 10-13 .7-1 7.3-1 20-1h17z"/></svg></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.898em;"><span></span></span></span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:1.584108em;"><span></span></span></span></span></span><span class="mopen">[</span><span class="mord munder"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.75em;"><span style="top:-1.415892em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">shifted&#xA0;intensity</span></span></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord munder"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.75em;"><span class="svg-align" style="top:-2.102em;"><span class="pstrut" style="height:3em;"></span><span class="stretchy" style="height:0.548em;min-width:1.6em;"><span class="brace-left" style="height:0.548em;"><svg width="400em" height="0.548em" viewbox="0 0 400000 548" preserveaspectratio="xMinYMin slice"><path d="M0 6l6-6h17c12.688 0 19.313.3 20 1 4 4 7.313 8.3 10 13
+ 35.313 51.3 80.813 93.8 136.5 127.5 55.688 33.7 117.188 55.8 184.5 66.5.688
+ 0 2 .3 4 1 18.688 2.7 76 4.3 172 5h399450v120H429l-6-1c-124.688-8-235-61.7
+-331-161C60.687 138.7 32.312 99.3 7 54L0 41V6z"/></svg></span><span class="brace-center" style="height:0.548em;"><svg width="400em" height="0.548em" viewbox="0 0 400000 548" preserveaspectratio="xMidYMin slice"><path d="M199572 214
+c100.7 8.3 195.3 44 280 108 55.3 42 101.7 93 139 153l9 14c2.7-4 5.7-8.7 9-14
+ 53.3-86.7 123.7-153 211-199 66.7-36 137.3-56.3 212-62h199568v120H200432c-178.3
+ 11.7-311.7 78.3-403 201-6 8-9.7 12-11 12-.7.7-6.7 1-18 1s-17.3-.3-18-1c-1.3 0
+-5-4-11-12-44.7-59.3-101.3-106.3-170-141s-145.3-54.3-229-60H0V214z"/></svg></span><span class="brace-right" style="height:0.548em;"><svg width="400em" height="0.548em" viewbox="0 0 400000 548" preserveaspectratio="xMaxYMin slice"><path d="M399994 0l6 6v35l-6 11c-56 104-135.3 181.3-238 232-57.3
+ 28.7-117 45-179 50H-300V214h399897c43.3-7 81-15 113-26 100.7-33 179.7-91 237
+-174 2.7-5 6-9 10-13 .7-1 7.3-1 20-1h17z"/></svg></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault">u</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mclose">)</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.898em;"><span></span></span></span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:1.720216em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x2212;</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:2.5657179999999995em;vertical-align:-1.7016099999999998em;"></span><span class="mord munder"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7500000000000002em;"><span style="top:-1.434498em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">intensity</span></span></span></span></span><span style="top:-3.0000000000000004em;"><span class="pstrut" style="height:3em;"></span><span class="mord munder"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.75em;"><span class="svg-align" style="top:-2.102em;"><span class="pstrut" style="height:3em;"></span><span class="stretchy" style="height:0.548em;min-width:1.6em;"><span class="brace-left" style="height:0.548em;"><svg width="400em" height="0.548em" viewbox="0 0 400000 548" preserveaspectratio="xMinYMin slice"><path d="M0 6l6-6h17c12.688 0 19.313.3 20 1 4 4 7.313 8.3 10 13
+ 35.313 51.3 80.813 93.8 136.5 127.5 55.688 33.7 117.188 55.8 184.5 66.5.688
+ 0 2 .3 4 1 18.688 2.7 76 4.3 172 5h399450v120H429l-6-1c-124.688-8-235-61.7
+-331-161C60.687 138.7 32.312 99.3 7 54L0 41V6z"/></svg></span><span class="brace-center" style="height:0.548em;"><svg width="400em" height="0.548em" viewbox="0 0 400000 548" preserveaspectratio="xMidYMin slice"><path d="M199572 214
+c100.7 8.3 195.3 44 280 108 55.3 42 101.7 93 139 153l9 14c2.7-4 5.7-8.7 9-14
+ 53.3-86.7 123.7-153 211-199 66.7-36 137.3-56.3 212-62h199568v120H200432c-178.3
+ 11.7-311.7 78.3-403 201-6 8-9.7 12-11 12-.7.7-6.7 1-18 1s-17.3-.3-18-1c-1.3 0
+-5-4-11-12-44.7-59.3-101.3-106.3-170-141s-145.3-54.3-229-60H0V214z"/></svg></span><span class="brace-right" style="height:0.548em;"><svg width="400em" height="0.548em" viewbox="0 0 400000 548" preserveaspectratio="xMaxYMin slice"><path d="M399994 0l6 6v35l-6 11c-56 104-135.3 181.3-238 232-57.3
+ 28.7-117 45-179 50H-300V214h399897c43.3-7 81-15 113-26 100.7-33 179.7-91 237
+-174 2.7-5 6-9 10-13 .7-1 7.3-1 20-1h17z"/></svg></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.898em;"><span></span></span></span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:1.7016099999999998em;"><span></span></span></span></span></span><span class="mclose"><span class="mclose">]</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641079999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p><code>window function</code>&#x53EF;&#x4EE5;&#x662F;&#x77E9;&#x5F62;&#x7A97;&#x53E3;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x662F;&#x9AD8;&#x65AF;&#x7A97;&#x53E3;&#xFF0C;&#x4E3A;<code>(x, y)</code>&#x5904;&#x7684;&#x50CF;&#x7D20;&#x8D4B;&#x4E88;&#x6743;&#x91CD;&#x3002;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x6700;&#x5927;&#x5316;&#x6B64;&#x51FD;&#x6570;<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>E</mi><mo stretchy="false">(</mo><mi>u</mi><mo separator="true">,</mo><mi>v</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">E(u, v)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mopen">(</span><span class="mord mathdefault">u</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mclose">)</span></span></span></span>&#x8FDB;&#x884C;&#x62D0;&#x89D2;&#x68C0;&#x6D4B;&#xFF0C;&#x5373;&#x9700;&#x8981;&#x6700;&#x5927;&#x5316;&#x7B2C;&#x4E8C;&#x9879;&#x3002;&#x4F7F;&#x7528;&#x6CF0;&#x52D2;&#x5C55;&#x5F00;&#x5F0F;&#x8FDB;&#x4E00;&#x6B65;&#x8FD1;&#x4F3C;&#x4E0A;&#x8FF0;&#x65B9;&#x7A0B;&#x5F0F;&#xFF0C;&#x8BE5;&#x65B9;&#x7A0B;&#x5F0F;&#x7684;&#x6700;&#x7EC8;&#x516C;&#x5F0F;&#x4E3A;&#xFF1A;</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>E</mi><mo stretchy="false">(</mo><mi>u</mi><mo separator="true">,</mo><mi>v</mi><mo stretchy="false">)</mo><mo>&#x2248;</mo><mrow><mo fence="true">[</mo><mtable rowspacing="0.15999999999999992em" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mi>u</mi></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mi>v</mi></mstyle></mtd></mtr></mtable><mo fence="true">]</mo></mrow><mi>M</mi><mrow><mo fence="true">[</mo><mtable rowspacing="0.15999999999999992em" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mi>u</mi></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mi>v</mi></mstyle></mtd></mtr></mtable><mo fence="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">  
+E(u, v) \approx \begin{bmatrix}
+   u &amp; v
+\end{bmatrix} M \begin{bmatrix}
+   u \\
+   v
+\end{bmatrix}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mopen">(</span><span class="mord mathdefault">u</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&#x2248;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.40003em;vertical-align:-0.95003em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size1">[</span></span><span class="mord"><span class="mtable"><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8500000000000001em;"><span style="top:-3.01em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">u</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.35000000000000003em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8500000000000001em;"><span style="top:-3.01em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">v</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.35000000000000003em;"><span></span></span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size1">]</span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size3">[</span></span><span class="mord"><span class="mtable"><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.45em;"><span style="top:-3.61em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">u</span></span></span><span style="top:-2.4099999999999997em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">v</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.9500000000000004em;"><span></span></span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size3">]</span></span></span></span></span></span></span></p>
+<p>&#x5176;&#x4E2D;&#xFF1A;</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>M</mi><mo>=</mo><munder><mo>&#x2211;</mo><mrow><mi>x</mi><mo separator="true">,</mo><mi>y</mi></mrow></munder><mi>w</mi><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo stretchy="false">)</mo><mrow><mo fence="true">[</mo><mtable rowspacing="0.15999999999999992em" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><msub><mi>I</mi><mi>x</mi></msub><msub><mi>I</mi><mi>x</mi></msub></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><msub><mi>I</mi><mi>x</mi></msub><msub><mi>I</mi><mi>y</mi></msub></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><msub><mi>I</mi><mi>x</mi></msub><msub><mi>I</mi><mi>y</mi></msub></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><msub><mi>I</mi><mi>y</mi></msub><msub><mi>I</mi><mi>y</mi></msub></mrow></mstyle></mtd></mtr></mtable><mo fence="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">  
+M = \sum_{x,y}w(x,y) \begin{bmatrix}
+   I_xI_x &amp; I_xI_y \\
+   I_xI_y &amp; I_yI_y
+\end{bmatrix}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.836113em;vertical-align:-1.386113em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0500050000000003em;"><span style="top:-1.8999949999999999em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">x</span><span class="mpunct mtight">,</span><span class="mord mathdefault mtight" style="margin-right:0.03588em;">y</span></span></span></span><span style="top:-3.050005em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">&#x2211;</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:1.386113em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size3">[</span></span><span class="mord"><span class="mtable"><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.45em;"><span style="top:-3.61em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">x</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">x</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-2.4099999999999997em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">x</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139200000000003em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03588em;">y</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.9500000000000004em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.45em;"><span style="top:-3.61em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">x</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139200000000003em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03588em;">y</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span><span style="top:-2.4099999999999997em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139200000000003em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03588em;">y</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139200000000003em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03588em;">y</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.9500000000000004em;"><span></span></span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size3">]</span></span></span></span></span></span></span></p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>I</mi><mi>x</mi></msub></mrow><annotation encoding="application/x-tex">I_x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">x</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>&#x548C;<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>I</mi><mi>y</mi></msub></mrow><annotation encoding="application/x-tex">I_y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.969438em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139200000000003em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03588em;">y</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span>&#x5206;&#x522B;&#x662F;<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>&#x548C;<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span></span></span></span>&#x65B9;&#x5411;&#x7684;&#x56FE;&#x50CF;&#x5BFC;&#x6570;&#x3002;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<strong>sobel&#x5185;&#x6838;</strong>&#x6765;&#x8BA1;&#x7B97;&#x5BFC;&#x6570;&#x3002;</p>
+<p>&#x8BF7;&#x8BB0;&#x4F4F;&#xFF0C;&#x6211;&#x4EEC;&#x5E0C;&#x671B;&#x5DEE;&#x5F97;&#x5E73;&#x65B9;&#x548C;&#xFF08;&#x7B2C;&#x4E8C;&#x9879;&#xFF09;&#x5728;&#x6240;&#x6709;&#x516B;&#x4E2A;&#x65B9;&#x5411;&#x4E0A;&#x7684;&#x504F;&#x79FB;&#x90FD;&#x8F83;&#x5927;&#x3002;&#x6216;&#x8005;&#x6240;&#x6709;&#x65B9;&#x5411;&#x800C;&#x8A00;&#xFF0C;&#x7B2C;&#x4E8C;&#x9879;&#x90FD;&#x5E94;&#x8F83;&#x5C0F;&#x3002;&#x901A;&#x8FC7;&#x6C42;&#x89E3;M&#x7684;&#x7279;&#x5F81;&#x5411;&#x91CF;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x83B7;&#x5F97;&#x7B2C;&#x4E8C;&#x9879;&#x6700;&#x5927;&#x548C;&#x6700;&#x5C0F;&#x589E;&#x52A0;&#x7684;&#x65B9;&#x5411;&#x3002;&#x76F8;&#x5E94;&#x7684;&#x7279;&#x5F81;&#x503C;&#x8868;&#x793A;&#x589E;&#x52A0;&#x7684;&#x5B9E;&#x9645;&#x503C;&#x3002;&#x4E3A;&#x6BCF;&#x4E2A;&#x7A97;&#x53E3;&#x8BA1;&#x7B97;&#x5F97;&#x5206;R&#xFF1A;</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>R</mi><mo>=</mo><mi>det</mi><mo>&#x2061;</mo><mi>M</mi><mo>&#x2212;</mo><mi>k</mi><mo stretchy="false">(</mo><mi>t</mi><mi>r</mi><mi>a</mi><mi>c</mi><mi>e</mi><mtext>&#xA0;</mtext><mi>M</mi><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mspace linebreak="newline"></mspace><mi>det</mi><mo>&#x2061;</mo><mi>M</mi><mo>=</mo><msub><mi>&#x3BB;</mi><mn>1</mn></msub><msub><mi>&#x3BB;</mi><mn>2</mn></msub><mspace linebreak="newline"></mspace><mi>t</mi><mi>r</mi><mi>a</mi><mi>c</mi><mi>e</mi><mtext>&#xA0;</mtext><mi>M</mi><mo>=</mo><msub><mi>&#x3BB;</mi><mn>1</mn></msub><mo>+</mo><msub><mi>&#x3BB;</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">  
+R = \det M - k(trace \space M)^2 \\
+\det M = \lambda_1 \lambda_2 \\
+trace \space M = \lambda_1 + \lambda_2
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mop">det</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x2212;</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.1141079999999999em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mopen">(</span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">a</span><span class="mord mathdefault">c</span><span class="mord mathdefault">e</span><span class="mspace">&#xA0;</span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641079999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mop">det</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">&#x3BB;</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathdefault">&#x3BB;</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">a</span><span class="mord mathdefault">c</span><span class="mord mathdefault">e</span><span class="mspace">&#xA0;</span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">&#x3BB;</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">&#x3BB;</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></p>
+<p>&#x5176;&#x4E2D;<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>&#x3BB;</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">\lambda_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">&#x3BB;</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>&#x548C;<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>&#x3BB;</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">\lambda_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">&#x3BB;</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>&#x4E3A;<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>M</mi></mrow><annotation encoding="application/x-tex">M</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span></span></span></span>&#x7684;&#x7279;&#x5F81;&#x503C;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x8FD9;&#x4E9B;&#x7279;&#x5F81;&#x503C;&#x7684;&#x503C;&#x51B3;&#x5B9A;&#x4E86;&#x533A;&#x57DF;&#x662F;&#x89D2;&#xFF0C;&#x8FB9;&#x8FD8;&#x662F;&#x5E73;&#x9762;&#xFF1A;</p>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn@v2.0.28/img/article_img/images/HarrisCornerDetector/harris.png" alt><figcaption>Harris Corner</figcaption>
+</figure>
+<ul>
+<li>&#x5F53;<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">&#x2223;</mi><mi>R</mi><mi mathvariant="normal">&#x2223;</mi></mrow><annotation encoding="application/x-tex">|R|</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">&#x2223;</span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mord">&#x2223;</span></span></span></span>&#x8F83;&#x5C0F;&#xFF0C;&#x5373;<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>&#x3BB;</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">\lambda_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">&#x3BB;</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>&#x548C;<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>&#x3BB;</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">\lambda_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">&#x3BB;</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>&#x8F83;&#x5C0F;&#xFF0C;&#x8BE5;&#x533A;&#x57DF;&#x5E73;&#x5766;&#xFF1B;<br>
+</li>
+<li>&#x5F53;<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>R</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">R&lt;0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72243em;vertical-align:-0.0391em;"></span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>&#x65F6;&#xFF0C;&#x5373;<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>&#x3BB;</mi><mn>1</mn></msub><mo>&gt;</mo><mo>&gt;</mo><msub><mi>&#x3BB;</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">\lambda_1 &gt;&gt; \lambda_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">&#x3BB;</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span></span><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">&#x3BB;</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>&#x6216;<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>&#x3BB;</mi><mn>1</mn></msub><mo>&lt;</mo><mo>&lt;</mo><msub><mi>&#x3BB;</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">\lambda_1 &lt;&lt; \lambda_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">&#x3BB;</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span></span><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">&#x3BB;</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>&#xFF0C;&#x8BE5;&#x533A;&#x57DF;&#x4E3A;&#x8FB9;&#xFF1B;</li>
+<li>&#x5F53;R&#x5927;&#x65F6;&#xFF0C;&#x5373;<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>&#x3BB;</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">\lambda_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">&#x3BB;</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>&#x548C;<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>&#x3BB;</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">\lambda_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">&#x3BB;</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>&#x5927;&#xFF0C;&#x4E14;<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>&#x3BB;</mi><mn>1</mn></msub><mtext>&#xA0;</mtext><msub><mi>&#x3BB;</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">\lambda_1 ~ \lambda_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">&#x3BB;</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace nobreak">&#xA0;</span><span class="mord"><span class="mord mathdefault">&#x3BB;</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>&#x65F6;&#xFF0C;&#x8BE5;&#x533A;&#x57DF;&#x662F;&#x89D2;&#x3002;</li>
+</ul>
+<h3 id="&#x7B97;&#x6CD5;&#x7684;&#x8FC7;&#x7A0B;">&#x7B97;&#x6CD5;&#x7684;&#x8FC7;&#x7A0B;</h3>
+<ol type="1">
+<li>&#x5C06;&#x5F69;&#x8272;&#x56FE;&#x8F6C;&#x4E3A;&#x7070;&#x5EA6;&#x56FE;&#xFF1B;</li>
+<li>&#x7A7A;&#x95F4;&#x5BFC;&#x6570;&#x8BA1;&#x7B97;&#xFF1B;</li>
+<li>&#x7ED3;&#x6784;&#x5F20;&#x91CF;&#x8BBE;&#x7F6E;&#xFF1B;</li>
+<li>&#x8BA1;&#x7B97;Harris&#x5206;&#x6570;&#xFF1B;</li>
+<li>&#x68C0;&#x6D4B;&#x62D0;&#x89D2;&#xFF1B;</li>
+</ol>
+<h2 id="implementation">Implementation</h2>
+<h3 id="&#x5C06;&#x5F69;&#x8272;&#x56FE;&#x8F6C;&#x4E3A;&#x7070;&#x5EA6;&#x56FE;">&#x5C06;&#x5F69;&#x8272;&#x56FE;&#x8F6C;&#x4E3A;&#x7070;&#x5EA6;&#x56FE;</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">from</span> skimage <span class="im">import</span> io, img_as_float32</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="im">from</span> skimage.color <span class="im">import</span> rgb2gray</span>
+<span id="cb1-3"><a href="#cb1-3"></a></span>
+<span id="cb1-4"><a href="#cb1-4"></a>image_color <span class="op">=</span> img_as_float32(io.imread(<span class="st">&apos;image_file_path&apos;</span>))</span>
+<span id="cb1-5"><a href="#cb1-5"></a>image <span class="op">=</span> rgb2gray(image_color)</span></code></pre></div>
+<h3 id="&#x7A7A;&#x95F4;&#x5BFC;&#x6570;&#x8BA1;&#x7B97;">&#x7A7A;&#x95F4;&#x5BFC;&#x6570;&#x8BA1;&#x7B97;</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> cv2</span>
+<span id="cb2-2"><a href="#cb2-2"></a></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="co"># &#x8BA1;&#x7B97;Ix, Iy</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a>Ix <span class="op">=</span> cv2.Sobel(image, cv2.CV_64F, <span class="dv">1</span>, <span class="dv">0</span>, ksize<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb2-5"><a href="#cb2-5"></a>Iy <span class="op">=</span> cv2.Sobel(image, cv2.CV_64F, <span class="dv">0</span>, <span class="dv">1</span>, ksize<span class="op">=</span><span class="dv">5</span>)</span></code></pre></div>
+<h3 id="&#x7ED3;&#x6784;&#x5F20;&#x91CF;&#x8BBE;&#x7F6E;">&#x7ED3;&#x6784;&#x5F20;&#x91CF;&#x8BBE;&#x7F6E;</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">from</span> scipy.ndimage <span class="im">import</span> gaussian_filter</span>
+<span id="cb3-2"><a href="#cb3-2"></a></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="co"># &#x8BA1;&#x7B97;(Ix)^2, (Iy)^2, Ixy</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a>Ixx <span class="op">=</span> gaussian_filter(Ix <span class="op">**</span> <span class="dv">2</span>, sigma<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb3-5"><a href="#cb3-5"></a>Ixy <span class="op">=</span> gaussian_filter(Iy <span class="op">*</span> Ix, sigma<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb3-6"><a href="#cb3-6"></a>Iyy <span class="op">=</span> gaussian_filter(Iy <span class="op">**</span> <span class="dv">2</span>, sigma<span class="op">=</span><span class="dv">1</span>)</span></code></pre></div>
+<h3 id="&#x8BA1;&#x7B97;harris&#x5206;&#x6570;">&#x8BA1;&#x7B97;Harris&#x5206;&#x6570;</h3>
+<p>&#x8FD9;&#x91CC;&#x6709;&#x7528;&#x5230;&#x53D8;&#x91CF;<code>alpha</code>&#xFF0C;<code>alpha</code>&#x662F;&#x5C06;&#x89D2;&#x70B9;&#x4E0E;&#x8FB9;&#x7F18;&#x5206;&#x5F00;&#x7684;&#x7075;&#x654F;&#x5EA6;&#x56E0;&#x5B50;&#xFF0C;&#x901A;&#x5E38;&#x4E3A;&#x63A5;&#x8FD1;&#x96F6;&#x7684;&#x503C;&#xFF0C;&#x8FD9;&#x91CC;&#x6211;&#x628A;<code>alpha</code>&#x8BBE;&#x7F6E;&#x4E3A;<code>0.04</code>&#x3002;<code>alpha</code>&#x7684;&#x503C;&#x8F83;&#x5C0F;&#x4F1A;&#x66F4;&#x5BB9;&#x6613;&#x68C0;&#x6D4B;&#x5230;&#x5C16;&#x89D2;&#x3002;<code>harris_score</code>&#x662F;&#x56FE;&#x50CF;&#x4E2D;&#x6BCF;&#x884C;&#x5CF0;&#x503C;&#x7684;&#x6570;&#x7EC4;&#x3002;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x8FD9;&#x4E9B;&#x5CF0;&#x503C;&#x6765;&#x533A;&#x5206;&#x62D0;&#x89D2;&#x548C;&#x8FB9;&#x3002;</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># &#x8BA1;&#x7B97;&#x884C;&#x5217;&#x5F0F; A &#x548C; trace A</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>detA <span class="op">=</span> Ixx <span class="op">*</span> Iyy <span class="op">-</span> Ixy <span class="op">**</span> <span class="dv">2</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a>traceA <span class="op">=</span> Ixx <span class="op">+</span> Iyy</span>
+<span id="cb4-4"><a href="#cb4-4"></a></span>
+<span id="cb4-5"><a href="#cb4-5"></a>alpha <span class="op">=</span> <span class="fl">0.04</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a></span>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="co"># &#x8BA1;&#x7B97;Harris&apos;s score</span></span>
+<span id="cb4-8"><a href="#cb4-8"></a>harris_score <span class="op">=</span> detA <span class="op">-</span> alpha <span class="op">*</span> traceA <span class="op">**</span> <span class="dv">2</span></span></code></pre></div>
+<h3 id="&#x68C0;&#x6D4B;&#x62D0;&#x89D2;">&#x68C0;&#x6D4B;&#x62D0;&#x89D2;</h3>
+<p>&#x5728;&#x68C0;&#x6D4B;&#x62D0;&#x89D2;&#x7684;&#x65F6;&#x5019;&#x6211;&#x662F;&#x76F4;&#x63A5;&#x7528;&#x7684;<a href="https://scikit-image.org/docs/dev/api/skimage.feature.html#skimage.feature.peak_local_max" target="_blank" rel="noopener">peak_local_max</a>&#x51FD;&#x6570;&#x3002;&#x6211;&#x5728;&#x8FD9;&#x91CC;&#x8BBE;&#x7F6E;&#x4E86;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#xFF1A;<code>threshold_rel</code>&#xFF0C;&#x8FD9;&#x4E2A;&#x503C;&#x662F;&#x7528;&#x6765;&#x68C0;&#x6D4B;&#x5CF0;&#x65F6;&#xFF0C;&#x5CF0;&#x7684;&#x6700;&#x5C0F;&#x5F3A;&#x5EA6;&#xFF08;<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mi>a</mi><mi>x</mi><mo stretchy="false">(</mo><mi>i</mi><mi>m</mi><mi>a</mi><mi>g</mi><mi>e</mi><mo stretchy="false">)</mo><mo>&#x2217;</mo><mi>t</mi><mi>h</mi><mi>r</mi><mi>e</mi><mi>s</mi><mi>h</mi><mi>o</mi><mi>l</mi><msub><mi>d</mi><mi>r</mi></msub><mi>e</mi><mi>l</mi></mrow><annotation encoding="application/x-tex">max(image)*threshold_rel</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord mathdefault">x</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">e</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x2217;</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord mathdefault">t</span><span class="mord mathdefault">h</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">e</span><span class="mord mathdefault">s</span><span class="mord mathdefault">h</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord"><span class="mord mathdefault">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span></span></span></span>&#xFF09;&#x3002;&#x66F4;&#x6539;&#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#x4F1A;&#x5F71;&#x54CD;&#x62D0;&#x89D2;&#x68C0;&#x6D4B;&#x6548;&#x679C;&#x3002;&#x5177;&#x4F53;&#x53EF;&#x4EE5;&#x53C2;&#x8003;&#x6587;&#x6863;&#x3002;</p>
+<h4 id="&#x4F7F;&#x7528;-peak_local_max-&#x51FD;&#x6570;">&#x4F7F;&#x7528; peak_local_max &#x51FD;&#x6570;</h4>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="im">from</span> skimage.feature <span class="im">import</span> peak_local_max</span>
+<span id="cb5-2"><a href="#cb5-2"></a></span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="co"># find corners(&#x8FD9;&#x91CC;&#x8BF7;&#x5FFD;&#x89C6;&#x6CE8;&#x91CA;)</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="co"># 0.06 =&gt; 65%(notre_dame)|23%(mt_rushmore)|0%(e_gaudi)</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="co"># 0.05 =&gt;notre_dame&#xFF1A; 73%(0.8)/72%(0.7)|mt_rushmore&#xFF1A;26%((ratio&#xFF1A;0.8))/66%(ratio&#xFF1A;0.7)|0%(e_gaudi)</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="co"># 0.04 =&gt;notre:75%(0.8)/83%(0.7)/75%(0.6)/83%(0.6,min_dis=5)/66%(0.7,min5)61%(0.8)|50%&#xFF08;0.7&#xFF09;/18%(0.8)|</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="co"># 0.03 =&gt;67%(0.8)/78%(0.7)</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a>corners <span class="op">=</span> peak_local_max(harris_score, threshold_rel<span class="op">=</span><span class="fl">0.04</span>)</span></code></pre></div>
+<h4 id="&#x901A;&#x8FC7;r&#x5224;&#x65AD;">&#x901A;&#x8FC7;R&#x5224;&#x65AD;</h4>
+<p>&#x8FD9;&#x91CC;&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4E0A;&#x8FF0;&#x539F;&#x7406;&#x4E2D;&#x7684;<code>R</code>&#x6765;&#x5224;&#x65AD;&#xFF0C;&#x4F46;&#x662F;&#x6548;&#x679C;&#x4E0D;&#x662F;&#x5F88;&#x597D;&#xFF0C;&#x5E94;&#x8BE5;&#x662F;&#x9608;&#x503C;&#x8BBE;&#x7F6E;&#x548C;&#x5CF0;&#x503C;&#x9009;&#x53D6;&#x8DDD;&#x79BB;&#x8BBE;&#x7F6E;&#x7684;&#x95EE;&#x9898;&#xFF08;&#x6211;&#x8FD9;&#x91CC;&#x6CA1;&#x6709;&#x8BBE;&#x7F6E;&#x5CF0;&#x503C;&#x8DDD;&#x79BB;&#xFF09;&#x3002;&#x5177;&#x4F53;&#x5B9E;&#x73B0;&#x5982;&#x4E0B;&#xFF1A;</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>thresh <span class="op">=</span> <span class="fl">0.04</span> <span class="op">*</span> harris_score.<span class="bu">max</span>()</span>
+<span id="cb6-2"><a href="#cb6-2"></a></span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="cf">for</span> r_i, score <span class="kw">in</span> <span class="bu">enumerate</span>(harris_score):</span>
+<span id="cb6-4"><a href="#cb6-4"></a>    <span class="cf">for</span> c_i, s <span class="kw">in</span> <span class="bu">enumerate</span>(score):</span>
+<span id="cb6-5"><a href="#cb6-5"></a>        <span class="cf">if</span> s <span class="op">&gt;</span> thresh:</span>
+<span id="cb6-6"><a href="#cb6-6"></a>            <span class="co"># corner</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a>            corners.append([r_i, c_i])</span></code></pre></div>
+<h3 id="&#x5174;&#x8DA3;&#x70B9;&#x68C0;&#x6D4B;&#x7ED3;&#x679C;">&#x5174;&#x8DA3;&#x70B9;&#x68C0;&#x6D4B;&#x7ED3;&#x679C;</h3>
+<h4 id="&#x4F7F;&#x7528;-peak_local_max-&#x51FD;&#x6570;-1">&#x4F7F;&#x7528; peak_local_max &#x51FD;&#x6570;</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn@v2.0.29/img/article_img/images/HarrisCornerDetector/result_1.png" alt="Interest point detection result 1"> <img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn@v2.0.29/img/article_img/images/HarrisCornerDetector/result_2.png" alt="Interest point detection result 2"> <img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn@v2.0.29/img/article_img/images/HarrisCornerDetector/result_3.png" alt="Interest point detection result 3"> <img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn@v2.0.29/img/article_img/images/HarrisCornerDetector/result_4.png" alt="Interest point detection result 4"></p>
+<h4 id="&#x901A;&#x8FC7;r&#x5224;&#x65AD;-1">&#x901A;&#x8FC7;R&#x5224;&#x65AD;</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn@v2.0.29/img/article_img/images/HarrisCornerDetector/result_5.png" alt="Interest point detection result 5"> <img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn@v2.0.29/img/article_img/images/HarrisCornerDetector/result_6.png" alt="Interest point detection result 6"> <img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn@v2.0.29/img/article_img/images/HarrisCornerDetector/result_7.png" alt="Interest point detection result 7"> <img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn@v2.0.29/img/article_img/images/HarrisCornerDetector/result_8.png" alt="Interest point detection result 8"></p>
+<h2 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</h2>
+<p>&#x6587;&#x7AE0;&#x5230;&#x8FD9;&#x5C31;&#x7ED3;&#x675F;&#x4E86;&#xFF0C;&#x4E4B;&#x540E;&#x8FD8;&#x4F1A;&#x6709;&#x5174;&#x8DA3;&#x70B9;&#x63CF;&#x8FF0; (SIFT) &#x548C;&#x7279;&#x5F81;&#x5339;&#x914D; (NNDR&#xFF09;&#x7B49;&#x540E;&#x7EED;&#x6587;&#x7AE0;&#x3002;&#x672C;&#x6587;&#x6D89;&#x53CA;&#x7684;&#x7B97;&#x6CD5; (Harris Corner Detector) &#x662F;&#x6BD4;&#x8F83;&#x57FA;&#x7840;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#x7684;&#x5174;&#x8DA3;&#x70B9;&#x68C0;&#x6D4B;&#x7B97;&#x6CD5;&#x3002;&#x4F46;&#x662F;&#x901A;&#x8FC7;&#x8FD9;&#x6B21;&#x5B66;&#x4E60;&#xFF0C;&#x6211;&#x4E0D;&#x4EC5;&#x5B66;&#x5230;&#x4E86;&#x8BE5;&#x7B97;&#x6CD5;&#x7684;&#x539F;&#x7406;&#xFF0C;&#x66F4;&#x91CD;&#x8981;&#x7684;&#x662F;&#x6211;&#x5B66;&#x4E60;&#x5230;&#x4E86;&#x4F5C;&#x8005;&#x7684;&#x601D;&#x7EF4;&#x3002;&#x5B66;&#x4E60;&#x5C31;&#x662F;&#x8FD9;&#x6837;&#x4E00;&#x70B9;&#x4E00;&#x70B9;&#x79EF;&#x7D2F;&#x5427;&#x3002;&#x5982;&#x679C;&#x4EE5;&#x540E;&#x9047;&#x5230;&#x6BD4;&#x8F83;&#x56F0;&#x96BE;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x6216;&#x8BB8;&#x8FD9;&#x4E2A;&#x7B80;&#x5355;&#x7B97;&#x6CD5;&#x7684;&#x601D;&#x8DEF;&#x548C;&#x4F5C;&#x8005;&#x7684;&#x601D;&#x7EF4;&#x5C31;&#x80FD;&#x5E26;&#x7ED9;&#x6211;&#x5F88;&#x591A;&#x7075;&#x611F;&#x3002;</p>
+<h1 id="reference">Reference</h1>
+<ol type="1">
+<li><a href="http://www.bmva.org/bmvc/1988/avc-88-023.pdf" target="_blank" rel="noopener">A COMBINED CORNER AND EDGE DETECTOR</a></li>
+<li><a href="!https://en.wikipedia.org/wiki/Harris_Corner_Detector">Harris Corner Detector</a></li>
+<li><a href="!https://medium.com/data-breach/introduction-to-harris-corner-detector-32a88850b3f6">Introduction to Harris Corner Detector</a></li>
+<li><a href="!https://muthu.co/harris-corner-detector-implementation-in-python/">Harris Corner Detector implementation in python</a></li>
+</ol>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/custom/donate/WeChanQR.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2020/05/31/Technology/Coding/Leetcode/Leetcode-Note-in-May-2020-part-3-day-21-31-(%E4%B8%80)/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/bears/7.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/bears/7.jpg">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                Leetcode Note in May 2020 | part 3 | day 21-31 | (一)</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+        
+          
+            <div class="post-nepre half next">
+          
+            <a href="/2020/05/20/Technology/Coding/Leetcode/Leetcode-Note-in-May-2020-part-2-day-11-20/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/bears/32.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/bears/32.jpg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                Leetcode Note in May 2020 | part 2 | day 11-20</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "muFSHxz8L08M3G7SvAW4JeCL-MdYXbMMI",
+        appKey: "kVLkvQrw5ye4OnhwwEdjS9JB",
+        avatar: "monsterid", 
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="https://littlelittlemoon.github.io/" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/custom/avatar-3.jpg" itemprop="image" alt="Kayleen" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="https://littlelittlemoon.github.io/" itemprop="url" rel="author">Kayleen</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>A curious 👱‍♀️</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
+</div>
+
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML"></script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  </script>
+
+
+    </div>    
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            // PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+    <!-- <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Kayleen<br>
+      powered_by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer> -->
+<footer id="colophon" class="site-footer" role="contentinfo">
+  <div class="site-info">
+    <div class="footertext">
+      <div class="img-preload">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/wordpress-rotating-ball-o.svg">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/disqus-preloader.svg">
+      </div>
+      <p style="color: #666666;">&copy 2018</p>
+    </div>
+    <div class="footer-device">
+    <p style="font-family: 'Ubuntu', sans-serif;">
+        <span style="color: #b9b9b9;">Theme <a href="https://github.com/honjun/hexo-theme-sakura" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Sakura</a> <i class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i> by <a href="https://2heng.xin/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Mashiro</a>&<a href="https://www.hojun.cn/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Hojun&Kayleen</a>, Powered by Hexo, Hosted by Github Pages</a>
+        </span>
+      </p>
+    </div>
+  </div><!-- .site-info -->
+</footer>
+
+
+
+<!-- <script src="/js/tocbot.js"></script> -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/js/lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/js/InsightSearch.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/js/zoom.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/js/sakura-app.js"></script>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine@1.3.4/dist/Valine.min.js'></script>
+<script src="/js/botui.js"></script>
+<!-- 不蒜子 网页计数器 -->
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script> -->
+<script type="text/javascript">
+/* <![CDATA[ */
+if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  var Poi = {"pjax":"1","movies":{"url": "https://cdn.jsdelivr.net/gh/littlelittlemoon","name":"cdn/video/we-bare-bears-ice-bear-play-2.mp4,cdn@v2.1.0/video/we-bare-bears-ice-bear-play-3.mp4","live":"close"},"windowheight":"fixed","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+} else {
+  var Poi = {"pjax":"1","movies":{"url": "https://cdn.jsdelivr.net/gh/littlelittlemoon","name":"cdn/video/we-bare-bears-ice-bear-play-2.mp4,cdn@v2.1.0/video/we-bare-bears-ice-bear-play-3.mp4","live":"open"},"windowheight":"auto","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+}
+/* ]]> */
+
+</script>
+<script>
+$(document).ready(function() {
+  if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
+    if ($(".pattern-center").length > 0) { //有图的情况
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -400,
+          scrollSmoothOffset: -85
+      });
+    } else {
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -85,
+          scrollSmoothOffset: -85
+      });
+    }
+    var offsetTop = $('.toc').offset().top - 95;
+    window.onscroll = function() {
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      if (scrollTop >= offsetTop) {
+        $('.toc').addClass('toc-fixed');
+      } else {
+        $('.toc').removeClass('toc-fixed');
+      }
+    }
+  }
+});
+</script>
+
+    <div class="openNav no-select" style="height: 50px;">
+      <div class="iconflat no-select" style="width: 50px; height: 50px;">
+        <div class="icon"></div>
+      </div>
+      <div class="site-branding search-form-submit">
+        <i class="iconfont js-toggle-search iconsearch icon-search"></i>
+      </div>
+    </div>
+  </section>
+  <div id="mo-nav" class="">
+  <div class="m-avatar">
+    <img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/custom/avatar-3.jpg">
+  </div>
+  <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">Bear CaveKayleen</p>
+  <p style="text-align: center; word-spacing: 20px;">
+    
+      
+        <a href="http://github.com/littlelittlemoon" class="fa fa-github" target="_blank" style="color: #333; margin-left:20px"></a>
+      
+        <a href="https://wpa.qq.com/msgrd?v=3&uin=1165156282&site=qq&menu=yes" class="fa fa-qq" target="_blank" style="color: #25c6fe; margin-left:20px"></a>
+      
+    
+  </p>
+  <ul id="menu-new-1" class="menu">
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+            首页
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/archives/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+            归档
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/tags/Updating/">
+                  <i class="fa fa-circle-o-notch" aria-hidden="true"></i>
+                  更新
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/Technology/">
+                  <i class="fa fa-code" aria-hidden="true"></i>
+                  技术
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/Life/">
+                  <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                  生活
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/Thoughts/">
+                  <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                  随想
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/Repost/">
+                  <i class="fa fa-book" aria-hidden="true"></i>
+                  转载
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="javascript:;">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+            清单
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/tags/Reading/">
+                  <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                  悦读
+                </a>
+              </li>
+            
+              <li>
+                <a href="/music/">
+                  <i class="fa fa-headphones" aria-hidden="true"></i>
+                  音悦
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags/Pictures/">
+                  <i class="fa fa-photo" aria-hidden="true"></i>
+                  图集
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags/Cave/">
+                  <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                  Cave
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/comment/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+            留言板
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/links/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+            友人帐
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/donate/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+            赞赏
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/about/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-meetup" aria-hidden="true"></i>
+            关于我
+          </span>
+        </a>
+        
+      </li>
+    
+  </ul>
+  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2019 hexo-sakura</p>
+</div>
+<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<style>
+  .aplayer .aplayer-lrc {
+    height: 35px;
+  }
+  .aplayer .aplayer-lrc p{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px !important;
+  }
+  .aplayer .aplayer-lrc p.aplayer-lrc-current{
+    color: #FF1493;
+  }
+  .aplayer.aplayer-narrow .aplayer-body{
+    left: -66px !important;
+  }
+  .aplayer.aplayer-fixed .aplayer-lrc {
+    display: none;
+  }
+  .aplayer .aplayer-lrc.aplayer-lrc-hide {
+      display:none !important;
+  }
+  .aplayer.aplayer-fixed .lrc-show {
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>
+<meting-js
+
+    id="2188265841"
+
+    server="netease"
+
+    type="playlist"
+
+    fixed="true"
+
+    mini="true"
+
+    autoplay="false"
+
+    loop="all"
+
+    order="random"
+
+    preload="auto"
+
+    volume="0.4"
+
+    mutex="true"
+
+</meting-js>
+<script>
+  $(function(){
+    $('body').on('click', '.aplayer', function(){
+      if($('.aplayer-button').hasClass('aplayer-play')) {
+        $('.aplayer-lrc').removeClass('lrc-show');
+      } else {
+        $('.aplayer-lrc').addClass('lrc-show');
+      }
+    })
+  });
+</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>
