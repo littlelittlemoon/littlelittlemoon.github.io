@@ -4,7 +4,7 @@
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">Category: Modeling | LITTLEMEEMOON</title>
+  <title itemprop="name">Leetcode Note in June 2020 | day 6 | Queue Reconstruction by Height | LITTLEMEEMOON</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -313,163 +313,174 @@
   </div>
 </header>
 
-      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/css/matery.css">
-
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
 <div class="pattern-center-blank"></div>
-<div class="pattern-center ">
-  <div class="pattern-attachment-img">
-    <img data-src="Modeling.img" class="lazyload" onerror="imgError(this,3)" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;">
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/bears/13.jpg);" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/bears/13.jpg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      Leetcode Note in June 2020 | day 6 | Queue Reconstruction by Height</h1>
+      <p class="entry-census">
+        <span>
+          <a href="littlemeemoon.cn">
+            <img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/custom/avatar-3.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="littlemeemoon.cn">Kayleen</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2020-6-6<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
   </div>
-  <header class="pattern-header ">
-    <h1 class="cat-title">Modeling.zh</h1>
-    <span class="cat-des">
-      <p>Modeling.en</p>
-    </span>
-  </header>
-</div>
+
 <div id="content" class="site-content">
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
-      <div id="contentss">
-        <style type="text/css">
-    #category-radar {
-        width: 100%;
-        height: 360px;
-    }
-</style>
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h1 id="&#x5199;&#x5728;&#x524D;&#x9762;&#x7684;&#x8BDD;">&#x5199;&#x5728;&#x524D;&#x9762;&#x7684;&#x8BDD;</h1>
+<p>&#x563F;&#x563F;&#x8FD9;&#x9053;&#x9898;&#x6211;&#x770B;&#x61C2;&#x4E86;&#x9898;&#x76EE;&#x610F;&#x601D;~ (&#xFF3E;&#xFF0D;&#xFF3E;)V &#x270C;&#x270C;&#xFE0F;</p>
+<h1 id="random-pick-with-weight">Random Pick with Weight</h1>
+<blockquote>
+<p>Suppose you have a random list of people standing in a queue. Each person is described by a pair of integers<code>(h, k)</code>, where <code>h</code> is the height of the person and <code>k</code> is <strong>the number of people</strong> in front of this person who have a height <strong>greater than or equal</strong> to <code>h</code>. Write an algorithm to reconstruct the queue.<br>
+<strong>Note</strong>:<br>
+The number of people is less than 1,100.<br>
+<strong>Example</strong><br>
+<strong>Input</strong>:<br>
+[[7,0], [4,4], [7,1], [5,0], [6,1], [5,2]]<br>
+<strong>Output</strong>:<br>
+[[5,0], [7,0], [5,2], [6,1], [4,4], [7,1]]</p>
+</blockquote>
+<h2 id="solution">Solution</h2>
+<p>&#x1F43B; &#x9898;&#x76EE;&#x5927;&#x610F;&#xFF1A;&#x7ED9;&#x5B9A;&#x4E00;&#x4E2A;list&#xFF0C; &#x8FD9;&#x4E2A;list&#x91CC;&#x9762;&#x662F;&#x6210;&#x5BF9;&#x7684;&#x6570;&#x636E;&#xFF1A;[h, k]&#xFF0C;&#x5176;&#x4E2D;h&#x662F;&#x4E00;&#x4E2A;&#x4EBA;&#x7684;&#x8EAB;&#x9AD8;&#xFF0C;k&#x662F;&#x5F53;&#x524D;&#x8FD9;&#x4E2A;&#x4EBA;&#x524D;&#x9762;&#x6709;&#x591A;&#x5C11;&#x4EBA;&#x7684;&#x8EAB;&#x9AD8;&#x6BD4;&#x4ED6;&#x7684;&#x8EAB;&#x9AD8;&#x9AD8;&#x6216;&#x548C;&#x4ED6;&#x8EAB;&#x9AD8;&#x76F8;&#x540C;&#x3002;&#x4F46;&#x662F;&#x6570;&#x7EC4;&#x91CC;&#x9762;&#x7684;&#x987A;&#x5E8F;&#x662F;&#x968F;&#x673A;&#x7684;&#x3002;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x505A;&#x7684;&#x5C31;&#x662F;&#x6839;&#x636E;&#x7ED9;&#x5B9A;&#x7684;&#x968F;&#x673A;&#x6392;&#x5E8F;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x91CD;&#x65B0;&#x6392;&#x5E8F;&#xFF0C;&#x4F7F;&#x6392;&#x5E8F;&#x540E;&#x7684;&#x6570;&#x636E;&#x6EE1;&#x8DB3;&#x6570;&#x636E;&#x7ED9;&#x7684;&#x4FE1;&#x606F;&#x63CF;&#x8FF0;&#x3002;&#x5F88;&#x96BE;&#x8868;&#x8FF0;&#x554A;&#x3002;&#x4E3E;&#x4E2A;&#x1F330;&#x5427;&#xFF1A;</p>
+<ol type="1">
+<li>people = [[7,0], [4,4], [7,1], [5,0], [6,1], [5,2]]<br>
+</li>
+<li>[7, 0] =&gt; &#x524D;&#x9762;&#x6CA1;&#x6709;&#x548C;&#x4ED6;&#x4E00;&#x6837;&#x9AD8;&#x6216;&#x8005;&#x6BD4;&#x4ED6;&#x9AD8;&#x7684;&#x4EBA;&#x3002;&#x5F53;&#x524D;&#x6EE1;&#x8DB3;&#x6761;&#x4EF6;&#xFF0C;&#x56E0;&#x4E3A;&#x4ED6;&#x524D;&#x9762;&#x6CA1;&#x6709;&#x4EBA;&#xFF1B;</li>
+<li>[4, 4] =&gt; &#x8FD9;&#x5C31;&#x4E0D;&#x592A;&#x5BF9;&#x4E86;&#xFF0C;&#x56E0;&#x4E3A;&#x4ED6;&#x524D;&#x9762;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x4EBA;&#xFF0C;&#x6240;&#x4EE5;&#x4ED6;&#x524D;&#x9762;&#x4E0D;&#x53EF;&#x80FD;&#x6709;4&#x4E2A;&#x4EBA;&#x6BD4;&#x4ED6;&#x9AD8;&#x6216;&#x548C;&#x4ED6;&#x4E00;&#x6837;&#x9AD8;&#xFF0C;&#x6211;&#x4EEC;&#x8981;&#x505A;&#x7684;&#x5C31;&#x662F;&#x628A;&#x4ED6;&#x653E;&#x5728;&#x5408;&#x9002;&#x7684;&#x4F4D;&#x7F6E;&#x3002;</li>
+</ol>
+<p>&#x8FD9;&#x4E0B;&#x9898;&#x610F;&#x5E94;&#x8BE5;&#x641E;&#x61C2;&#x4E86;&#x3002;&#x6211;&#x7684;&#x601D;&#x8DEF;&#x662F;&#x5148;&#x6309;&#x7167;&#x8EAB;&#x9AD8;&#x4ECE;&#x9AD8;&#x5230;&#x4F4E;&#x5BF9;&#x6BCF;&#x4E2A;&#x4EBA;&#x8FDB;&#x884C;&#x6392;&#x5E8F;&#xFF0C;&#x76F8;&#x540C;&#x8EAB;&#x9AD8;&#x7684;&#x6309;&#x7167;&#x524D;&#x9762;&#x7684;&#x4EBA;&#x6570;&#x4ECE;&#x5C11;&#x5230;&#x591A;&#x6392;&#x5E8F;&#x3002;&#x8FD9;&#x91CC;&#x53EF;&#x4EE5;&#x5148;&#x60F3;&#x60F3;&#x4E3A;&#x4EC0;&#x4E48;&#x8FD9;&#x6837;&#x6392;&#x5E8F;&#xFF1F;&#x6211;&#x4E0B;&#x4E00;&#x6B65;&#x8981;&#x600E;&#x4E48;&#x5229;&#x7528;&#x8FD9;&#x4E2A;&#x6392;&#x597D;&#x5E8F;&#x7684;&#x6570;&#x7EC4;&#xFF1F;</p>
+<p>&#x662F;&#x6EF4;&#xFF0C;&#x6211;&#x4EEC;&#x6309;&#x7167;&#x4E0A;&#x9762;&#x7684;&#x8981;&#x6C42;&#x6392;&#x597D;&#x5E8F;&#x4E4B;&#x540E;&#x4F60;&#x5C31;&#x4F1A;&#x53D1;&#x73B0;&#xFF0C;&#x6211;&#x4EEC;&#x53EA;&#x9700;&#x6309;&#x7167;&#x8FD9;&#x4E2A;&#x987A;&#x5E8F;&#x904D;&#x5386;&#x8FD9;&#x4E2A;&#x6570;&#x7EC4;&#x3002;&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x662F;&#x6309;&#x8EAB;&#x9AD8;&#x4ECE;&#x9AD8;&#x5230;&#x4F4E;&#x6392;&#x5E8F;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x53EA;&#x9700;&#x8981;&#x6839;&#x636E;&#x6BCF;&#x4E2A;&#x4EBA;&#x524D;&#x9762;&#x6709;&#x6BD4;&#x4ED6;&#x9AD8;&#x7684;&#x4EBA;&#x6570;&#x6765;&#x628A;&#x4ED6;&#x63D2;&#x5165;&#x5230;&#x76F8;&#x5E94;&#x7684;&#x4F4D;&#x7F6E;&#x3002;</p>
+<p>&#x4EE5;&#x4E0A;&#x9762;&#x7684;&#x4F8B;&#x5B50;, &#x6392;&#x5E8F;&#x540E;&#xFF1A;[[7, 0], [7, 1], [6, 1], [5, 0], [5, 2], [4, 4]]&#xFF0C;&#x7136;&#x540E;&#x904D;&#x5386;&#x8BE5;&#x6570;&#x7EC4;</p>
+<ol type="1">
+<li><code>[7, 0]</code> =&gt; &#x524D;&#x9762;&#x6CA1;&#x6709;&#x6BD4;&#x4ED6;&#x9AD8;&#x7684; =&gt; &#x653E;&#x5728;<code>index 0</code></li>
+<li><code>[7, 1]</code> =&gt; &#x524D;&#x9762;&#x6709;&#x4E00;&#x4E2A;&#x548C;&#x4ED6;&#x4E00;&#x6837;&#x9AD8;&#x6216;&#x6BD4;&#x4ED6;&#x9AD8; =&gt; &#x653E;&#x5728; <code>index 1</code>&#xFF08;<code>index 0</code> &#x4F4D;&#x7F6E;&#x4E0A;&#x7684;&#x4EBA;&#x548C;&#x4ED6;&#x4E00;&#x6837;&#x9AD8;&#xFF09;</li>
+<li><code>[6, 1]</code> =&gt; &#x524D;&#x9762;&#x6709;&#x4E00;&#x4E2A;&#x548C;&#x4ED6;&#x4E00;&#x6837;&#x9AD8;&#x6216;&#x6BD4;&#x4ED6;&#x9AD8; =&gt; &#x653E;&#x5728; <code>index 1</code>&#xFF08;<code>index 0</code> &#x4F4D;&#x7F6E;&#x4E0A;&#x7684;&#x4EBA;&#x6BD4;&#x4ED6;&#x9AD8;&#xFF0C;&#x7531;&#x4E8E; <code>6 &lt; 7</code>,&#x6240;&#x4EE5;&#x4E0D;&#x4F1A;&#x5F71;&#x54CD;<code>[7, 1]</code>&#xFF09;</li>
+<li><code>[5, 0]</code> =&gt; &#x524D;&#x9762;&#x6CA1;&#x6709;&#x6BD4;&#x4ED6;&#x9AD8;&#x7684; =&gt; &#x653E;&#x5728;<code>index 0</code>&#xFF0C;&#x5426;&#x5219;&#x653E;&#x5F03;&#x4ED6;&#x4F4D;&#x7F6E;&#x603B;&#x6709;&#x4EBA;&#x6BD4;&#x4ED6;&#x9AD8;&#xFF0C;&#x5E76;&#x4E14;&#x7531;&#x4E8E;&#x4ED6;&#x662F;&#x76EE;&#x524D;&#x6700;&#x77EE;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x4E0D;&#x4F1A;&#x5F71;&#x54CD;&#x4E4B;&#x524D;&#x6392;&#x597D;&#x5E8F;&#x7684;&#x4EBA;</li>
+<li>&#x4EE5;&#x6B64;&#x7C7B;&#x63A8;...</li>
+<li>&#x6700;&#x540E;&#x6392;&#x597D;&#x5E8F;&#xFF1A;[[5,0],[7,0],[5,2],[6,1],[4,4],[7,1]]</li>
+</ol>
+<h3 id="code">Code</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb1-2"><a href="#cb1-2"></a>    <span class="kw">def</span> reconstructQueue(<span class="va">self</span>, people: List[List[<span class="bu">int</span>]]) <span class="op">-&gt;</span> List[List[<span class="bu">int</span>]]:</span>
+<span id="cb1-3"><a href="#cb1-3"></a>        <span class="co"># 1. Descending order by height </span></span>
+<span id="cb1-4"><a href="#cb1-4"></a>        <span class="co"># 2. same hight ascending order by the number of people in front </span></span>
+<span id="cb1-5"><a href="#cb1-5"></a>        people.sort(key<span class="op">=</span><span class="kw">lambda</span> p:(<span class="op">-</span>p[<span class="dv">0</span>], p[<span class="dv">1</span>]))</span>
+<span id="cb1-6"><a href="#cb1-6"></a>        re_people <span class="op">=</span> []</span>
+<span id="cb1-7"><a href="#cb1-7"></a></span>
+<span id="cb1-8"><a href="#cb1-8"></a>        <span class="co"># Insert into the corresponding position according to the number of people in front</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a>        <span class="cf">for</span> p <span class="kw">in</span> people:</span>
+<span id="cb1-10"><a href="#cb1-10"></a>            re_people.insert(p[<span class="dv">1</span>], p)</span>
+<span id="cb1-11"><a href="#cb1-11"></a>            </span>
+<span id="cb1-12"><a href="#cb1-12"></a>        <span class="cf">return</span> re_people</span></code></pre></div>
 
-<div class="container" data-aos="fade-up">
-    <div class="card">
-        <div id="category-radar" class="card-content"></div>
-    </div>
-</div>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/js/echarts.min.js"></script>
-<script type="text/javascript">
-    let radarChart = echarts.init(document.getElementById('category-radar'));
-
-    
-
-    let option = {
-        title: {
-            left: 'center',
-            text: '文章分类雷达图',
-            textStyle: {
-                fontWeight: 500,
-                fontSize: 22
-            }
-        },
-        tooltip: {},
-        radar: {
-            name: {
-                textStyle: {
-                    color: '#3C4858'
-                }
-            },
-            indicator: [{"name":"Technology","max":25},{"name":"Paper Smash","max":25},{"name":"Machine Learning","max":25},{"name":"Coding","max":25},{"name":"Imbalanced Data Modeling","max":25},{"name":"Leetcode","max":25},{"name":"Modeling","max":25},{"name":"Data pre-processing","max":25},{"name":"Repost","max":25},{"name":"Blockchain","max":25},{"name":"Consensus Mechanisms","max":25},{"name":"CV-Algorithm","max":25},{"name":"Facial Recognition","max":25}],
-            nameGap: 5,
-            center: ['50%','55%'],
-            radius: '66%'
-        },
-        series: [{
-            type: 'radar',
-            color: ['#3ecf8e'],
-            itemStyle: {normal: {areaStyle: {type: 'default'}}},
-            data : [
-                {
-                    value : [24,4,3,15,1,15,1,1,1,1,1,1,1],
-                    name : 'categoryNumber'
-                }
-            ]
-        }]
-    };
-
-    radarChart.setOption(option);
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/custom/donate/WeChanQR.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+        
+          
+            <div class="post-nepre full next">
+          
+            <a href="/2020/06/06/Technology/Coding/Leetcode/Leetcode-Note-in-June-2020-day-5-Random-Pick-with-Weight/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/bears/13.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/bears/13.jpg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                Leetcode Note in June 2020 | day 5 | Random Pick with Weight</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "muFSHxz8L08M3G7SvAW4JeCL-MdYXbMMI",
+        appKey: "kVLkvQrw5ye4OnhwwEdjS9JB",
+        avatar: "monsterid", 
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
 </script>
 
-      </div>
-      
-  <!-- 首页默认取最最新文章集 -->
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/04/11/Technology/Machine-Learning/%E5%83%B5%E5%B0%B8%E4%BC%81%E4%B8%9A%E5%88%86%E7%B1%BB-%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83-LightGBM/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="littlemeemoon.cn" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/custom/avatar-3.jpg" itemprop="image" alt="Kayleen" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="littlemeemoon.cn" itemprop="url" rel="author">Kayleen</a>
+            </h3>
+          </div>
         </div>
-        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/bears/25.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/04/11/Technology/Machine-Learning/%E5%83%B5%E5%B0%B8%E4%BC%81%E4%B8%9A%E5%88%86%E7%B1%BB-%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83-LightGBM/">
-    僵尸企业分类 | 模型训练 | LightGBM</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-4-11</div>
-    <p>
-    僵尸企业分类问题之模型训练</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/04/11/Technology/Machine-Learning/%E5%83%B5%E5%B0%B8%E4%BC%81%E4%B8%9A%E5%88%86%E7%B1%BB-%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83-LightGBM/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-
-
-      <div class="clearer">
-      </div>
-    </main>
-    <!--  -->
-    
-  </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>A curious 👱‍♀️</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
 </div>
 
-<!-- 
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/04/11/Technology/Machine-Learning/%E5%83%B5%E5%B0%B8%E4%BC%81%E4%B8%9A%E5%88%86%E7%B1%BB-%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83-LightGBM/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/bears/25.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/04/11/Technology/Machine-Learning/%E5%83%B5%E5%B0%B8%E4%BC%81%E4%B8%9A%E5%88%86%E7%B1%BB-%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83-LightGBM/">
-    僵尸企业分类 | 模型训练 | LightGBM</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-4-11</div>
-    <p>
-    僵尸企业分类问题之模型训练</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/04/11/Technology/Machine-Learning/%E5%83%B5%E5%B0%B8%E4%BC%81%E4%B8%9A%E5%88%86%E7%B1%BB-%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83-LightGBM/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
 
- -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML"></script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  </script>
+
+
     </div>    
     <div class="ins-search">
     <div class="ins-search-mask"></div>
