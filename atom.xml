@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://littlelittlemoon.github.io/"/>
-  <updated>2020-06-05T05:19:51.471Z</updated>
+  <updated>2020-06-06T06:09:20.594Z</updated>
   <id>https://littlelittlemoon.github.io/</id>
   
   <author>
@@ -15,6 +15,41 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Leetcode Note in June 2020 | day 5 | Random Pick with Weight</title>
+    <link href="https://littlelittlemoon.github.io/2020/06/06/Technology/Coding/Leetcode/Leetcode-Note-in-June-2020-day-5-Random-Pick-with-Weight/"/>
+    <id>https://littlelittlemoon.github.io/2020/06/06/Technology/Coding/Leetcode/Leetcode-Note-in-June-2020-day-5-Random-Pick-with-Weight/</id>
+    <published>2020-06-06T06:08:16.000Z</published>
+    <updated>2020-06-06T06:09:20.594Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;&amp;#x5199;&amp;#x5728;&amp;#x524D;&amp;#x9762;&amp;#x7684;&amp;#x8BDD;&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Technology" scheme="https://littlelittlemoon.github.io/categories/Technology/"/>
+    
+      <category term="Coding" scheme="https://littlelittlemoon.github.io/categories/Technology/Coding/"/>
+    
+      <category term="Leetcode" scheme="https://littlelittlemoon.github.io/categories/Technology/Coding/Leetcode/"/>
+    
+    
+      <category term="Leetcode" scheme="https://littlelittlemoon.github.io/tags/Leetcode/"/>
+    
+      <category term="Python" scheme="https://littlelittlemoon.github.io/tags/Python/"/>
+    
+      <category term="Algorithm" scheme="https://littlelittlemoon.github.io/tags/Algorithm/"/>
+    
+  </entry>
   
   <entry>
     <title>CV | Facial Recognition | Fisherfaces vs Eigenfaces Principle</title>
@@ -674,47 +709,6 @@
       <category term="Python" scheme="https://littlelittlemoon.github.io/tags/Python/"/>
     
       <category term="Algorithm" scheme="https://littlelittlemoon.github.io/tags/Algorithm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Fraud Detection | Imbalanced data modeling</title>
-    <link href="https://littlelittlemoon.github.io/2020/03/21/Technology/Machine-Learning/Credit%20Card%20Fraud%20Detection/"/>
-    <id>https://littlelittlemoon.github.io/2020/03/21/Technology/Machine-Learning/Credit%20Card%20Fraud%20Detection/</id>
-    <published>2020-03-21T13:53:06.000Z</published>
-    <updated>2020-06-04T04:21:24.110Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;lda-qda-and-lr-for-fraud-detection-imbalanced-data-modeling&quot;&gt;LDA, QDA and LR for fraud detection | Imbalanced data
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Technology" scheme="https://littlelittlemoon.github.io/categories/Technology/"/>
-    
-      <category term="Machine Learning" scheme="https://littlelittlemoon.github.io/categories/Technology/Machine-Learning/"/>
-    
-      <category term="Imbalanced Data Modeling" scheme="https://littlelittlemoon.github.io/categories/Technology/Machine-Learning/Imbalanced-Data-Modeling/"/>
-    
-    
-      <category term="LDA" scheme="https://littlelittlemoon.github.io/tags/LDA/"/>
-    
-      <category term="QDA" scheme="https://littlelittlemoon.github.io/tags/QDA/"/>
-    
-      <category term="LR" scheme="https://littlelittlemoon.github.io/tags/LR/"/>
-    
-      <category term="Imbalanced Data Modeling" scheme="https://littlelittlemoon.github.io/tags/Imbalanced-Data-Modeling/"/>
-    
-      <category term="Machine Learning" scheme="https://littlelittlemoon.github.io/tags/Machine-Learning/"/>
-    
-      <category term="Classify" scheme="https://littlelittlemoon.github.io/tags/Classify/"/>
     
   </entry>
   
