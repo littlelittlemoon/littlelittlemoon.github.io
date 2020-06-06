@@ -4,7 +4,7 @@
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">Leetcode Note in June 2020 | day 5 | Random Pick with Weight | LITTLEMEEMOON</title>
+  <title itemprop="name">Leetcode Notes in June 2020 | day 5 | Random Pick with Weight | LITTLEMEEMOON</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -323,7 +323,7 @@
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
-      Leetcode Note in June 2020 | day 5 | Random Pick with Weight</h1>
+      Leetcode Notes in June 2020 | day 5 | Random Pick with Weight</h1>
       <p class="entry-census">
         <span>
           <a href="littlemeemoon.cn">
@@ -349,9 +349,9 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h1 id="&#x5199;&#x5728;&#x524D;&#x9762;&#x7684;&#x8BDD;"><a class="markdownIt-Anchor" href="#&#x5199;&#x5728;&#x524D;&#x9762;&#x7684;&#x8BDD;"></a> &#x5199;&#x5728;&#x524D;&#x9762;&#x7684;&#x8BDD;</h1>
+          <h1 id="&#x5199;&#x5728;&#x524D;&#x9762;&#x7684;&#x8BDD;">&#x5199;&#x5728;&#x524D;&#x9762;&#x7684;&#x8BDD;</h1>
 <p>&#x53C8;&#x662F;&#x4E00;&#x9053;&#x770B;&#x4E0D;&#x61C2;&#x9898;&#x76EE;&#x7684;&#x9898;o(&#x2565;&#xFE4F;&#x2565;)o</p>
-<h1 id="random-pick-with-weight"><a class="markdownIt-Anchor" href="#random-pick-with-weight"></a> Random Pick with Weight</h1>
+<h1 id="random-pick-with-weight">Random Pick with Weight</h1>
 <blockquote>
 <p>Given an array <code>w</code> of positive integers, where <code>w[i]</code> describes the weight of index <code>i</code>, write a function pickIndex which randomly picks an index in proportion to its weight.<br>
 <strong>Note</strong>:<br>
@@ -360,57 +360,56 @@
 pickIndex will be called at most 10000 times.<br>
 <strong>Example 1</strong>:<br>
 <strong>Input</strong>:<br>
-[&#x201C;Solution&#x201D;,&#x201C;pickIndex&#x201D;]<br>
+[&quot;Solution&quot;,&quot;pickIndex&quot;]<br>
 [[[1]],[]]<br>
 <strong>Output</strong>: [null,0]<br>
 <strong>Example 2</strong>:<br>
 <strong>Input</strong>:<br>
-[&#x201C;Solution&#x201D;,&#x201C;pickIndex&#x201D;,&#x201C;pickIndex&#x201D;,&#x201C;pickIndex&#x201D;,&#x201C;pickIndex&#x201D;,&#x201C;pickIndex&#x201D;]<br>
+[&quot;Solution&quot;,&quot;pickIndex&quot;,&quot;pickIndex&quot;,&quot;pickIndex&quot;,&quot;pickIndex&quot;,&quot;pickIndex&quot;]<br>
 [[[1,3]],[],[],[],[],[]]<br>
 <strong>Output</strong>: [null,0,1,1,1,0]</p>
 </blockquote>
-<h2 id="solution"><a class="markdownIt-Anchor" href="#solution"></a> Solution</h2>
+<h2 id="solution">Solution</h2>
 <p>&#x6709;&#x670B;&#x53CB;&#x4E00;&#x773C;&#x5C31;&#x770B;&#x61C2;&#x9898;&#x76EE;&#x7684;&#x4E48;&#xFF1F;&#x1F43B; &#x6211;&#x662F;&#x5728;&#x8BA8;&#x8BBA;&#x533A;&#x770B;&#x4E86;@logan138&#x7684;<a href="https://leetcode.com/problems/random-pick-with-weight/discuss/671445/Question-explained" target="_blank" rel="noopener">&#x89E3;&#x8BF4;</a>&#x624D;&#x770B;&#x660E;&#x767D;&#x7684;&#xFF0C;&#x54C8;&#x54C8;&#x54C8;(&#x53EF;&#x80FD;&#x662F;&#x6211;&#x82F1;&#x8BED;&#x592A;&#x83DC;&#x4E86;)&#x3002;</p>
 <p>&#x9898;&#x76EE;&#x5927;&#x610F;&#x662F;&#xFF1A;&#x7ED9;&#x5B9A;&#x4E00;&#x4E2A;&#x6743;&#x91CD;&#x6570;&#x7EC4; <code>w</code>&#xFF0C;<code>w[i]</code> &#x4EE3;&#x8868;&#x7D22;&#x5F15; <code>i</code> &#x7684;&#x6743;&#x91CD;&#x3002;<strong>&#x6743;&#x91CD;&#x8D8A;&#x5927;&#xFF0C;&#x968F;&#x673A;&#x83B7;&#x5F97;&#x8BE5;&#x7D22;&#x5F15;&#x7684;&#x6982;&#x7387;&#x5C31;&#x8D8A;&#x5927;</strong>&#x3002;&#x5047;&#x8BBE; <code>w = [1, 3]</code> &#x3002;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x77E5;&#x9053;&#x9009;&#x62E9;&#x6BCF;&#x4E2A;&#x7D22;&#x5F15;&#x7684;&#x6982;&#x7387;&#x3002;P(i) = w[i] / &#x603B;&#x6743;&#x91CD;&#xFF08;<code>1 + 3 = 4</code>&#xFF09;&#x56E0;&#x6B64;&#xFF0C;&#x5BF9;&#x4E8E;&#x7D22;&#x5F15; <code>0</code>: <code>P&#xFF08;0&#xFF09;= 1/4</code> &#x5BF9;&#x4E8E;&#x7D22;&#x5F15;<code>1</code>: <code>P&#xFF08;1&#xFF09;= 3/4</code> &#x56E0;&#x6B64;&#xFF0C;&#x6709;<code>1/4</code>&#x7684;&#x673A;&#x4F1A;&#x83B7;&#x5F97;&#x7D22;&#x5F15;<code>0</code>&#x548C;<code>3/4</code>&#x7684;&#x673A;&#x4F1A;&#x83B7;&#x5F97;&#x7D22;&#x5F15;<code>1</code>&#x3002;</p>
 <p>&#x73B0;&#x5728;&#x5E94;&#x8BE5;&#x90FD;&#x61C2;&#x4E86;&#x5427;&#xFF0C;&#x641E;&#x61C2;&#x9898;&#x610F;&#x4E4B;&#x540E;&#xFF0C;&#x7ED3;&#x9898;&#x601D;&#x8DEF;&#x5176;&#x5B9E;&#x662F;&#x7B80;&#x5355;&#x7684;&#x3002;&#x6211;&#x7684;&#x601D;&#x8DEF;&#x662F;&#xFF1A;&#x6211;&#x4EEC;&#x6B63;&#x5E38;&#x751F;&#x6210;&#x968F;&#x673A;&#x6570;&#xFF0C;&#x4F46;&#x662F;&#x7531;&#x4E8E;<code>w[i] &gt;= 1</code>&#xFF0C;&#x6240;&#x4EE5;&#x53EF;&#x4EE5;&#x628A;&#x968F;&#x673A;&#x6570;&#x7684;&#x8303;&#x56F4;&#x63A7;&#x5236;&#x5728;<code>[1, &#x603B;&#x6743;&#x91CD;]</code>&#x8303;&#x56F4;&#x5185;&#x3002;&#x7136;&#x540E;&#x6839;&#x636E;&#x751F;&#x6210;&#x7684;&#x968F;&#x673A;&#x6570;&#x5927;&#x5C0F;&#x6765;&#x8FD4;&#x56DE;&#x5E94;&#x8BE5;&#x8FD4;&#x56DE;&#x7684;index&#x3002;&#x4E3E;&#x4E2A;&#x1F330;&#xFF1A;</p>
-<ol>
+<ol type="1">
 <li>w = [1, 3] =&gt; total_w = 1 + 3 = 4</li>
 <li>&#x751F;&#x6210;&#x968F;&#x673A;&#x6570;&#xFF1A;num = random(1, 4) =&gt; random num &#x843D;&#x5728; [1] &#x5219;&#x8FD4;&#x56DE;index 0&#xFF0C;&#x843D;&#x5728; [2, 4] &#x8FD4;&#x56DE; index 1</li>
 <li>&#x5047;&#x8BBE; num = 3 =&gt; &#x843D;&#x5728;2-4&#x8303;&#x56F4; =&gt; &#x8FD4;&#x56DE; index = 1</li>
 <li>&#x5047;&#x8BBE; num = 1 =&gt; &#x843D;&#x5728;1&#x8303;&#x56F4; =&gt; &#x8FD4;&#x56DE; index = 0</li>
 </ol>
-<h3 id="code"><a class="markdownIt-Anchor" href="#code"></a> Code</h3>
-<pre class="highlight"><code class="python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
-
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, w: List[int])</span>:</span>
-        self.w = w
-        self.w_len = len(w)
-
-        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>, self.w_len):
-            self.w[i] += self.w[i<span class="hljs-number">-1</span>]
-        
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">pickIndex</span><span class="hljs-params">(self)</span> -&gt; int:</span>
-        num = random.randint(<span class="hljs-number">1</span>, self.w[<span class="hljs-number">-1</span>])
-        
-        left = <span class="hljs-number">0</span>
-        right = self.w_len - <span class="hljs-number">1</span> 
-        
-        <span class="hljs-keyword">while</span> left &lt; right:
-            mid = (right - left) // <span class="hljs-number">2</span> + left
-            <span class="hljs-keyword">if</span> num &gt; self.w[mid]:
-                left = mid + <span class="hljs-number">1</span>
-            <span class="hljs-keyword">else</span>:
-                right = mid
-                
-        <span class="hljs-keyword">return</span> left      
-
-
-<span class="hljs-comment"># Your Solution object will be instantiated and called as such:</span>
-<span class="hljs-comment"># obj = Solution(w)</span>
-<span class="hljs-comment"># param_1 = obj.pickIndex()</span>
-</code></pre>
-<h1 id="reference"><a class="markdownIt-Anchor" href="#reference"></a> Reference</h1>
-<ol>
+<h3 id="code">Code</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb1-2"><a href="#cb1-2"></a></span>
+<span id="cb1-3"><a href="#cb1-3"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, w: List[<span class="bu">int</span>]):</span>
+<span id="cb1-4"><a href="#cb1-4"></a>        <span class="va">self</span>.w <span class="op">=</span> w</span>
+<span id="cb1-5"><a href="#cb1-5"></a>        <span class="va">self</span>.w_len <span class="op">=</span> <span class="bu">len</span>(w)</span>
+<span id="cb1-6"><a href="#cb1-6"></a></span>
+<span id="cb1-7"><a href="#cb1-7"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="va">self</span>.w_len):</span>
+<span id="cb1-8"><a href="#cb1-8"></a>            <span class="va">self</span>.w[i] <span class="op">+=</span> <span class="va">self</span>.w[i<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb1-9"><a href="#cb1-9"></a>        </span>
+<span id="cb1-10"><a href="#cb1-10"></a>    <span class="kw">def</span> pickIndex(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb1-11"><a href="#cb1-11"></a>        num <span class="op">=</span> random.randint(<span class="dv">1</span>, <span class="va">self</span>.w[<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb1-12"><a href="#cb1-12"></a>        </span>
+<span id="cb1-13"><a href="#cb1-13"></a>        left <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb1-14"><a href="#cb1-14"></a>        right <span class="op">=</span> <span class="va">self</span>.w_len <span class="op">-</span> <span class="dv">1</span> </span>
+<span id="cb1-15"><a href="#cb1-15"></a>        </span>
+<span id="cb1-16"><a href="#cb1-16"></a>        <span class="cf">while</span> left <span class="op">&lt;</span> right:</span>
+<span id="cb1-17"><a href="#cb1-17"></a>            mid <span class="op">=</span> (right <span class="op">-</span> left) <span class="op">//</span> <span class="dv">2</span> <span class="op">+</span> left</span>
+<span id="cb1-18"><a href="#cb1-18"></a>            <span class="cf">if</span> num <span class="op">&gt;</span> <span class="va">self</span>.w[mid]:</span>
+<span id="cb1-19"><a href="#cb1-19"></a>                left <span class="op">=</span> mid <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb1-20"><a href="#cb1-20"></a>            <span class="cf">else</span>:</span>
+<span id="cb1-21"><a href="#cb1-21"></a>                right <span class="op">=</span> mid</span>
+<span id="cb1-22"><a href="#cb1-22"></a>                </span>
+<span id="cb1-23"><a href="#cb1-23"></a>        <span class="cf">return</span> left      </span>
+<span id="cb1-24"><a href="#cb1-24"></a></span>
+<span id="cb1-25"><a href="#cb1-25"></a></span>
+<span id="cb1-26"><a href="#cb1-26"></a><span class="co"># Your Solution object will be instantiated and called as such:</span></span>
+<span id="cb1-27"><a href="#cb1-27"></a><span class="co"># obj = Solution(w)</span></span>
+<span id="cb1-28"><a href="#cb1-28"></a><span class="co"># param_1 = obj.pickIndex()</span></span></code></pre></div>
+<h1 id="reference">Reference</h1>
+<ol type="1">
 <li><a href="https://leetcode.com/problems/random-pick-with-weight/discuss/671445/Question-explained" target="_blank" rel="noopener">Question explained</a></li>
 </ol>
 
@@ -452,7 +451,7 @@ pickIndex will be called at most 10000 times.<br>
               Previous Post</span>
               <div class="info">
                 <h3>
-                Leetcode Note in June 2020 | day 6 | Queue Reconstruction by Height</h3>
+                Leetcode Notes in June 2020 | day 6 | Queue Reconstruction by Height</h3>
                 <hr>
               </div>
             </a>
