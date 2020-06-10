@@ -4,7 +4,7 @@
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">Category: CV-Algorithm | LITTLEMEEMOON</title>
+  <title itemprop="name">Leetcode Notes in June 2020 | day 7-8 | Coin Change 2 | LITTLEMEEMOON</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -313,163 +313,219 @@
   </div>
 </header>
 
-      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/css/matery.css">
-
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
 <div class="pattern-center-blank"></div>
-<div class="pattern-center ">
-  <div class="pattern-attachment-img">
-    <img data-src="CV-Algorithm.img" class="lazyload" onerror="imgError(this,3)" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;">
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/bears/35.jpg);" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/bears/35.jpg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      Leetcode Notes in June 2020 | day 7-8 | Coin Change 2</h1>
+      <p class="entry-census">
+        <span>
+          <a href="littlemeemoon.cn">
+            <img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/custom/avatar-3.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="littlemeemoon.cn">Kayleen</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2020-6-10<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
   </div>
-  <header class="pattern-header ">
-    <h1 class="cat-title">CV-Algorithm.zh</h1>
-    <span class="cat-des">
-      <p>CV-Algorithm.en</p>
-    </span>
-  </header>
-</div>
+
 <div id="content" class="site-content">
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
-      <div id="contentss">
-        <style type="text/css">
-    #category-radar {
-        width: 100%;
-        height: 360px;
-    }
-</style>
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h1 id="&#x5199;&#x5728;&#x524D;&#x9762;&#x7684;&#x8BDD;">&#x5199;&#x5728;&#x524D;&#x9762;&#x7684;&#x8BDD;</h1>
+<p>&#x4ECA;&#x5929;&#x6709;&#x4E00;&#x9053;&#x6D89;&#x53CA;&#x52A8;&#x6001;&#x89C4;&#x5212;&#x7684;&#x9898;&#x76EE;&#xFF0C;&#x8FD9;&#x7C7B;&#x9898;&#x76EE;&#x4E00;&#x76F4;&#x4EE5;&#x6765;&#x90FD;&#x662F;&#x6709;&#x4E00;&#x5B9A;&#x96BE;&#x5EA6;&#x7684;&#xFF0C;&#x8981;&#x591A;&#x52A0;&#x7EC3;&#x4E60;&#xFF01;</p>
+<h1 id="coin-change-2">Coin Change 2</h1>
+<blockquote>
+<p>You are given coins of different denominations and a total amount of money. Write a function to compute the number of combinations that make up that amount. You may assume that you have infinite number of each kind of coin.<br>
+<strong>Example 1</strong>:<br>
+<strong>Input</strong>: amount = 5, coins = [1, 2, 5]<br>
+<strong>Output</strong>: 4<br>
+<strong>Explanation</strong>: there are four ways to make up the amount:<br>
+5=5<br>
+5=2+2+1<br>
+5=2+1+1+1<br>
+5=1+1+1+1+1<br>
+<strong>Example 2</strong>:<br>
+<strong>Input</strong>: amount = 3, coins = [2]<br>
+<strong>Output</strong>: 0<br>
+<strong>Explanation</strong>: the amount of 3 cannot be made up just with coins of 2.<br>
+<strong>Example 3</strong>*:<br>
+<strong>Input</strong>: amount = 10, coins = [10]<br>
+<strong>Output</strong>: 1</p>
+</blockquote>
+<h2 id="solution">Solution</h2>
+<p>&#x1F43B; &#x9898;&#x76EE;&#x5927;&#x610F;&#xFF1A;&#x7ED9;&#x4F60;&#x4E00;&#x4E2A;&#x4EF7;&#x503C;<code>amount</code>&#x7684;&#x5E01;&#xFF0C;&#x548C;&#x4E00;&#x4E2A;&#x5305;&#x542B;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x4EF7;&#x503C;&#x7684;&#x5E01;&#x7684;&#x6570;&#x7EC4;<code>coins</code>&#xFF0C;&#x95EE;&#x6211;&#x4EEC;&#x901A;&#x8FC7;&#x7528;&#x8FD9;&#x4E2A;&#x6570;&#x7EC4;&#x91CC;&#x9762;&#x7684;&#x5E01;&#x7EC4;&#x6210;&#x7ED9;&#x5B9A;&#x4EF7;&#x503C;<code>amount</code>&#x7684;&#x5E01;&#xFF0C;&#x4E00;&#x5171;&#x6709;&#x591A;&#x5C11;&#x79CD;&#x7EC4;&#x5408;&#x3002;&#x9898;&#x610F;&#x4E0D;&#x96BE;&#x7406;&#x89E3;&#xFF0C;&#x4F46;&#x662F;&#x5982;&#x4F55;&#x53BB;&#x89E3;&#x8FD9;&#x9053;&#x9898;&#x8FD8;&#x662F;&#x8981;&#x591A;&#x601D;&#x8003;&#x4E00;&#x4F1A;&#x7684;&#x3002;&#x4F46;&#x662F;&#x5728;&#x505A;&#x4E86;&#x5F88;&#x591A;&#x9898;&#x4E4B;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x662F;&#x5F88;&#x5BB9;&#x6613;&#x4F1A;&#x6709;&#x4E00;&#x4E2A;&#x76F4;&#x89C9;&#xFF0C;&#x8FD9;&#x4E2A;&#x9898;&#x4ECE;&#x8868;&#x9762;&#x4E0A;&#x53BB;&#x770B;&#xFF0C;&#x4F60;&#x4E0D;&#x53EF;&#x80FD;&#x7528;&#x86EE;&#x529B;&#x6CD5;&#x53BB;&#x89E3;&#x3002;&#x7136;&#x540E;&#x5C31;&#x4F1A;&#x5F88;&#x81EA;&#x7136;&#x7684;&#x60F3;&#x5230;&#xFF0C;&#x53EF;&#x5426;&#x7528;&#x52A8;&#x6001;&#x89C4;&#x5212;&#x7684;&#x601D;&#x8DEF;&#xFF1F; &#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x601D;&#x8003;&#xFF0C;&#x600E;&#x4E48;&#x5C06;&#x9898;&#x76EE;&#x8981;&#x6C42;&#x7684;&#x95EE;&#x9898;&#x8F6C;&#x4E3A;&#x4E00;&#x4E2A;&#x4E00;&#x4E2A;&#x7684;&#x5C0F;&#x95EE;&#x9898;&#xFF0C;&#x7136;&#x540E;&#x901A;&#x8FC7;&#x8BB0;&#x5F55;&#x5C0F;&#x95EE;&#x9898;&#x7684;&#x7ED3;&#x679C;&#x6765;&#x6C42;&#x5F97;&#x8981;&#x6C42;&#x95EE;&#x9898;&#x7684;&#x7ED3;&#x679C;&#xFF1F;</p>
+<p>&#x4ECE;&#x57FA;&#x672C;&#x60C5;&#x51B5;&#x6CA1;&#x6709;&#x786C;&#x5E01;&#x5F00;&#x59CB;&#xFF0C;&#x4E00;&#x4E00;&#x6DFB;&#x52A0;&#x786C;&#x5E01;&#x3002; &#x5BF9;&#x4E8E;&#x6BCF;&#x4E2A;&#x6DFB;&#x52A0;&#x7684;&#x786C;&#x5E01;&#xFF0C;&#x6211;&#x4EEC;&#x4ECE;&#x91D1;&#x989D; <code>0</code> &#x5230; <code>amount</code> &#x9012;&#x5F52;&#x7684;&#x8BA1;&#x7B97;&#x7EC4;&#x5408;&#x6570;&#x91CF;&#x3002;</p>
+<p>&#x5047;&#x8BBE;<code>dp[i][j]</code>&#x662F;&#x524D;<code>i</code>&#x79CD;&#x4EF7;&#x503C;&#x7684;&#x5E01;&#x53EF;&#x4EE5;&#x7EC4;&#x6210;&#x4EF7;&#x503C;&#x4E3A;<code>j</code>&#x7684;&#x5E01;&#x7684;&#x4E2A;&#x6570;</p>
+<p>&#x90A3;&#x4E48;&#x8F6C;&#x79FB;&#x65B9;&#x7A0B;&#x4E3A;: <code>dp[i][j] = dp[i - 1][j] + dp[i][j - coin[i - 1]]</code></p>
+<h3 id="&#x4E8C;&#x7EF4;&#x6570;&#x7EC4;">&#x4E8C;&#x7EF4;&#x6570;&#x7EC4;</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb1-2"><a href="#cb1-2"></a>    <span class="kw">def</span> change(<span class="va">self</span>, amount: <span class="bu">int</span>, coins: List[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">int</span>: </span>
+<span id="cb1-3"><a href="#cb1-3"></a>        n <span class="op">=</span> <span class="bu">len</span>(coins)</span>
+<span id="cb1-4"><a href="#cb1-4"></a>        dp <span class="op">=</span> [[<span class="dv">0</span>] <span class="op">*</span> (amount<span class="op">+</span><span class="dv">1</span>) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(n<span class="op">+</span><span class="dv">1</span>)]</span>
+<span id="cb1-5"><a href="#cb1-5"></a></span>
+<span id="cb1-6"><a href="#cb1-6"></a>        <span class="co"># &#x7EC4;&#x6210;&#x4EF7;&#x503C;&#x4E3A;0&#x7684;&#x5E01;&#x53EA;&#x6709;&#x4E00;&#x79CD;&#x53EF;&#x80FD;&#xFF0C;&#x5C31;&#x662F;&#x4E0D;&#x7528;&#x4EFB;&#x4F55;&#x4EF7;&#x503C;&#x7684;&#x5E01;</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a>        dp[<span class="dv">0</span>][<span class="dv">0</span>] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a></span>
+<span id="cb1-9"><a href="#cb1-9"></a></span>
+<span id="cb1-10"><a href="#cb1-10"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, n <span class="op">+</span> <span class="dv">1</span>):</span>
+<span id="cb1-11"><a href="#cb1-11"></a>            <span class="co"># &#x524D;&#x9762;i&#x4E2A;&#x7EC4;&#x6210;&#x4EF7;&#x503C;&#x4E3A;0&#x7684;&#x5E01;&#x53EA;&#x6709;&#x4E00;&#x79CD;&#x60C5;&#x51B5;&#xFF1A;&#x4E0D;&#x7528;&#x4EFB;&#x4F55;&#x4EF7;&#x503C;&#x7684;&#x5E01;</span></span>
+<span id="cb1-12"><a href="#cb1-12"></a>            dp[i][<span class="dv">0</span>] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb1-13"><a href="#cb1-13"></a></span>
+<span id="cb1-14"><a href="#cb1-14"></a>            <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, amount<span class="op">+</span><span class="dv">1</span>):</span>
+<span id="cb1-15"><a href="#cb1-15"></a>                dp[i][j] <span class="op">=</span> dp[i<span class="op">-</span><span class="dv">1</span>][j] <span class="op">+</span> (dp[i][j<span class="op">-</span>coins[i<span class="op">-</span><span class="dv">1</span>]] <span class="cf">if</span> j <span class="op">&gt;=</span> coins[i<span class="op">-</span><span class="dv">1</span>] <span class="cf">else</span> <span class="dv">0</span>)</span>
+<span id="cb1-16"><a href="#cb1-16"></a></span>
+<span id="cb1-17"><a href="#cb1-17"></a>        <span class="cf">return</span> dp[<span class="op">-</span><span class="dv">1</span>][<span class="op">-</span><span class="dv">1</span>]</span></code></pre></div>
+<h3 id="&#x7A7A;&#x95F4;&#x4F18;&#x5316;">&#x7A7A;&#x95F4;&#x4F18;&#x5316;</h3>
+<ol type="1">
+<li>&#x4EE5;&#x57FA;&#x672C;&#x60C5;&#x51B5;&#x6CA1;&#x6709;&#x786C;&#x5E01;&#x5F00;&#x59CB;&#x7EC4;&#x5408;&#x6570;&#x91CF;&#x3002;<code>dp[0] = 1</code>&#xFF0C;&#x7136;&#x540E;&#x5176;&#x4F59;&#x7B49;&#x4E8E; <code>0</code>&#x3002;</li>
+<li>&#x904D;&#x5386;&#x6240;&#x6709;&#x786C;&#x5E01;&#x9762;&#x503C;&#xFF1A;
+<ul>
+<li>&#x5BF9;&#x4E8E;&#x6BCF;&#x4E2A;&#x786C;&#x5E01;&#xFF0C;&#x4ECE;&#x91D1;&#x989D; <code>0</code> &#x904D;&#x5386;&#x5230; <code>amount&#xFF1A;</code></li>
+<li>&#x5BF9;&#x4E8E;&#x6BCF;&#x4E2A; <code>x</code>&#xFF0C;&#x8BA1;&#x7B97;&#x7EC4;&#x5408;&#x6570;&#xFF1A;<code>dp[x] += dp[x - coin]</code>&#x3002;</li>
+</ul></li>
+<li>&#x8FD4;&#x56DE; <code>dp[amount]</code>&#x3002;</li>
+</ol>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb2-2"><a href="#cb2-2"></a>    <span class="kw">def</span> change(<span class="va">self</span>, amount: <span class="bu">int</span>, coins: List[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb2-3"><a href="#cb2-3"></a>        dp <span class="op">=</span> [<span class="dv">0</span>] <span class="op">*</span> (amount <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb2-4"><a href="#cb2-4"></a>        dp[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a>        </span>
+<span id="cb2-6"><a href="#cb2-6"></a>        <span class="cf">for</span> coin <span class="kw">in</span> coins:</span>
+<span id="cb2-7"><a href="#cb2-7"></a>            <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(coin, amount<span class="op">+</span><span class="dv">1</span>):</span>
+<span id="cb2-8"><a href="#cb2-8"></a>                dp[k] <span class="op">+=</span> dp[k<span class="op">-</span>coin]</span>
+<span id="cb2-9"><a href="#cb2-9"></a>                </span>
+<span id="cb2-10"><a href="#cb2-10"></a>        <span class="cf">return</span> dp[amount]</span></code></pre></div>
+<h1 id="power-of-two">Power of Two</h1>
+<blockquote>
+<p>Given an integer, write a function to determine if it is a power of two.<br>
+<strong>Example 1</strong>:<br>
+<strong>Input</strong>: 1<br>
+<strong>Output</strong>: true<br>
+<strong>Explanation</strong>: 20 = 1<br>
+<strong>Example 2</strong>:<br>
+<strong>Input</strong>: 16<br>
+<strong>Output</strong>: true<br>
+<strong>Explanation</strong>: 24 = 16<br>
+<strong>Example 3</strong>:<br>
+<strong>Input</strong>: 218<br>
+<strong>Output</strong>: false</p>
+</blockquote>
+<h2 id="solution-1">Solution</h2>
+<p>&#x8FD9;&#x4E2A;&#x9898;&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x8FD9;&#x91CC;&#x4E3B;&#x8981;&#x662F;&#x8BB0;&#x5F55;&#x4E00;&#x4E0B;&#x89E3;&#x6CD5;&#xFF0C;&#x6015;&#x81EA;&#x5DF1;&#x4EE5;&#x540E;&#x5FD8;&#x4E86;&#x3002;</p>
+<p>&#x6211;&#x4E00;&#x5F00;&#x59CB;&#x7684;&#x601D;&#x8DEF;&#x662F;&#x8F6C;&#x6210;&#x4E8C;&#x8FDB;&#x5236;&#xFF0C;&#x7136;&#x540E;&#x770B;1&#x7684;&#x4E2A;&#x6570;&#x3002;&#x540E;&#x9762;&#x53D1;&#x73B0;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x7528;&#x4F4D;&#x8FD0;&#x7B97;<code>&amp;</code>&#xFF0C;&#x4F46;&#x662F;&#x6211;&#x6CA1;&#x60F3;&#x5230;&#xFF0C;&#x6240;&#x4EE5;&#x8BB0;&#x5F55;&#x4E00;&#x4E0B;&#x3002;</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb3-2"><a href="#cb3-2"></a>    <span class="kw">def</span> isPowerOfTwo(<span class="va">self</span>, n: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">bool</span>:</span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="co">#         n_bin = str(bin(n))[2:]</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="co">#         counter_n_bin = Counter(n_bin)</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a>        </span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="co">#         return n &gt; 0 and counter_n_bin[&apos;1&apos;] == 1</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a></span>
+<span id="cb3-8"><a href="#cb3-8"></a>        <span class="cf">return</span> n <span class="op">&gt;</span> <span class="dv">0</span> <span class="kw">and</span> <span class="kw">not</span> (n <span class="op">&amp;</span> n<span class="op">-</span><span class="dv">1</span>)</span></code></pre></div>
 
-<div class="container" data-aos="fade-up">
-    <div class="card">
-        <div id="category-radar" class="card-content"></div>
-    </div>
-</div>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/js/echarts.min.js"></script>
-<script type="text/javascript">
-    let radarChart = echarts.init(document.getElementById('category-radar'));
-
-    
-
-    let option = {
-        title: {
-            left: 'center',
-            text: '文章分类雷达图',
-            textStyle: {
-                fontWeight: 500,
-                fontSize: 22
-            }
-        },
-        tooltip: {},
-        radar: {
-            name: {
-                textStyle: {
-                    color: '#3C4858'
-                }
-            },
-            indicator: [{"name":"Technology","max":26},{"name":"Paper Smash","max":26},{"name":"Machine Learning","max":26},{"name":"Coding","max":26},{"name":"Imbalanced Data Modeling","max":26},{"name":"Leetcode","max":26},{"name":"Modeling","max":26},{"name":"Data pre-processing","max":26},{"name":"Repost","max":26},{"name":"Blockchain","max":26},{"name":"Consensus Mechanisms","max":26},{"name":"CV-Algorithm","max":26},{"name":"Facial Recognition","max":26}],
-            nameGap: 5,
-            center: ['50%','55%'],
-            radius: '66%'
-        },
-        series: [{
-            type: 'radar',
-            color: ['#3ecf8e'],
-            itemStyle: {normal: {areaStyle: {type: 'default'}}},
-            data : [
-                {
-                    value : [25,4,3,16,1,16,1,1,1,1,1,1,1],
-                    name : 'categoryNumber'
-                }
-            ]
-        }]
-    };
-
-    radarChart.setOption(option);
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/custom/donate/WeChanQR.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+        
+          
+            <div class="post-nepre full next">
+          
+            <a href="/2020/06/06/Technology/Coding/Leetcode/Leetcode-Note-in-June-2020-day-6-Queue-Reconstruction-by-Height/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/bears/19.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/bears/19.jpg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                Leetcode Notes in June 2020 | day 6 | Queue Reconstruction by Height</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "muFSHxz8L08M3G7SvAW4JeCL-MdYXbMMI",
+        appKey: "kVLkvQrw5ye4OnhwwEdjS9JB",
+        avatar: "monsterid", 
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
 </script>
 
-      </div>
-      
-  <!-- 首页默认取最最新文章集 -->
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/05/29/Technology/CV-Algorithm/Harris%20Corner%20Detector%20Principle%20and%20Implementation/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="littlemeemoon.cn" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/custom/avatar-3.jpg" itemprop="image" alt="Kayleen" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="littlemeemoon.cn" itemprop="url" rel="author">Kayleen</a>
+            </h3>
+          </div>
         </div>
-        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/bears/6.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/05/29/Technology/CV-Algorithm/Harris%20Corner%20Detector%20Principle%20and%20Implementation/">
-    CV | Algorithm | Harris Corner Detector Principle and Implementation</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-5-29</div>
-    <p>
-    </p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/05/29/Technology/CV-Algorithm/Harris%20Corner%20Detector%20Principle%20and%20Implementation/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-
-
-      <div class="clearer">
-      </div>
-    </main>
-    <!--  -->
-    
-  </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>A curious 👱‍♀️</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
 </div>
 
-<!-- 
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/05/29/Technology/CV-Algorithm/Harris%20Corner%20Detector%20Principle%20and%20Implementation/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/littlelittlemoon/cdn/img/article_img/photos/bears/6.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/05/29/Technology/CV-Algorithm/Harris%20Corner%20Detector%20Principle%20and%20Implementation/">
-    CV | Algorithm | Harris Corner Detector Principle and Implementation</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-5-29</div>
-    <p>
-    </p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/05/29/Technology/CV-Algorithm/Harris%20Corner%20Detector%20Principle%20and%20Implementation/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
 
- -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML"></script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  </script>
+
+
     </div>    
     <div class="ins-search">
     <div class="ins-search-mask"></div>

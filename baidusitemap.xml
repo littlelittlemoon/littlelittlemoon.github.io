@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://littlemeemoon.cn/2020/06/10/Technology/Coding/Leetcode/Leetcode-Note-in-June-2020-day-7-8-Coin-Change-2/</loc>
+    <lastmod>2020-06-10</lastmod>
+  </url>  <url>
+    <loc>https://littlemeemoon.cn/2020/06/06/Technology/Coding/Leetcode/Leetcode-Note-in-June-2020-day-6-Queue-Reconstruction-by-Height/</loc>
+    <lastmod>2020-06-08</lastmod>
+  </url>  <url>
     <loc>https://littlemeemoon.cn/2020/06/01/Technology/Coding/Leetcode/Leetcode-Note-in-May-2020-part-3-day-21-31-Edit-Distance/</loc>
     <lastmod>2020-06-06</lastmod>
   </url>  <url>
@@ -14,9 +20,6 @@
     <lastmod>2020-06-06</lastmod>
   </url>  <url>
     <loc>https://littlemeemoon.cn/2020/05/10/Technology/Coding/Leetcode/Leetcode-Note-in-May-2020-part-1-day-01-10/</loc>
-    <lastmod>2020-06-06</lastmod>
-  </url>  <url>
-    <loc>https://littlemeemoon.cn/2020/06/06/Technology/Coding/Leetcode/Leetcode-Note-in-June-2020-day-6-Queue-Reconstruction-by-Height/</loc>
     <lastmod>2020-06-06</lastmod>
   </url>  <url>
     <loc>https://littlemeemoon.cn/2020/06/06/Technology/Coding/Leetcode/Leetcode-Note-in-June-2020-day-5-Random-Pick-with-Weight/</loc>
