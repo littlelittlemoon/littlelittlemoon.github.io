@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://littlemeemoon.cn/"/>
-  <updated>2020-06-10T03:59:21.342Z</updated>
+  <updated>2020-06-18T13:55:58.891Z</updated>
   <id>https://littlemeemoon.cn/</id>
   
   <author>
@@ -15,6 +15,41 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Linux | Git Error | gnutls_handshake() failed - The TLS connection was non-properly terminated</title>
+    <link href="https://littlemeemoon.cn/2020/06/18/Technology/Linux/Git/gnutls_handshake_failed%20-%20The%20TLS%20connection%20was%20non-properly%20terminated./"/>
+    <id>https://littlemeemoon.cn/2020/06/18/Technology/Linux/Git/gnutls_handshake_failed%20-%20The%20TLS%20connection%20was%20non-properly%20terminated./</id>
+    <published>2020-06-18T13:30:06.000Z</published>
+    <updated>2020-06-18T13:55:58.891Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Technology" scheme="https://littlemeemoon.cn/categories/Technology/"/>
+    
+      <category term="Linux" scheme="https://littlemeemoon.cn/categories/Technology/Linux/"/>
+    
+      <category term="Git" scheme="https://littlemeemoon.cn/categories/Technology/Linux/Git/"/>
+    
+    
+      <category term="Linux" scheme="https://littlemeemoon.cn/tags/Linux/"/>
+    
+      <category term="Git" scheme="https://littlemeemoon.cn/tags/Git/"/>
+    
+      <category term="gnutls_handshake" scheme="https://littlemeemoon.cn/tags/gnutls-handshake/"/>
+    
+  </entry>
   
   <entry>
     <title>Leetcode Notes in June 2020 | day 7-8 | Coin Change 2</title>
@@ -682,35 +717,6 @@
       <category term="LightGBM" scheme="https://littlemeemoon.cn/tags/LightGBM/"/>
     
       <category term="Count Encoding" scheme="https://littlemeemoon.cn/tags/Count-Encoding/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>僵尸企业分类 | 数据预处理</title>
-    <link href="https://littlemeemoon.cn/2020/04/10/Technology/Machine-Learning/%E5%83%B5%E5%B0%B8%E4%BC%81%E4%B8%9A%E5%88%86%E7%B1%BB-%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86/"/>
-    <id>https://littlemeemoon.cn/2020/04/10/Technology/Machine-Learning/%E5%83%B5%E5%B0%B8%E4%BC%81%E4%B8%9A%E5%88%86%E7%B1%BB-%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86/</id>
-    <published>2020-04-10T12:02:34.000Z</published>
-    <updated>2020-06-04T04:21:24.111Z</updated>
-    
-    <summary type="html">
-    
-      僵尸企业分类问题之数据预处理
-    
-    </summary>
-    
-    
-      <category term="Technology" scheme="https://littlemeemoon.cn/categories/Technology/"/>
-    
-      <category term="Machine Learning" scheme="https://littlemeemoon.cn/categories/Technology/Machine-Learning/"/>
-    
-      <category term="Data pre-processing" scheme="https://littlemeemoon.cn/categories/Technology/Machine-Learning/Data-pre-processing/"/>
-    
-    
-      <category term="Data pre-processing" scheme="https://littlemeemoon.cn/tags/Data-pre-processing/"/>
-    
-      <category term="Categorical Data" scheme="https://littlemeemoon.cn/tags/Categorical-Data/"/>
-    
-      <category term="Missing value" scheme="https://littlemeemoon.cn/tags/Missing-value/"/>
     
   </entry>
   
