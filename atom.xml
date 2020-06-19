@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://littlemeemoon.cn/"/>
-  <updated>2020-06-18T13:58:48.749Z</updated>
+  <updated>2020-06-19T14:07:09.585Z</updated>
   <id>https://littlemeemoon.cn/</id>
   
   <author>
@@ -15,6 +15,43 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Paper Smash | Predicting with High Correlation Features</title>
+    <link href="https://littlemeemoon.cn/2020/06/19/Technology/Paper-Smash/High-Correlation-Features/w/"/>
+    <id>https://littlemeemoon.cn/2020/06/19/Technology/Paper-Smash/High-Correlation-Features/w/</id>
+    <published>2020-06-19T13:58:06.000Z</published>
+    <updated>2020-06-19T14:07:09.585Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;predicting-with-high-correlation-features&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#predicting-with-high-correlation-features&quot;&gt;&lt;/a&gt; &lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Technology" scheme="https://littlemeemoon.cn/categories/Technology/"/>
+    
+      <category term="Paper Smash" scheme="https://littlemeemoon.cn/categories/Technology/Paper-Smash/"/>
+    
+      <category term="High Correlation Features" scheme="https://littlemeemoon.cn/categories/Technology/Paper-Smash/High-Correlation-Features/"/>
+    
+    
+      <category term="Paper" scheme="https://littlemeemoon.cn/tags/Paper/"/>
+    
+      <category term="Updating" scheme="https://littlemeemoon.cn/tags/Updating/"/>
+    
+      <category term="Regularization Techniques" scheme="https://littlemeemoon.cn/tags/Regularization-Techniques/"/>
+    
+      <category term="High Correlation Features" scheme="https://littlemeemoon.cn/tags/High-Correlation-Features/"/>
+    
+  </entry>
   
   <entry>
     <title>Linux | Git Error | gnutls_handshake() failed - The TLS connection was non-properly terminated</title>
@@ -690,33 +727,6 @@
       <category term="Python" scheme="https://littlemeemoon.cn/tags/Python/"/>
     
       <category term="Algorithm" scheme="https://littlemeemoon.cn/tags/Algorithm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>僵尸企业分类 | 模型训练 | LightGBM</title>
-    <link href="https://littlemeemoon.cn/2020/04/11/Technology/Machine-Learning/%E5%83%B5%E5%B0%B8%E4%BC%81%E4%B8%9A%E5%88%86%E7%B1%BB-%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83-LightGBM/"/>
-    <id>https://littlemeemoon.cn/2020/04/11/Technology/Machine-Learning/%E5%83%B5%E5%B0%B8%E4%BC%81%E4%B8%9A%E5%88%86%E7%B1%BB-%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83-LightGBM/</id>
-    <published>2020-04-11T11:25:37.000Z</published>
-    <updated>2020-06-04T04:21:24.110Z</updated>
-    
-    <summary type="html">
-    
-      僵尸企业分类问题之模型训练
-    
-    </summary>
-    
-    
-      <category term="Technology" scheme="https://littlemeemoon.cn/categories/Technology/"/>
-    
-      <category term="Machine Learning" scheme="https://littlemeemoon.cn/categories/Technology/Machine-Learning/"/>
-    
-      <category term="Modeling" scheme="https://littlemeemoon.cn/categories/Technology/Machine-Learning/Modeling/"/>
-    
-    
-      <category term="LightGBM" scheme="https://littlemeemoon.cn/tags/LightGBM/"/>
-    
-      <category term="Count Encoding" scheme="https://littlemeemoon.cn/tags/Count-Encoding/"/>
     
   </entry>
   
