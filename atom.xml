@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://littlemeemoon.cn/"/>
-  <updated>2020-10-13T02:28:31.856Z</updated>
+  <updated>2021-04-10T08:59:11.705Z</updated>
   <id>https://littlemeemoon.cn/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>机器学习算法 | 感知机(Perceptron)与感知机学习算法(PLA)</title>
+    <link href="https://littlemeemoon.cn/2021/04/10/Technology/Machine-Learning/ML-Algorithm/Classification/Perceptron-and-PLA/"/>
+    <id>https://littlemeemoon.cn/2021/04/10/Technology/Machine-Learning/ML-Algorithm/Classification/Perceptron-and-PLA/</id>
+    <published>2021-04-10T07:17:32.000Z</published>
+    <updated>2021-04-10T08:59:11.705Z</updated>
+    
+    <summary type="html">
+    
+      介绍感知机模型与感知机学习算法原理
+    
+    </summary>
+    
+    
+      <category term="Technology" scheme="https://littlemeemoon.cn/categories/Technology/"/>
+    
+      <category term="Machine Learning" scheme="https://littlemeemoon.cn/categories/Technology/Machine-Learning/"/>
+    
+      <category term="ML Algorithm" scheme="https://littlemeemoon.cn/categories/Technology/Machine-Learning/ML-Algorithm/"/>
+    
+    
+      <category term="感知机" scheme="https://littlemeemoon.cn/tags/%E6%84%9F%E7%9F%A5%E6%9C%BA/"/>
+    
+      <category term="感知机学习算法" scheme="https://littlemeemoon.cn/tags/%E6%84%9F%E7%9F%A5%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
   
   <entry>
     <title>Paper Smash | Predicting with High Correlation Features</title>
@@ -198,7 +225,7 @@
     <link href="https://littlemeemoon.cn/2020/06/04/Technology/CV-Algorithm/Facial-Recognition/Facial%20Recognition%20-%20Fisherfaces%20vs%20Eigenfaces%20-%20principle/"/>
     <id>https://littlemeemoon.cn/2020/06/04/Technology/CV-Algorithm/Facial-Recognition/Facial%20Recognition%20-%20Fisherfaces%20vs%20Eigenfaces%20-%20principle/</id>
     <published>2020-06-04T13:54:06.000Z</published>
-    <updated>2020-06-05T05:19:51.471Z</updated>
+    <updated>2020-06-05T05:31:48.477Z</updated>
     
     <summary type="html">
     
@@ -218,11 +245,11 @@
       <category term="Facial Recognition" scheme="https://littlemeemoon.cn/categories/Technology/Facial-Recognition/"/>
     
     
-      <category term="LDA" scheme="https://littlemeemoon.cn/tags/LDA/"/>
-    
       <category term="Computer vision" scheme="https://littlemeemoon.cn/tags/Computer-vision/"/>
     
       <category term="Algorithm Principle" scheme="https://littlemeemoon.cn/tags/Algorithm-Principle/"/>
+    
+      <category term="LDA" scheme="https://littlemeemoon.cn/tags/LDA/"/>
     
       <category term="Facial Recognition" scheme="https://littlemeemoon.cn/tags/Facial-Recognition/"/>
     
@@ -605,9 +632,9 @@
       <category term="Consensus Mechanisms" scheme="https://littlemeemoon.cn/categories/Repost/Blockchain/Consensus-Mechanisms/"/>
     
     
-      <category term="Blockchain" scheme="https://littlemeemoon.cn/tags/Blockchain/"/>
-    
       <category term="Consensus Mechanisms" scheme="https://littlemeemoon.cn/tags/Consensus-Mechanisms/"/>
+    
+      <category term="Blockchain" scheme="https://littlemeemoon.cn/tags/Blockchain/"/>
     
       <category term="Bitcoin" scheme="https://littlemeemoon.cn/tags/Bitcoin/"/>
     
@@ -685,46 +712,11 @@
       <category term="Paper Smash" scheme="https://littlemeemoon.cn/categories/Technology/Paper-Smash/"/>
     
     
+      <category term="Blockchain" scheme="https://littlemeemoon.cn/tags/Blockchain/"/>
+    
       <category term="Paper" scheme="https://littlemeemoon.cn/tags/Paper/"/>
     
       <category term="Patient-Driven Interoperability" scheme="https://littlemeemoon.cn/tags/Patient-Driven-Interoperability/"/>
-    
-      <category term="Blockchain" scheme="https://littlemeemoon.cn/tags/Blockchain/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Leetcode Notes in Apri 2020 | part 3 | day 15-21 | (一)</title>
-    <link href="https://littlemeemoon.cn/2020/04/15/Technology/Coding/Leetcode/Leetcode-Note-in-Apri-2020-part-3-day-15-21-(%E4%B8%80)/"/>
-    <id>https://littlemeemoon.cn/2020/04/15/Technology/Coding/Leetcode/Leetcode-Note-in-Apri-2020-part-3-day-15-21-(%E4%B8%80)/</id>
-    <published>2020-04-15T12:33:23.000Z</published>
-    <updated>2020-06-06T14:28:17.299Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Technology" scheme="https://littlemeemoon.cn/categories/Technology/"/>
-    
-      <category term="Coding" scheme="https://littlemeemoon.cn/categories/Technology/Coding/"/>
-    
-      <category term="Leetcode" scheme="https://littlemeemoon.cn/categories/Technology/Coding/Leetcode/"/>
-    
-    
-      <category term="Leetcode" scheme="https://littlemeemoon.cn/tags/Leetcode/"/>
-    
-      <category term="Python" scheme="https://littlemeemoon.cn/tags/Python/"/>
-    
-      <category term="Algorithm" scheme="https://littlemeemoon.cn/tags/Algorithm/"/>
     
   </entry>
   

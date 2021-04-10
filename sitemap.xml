@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://littlemeemoon.cn/2021/04/10/Technology/Machine-Learning/ML-Algorithm/Classification/Perceptron-and-PLA/</loc>
+    
+    <lastmod>2021-04-10T08:59:11.705Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://littlemeemoon.cn/2020/06/19/Technology/Paper-Smash/High-Correlation-Features/Predicting%20with%20High%20Correlation%20Features/</loc>
     
     <lastmod>2020-10-13T02:28:31.856Z</lastmod>
@@ -144,7 +151,7 @@
   <url>
     <loc>https://littlemeemoon.cn/2020/06/04/Technology/CV-Algorithm/Facial-Recognition/Facial%20Recognition%20-%20Fisherfaces%20vs%20Eigenfaces%20-%20principle/</loc>
     
-    <lastmod>2020-06-05T05:19:51.471Z</lastmod>
+    <lastmod>2020-06-05T05:31:48.477Z</lastmod>
     
   </url>
   
@@ -240,6 +247,13 @@
   </url>
   
   <url>
+    <loc>https://littlemeemoon.cn/categories/Thoughts/index.html</loc>
+    
+    <lastmod>2020-04-12T14:06:26.775Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://littlemeemoon.cn/tags/Pictures/index.html</loc>
     
     <lastmod>2020-04-12T14:05:59.298Z</lastmod>
@@ -271,13 +285,6 @@
     <loc>https://littlemeemoon.cn/categories/index.html</loc>
     
     <lastmod>2020-04-12T13:55:28.953Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://littlemeemoon.cn/categories/Thoughts/index.html</loc>
-    
-    <lastmod>2020-04-12T13:55:23.553Z</lastmod>
     
   </url>
   
@@ -324,14 +331,14 @@
   </url>
   
   <url>
-    <loc>https://littlemeemoon.cn/theme-sakura/index.html</loc>
+    <loc>https://littlemeemoon.cn/video/index.html</loc>
     
     <lastmod>2020-04-06T16:05:44.919Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://littlemeemoon.cn/video/index.html</loc>
+    <loc>https://littlemeemoon.cn/theme-sakura/index.html</loc>
     
     <lastmod>2020-04-06T16:05:44.919Z</lastmod>
     
