@@ -1,3 +1,4 @@
+https://littlemeemoon.cn/2021/05/05/Technology/Machine-Learning/ML-Algorithm/Classification/PLA-graphical-explanation/
 https://littlemeemoon.cn/2021/04/10/Technology/Machine-Learning/ML-Algorithm/Classification/Perceptron-and-PLA/
 https://littlemeemoon.cn/2020/06/19/Technology/Paper-Smash/High-Correlation-Features/Predicting%20with%20High%20Correlation%20Features/
 https://littlemeemoon.cn/2020/06/18/Technology/Linux/Git/gnutls_handshake_failed%20-%20The%20TLS%20connection%20was%20non-properly%20terminated./

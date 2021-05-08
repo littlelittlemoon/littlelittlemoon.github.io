@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://littlemeemoon.cn/"/>
-  <updated>2021-04-11T06:55:21.314Z</updated>
+  <updated>2021-05-08T11:19:59.043Z</updated>
   <id>https://littlemeemoon.cn/</id>
   
   <author>
@@ -17,11 +17,38 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>机器学习算法 | 图解感知机学习算法(PLA)的工作原理</title>
+    <link href="https://littlemeemoon.cn/2021/05/05/Technology/Machine-Learning/ML-Algorithm/Classification/PLA-graphical-explanation/"/>
+    <id>https://littlemeemoon.cn/2021/05/05/Technology/Machine-Learning/ML-Algorithm/Classification/PLA-graphical-explanation/</id>
+    <published>2021-05-05T03:36:05.000Z</published>
+    <updated>2021-05-08T11:19:59.043Z</updated>
+    
+    <summary type="html">
+    
+      图解感知机学习算法(PLA)的工作原理
+    
+    </summary>
+    
+    
+      <category term="Technology" scheme="https://littlemeemoon.cn/categories/Technology/"/>
+    
+      <category term="Machine Learning" scheme="https://littlemeemoon.cn/categories/Technology/Machine-Learning/"/>
+    
+      <category term="ML Algorithm" scheme="https://littlemeemoon.cn/categories/Technology/Machine-Learning/ML-Algorithm/"/>
+    
+    
+      <category term="感知机" scheme="https://littlemeemoon.cn/tags/%E6%84%9F%E7%9F%A5%E6%9C%BA/"/>
+    
+      <category term="感知机学习算法" scheme="https://littlemeemoon.cn/tags/%E6%84%9F%E7%9F%A5%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
     <title>机器学习算法 | 感知机(Perceptron)与感知机学习算法(PLA)</title>
     <link href="https://littlemeemoon.cn/2021/04/10/Technology/Machine-Learning/ML-Algorithm/Classification/Perceptron-and-PLA/"/>
     <id>https://littlemeemoon.cn/2021/04/10/Technology/Machine-Learning/ML-Algorithm/Classification/Perceptron-and-PLA/</id>
     <published>2021-04-10T07:17:32.000Z</published>
-    <updated>2021-04-11T06:55:21.314Z</updated>
+    <updated>2021-05-08T11:18:46.278Z</updated>
     
     <summary type="html">
     
@@ -682,41 +709,6 @@
       <category term="BFS" scheme="https://littlemeemoon.cn/tags/BFS/"/>
     
       <category term="并查集" scheme="https://littlemeemoon.cn/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Paper Smash | Blockchain Technology for Healthcare-Facilitating the Transition to Patient-Driven Interoperability</title>
-    <link href="https://littlemeemoon.cn/2020/04/16/Technology/Paper-Smash/BlockChain-Patient-Driven-Interoperability/"/>
-    <id>https://littlemeemoon.cn/2020/04/16/Technology/Paper-Smash/BlockChain-Patient-Driven-Interoperability/</id>
-    <published>2020-04-16T07:47:09.000Z</published>
-    <updated>2020-06-04T04:19:52.267Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;&amp;#x6458;&amp;#x8981;&quot;&gt;&amp;#x6458;&amp;#x8981;&lt;/h1&gt;
-&lt;blockquote&gt;
-&lt;ol
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Technology" scheme="https://littlemeemoon.cn/categories/Technology/"/>
-    
-      <category term="Paper Smash" scheme="https://littlemeemoon.cn/categories/Technology/Paper-Smash/"/>
-    
-    
-      <category term="Blockchain" scheme="https://littlemeemoon.cn/tags/Blockchain/"/>
-    
-      <category term="Paper" scheme="https://littlemeemoon.cn/tags/Paper/"/>
-    
-      <category term="Patient-Driven Interoperability" scheme="https://littlemeemoon.cn/tags/Patient-Driven-Interoperability/"/>
     
   </entry>
   
