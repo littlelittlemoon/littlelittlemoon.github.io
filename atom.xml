@@ -44,6 +44,37 @@
   </entry>
   
   <entry>
+    <title>JS V8 | 深入理解 JS 数组 —— JS的Array在内存上分配的空间是连续的吗？</title>
+    <link href="https://littlemeemoon.cn/2021/04/24/Technology/Languages/JS/Array-in-V8/"/>
+    <id>https://littlemeemoon.cn/2021/04/24/Technology/Languages/JS/Array-in-V8/</id>
+    <published>2021-04-24T11:18:39.000Z</published>
+    <updated>2021-05-09T14:56:12.846Z</updated>
+    
+    <summary type="html">
+    
+      探究JS V8引擎下，JS Array的底层实现是怎样的，JS 数组和我们再数据结构中理解的数组是同一个东西吗？它在内存中分配的空间是连续的吗？
+    
+    </summary>
+    
+    
+      <category term="Technology" scheme="https://littlemeemoon.cn/categories/Technology/"/>
+    
+      <category term="Languages" scheme="https://littlemeemoon.cn/categories/Technology/Languages/"/>
+    
+      <category term="JS" scheme="https://littlemeemoon.cn/categories/Technology/Languages/JS/"/>
+    
+    
+      <category term="JavaScript" scheme="https://littlemeemoon.cn/tags/JavaScript/"/>
+    
+      <category term="Array" scheme="https://littlemeemoon.cn/tags/Array/"/>
+    
+      <category term="V8引擎" scheme="https://littlemeemoon.cn/tags/V8%E5%BC%95%E6%93%8E/"/>
+    
+      <category term="快慢数组" scheme="https://littlemeemoon.cn/tags/%E5%BF%AB%E6%85%A2%E6%95%B0%E7%BB%84/"/>
+    
+  </entry>
+  
+  <entry>
     <title>机器学习算法 | 感知机(Perceptron)与感知机学习算法(PLA)</title>
     <link href="https://littlemeemoon.cn/2021/04/10/Technology/Machine-Learning/ML-Algorithm/Classification/Perceptron-and-PLA/"/>
     <id>https://littlemeemoon.cn/2021/04/10/Technology/Machine-Learning/ML-Algorithm/Classification/Perceptron-and-PLA/</id>
@@ -668,47 +699,6 @@
       <category term="PoW" scheme="https://littlemeemoon.cn/tags/PoW/"/>
     
       <category term="PoS" scheme="https://littlemeemoon.cn/tags/PoS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Leetcode Notes in Apri 2020 | part 3 | day 15-21 | (二).</title>
-    <link href="https://littlemeemoon.cn/2020/04/18/Technology/Coding/Leetcode/Leetcode-Note-in-Apri-2020-part-3-day-15-21-(%E4%BA%8C)/"/>
-    <id>https://littlemeemoon.cn/2020/04/18/Technology/Coding/Leetcode/Leetcode-Note-in-Apri-2020-part-3-day-15-21-(%E4%BA%8C)/</id>
-    <published>2020-04-18T06:35:52.000Z</published>
-    <updated>2020-06-06T14:28:29.212Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Technology" scheme="https://littlemeemoon.cn/categories/Technology/"/>
-    
-      <category term="Coding" scheme="https://littlemeemoon.cn/categories/Technology/Coding/"/>
-    
-      <category term="Leetcode" scheme="https://littlemeemoon.cn/categories/Technology/Coding/Leetcode/"/>
-    
-    
-      <category term="Leetcode" scheme="https://littlemeemoon.cn/tags/Leetcode/"/>
-    
-      <category term="Python" scheme="https://littlemeemoon.cn/tags/Python/"/>
-    
-      <category term="Algorithm" scheme="https://littlemeemoon.cn/tags/Algorithm/"/>
-    
-      <category term="DFS" scheme="https://littlemeemoon.cn/tags/DFS/"/>
-    
-      <category term="BFS" scheme="https://littlemeemoon.cn/tags/BFS/"/>
-    
-      <category term="并查集" scheme="https://littlemeemoon.cn/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/"/>
     
   </entry>
   
