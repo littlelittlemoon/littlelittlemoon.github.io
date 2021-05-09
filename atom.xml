@@ -48,11 +48,11 @@
     <link href="https://littlemeemoon.cn/2021/04/24/Technology/Languages/JS/Array-in-V8/"/>
     <id>https://littlemeemoon.cn/2021/04/24/Technology/Languages/JS/Array-in-V8/</id>
     <published>2021-04-24T11:18:39.000Z</published>
-    <updated>2021-05-09T14:56:12.846Z</updated>
+    <updated>2021-05-09T15:02:38.115Z</updated>
     
     <summary type="html">
     
-      探究JS V8引擎下，JS Array的底层实现是怎样的，JS 数组和我们再数据结构中理解的数组是同一个东西吗？它在内存中分配的空间是连续的吗？
+      探究JS V8引擎下，JS Array的底层实现是怎样的，JS 数组和我们在数据结构中理解的数组是同一个东西吗？它在内存中分配的空间是连续的吗？
     
     </summary>
     
