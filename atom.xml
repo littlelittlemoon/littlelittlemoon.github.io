@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://littlemeemoon.cn/"/>
-  <updated>2021-05-08T12:55:52.068Z</updated>
+  <updated>2021-05-22T18:06:52.823Z</updated>
   <id>https://littlemeemoon.cn/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>机器学习算法 | K近邻算法 (KNN) 与近邻搜索算法KD树 (K-D Tree)</title>
+    <link href="https://littlemeemoon.cn/2021/05/10/Technology/Machine-Learning/ML-Algorithm/Classfication-and-Regression/KNN-and-KDTree/"/>
+    <id>https://littlemeemoon.cn/2021/05/10/Technology/Machine-Learning/ML-Algorithm/Classfication-and-Regression/KNN-and-KDTree/</id>
+    <published>2021-05-10T13:58:43.000Z</published>
+    <updated>2021-05-22T18:06:52.823Z</updated>
+    
+    <summary type="html">
+    
+      介绍 KNN 算法原理及 在k维空间便于快速进行近邻搜索的数据结构：K-D 树。
+    
+    </summary>
+    
+    
+      <category term="Technology" scheme="https://littlemeemoon.cn/categories/Technology/"/>
+    
+      <category term="Machine Learning" scheme="https://littlemeemoon.cn/categories/Technology/Machine-Learning/"/>
+    
+      <category term="ML Algorithm" scheme="https://littlemeemoon.cn/categories/Technology/Machine-Learning/ML-Algorithm/"/>
+    
+    
+      <category term="KNN" scheme="https://littlemeemoon.cn/tags/KNN/"/>
+    
+      <category term="KDTree" scheme="https://littlemeemoon.cn/tags/KDTree/"/>
+    
+  </entry>
   
   <entry>
     <title>机器学习算法 | 图解感知机学习算法(PLA)的工作原理</title>
@@ -666,39 +693,6 @@
       <category term="Python" scheme="https://littlemeemoon.cn/tags/Python/"/>
     
       <category term="Algorithm" scheme="https://littlemeemoon.cn/tags/Algorithm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Blockchain | Consensus Mechanisms</title>
-    <link href="https://littlemeemoon.cn/2020/04/19/Repost/Consensus_Mechanisms/"/>
-    <id>https://littlemeemoon.cn/2020/04/19/Repost/Consensus_Mechanisms/</id>
-    <published>2020-04-18T16:42:36.000Z</published>
-    <updated>2020-04-18T16:51:32.486Z</updated>
-    
-    <summary type="html">
-    
-      Consensus Mechanisms
-    
-    </summary>
-    
-    
-      <category term="Repost" scheme="https://littlemeemoon.cn/categories/Repost/"/>
-    
-      <category term="Blockchain" scheme="https://littlemeemoon.cn/categories/Repost/Blockchain/"/>
-    
-      <category term="Consensus Mechanisms" scheme="https://littlemeemoon.cn/categories/Repost/Blockchain/Consensus-Mechanisms/"/>
-    
-    
-      <category term="Consensus Mechanisms" scheme="https://littlemeemoon.cn/tags/Consensus-Mechanisms/"/>
-    
-      <category term="Blockchain" scheme="https://littlemeemoon.cn/tags/Blockchain/"/>
-    
-      <category term="Bitcoin" scheme="https://littlemeemoon.cn/tags/Bitcoin/"/>
-    
-      <category term="PoW" scheme="https://littlemeemoon.cn/tags/PoW/"/>
-    
-      <category term="PoS" scheme="https://littlemeemoon.cn/tags/PoS/"/>
     
   </entry>
   
