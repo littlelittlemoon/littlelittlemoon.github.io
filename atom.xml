@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://littlemeemoon.cn/"/>
-  <updated>2021-05-23T12:12:30.614Z</updated>
+  <updated>2021-05-24T14:26:03.545Z</updated>
   <id>https://littlemeemoon.cn/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>计算机网络 | 网络层次划分之 OSI 参考模型</title>
+    <link href="https://littlemeemoon.cn/2021/05/24/Technology/CSBasics/Computer-Network/01-network-layers/"/>
+    <id>https://littlemeemoon.cn/2021/05/24/Technology/CSBasics/Computer-Network/01-network-layers/</id>
+    <published>2021-05-24T10:44:18.000Z</published>
+    <updated>2021-05-24T14:26:03.545Z</updated>
+    
+    <summary type="html">
+    
+      介绍计算机网络OSI七层协议划分，每一层负责的功能以及主要协议等内容
+    
+    </summary>
+    
+    
+      <category term="Technology" scheme="https://littlemeemoon.cn/categories/Technology/"/>
+    
+      <category term="CSBasics" scheme="https://littlemeemoon.cn/categories/Technology/CSBasics/"/>
+    
+      <category term="Computer Network" scheme="https://littlemeemoon.cn/categories/Technology/CSBasics/Computer-Network/"/>
+    
+    
+      <category term="计算机网络" scheme="https://littlemeemoon.cn/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+      <category term="OSI七层模型" scheme="https://littlemeemoon.cn/tags/OSI%E4%B8%83%E5%B1%82%E6%A8%A1%E5%9E%8B/"/>
+    
+      <category term="TCP/IP 四、五层协议" scheme="https://littlemeemoon.cn/tags/TCP-IP-%E5%9B%9B%E3%80%81%E4%BA%94%E5%B1%82%E5%8D%8F%E8%AE%AE/"/>
+    
+  </entry>
   
   <entry>
     <title>机器学习算法 | K近邻算法 (KNN) 与近邻搜索算法 K-D 树 (K-D Tree)</title>
@@ -640,41 +669,6 @@
         
         
           &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Technology" scheme="https://littlemeemoon.cn/categories/Technology/"/>
-    
-      <category term="Coding" scheme="https://littlemeemoon.cn/categories/Technology/Coding/"/>
-    
-      <category term="Leetcode" scheme="https://littlemeemoon.cn/categories/Technology/Coding/Leetcode/"/>
-    
-    
-      <category term="Leetcode" scheme="https://littlemeemoon.cn/tags/Leetcode/"/>
-    
-      <category term="Python" scheme="https://littlemeemoon.cn/tags/Python/"/>
-    
-      <category term="Algorithm" scheme="https://littlemeemoon.cn/tags/Algorithm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Leetcode Notes in Apri 2020 | part 3 | day 15-21 | (三).</title>
-    <link href="https://littlemeemoon.cn/2020/04/21/Technology/Coding/Leetcode/Leetcode-Note-in-Apri-2020-part-3-day-15-21-(%E4%B8%89)/"/>
-    <id>https://littlemeemoon.cn/2020/04/21/Technology/Coding/Leetcode/Leetcode-Note-in-Apri-2020-part-3-day-15-21-(%E4%B8%89)/</id>
-    <published>2020-04-21T15:54:32.000Z</published>
-    <updated>2020-06-06T14:28:24.769Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1
         
       
     
