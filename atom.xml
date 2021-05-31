@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://littlemeemoon.cn/"/>
-  <updated>2021-05-31T15:04:07.129Z</updated>
+  <updated>2021-05-31T15:16:31.973Z</updated>
   <id>https://littlemeemoon.cn/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://littlemeemoon.cn/2021/05/31/Technology/CSBasics/Computer-Network/03-tcp-and-udp/"/>
     <id>https://littlemeemoon.cn/2021/05/31/Technology/CSBasics/Computer-Network/03-tcp-and-udp/</id>
     <published>2021-05-31T13:33:14.000Z</published>
-    <updated>2021-05-31T15:04:07.129Z</updated>
+    <updated>2021-05-31T15:16:31.973Z</updated>
     
     <summary type="html">
     
@@ -52,7 +52,7 @@
     <link href="https://littlemeemoon.cn/2021/05/29/Technology/CSBasics/Computer-Network/02-network-layers-tcp-ip/"/>
     <id>https://littlemeemoon.cn/2021/05/29/Technology/CSBasics/Computer-Network/02-network-layers-tcp-ip/</id>
     <published>2021-05-29T13:51:48.000Z</published>
-    <updated>2021-05-31T15:06:53.576Z</updated>
+    <updated>2021-05-31T15:15:56.169Z</updated>
     
     <summary type="html">
     
@@ -61,13 +61,11 @@
     </summary>
     
     
-      <category term="Updating" scheme="https://littlemeemoon.cn/categories/Updating/"/>
+      <category term="Technology" scheme="https://littlemeemoon.cn/categories/Technology/"/>
     
-      <category term="Technology" scheme="https://littlemeemoon.cn/categories/Updating/Technology/"/>
+      <category term="CSBasics" scheme="https://littlemeemoon.cn/categories/Technology/CSBasics/"/>
     
-      <category term="CSBasics" scheme="https://littlemeemoon.cn/categories/Updating/Technology/CSBasics/"/>
-    
-      <category term="Computer Network" scheme="https://littlemeemoon.cn/categories/Updating/Technology/CSBasics/Computer-Network/"/>
+      <category term="Computer Network" scheme="https://littlemeemoon.cn/categories/Technology/CSBasics/Computer-Network/"/>
     
     
       <category term="计算机网络" scheme="https://littlemeemoon.cn/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
@@ -75,6 +73,8 @@
       <category term="OSI七层模型" scheme="https://littlemeemoon.cn/tags/OSI%E4%B8%83%E5%B1%82%E6%A8%A1%E5%9E%8B/"/>
     
       <category term="TCP/IP 四、五层协议" scheme="https://littlemeemoon.cn/tags/TCP-IP-%E5%9B%9B%E3%80%81%E4%BA%94%E5%B1%82%E5%8D%8F%E8%AE%AE/"/>
+    
+      <category term="Updating" scheme="https://littlemeemoon.cn/tags/Updating/"/>
     
   </entry>
   
