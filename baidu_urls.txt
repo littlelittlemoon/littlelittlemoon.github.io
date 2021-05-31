@@ -1,3 +1,5 @@
+https://littlemeemoon.cn/2021/05/31/Technology/CSBasics/Computer-Network/03-tcp-and-udp/
+https://littlemeemoon.cn/2021/05/29/Technology/CSBasics/Computer-Network/02-network-layers-tcp-ip/
 https://littlemeemoon.cn/2021/05/24/Technology/CSBasics/Computer-Network/01-network-layers/
 https://littlemeemoon.cn/2021/05/10/Technology/Machine-Learning/ML-Algorithm/Classfication-and-Regression/KNN-and-KDTree/
 https://littlemeemoon.cn/2021/05/05/Technology/Machine-Learning/ML-Algorithm/Classification/PLA-graphical-explanation/

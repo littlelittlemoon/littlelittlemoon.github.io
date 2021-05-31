@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://littlemeemoon.cn/"/>
-  <updated>2021-05-29T13:49:29.602Z</updated>
+  <updated>2021-05-31T15:04:07.129Z</updated>
   <id>https://littlemeemoon.cn/</id>
   
   <author>
@@ -15,6 +15,68 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>计算机网络 | 传输层协议 TCP 和 UDP 的区别及应用场景</title>
+    <link href="https://littlemeemoon.cn/2021/05/31/Technology/CSBasics/Computer-Network/03-tcp-and-udp/"/>
+    <id>https://littlemeemoon.cn/2021/05/31/Technology/CSBasics/Computer-Network/03-tcp-and-udp/</id>
+    <published>2021-05-31T13:33:14.000Z</published>
+    <updated>2021-05-31T15:04:07.129Z</updated>
+    
+    <summary type="html">
+    
+      介绍两种传输层协议 TCP 和 UDP，以及它们的区别和各自的应用场景。
+    
+    </summary>
+    
+    
+      <category term="Technology" scheme="https://littlemeemoon.cn/categories/Technology/"/>
+    
+      <category term="CSBasics" scheme="https://littlemeemoon.cn/categories/Technology/CSBasics/"/>
+    
+      <category term="Computer Network" scheme="https://littlemeemoon.cn/categories/Technology/CSBasics/Computer-Network/"/>
+    
+    
+      <category term="计算机网络" scheme="https://littlemeemoon.cn/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+      <category term="传输层协议" scheme="https://littlemeemoon.cn/tags/%E4%BC%A0%E8%BE%93%E5%B1%82%E5%8D%8F%E8%AE%AE/"/>
+    
+      <category term="TCP" scheme="https://littlemeemoon.cn/tags/TCP/"/>
+    
+      <category term="UDP" scheme="https://littlemeemoon.cn/tags/UDP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>计算机网络 | 网络层次划分之 TCP/IP 四、五层协议</title>
+    <link href="https://littlemeemoon.cn/2021/05/29/Technology/CSBasics/Computer-Network/02-network-layers-tcp-ip/"/>
+    <id>https://littlemeemoon.cn/2021/05/29/Technology/CSBasics/Computer-Network/02-network-layers-tcp-ip/</id>
+    <published>2021-05-29T13:51:48.000Z</published>
+    <updated>2021-05-31T15:06:53.576Z</updated>
+    
+    <summary type="html">
+    
+      介绍计算机网络TCP/IP 四、五层协议划分，及每次主要协议介绍。
+    
+    </summary>
+    
+    
+      <category term="Updating" scheme="https://littlemeemoon.cn/categories/Updating/"/>
+    
+      <category term="Technology" scheme="https://littlemeemoon.cn/categories/Updating/Technology/"/>
+    
+      <category term="CSBasics" scheme="https://littlemeemoon.cn/categories/Updating/Technology/CSBasics/"/>
+    
+      <category term="Computer Network" scheme="https://littlemeemoon.cn/categories/Updating/Technology/CSBasics/Computer-Network/"/>
+    
+    
+      <category term="计算机网络" scheme="https://littlemeemoon.cn/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+      <category term="OSI七层模型" scheme="https://littlemeemoon.cn/tags/OSI%E4%B8%83%E5%B1%82%E6%A8%A1%E5%9E%8B/"/>
+    
+      <category term="TCP/IP 四、五层协议" scheme="https://littlemeemoon.cn/tags/TCP-IP-%E5%9B%9B%E3%80%81%E4%BA%94%E5%B1%82%E5%8D%8F%E8%AE%AE/"/>
+    
+  </entry>
   
   <entry>
     <title>计算机网络 | 网络层次划分之 OSI 参考模型</title>
@@ -599,76 +661,6 @@
         
         
           &lt;h1
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Technology" scheme="https://littlemeemoon.cn/categories/Technology/"/>
-    
-      <category term="Coding" scheme="https://littlemeemoon.cn/categories/Technology/Coding/"/>
-    
-      <category term="Leetcode" scheme="https://littlemeemoon.cn/categories/Technology/Coding/Leetcode/"/>
-    
-    
-      <category term="Leetcode" scheme="https://littlemeemoon.cn/tags/Leetcode/"/>
-    
-      <category term="Python" scheme="https://littlemeemoon.cn/tags/Python/"/>
-    
-      <category term="Algorithm" scheme="https://littlemeemoon.cn/tags/Algorithm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Leetcode Notes in Apri 2020 | part 4 | day 22-28 | (二)</title>
-    <link href="https://littlemeemoon.cn/2020/04/29/Technology/Coding/Leetcode/Leetcode-Note-in-Apri-2020-part-4-day-22-28-(%E4%BA%8C)/"/>
-    <id>https://littlemeemoon.cn/2020/04/29/Technology/Coding/Leetcode/Leetcode-Note-in-Apri-2020-part-4-day-22-28-(%E4%BA%8C)/</id>
-    <published>2020-04-29T09:35:23.000Z</published>
-    <updated>2020-06-06T14:28:39.590Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Technology" scheme="https://littlemeemoon.cn/categories/Technology/"/>
-    
-      <category term="Coding" scheme="https://littlemeemoon.cn/categories/Technology/Coding/"/>
-    
-      <category term="Leetcode" scheme="https://littlemeemoon.cn/categories/Technology/Coding/Leetcode/"/>
-    
-    
-      <category term="Leetcode" scheme="https://littlemeemoon.cn/tags/Leetcode/"/>
-    
-      <category term="Python" scheme="https://littlemeemoon.cn/tags/Python/"/>
-    
-      <category term="Algorithm" scheme="https://littlemeemoon.cn/tags/Algorithm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Leetcode Notes in Apri 2020 | part 4 | day 22-28 | (一)</title>
-    <link href="https://littlemeemoon.cn/2020/04/28/Technology/Coding/Leetcode/Leetcode-Note-in-Apri-2020-part-4-day-22-28-(%E4%B8%80)/"/>
-    <id>https://littlemeemoon.cn/2020/04/28/Technology/Coding/Leetcode/Leetcode-Note-in-Apri-2020-part-4-day-22-28-(%E4%B8%80)/</id>
-    <published>2020-04-28T14:29:47.000Z</published>
-    <updated>2020-06-06T14:28:35.018Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css&quot;
         
       
     
